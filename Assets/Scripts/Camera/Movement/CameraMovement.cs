@@ -15,12 +15,11 @@ public class CameraMovement : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        
     }
 
     void Update()
     {
-        Cursor.visible = true;
+        Cursor.visible = false;
         gameObject.transform.position = new Vector3(cameraViewPoint.transform.position.x, cameraViewPoint.transform.position.y + height, cameraViewPoint.transform.position.z - (height + height + height));
         MoveAroundWithMouse();
     }
