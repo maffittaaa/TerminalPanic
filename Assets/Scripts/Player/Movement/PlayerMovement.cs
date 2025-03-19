@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BehaviorType { Idleing , Walking, Runing }
+public enum BehaviorType { Idleing, Walking, Runing, Jumping }
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,11 +26,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //Movement
         Movement();
         Sprint();
-
-        //Jump
         Jump();
     }
 
@@ -65,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
                 speed = initialSpeed;
             }
         }
-        else
+        else if (rb.velocity.y == 0)
         {
             behaviorType = BehaviorType.Idleing;
         }
@@ -76,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+            behaviorType = BehaviorType.Jumping;
         }
     }
 

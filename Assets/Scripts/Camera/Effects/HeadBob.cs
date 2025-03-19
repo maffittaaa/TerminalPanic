@@ -22,32 +22,29 @@ public class HeadBob : MonoBehaviour
 
     private void Update()
     {
-        if (playerMovementScript != null && playerMovementScript.CurrentType() != BehaviorType.Idleing)
+        if (playerMovementScript != null && playerMovementScript.CurrentType() != BehaviorType.Idleing && playerMovementScript.CurrentType() != BehaviorType.Jumping)
         {
             if(playerMovementScript.CurrentType() == BehaviorType.Walking)
             {
                 speed = walkSpeed;
             }
-
-            if (playerMovementScript.CurrentType() == BehaviorType.Runing)
+            else if (playerMovementScript.CurrentType() == BehaviorType.Runing)
             {
                 speed = runSpeed;
             }
-
             DetorEffect();
         }
-        else
+        else if (playerMovementScript.CurrentType() != BehaviorType.Jumping)
         {
-            currentYPosition = Mathf.Lerp(currentYPosition, initialYPosition, Time.deltaTime * 2f);
-            viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, currentYPosition, viewPoint.transform.position.z);
+            currentYPosition = Mathf.Lerp(currentYPosition, viewPoint.transform.position.y, Time.deltaTime * 2f);
+            transform.position = new Vector3(viewPoint.transform.position.x, currentYPosition, viewPoint.transform.position.z);
         }
     }
 
     private void DetorEffect()
     {
-        currentYPosition = initialYPosition + headDetor * Mathf.Sin(Time.time * speed);
-
-        viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, currentYPosition, viewPoint.transform.position.z);
+        currentYPosition = viewPoint.transform.position.y + headDetor * Mathf.Sin(Time.time * speed);
+        transform.position = new Vector3(viewPoint.transform.position.x, currentYPosition, viewPoint.transform.position.z);
     }
 
     private float MakePositive(float num)
