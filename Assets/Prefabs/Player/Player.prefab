@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 2462691476438141943}
   - component: {fileID: 5491027110372810540}
   - component: {fileID: 2760616104000520053}
+  - component: {fileID: 1028580006078134479}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -181,6 +182,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sprintMultiplier: 0
   jumpForce: 5
   horizontalAxis: 0
   verticalAxis: 0
+--- !u!114 &1028580006078134479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549382358596299043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fb0fcb7286b6504da0d52194efe2316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAnxiety: 200
+  currentAnxiety: 0
+  spriteRenderer: {fileID: 0}
+  bloodColor: {r: 0, g: 0, b: 0, a: 0}
+  mainColor: {r: 0, g: 0, b: 0, a: 0}
+  anxietyTimeSeconds: 0
+  OnPlayerHealthChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
