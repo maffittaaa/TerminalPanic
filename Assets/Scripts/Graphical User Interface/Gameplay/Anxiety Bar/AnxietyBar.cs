@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -27,40 +28,38 @@ public class AnxietyBar : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Motherfucker2!");
         normalizedHealth = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
     
     public void ModifyHealth(float modifier)
     {
-        Debug.Log("Motherfucker!");
         currentAnxiety = Mathf.Clamp(currentAnxiety + modifier, 0.0f, maxAnxiety);
         normalizedHealth = currentAnxiety / maxAnxiety;
     }
     
-    public void EffectsFromAnxiety(float anxietyAmount) //damage from radiation if player doesn't take an anti-radiation flask
+    public void EffectsFromAnxiety(float anxietyAmount)
     {
-        Debug.Log("Hi!");
         ModifyHealth(anxietyAmount);
-        StartCoroutine(AnxietyOverTime());
         normalizedHealth = currentAnxiety / maxAnxiety;
         
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
-
-    private IEnumerator AnxietyOverTime()
-    {
-        Debug.Log("Hello!");
-        yield return new WaitForSeconds(anxietyTimeSeconds);
-        AnxietyLevelsUp();
-    }
     
-    public void AnxietyLevelsUp()
+    public IEnumerator AnxietyLevelsUp()
     {
         if (interacted == false)
+        {
+            yield return new WaitForSeconds(anxietyTimeSeconds);
             EffectsFromAnxiety(anxietyIncrease);
+        }
         else
             interacted = true;
+    }
+
+    private void Update()
+    {
+        StartCoroutine(AnxietyLevelsUp());
+        Debug.Log(currentAnxiety);
     }
 }
