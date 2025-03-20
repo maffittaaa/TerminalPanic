@@ -478,7 +478,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3328185229005661951, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 492f9e516791092438d86616e22c66b0, type: 3}
 --- !u!1 &463527056
 GameObject:
@@ -716,7 +719,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -1}
-  m_SizeDelta: {x: 760, y: 100}
+  m_SizeDelta: {x: 760, y: 102}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &792721535
 MonoBehaviour:
@@ -738,7 +741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 54e9c9848922a944681f335407bcea03, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
