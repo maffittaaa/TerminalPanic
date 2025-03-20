@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class OnPlayerHealthChanged : UnityEvent<float> { };
@@ -18,18 +19,14 @@ public class AnxietyBar : MonoBehaviour
     private bool interacted = false;
     
     private float normalizedHealth = 0.0f;
+    [SerializeField] private Image state;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
-    
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
     private void Start()
     {
         normalizedHealth = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+        StartCoroutine(AnxietyLevelsUp());
     }
     
     public void ModifyHealth(float modifier)
@@ -48,18 +45,32 @@ public class AnxietyBar : MonoBehaviour
     
     public IEnumerator AnxietyLevelsUp()
     {
-        if (interacted == false)
+        while (true)
         {
-            yield return new WaitForSeconds(anxietyTimeSeconds);
-            EffectsFromAnxiety(anxietyIncrease);
+            if (interacted == false)
+            {
+                yield return new WaitForSeconds(anxietyTimeSeconds);
+                EffectsFromAnxiety(anxietyIncrease);
+                if (currentAnxiety >= maxAnxiety * 0.75f)
+                    state.color = Color.red;
+            }
+            else
+            {
+                yield return new WaitForSeconds(anxietyTimeSeconds);
+                EffectsFromAnxiety(-anxietyIncrease);
+                if (currentAnxiety <= maxAnxiety * 0.75f)
+                {
+                    state.color = Color.yellow;
+                    if (currentAnxiety == 0f)
+                        interacted = false;
+                }
+            }
         }
-        else
-            interacted = true;
     }
 
     private void Update()
     {
-        StartCoroutine(AnxietyLevelsUp());
-        Debug.Log(currentAnxiety);
+        if (Input.GetKeyDown(KeyCode.F))
+            interacted = true;
     }
 }
