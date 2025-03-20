@@ -186,6 +186,7 @@ MonoBehaviour:
   jumpForce: 5
   horizontalAxis: 0
   verticalAxis: 0
+  behaviorType: 0
 --- !u!114 &1028580006078134479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,9 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAnxiety: 200
   currentAnxiety: 0
-  spriteRenderer: {fileID: 0}
-  bloodColor: {r: 0, g: 0, b: 0, a: 0}
-  mainColor: {r: 0, g: 0, b: 0, a: 0}
+  anxietyIncrease: 2
   anxietyTimeSeconds: 0
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:

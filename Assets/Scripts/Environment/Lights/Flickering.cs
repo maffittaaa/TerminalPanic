@@ -17,10 +17,15 @@ public class Flickering : MonoBehaviour
 
     [SerializeField] private GameObject lightMaterial;
 
+    private Color mainColor;
+    private Color currentColor;
+
     private bool lightCheat = false;
 
     void Start()
     {
+        mainColor = light1.color;
+        currentColor = mainColor;
         StartCoroutine(FlickerEffect());
     }
 
@@ -53,6 +58,10 @@ public class Flickering : MonoBehaviour
         light2.enabled = state;
         light3.enabled = state;
 
+        light1.color = currentColor;
+        light2.color = currentColor;
+        light3.color = currentColor;
+
         if (state)
         {
             lightMaterial.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.white);
@@ -71,10 +80,12 @@ public class Flickering : MonoBehaviour
         {
             if (!lightCheat)
             {
+                currentColor = Color.white;
                 lightCheat = true;
             }
             else
             {
+                currentColor = mainColor;
                 lightCheat = false;
             }
         }
