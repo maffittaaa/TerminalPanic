@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1053728048027124444}
   - component: {fileID: 4977599081670525957}
   - component: {fileID: 8927570696330065085}
+  - component: {fileID: 8910239255728772586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -109,3 +110,22 @@ MonoBehaviour:
   player: {fileID: 0}
   height: 0
   sensivity: 10
+--- !u!114 &8910239255728772586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760631584822870011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931971b0b4f1f7540883ea4afc4cb1d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headDetor: 0.1
+  walkSpeed: 10
+  runSpeed: 14
+  speed: 0
+  viewPoint: {fileID: 0}
+  playerMovementScript: {fileID: 0}
+  newPosition: 0

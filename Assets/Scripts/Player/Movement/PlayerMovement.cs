@@ -15,7 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float horizontalAxis;
     [SerializeField] private float verticalAxis;
 
-    private BehaviorType behaviorType;
+    private int jumpCount = 0;
+
+    [SerializeField] private BehaviorType behaviorType;
 
     private void Start()
     {
@@ -50,19 +52,26 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                behaviorType = BehaviorType.Runing;
                 if (initialSpeed * sprintMultiplier > speed)
                 {
                     speed *= sprintMultiplier;
                 }
+
+                if (jumpCount == 0)
+                {
+                    behaviorType = BehaviorType.Runing;
+                }
             }
             else
             {
-                behaviorType = BehaviorType.Walking;
+                if (jumpCount == 0)
+                {
+                    behaviorType = BehaviorType.Walking;
+                }
                 speed = initialSpeed;
             }
         }
-        else if (rb.velocity.y == 0)
+        else if (jumpCount == 0)
         {
             behaviorType = BehaviorType.Idleing;
         }
@@ -70,9 +79,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)
         {
+            jumpCount++;
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        }
+
+        if(jumpCount > 0)
+        {
             behaviorType = BehaviorType.Jumping;
         }
     }
@@ -80,5 +94,13 @@ public class PlayerMovement : MonoBehaviour
     public BehaviorType CurrentType()
     {
         return behaviorType;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            jumpCount = 0;
+        }
     }
 }
