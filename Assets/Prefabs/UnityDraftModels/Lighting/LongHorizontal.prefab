@@ -126,7 +126,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.090361595, a: 1}
   m_Intensity: 0.5
   m_Range: 20
   m_SpotAngle: 30
@@ -408,7 +408,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.090361595, a: 1}
   m_Intensity: 0.5
   m_Range: 20
   m_SpotAngle: 30
@@ -502,7 +502,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.090361595, a: 1}
   m_Intensity: 0.5
   m_Range: 20
   m_SpotAngle: 30
@@ -772,11 +772,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minFlickers: 5
-  maxFlickers: 10
+  maxFlickers: 20
   minFlickerSpeed: 0.01
   maxFlickerSpeed: 0.05
-  minTimeOff: 4
-  maxTimeOff: 8
+  minTimeOff: 2
+  maxTimeOff: 5
   light1: {fileID: 495461433599898827}
   light2: {fileID: 741670316661671233}
   light3: {fileID: 5765591683081063490}

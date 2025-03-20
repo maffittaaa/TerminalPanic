@@ -20,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         Cursor.visible = false;
-        gameObject.transform.position = new Vector3(cameraViewPoint.transform.position.x, cameraViewPoint.transform.position.y + height, cameraViewPoint.transform.position.z - (height + height + height));
+        //gameObject.transform.position = new Vector3(cameraViewPoint.transform.position.x, cameraViewPoint.transform.position.y + height, cameraViewPoint.transform.position.z - (height + height + height));
         MoveAroundWithMouse();
     }
 
