@@ -59,11 +59,7 @@ public class AnxietyBar : MonoBehaviour
                 yield return new WaitForSeconds(anxietyTimeSeconds);
                 EffectsFromAnxiety(-anxietyIncrease);
                 if (currentAnxiety <= maxAnxiety * 0.75f)
-                {
                     state.color = Color.yellow;
-                    if (currentAnxiety == 0f)
-                        interacted = false;
-                }
             }
         }
     }
@@ -72,5 +68,11 @@ public class AnxietyBar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
             interacted = true;
+        Debug.Log(interacted);
+    }
+
+    public bool IsInteracting(bool interacting)
+    {
+        return interacted;
     }
 }
