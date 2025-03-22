@@ -627,6 +627,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 792721535}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 1363311211}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: anxietyIncrease
       value: 0.5
       objectReference: {fileID: 0}
@@ -706,6 +710,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 1579824750}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -723,7 +731,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363311210}
-  - component: {fileID: 1363311212}
   - component: {fileID: 1363311209}
   - component: {fileID: 1363311211}
   m_Layer: 0
@@ -782,28 +789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anxietyBar: {fileID: 1579824750}
-  doorCollider: {fileID: 0}
---- !u!65 &1363311212
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363311208}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.8736739, y: 2.9395432, z: 0.5259344}
-  m_Center: {x: 0.17350006, y: 0.43797538, z: 0.5258259}
 --- !u!1001 &1364368076
 PrefabInstance:
   m_ObjectHideFlags: 0

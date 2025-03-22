@@ -10,7 +10,7 @@ public class AnxietyBar : MonoBehaviour
 {
     [Header("Anxiety")]
     [SerializeField] private float maxAnxiety = 200.0f;
-    [SerializeField] private float currentAnxiety = 0.0f;
+    public float currentAnxiety = 0.0f;
     [SerializeField] private float anxietyIncrease = 2.0f;
     
     [Header("Increasing Over Time")]
@@ -18,8 +18,8 @@ public class AnxietyBar : MonoBehaviour
 
     public bool interacted;
     
-    private float normalizedHealth = 0.0f;
-    [SerializeField] private Image state;
+    public float normalizedHealth = 0.0f;
+    public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
