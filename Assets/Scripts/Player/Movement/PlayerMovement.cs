@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BehaviorType { Idleing, Walking, Runing, Jumping }
+public enum BehaviorType { Idleing, Walking, Runing, Jumping, Crouching }
 
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    [SerializeField] private int speed;
-    [SerializeField] private int sprintMultiplier;
-    [SerializeField] private int jumpForce;
-    private int initialSpeed;
+    [SerializeField] private float speed;
+    [SerializeField] private float crouchMultiplier;
+    [SerializeField] private float sprintMultiplier;
+    [SerializeField] private GameObject viewPoint;
+    [SerializeField] private float crouchView;
+    private bool crouched;
+    [SerializeField] private float jumpForce;
+    private float initialSpeed;
 
     [SerializeField] private float horizontalAxis;
     [SerializeField] private float verticalAxis;
@@ -31,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         Movement();
         Sprint();
         Jump();
+        Crouch();
     }
 
     private void Movement()
@@ -48,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Sprint()
     {
-        if (horizontalAxis != 0 || verticalAxis != 0)
+        if (horizontalAxis != 0 || verticalAxis != 0 && !crouched)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -88,6 +93,22 @@ public class PlayerMovement : MonoBehaviour
         if(jumpCount > 0)
         {
             behaviorType = BehaviorType.Jumping;
+        }
+    }
+
+    private void Crouch()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            speed = initialSpeed * crouchMultiplier;
+            crouched = true;
+            viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, viewPoint.transform.position.y - crouchView, viewPoint.transform.position.z);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            speed = initialSpeed;
+            crouched = false;
+            viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, viewPoint.transform.position.y + crouchView, viewPoint.transform.position.z);
         }
     }
 

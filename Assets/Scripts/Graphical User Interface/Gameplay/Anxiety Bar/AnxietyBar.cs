@@ -68,7 +68,7 @@ public class AnxietyBar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
             interacted = true;
-        Debug.Log(interacted);
+        //Debug.Log(interacted);
     }
 
     public bool IsInteracting(bool interacting)

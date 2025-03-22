@@ -44,7 +44,7 @@ public class CameraMovement : MonoBehaviour
     {
         rotationY += Input.GetAxis("Mouse X") * sensivity;
         rotationX += Input.GetAxis("Mouse Y") * -1 * sensivity;
-        rotationX = Mathf.Clamp(rotationX, -90, 60);
+        rotationX = Mathf.Clamp(rotationX, -90, 40);
         transform.localEulerAngles = new Vector3(rotationX, 0, 0);
         player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, rotationY, player.transform.localEulerAngles.z);
     }

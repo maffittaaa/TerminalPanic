@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07f0feada227ee498f9ec47be21ff1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 100
   shootingPoint: {x: 0, y: 0, z: 0}
   rb: {fileID: -746228470209562112}
 --- !u!135 &430933910583948051
