@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 5491027110372810540}
   - component: {fileID: 2760616104000520053}
   - component: {fileID: 1028580006078134479}
+  - component: {fileID: 8329125688882015320}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -207,10 +208,24 @@ MonoBehaviour:
   currentAnxiety: 0
   anxietyIncrease: 2
   anxietyTimeSeconds: 0
+  interacted: 0
   state: {fileID: 0}
+  trigger: {fileID: 0}
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8329125688882015320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549382358596299043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48af14e91da07b048885ca4d30b5b558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8930112083496050155
 PrefabInstance:
   m_ObjectHideFlags: 0
