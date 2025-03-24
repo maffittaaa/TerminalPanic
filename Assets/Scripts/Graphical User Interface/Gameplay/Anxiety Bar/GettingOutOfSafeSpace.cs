@@ -12,6 +12,11 @@ public class GettingOutOfSafeSpace : MonoBehaviour
         {
             anxietyBar.interacted = false;
             collided = true;
+            if (anxietyBar.CouroutineIsRunning(false))
+            {
+                anxietyBar.StartCoroutine(anxietyBar.AnxietyLevelsUp());
+                anxietyBar.CouroutineIsRunning(true);
+            }
         }
         else
             collided = false;

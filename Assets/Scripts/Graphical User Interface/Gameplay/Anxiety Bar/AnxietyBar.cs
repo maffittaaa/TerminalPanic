@@ -9,7 +9,7 @@ public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class AnxietyBar : MonoBehaviour
 {
     [Header("Anxiety")]
-    [SerializeField] private float maxAnxiety = 200.0f;
+    public float maxAnxiety = 200.0f;
     public float currentAnxiety = 0.0f;
     [SerializeField] private float anxietyIncrease = 2.0f;
     
@@ -20,6 +20,7 @@ public class AnxietyBar : MonoBehaviour
     
     public float normalizedHealth = 0.0f;
     public Image state;
+    private bool isCoroutineRunning = false;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
@@ -46,6 +47,7 @@ public class AnxietyBar : MonoBehaviour
     
     public IEnumerator AnxietyLevelsUp()
     {
+        isCoroutineRunning = true;
         while (true)
         {
             if (interacted == false)
@@ -69,5 +71,10 @@ public class AnxietyBar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
             interacted = true;
+    }
+
+    public bool CouroutineIsRunning(bool running)
+    {
+        return isCoroutineRunning;
     }
 }
