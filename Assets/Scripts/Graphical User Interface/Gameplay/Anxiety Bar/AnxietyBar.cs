@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,16 +27,16 @@ public class AnxietyBar : MonoBehaviour
     {
         normalizedHealth = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
-        StartCoroutine(AnxietyLevelsUp());
+        IncreaseAnxiety(); 
     }
     
-    public void ModifyHealth(float modifier)
+    private void ModifyHealth(float modifier)
     {
         currentAnxiety = Mathf.Clamp(currentAnxiety + modifier, 0.0f, maxAnxiety);
         normalizedHealth = currentAnxiety / maxAnxiety;
     }
     
-    public void EffectsFromAnxiety(float anxietyAmount)
+    private void EffectsFromAnxiety(float anxietyAmount)
     {
         ModifyHealth(anxietyAmount);
         normalizedHealth = currentAnxiety / maxAnxiety;
@@ -45,36 +44,41 @@ public class AnxietyBar : MonoBehaviour
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
     }
     
-    public IEnumerator AnxietyLevelsUp()
+    private IEnumerator AnxietyLevelsUp()
     {
-        isCoroutineRunning = true;
-        while (true)//!!!!!!! fds 
+        while (true)
         {
             if (interacted == false)
             {
                 yield return new WaitForSeconds(anxietyTimeSeconds);
                 EffectsFromAnxiety(anxietyIncrease);
-                if (currentAnxiety >= maxAnxiety * 0.75f)
-                    state.color = Color.red;
             }
             else
             {
                 yield return new WaitForSeconds(anxietyTimeSeconds);
                 EffectsFromAnxiety(-anxietyIncrease);
-                if (currentAnxiety <= maxAnxiety * 0.75f)
-                    state.color = Color.yellow;
             }
+            
+            if (currentAnxiety > maxAnxiety * 0.75f)
+                state.color = Color.red;
+            else
+                state.color = Color.yellow;
         }
     }
 
+    public void IncreaseAnxiety()
+    {
+        StartCoroutine(AnxietyLevelsUp());
+    }
+    
+    public void ResetAnxiety()
+    {
+        StopAllCoroutines();
+    }
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
             interacted = true;
-    }
-
-    public bool CouroutineIsRunning(bool running)
-    {
-        return isCoroutineRunning;
     }
 }
