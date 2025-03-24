@@ -20,7 +20,7 @@ public class AnxietyBar : MonoBehaviour
     
     public float normalizedHealth = 0.0f;
     public Image state;
-    private bool isCoroutineRunning = false;
+    public bool isCoroutineRunning = false;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
@@ -48,7 +48,7 @@ public class AnxietyBar : MonoBehaviour
     public IEnumerator AnxietyLevelsUp()
     {
         isCoroutineRunning = true;
-        while (true)
+        while (true)//!!!!!!! fds 
         {
             if (interacted == false)
             {
