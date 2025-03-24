@@ -10,18 +10,23 @@ public class RespawnAfterFaint : MonoBehaviour
 
     private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.C) && anxietyBar.interacted == false && gettingOutOfSafeSpace.Collided(true))
-            anxietyBar.AnxietyLevelsUp();
+        if (!anxietyBar.isCoroutineRunning && gettingOutOfSafeSpace.Collided(true))
+        {
+            anxietyBar.StartCoroutine(anxietyBar.AnxietyLevelsUp());
+            anxietyBar.isCoroutineRunning = true;
+        }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (anxietyBar.currentAnxiety == anxietyBar.maxAnxiety && anxietyBar.isCoroutineRunning) //better way please...
         {
-            this.transform.position = new Vector3(27.53f,3.79f,-301.08f);
-            anxietyBar.state.fillAmount = 0f;
-            anxietyBar.currentAnxiety = 0f;
+            anxietyBar.isCoroutineRunning = false;
             anxietyBar.StopCoroutine(anxietyBar.AnxietyLevelsUp());
+            Debug.Log("Coroutine: " + anxietyBar.isCoroutineRunning);
+            Debug.Log("Collided: " + gettingOutOfSafeSpace.Collided(true));
+            this.transform.position = new Vector3(27.53f,3.79f,-301.08f);
+            anxietyBar.currentAnxiety = 0f;
         }
     }
 }
