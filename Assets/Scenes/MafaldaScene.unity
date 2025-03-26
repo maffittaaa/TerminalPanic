@@ -122,6 +122,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &168231536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6820504999733536782, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 1072941869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &168231538 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7536913242739828259, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 1072941869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &234405419
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +561,7 @@ GameObject:
   - component: {fileID: 792721536}
   - component: {fileID: 792721535}
   m_Layer: 5
-  m_Name: yellowState
+  m_Name: State
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,8 +646,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1363311211}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: focusCamera
+      value: 
+      objectReference: {fileID: 168231538}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: timeSeconds
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: anxietyIncrease
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: distanceDecrease
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: anxietyTimeSeconds
@@ -733,7 +755,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6820504999733536782, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2112873527}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3756000199214342672, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       insertIndex: -1
@@ -1560,12 +1585,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112873524}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 74.109, y: -2.6005623, z: -7.8757935}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 123.831474, y: -8.955278, z: 247.88838}
+  m_LocalScale: {x: 0.9157168, y: 1.0177538, z: 0.9157168}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 168231536}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1578,4 +1603,3 @@ SceneRoots:
   - {fileID: 1364368076}
   - {fileID: 1363311210}
   - {fileID: 750840935}
-  - {fileID: 2112873527}

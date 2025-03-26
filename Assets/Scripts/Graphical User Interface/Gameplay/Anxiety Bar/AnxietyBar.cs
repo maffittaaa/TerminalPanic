@@ -13,24 +13,26 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField] private float anxietyIncrease = 2.0f;
     
     [Header("Increasing Over Time")]
-    [SerializeField] private float anxietyTimeSeconds;
+    [SerializeField] private float timeSeconds;
 
     public bool interacted;
     
     public float normalizedHealth = 0.0f;
     public Image state;
-    public bool isCoroutineRunning = false;
     [SerializeField] private GettingOutOfSafeSpace trigger;
+    [SerializeField] private Camera focusCamera;
+    [SerializeField] private float distanceDecrease;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
     private void Start()
     {
         normalizedHealth = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
-        IncreaseAnxiety(); 
+        IncreaseAnxiety();
+        focusCamera.focusDistance = 3.3f;
     }
     
-    private void ModifyHealth(float modifier)
+    private void ModifyAnxiety(float modifier)
     {
         currentAnxiety = Mathf.Clamp(currentAnxiety + modifier, 0.0f, maxAnxiety);
         normalizedHealth = currentAnxiety / maxAnxiety;
@@ -38,10 +40,20 @@ public class AnxietyBar : MonoBehaviour
     
     private void EffectsFromAnxiety(float anxietyAmount)
     {
-        ModifyHealth(anxietyAmount);
+        ModifyAnxiety(anxietyAmount);
         normalizedHealth = currentAnxiety / maxAnxiety;
         
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+    }
+    
+    private void ModifyFocusDistance(float modifier)
+    {
+        //focusCamera.focusDistance = Mathf.Clamp(focusCamera.focusDistance - modifier, 3.3f, 0f);
+    }
+
+    private void VisionEffectsFromAnxiety(float distanceAmount)
+    {
+        //ModifyFocusDistance(distanceAmount);
     }
     
     private IEnumerator AnxietyLevelsUp()
@@ -50,17 +62,20 @@ public class AnxietyBar : MonoBehaviour
         {
             if (interacted == false)
             {
-                yield return new WaitForSeconds(anxietyTimeSeconds);
+                yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(anxietyIncrease);
             }
             else
             {
-                yield return new WaitForSeconds(anxietyTimeSeconds);
+                yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(-anxietyIncrease);
             }
-            
+
             if (currentAnxiety > maxAnxiety * 0.75f)
+            {
                 state.color = Color.red;
+                //VisionEffectsFromAnxiety(distanceDecrease);
+            }
             else
                 state.color = Color.yellow;
         }
