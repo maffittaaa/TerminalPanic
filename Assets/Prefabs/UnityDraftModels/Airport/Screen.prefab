@@ -261,12 +261,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec8a1206ae61fd459797fdb82330302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFlickers: 1
-  maxFlickers: 10
-  minFlickerSpeed: 0.1
-  maxFlickerSpeed: 1
-  minTimeOff: 1
-  maxTimeOff: 2
+  minFlickers: 5
+  maxFlickers: 20
+  minFlickerSpeed: 0.01
+  maxFlickerSpeed: 0.05
+  minTimeOff: 4
+  maxTimeOff: 8
   light1: {fileID: 5564041318248418087}
   light2: {fileID: 5564041318248418087}
   light3: {fileID: 5564041318248418087}

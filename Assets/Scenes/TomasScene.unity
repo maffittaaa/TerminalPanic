@@ -882,6 +882,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 25428875437700, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 179333878942934610, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 506559489536070749, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_LocalPosition.x
       value: -29.17
@@ -893,6 +925,186 @@ PrefabInstance:
     - target: {fileID: 506559489536070749, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_LocalPosition.z
       value: -285.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 594752427648508759, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 843360341628984191, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897451305971084326, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 934400682218155287, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655837934278302650, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971004576761185727, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971004576761185727, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971004576761185727, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971004576761185727, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1971004576761185727, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241044629260707551, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2478735976996258010, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571651107076044022, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571651107076044022, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571651107076044022, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571651107076044022, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571651107076044022, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761447811059830699, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797132748482104986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2908162230682617311, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037350512913270025, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3069940142016613224, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_Name
@@ -938,9 +1150,213 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385510731904972855, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447612985649217804, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676112728641443006, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676112728641443006, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676112728641443006, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676112728641443006, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676112728641443006, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896804148127498348, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896804148127498348, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896804148127498348, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896804148127498348, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896804148127498348, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391652995891410201, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591994004507182049, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5902093139069486945, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114675162400915683, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114675162400915683, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114675162400915683, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114675162400915683, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6114675162400915683, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607684111640032121, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122054789578644112, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122054789578644112, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122054789578644112, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122054789578644112, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7122054789578644112, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7474851650811617388, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184716877488345332, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230542602039182416, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537526286965761840, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537526286965761840, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537526286965761840, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537526286965761840, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537526286965761840, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8656745220772026572, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1438,10 +1854,6 @@ PrefabInstance:
       propertyPath: testDoor
       value: 
       objectReference: {fileID: 1767122101}
-    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4549382358596299043, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1488,10 +1900,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

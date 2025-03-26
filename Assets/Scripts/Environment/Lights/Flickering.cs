@@ -37,22 +37,22 @@ public class Flickering : MonoBehaviour
             {
                 for (int i = 0; i < Random.Range(minFlickers, maxFlickers); i++)
                 {
-                    ChangeLightsSate(true);
+                    ChangeLightsState(true);
                     yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
-                    ChangeLightsSate(false);
+                    ChangeLightsState(false);
                     yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
                 }
                 yield return new WaitForSeconds(Random.Range(minTimeOff, maxTimeOff));
             }
             else
             {
-                ChangeLightsSate(true);
+                ChangeLightsState(true);
                 yield return null;
             }
         }   
     }
 
-    private void ChangeLightsSate(bool state)
+    private void ChangeLightsState(bool state)
     {
         light1.enabled = state;
         light2.enabled = state;

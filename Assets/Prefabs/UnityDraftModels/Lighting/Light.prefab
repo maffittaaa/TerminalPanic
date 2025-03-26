@@ -789,10 +789,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec8a1206ae61fd459797fdb82330302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minFlickers: 1
-  maxFlickers: 10
-  minFlickerSpeed: 0.1
-  maxFlickerSpeed: 1
+  minFlickers: 5
+  maxFlickers: 20
+  minFlickerSpeed: 0.01
+  maxFlickerSpeed: 0.1
   minTimeOff: 5
   maxTimeOff: 10
   light1: {fileID: 1789450294685582229}
