@@ -9,6 +9,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject shootingSpawn;
     [SerializeField] private GameObject shootingPoint;
 
+    [SerializeField] private GameObject shootingLight;
+    [SerializeField] private float lightLifeSec;
+
     [SerializeField] private ParticleSystem particleSystem;
 
     [SerializeField] private int maxBullets;
@@ -49,6 +52,7 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        StartCoroutine(ShootingLight());
         currentMagBullets++;
         particleSystem.Play();
         GameObject newBullet = Instantiate(bulletPrefab, shootingSpawn.transform.position, Quaternion.identity);
@@ -56,6 +60,13 @@ public class Weapon : MonoBehaviour
         newBullet.GetComponent<Bullet>().shootingPoint = shootingPoint.transform.position;
         currentShootingDelay = 0;
         currentBullets--;
+    }
+
+    private IEnumerator ShootingLight()
+    {
+        shootingLight.SetActive(true);
+        yield return new WaitForSeconds(lightLifeSec);
+        shootingLight.SetActive(false);
     }
 
     public void AddBullets(int amount)

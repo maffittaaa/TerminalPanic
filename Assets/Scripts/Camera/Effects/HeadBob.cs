@@ -7,21 +7,24 @@ public class HeadBob : MonoBehaviour
     [SerializeField] private float headDetor;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float runSpeed;
+    [SerializeField] private float crouchSpeed;
     [SerializeField] private float speed;
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private PlayerMovement playerMovementScript;
     [SerializeField] private float newPosition;
+    [SerializeField] private float time;
 
     private void Start()
     {
         newPosition = viewPoint.transform.position.y;
+        time = 0f;
     }
 
     private void Update()
     {
-        if (playerMovementScript != null && playerMovementScript.CurrentType() != BehaviorType.Idleing && playerMovementScript.CurrentType() != BehaviorType.Jumping)
+        if (playerMovementScript.CurrentType() != BehaviorType.Idleing && playerMovementScript.CurrentType() != BehaviorType.Jumping)
         {
-            if(playerMovementScript.CurrentType() == BehaviorType.Walking)
+            if (playerMovementScript.CurrentType() == BehaviorType.Walking)
             {
                 speed = walkSpeed;
             }
@@ -29,10 +32,16 @@ public class HeadBob : MonoBehaviour
             {
                 speed = runSpeed;
             }
+            else if (playerMovementScript.CurrentType() == BehaviorType.Crouching)
+            {
+                speed = crouchSpeed;
+            }
             DetorEffect();
         }
         else if (playerMovementScript.CurrentType() != BehaviorType.Jumping)
         {
+            time = 0f;
+
             newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y, Time.deltaTime * 2f);
             transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
         }
@@ -40,12 +49,8 @@ public class HeadBob : MonoBehaviour
 
     private void DetorEffect()
     {
-        newPosition = viewPoint.transform.position.y + headDetor * Mathf.Sin(Time.time * speed);
+        time += Time.deltaTime;
+        newPosition = viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed);
         transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
-    }
-
-    private float MakePositive(float num)
-    {
-        return Mathf.Sqrt(Mathf.Pow(num, 2));
     }
 }
