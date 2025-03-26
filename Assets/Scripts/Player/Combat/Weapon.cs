@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private int maxBullets;
     [SerializeField] private int currentBullets;
+    [SerializeField] private int currentMagBullets;
     [SerializeField] private float shootingDelay;
     private float currentShootingDelay = 0f;
 
@@ -21,6 +22,11 @@ public class Weapon : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && CanShoot())
         {
             Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentMagBullets = 0;
         }
     }
 
@@ -31,7 +37,7 @@ public class Weapon : MonoBehaviour
 
     private bool CanShoot()
     {
-        if(currentBullets <= 0 || currentShootingDelay < shootingDelay)
+        if(currentBullets <= 0 || currentShootingDelay < shootingDelay || currentMagBullets >= maxBullets)
         {
             return false;
         }
@@ -43,6 +49,7 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        currentMagBullets++;
         particleSystem.Play();
         GameObject newBullet = Instantiate(bulletPrefab, shootingSpawn.transform.position, Quaternion.identity);
         newBullet.transform.parent = bulletsHolder.transform;
@@ -55,5 +62,4 @@ public class Weapon : MonoBehaviour
     {
         currentBullets += amount;
     }
-
 }

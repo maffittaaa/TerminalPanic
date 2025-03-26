@@ -13,7 +13,7 @@ using UnityEngine;
 
 [DisallowMultipleComponent]
 
-public class Outline : MonoBehaviour {
+public class Outline : MonoBehaviour, IInteractable {
     private static HashSet<Mesh> registeredMeshes = new HashSet<Mesh>();
 
     public enum Mode {
@@ -52,8 +52,9 @@ public class Outline : MonoBehaviour {
 
     [SerializeField] private Mode outlineMode;
 
+    [SerializeField] private ItemType type;
+
     [SerializeField] private GameObject interactingText;
-    [SerializeField] private InteractWithObject interactingScript;
 
     [SerializeField] private Color outlineColor = Color.white;
 
@@ -77,52 +78,56 @@ public class Outline : MonoBehaviour {
 
     void Awake() 
     {
-    // Cache renderers
-    renderers = GetComponentsInChildren<Renderer>();
+        // Cache renderers
+        renderers = GetComponentsInChildren<Renderer>();
 
-    // Instantiate outline materials
-    outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
-    outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
+        // Instantiate outline materials
+        outlineMaskMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineMask"));
+        outlineFillMaterial = Instantiate(Resources.Load<Material>(@"Materials/OutlineFill"));
 
-    outlineMaskMaterial.name = "OutlineMask (Instance)";
-    outlineFillMaterial.name = "OutlineFill (Instance)";
+        outlineMaskMaterial.name = "OutlineMask (Instance)";
+        outlineFillMaterial.name = "OutlineFill (Instance)";
 
-    // Retrieve or generate smooth normals
-    LoadSmoothNormals();
+        // Retrieve or generate smooth normals
+        LoadSmoothNormals();
 
-    // Apply material properties immediately
-    needsUpdate = true;
+        // Apply material properties immediately
+        needsUpdate = true;
+    }
+
+    public ItemType GetItemType()
+    {
+        return type;
     }
 
     void OnEnable() {
-    foreach (var renderer in renderers) {
+        foreach (var renderer in renderers) {
 
-        // Append outline shaders
-        var materials = renderer.sharedMaterials.ToList();
+            // Append outline shaders
+            var materials = renderer.sharedMaterials.ToList();
 
-        materials.Add(outlineMaskMaterial);
-        materials.Add(outlineFillMaterial);
+            materials.Add(outlineMaskMaterial);
+            materials.Add(outlineFillMaterial);
 
-        renderer.materials = materials.ToArray();
-    }
+            renderer.materials = materials.ToArray();
+        }
         interactingText.SetActive(true);
     }
 
     void OnValidate() {
+        // Update material properties
+        needsUpdate = true;
 
-    // Update material properties
-    needsUpdate = true;
+        // Clear cache when baking is disabled or corrupted
+        if (!precomputeOutline && bakeKeys.Count != 0 || bakeKeys.Count != bakeValues.Count) {
+            bakeKeys.Clear();
+            bakeValues.Clear();
+        }
 
-    // Clear cache when baking is disabled or corrupted
-    if (!precomputeOutline && bakeKeys.Count != 0 || bakeKeys.Count != bakeValues.Count) {
-        bakeKeys.Clear();
-        bakeValues.Clear();
-    }
-
-    // Generate smooth normals when baking is enabled
-    if (precomputeOutline && bakeKeys.Count == 0) {
-        Bake();
-    }
+        // Generate smooth normals when baking is enabled
+        if (precomputeOutline && bakeKeys.Count == 0) {
+            Bake();
+        }
     }
 
     void Update() {

@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
+  type: 4
   interactingText: {fileID: 6007048777355235197}
   outlineColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
   outlineWidth: 10
