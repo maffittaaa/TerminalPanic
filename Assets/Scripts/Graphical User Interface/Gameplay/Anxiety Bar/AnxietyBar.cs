@@ -30,11 +30,12 @@ public class AnxietyBar : MonoBehaviour
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
     private void Start()
     {
+        dOF = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
+        cA = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>();
+        
         normalizedAnxiety = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
         IncreaseAnxiety();
-        dOF = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
-        cA = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>();
     }
     
     private void ModifyAnxiety(float modifier)
@@ -55,6 +56,7 @@ public class AnxietyBar : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log(interacted);
             if (interacted == false)
             {
                 yield return new WaitForSeconds(timeSeconds);
@@ -86,11 +88,5 @@ public class AnxietyBar : MonoBehaviour
     public void ResetAnxiety()
     {
         StopAllCoroutines();
-    }
-    
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-            interacted = true;
     }
 }

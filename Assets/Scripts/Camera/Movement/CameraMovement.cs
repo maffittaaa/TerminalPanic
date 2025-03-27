@@ -16,6 +16,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private GameObject body;
     [SerializeField] private GameObject testDoor;
     [SerializeField] private ItemType itemType;
+    [SerializeField] private AnxietyBar anxietyBar;
 
     private bool gotKeyCard = false;
 
@@ -103,7 +104,7 @@ public class CameraMovement : MonoBehaviour
                     weapon.AddBullets(5);
                     break;
                 case ItemType.Mirror:
-
+                    anxietyBar.interacted = true;
                     break;
                 case ItemType.KeyCardMachine:
                     if (gotKeyCard)
