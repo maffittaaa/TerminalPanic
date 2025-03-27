@@ -532,6 +532,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5418714333405369534, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a226694859b0da740936ba25c3a34577, type: 2}
     - target: {fileID: 5902093139069486945, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -540,6 +544,14 @@ PrefabInstance:
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 1579824750}
+    - target: {fileID: 7101909800826102464, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7101909800826102464, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -24
+      objectReference: {fileID: 0}
     - target: {fileID: 7231374519798466790, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_Name
       value: WeaponsRoom
