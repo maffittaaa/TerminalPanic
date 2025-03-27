@@ -377,25 +377,39 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4549382358596299043}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fb0fcb7286b6504da0d52194efe2316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxAnxiety: 200
   currentAnxiety: 0
-  anxietyIncrease: 2
-  timeSeconds: 0
+  anxietyIncrease: 0.5
+  timeSeconds: 0.2
   interacted: 0
   normalizedAnxiety: 0
   state: {fileID: 0}
   trigger: {fileID: 0}
-  focusCamera: {fileID: 0}
-  dof: {fileID: 0}
-  distanceDecrease: 0
+  focusCamera: {fileID: 5157765224497732004}
+  dOF: {fileID: 0}
+  cA: {fileID: 0}
+  distanceDecrease: 0.03
+  aberrationIncrease: 0.03
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_fillAmount
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8329125688882015320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,12 +417,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4549382358596299043}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48af14e91da07b048885ca4d30b5b558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anxietyBar: {fileID: 0}
+  anxietyBar: {fileID: 1028580006078134479}
   gettingOutOfSafeSpace: {fileID: 0}
 --- !u!1001 &8930112083496050155
 PrefabInstance:
@@ -1122,6 +1136,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ffe538da7fcc374f8f0dc446d9e6232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5157765224497732004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4357850037879325775, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+  m_PrefabInstance: {fileID: 8930112083496050155}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6426970509839921045 stripped
