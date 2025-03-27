@@ -6345,7 +6345,7 @@ Transform:
   m_GameObject: {fileID: 5364466903717591163}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -29.17, y: 4.59, z: -285.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11489,6 +11489,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11825,6 +11845,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.8
@@ -11930,6 +11978,26 @@ PrefabInstance:
     - target: {fileID: 4023531682447963437, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
       propertyPath: m_Name
       value: Light (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12213,6 +12281,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -12521,6 +12617,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12644,6 +12760,26 @@ PrefabInstance:
     - target: {fileID: 4023531682447963437, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
       propertyPath: m_Name
       value: Light (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12919,6 +13055,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5702891957224802917}
     m_Modifications:
+    - target: {fileID: 1254639579604238519, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254639579604238519, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254639579604238519, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254639579604238519, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331221200963327077, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331221200963327077, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331221200963327077, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331221200963327077, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2546140220430402234, guid: d0e21c9d13efcf649828148ed0faf772, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12997,6 +13165,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -13067,6 +13263,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -13199,6 +13423,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -13401,6 +13653,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.2
@@ -13727,6 +14007,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.3
@@ -14089,6 +14397,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Light
       objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6824321659660530882, guid: 00b44e1831c0f684289be77cbb522960, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14109,7 +14437,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468363411896251497, guid: e1f02e759a2827a409837e8f1a5425c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.805
       objectReference: {fileID: 0}
     - target: {fileID: 468363411896251497, guid: e1f02e759a2827a409837e8f1a5425c6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14117,7 +14445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468363411896251497, guid: e1f02e759a2827a409837e8f1a5425c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 468363411896251497, guid: e1f02e759a2827a409837e8f1a5425c6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14231,6 +14559,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6088044436925419417}
     m_Modifications:
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxTimeOff
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minTimeOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: maxFlickerSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6139749051054130051, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
+      propertyPath: minFlickerSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7332383709964198814, guid: 902363a93a8760e4f835d5dad01ab8e6, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
