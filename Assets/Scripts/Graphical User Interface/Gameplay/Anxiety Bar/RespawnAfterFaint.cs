@@ -13,6 +13,7 @@ public class RespawnAfterFaint : MonoBehaviour
             this.transform.position = new Vector3(27.53f,3.79f,-301.08f);
             anxietyBar.currentAnxiety = 0f;
             anxietyBar.state.fillAmount = 0f;
+            anxietyBar.dof.focusDistance.value = 3.3f;
         }
     }
 }

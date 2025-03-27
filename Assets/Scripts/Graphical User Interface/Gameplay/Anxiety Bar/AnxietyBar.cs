@@ -9,7 +9,7 @@ public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class AnxietyBar : MonoBehaviour
 {
     [Header("Anxiety")]
-    public float maxAnxiety = 200.0f;
+    public float maxAnxiety;
     public float currentAnxiety = 0.0f;
     [SerializeField] private float anxietyIncrease = 2.0f;
     
@@ -18,35 +18,35 @@ public class AnxietyBar : MonoBehaviour
 
     public bool interacted;
     
-    public float normalizedHealth = 0.0f;
+    public float normalizedAnxiety = 0.0f;
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
-    [SerializeField] private PostProcessLayer focusCamera;
-    private float depthOfField;
+    [SerializeField] private PostProcessVolume focusCamera;
+    public DepthOfField dof;
     [SerializeField] private float distanceDecrease;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
     private void Start()
     {
-        normalizedHealth = currentAnxiety / maxAnxiety;
-        OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+        normalizedAnxiety = currentAnxiety / maxAnxiety;
+        OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
         IncreaseAnxiety();
-        depthOfField = focusCamera.GetSettings<DepthOfField>().focusDistance.value;
-        Debug.Log("wtf: " + depthOfField);
+        dof = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
+        Debug.Log("wtf: " + dof);
     }
     
     private void ModifyAnxiety(float modifier)
     {
         currentAnxiety = Mathf.Clamp(currentAnxiety + modifier, 0.0f, maxAnxiety);
-        normalizedHealth = currentAnxiety / maxAnxiety;
+        normalizedAnxiety = currentAnxiety / maxAnxiety;
     }
     
     private void EffectsFromAnxiety(float anxietyAmount)
     {
         ModifyAnxiety(anxietyAmount);
-        normalizedHealth = currentAnxiety / maxAnxiety;
+        normalizedAnxiety = currentAnxiety / maxAnxiety;
         
-        OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
+        OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
     }
     
     private IEnumerator AnxietyLevelsUp()
@@ -68,8 +68,7 @@ public class AnxietyBar : MonoBehaviour
             {
                 state.color = Color.red;
                 yield return new WaitForSeconds(timeSeconds);
-                depthOfField -= distanceDecrease;
-                Debug.Log("???" + depthOfField);
+                dof.focusDistance.value -= distanceDecrease;
             }
             else
                 state.color = Color.yellow;
