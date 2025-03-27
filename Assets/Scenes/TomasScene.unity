@@ -925,17 +925,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2091566897 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-  m_PrefabInstance: {fileID: 2875122812098800739}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb0fcb7286b6504da0d52194efe2316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2482786362482491757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1916,18 +1905,6 @@ PrefabInstance:
       propertyPath: testDoor
       value: 
       objectReference: {fileID: 1767122101}
-    - target: {fileID: 3161779647818070, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: anxietyBar
-      value: 
-      objectReference: {fileID: 2091566897}
-    - target: {fileID: 62274449685000385, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_Depth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 62274449685000385, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: state
       value: 
@@ -1936,10 +1913,6 @@ PrefabInstance:
       propertyPath: trigger
       value: 
       objectReference: {fileID: 200863043}
-    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: OnPlayerHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: OnPlayerHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1952,10 +1925,6 @@ PrefabInstance:
       propertyPath: bulletsHolder
       value: 
       objectReference: {fileID: 2054796073}
-    - target: {fileID: 5157765224497732004, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: isGlobal
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52.02
@@ -1996,30 +1965,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6205133724567805039, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_ShowToolkit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6205133724567805039, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_ShowCustomSorter
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426970509839921045, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7536913242739828259, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 512
-      objectReference: {fileID: 0}
     - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: gettingOutOfSafeSpace
       value: 
       objectReference: {fileID: 200863043}
-    - target: {fileID: 8462749357109763895, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
