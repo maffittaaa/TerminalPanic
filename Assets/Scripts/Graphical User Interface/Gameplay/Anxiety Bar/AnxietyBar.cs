@@ -22,8 +22,10 @@ public class AnxietyBar : MonoBehaviour
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     [SerializeField] private PostProcessVolume focusCamera;
-    public DepthOfField dof;
+    public DepthOfField dOF;
+    public ChromaticAberration cA;
     [SerializeField] private float distanceDecrease;
+    [SerializeField] private float aberrationIncrease;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
     private void Start()
@@ -31,8 +33,8 @@ public class AnxietyBar : MonoBehaviour
         normalizedAnxiety = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
         IncreaseAnxiety();
-        dof = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
-        Debug.Log("wtf: " + dof);
+        dOF = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
+        cA = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>();
     }
     
     private void ModifyAnxiety(float modifier)
@@ -68,7 +70,8 @@ public class AnxietyBar : MonoBehaviour
             {
                 state.color = Color.red;
                 yield return new WaitForSeconds(timeSeconds);
-                dof.focusDistance.value -= distanceDecrease;
+                dOF.focusDistance.value -= distanceDecrease;
+                cA.intensity.value += aberrationIncrease;
             }
             else
                 state.color = Color.yellow;
