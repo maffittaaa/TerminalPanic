@@ -366,10 +366,12 @@ MonoBehaviour:
   headDetor: 0.1
   walkSpeed: 10
   runSpeed: 14
+  crouchSpeed: 0
   speed: 0
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
   newPosition: 0
+  time: 0
 --- !u!114 &1256509201228644111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,10 +480,12 @@ MonoBehaviour:
   headDetor: 0.1
   walkSpeed: 10
   runSpeed: 14
+  crouchSpeed: 0
   speed: 0
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
   newPosition: 0
+  time: 0
 --- !u!1 &6559058334191983957
 GameObject:
   m_ObjectHideFlags: 0
