@@ -22,27 +22,27 @@ public class HeadBob : MonoBehaviour
 
     private void Update()
     {
-        if (playerMovementScript.CurrentType() != BehaviorType.Idleing && playerMovementScript.CurrentType() != BehaviorType.Jumping)
+        if(playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
         {
-            if (playerMovementScript.CurrentType() == BehaviorType.Walking)
+            if (playerMovementScript.CurrentType() == BehaviorType.Crouching)
             {
-                speed = walkSpeed;
+                speed = crouchSpeed;
             }
             else if (playerMovementScript.CurrentType() == BehaviorType.Runing)
             {
                 speed = runSpeed;
             }
-            else if (playerMovementScript.CurrentType() == BehaviorType.Crouching)
+            else if (playerMovementScript.CurrentType() == BehaviorType.Walking)
             {
-                speed = crouchSpeed;
+                speed = walkSpeed;
             }
             DetorEffect();
         }
-        else if (playerMovementScript.CurrentType() != BehaviorType.Jumping)
+        else if (playerMovementScript.CurrentType() == BehaviorType.Idleing)
         {
             time = 0f;
 
-            newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y, Time.deltaTime * 2f);
+            newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y, Time.deltaTime * speed);
             transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
         }
     }
@@ -50,7 +50,8 @@ public class HeadBob : MonoBehaviour
     private void DetorEffect()
     {
         time += Time.deltaTime;
-        newPosition = viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed);
+        newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed), Time.deltaTime * speed);
+        //newPosition = viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed);
         transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
     }
 }

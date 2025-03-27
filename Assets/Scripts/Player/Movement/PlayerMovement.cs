@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,9 +13,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sprintMultiplier;
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private float crouchView;
-    private bool crouched;
     [SerializeField] private float jumpForce;
     private float initialSpeed;
+
+    private bool crouched;
 
     [SerializeField] private float horizontalAxis;
     [SerializeField] private float verticalAxis;
@@ -33,9 +35,28 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Movement();
-        Sprint();
-        Jump();
         Crouch();
+        if (Jump())
+        {
+            behaviorType = BehaviorType.Jumping;
+        }
+        else if (crouched)
+        {
+            behaviorType = BehaviorType.Crouching;
+        }
+        else if (Sprint()) 
+        {
+            behaviorType = BehaviorType.Runing;
+        }
+        else if (horizontalAxis != 0 || verticalAxis != 0)
+        {
+            behaviorType = BehaviorType.Walking;
+        }
+
+        if (horizontalAxis == 0 && verticalAxis == 0)
+        {
+            behaviorType = BehaviorType.Idleing;
+        }
     }
 
     private void Movement()
@@ -51,9 +72,9 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = moveDirection;
     }    
     
-    private void Sprint()
+    private bool Sprint()
     {
-        if (horizontalAxis != 0 || verticalAxis != 0 && !crouched)
+        if (horizontalAxis != 0 || verticalAxis != 0)
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
@@ -61,28 +82,17 @@ public class PlayerMovement : MonoBehaviour
                 {
                     speed *= sprintMultiplier;
                 }
-
-                if (jumpCount == 0)
-                {
-                    behaviorType = BehaviorType.Runing;
-                }
+                return true;
             }
             else
             {
-                if (jumpCount == 0)
-                {
-                    behaviorType = BehaviorType.Walking;
-                }
                 speed = initialSpeed;
             }
         }
-        else if (jumpCount == 0)
-        {
-            behaviorType = BehaviorType.Idleing;
-        }
+        return false;
     }
 
-    private void Jump()
+    private bool Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)
         {
@@ -92,22 +102,24 @@ public class PlayerMovement : MonoBehaviour
 
         if(jumpCount > 0)
         {
-            behaviorType = BehaviorType.Jumping;
+            return true;
         }
+
+        return false;
     }
 
     private void Crouch()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            speed = initialSpeed * crouchMultiplier;
             crouched = true;
+            speed = initialSpeed * crouchMultiplier;
             viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, viewPoint.transform.position.y - crouchView, viewPoint.transform.position.z);
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            speed = initialSpeed;
             crouched = false;
+            speed = initialSpeed;
             viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, viewPoint.transform.position.y + crouchView, viewPoint.transform.position.z);
         }
     }

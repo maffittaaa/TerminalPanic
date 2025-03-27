@@ -542,7 +542,7 @@ MonoBehaviour:
   headDetor: 0.1
   walkSpeed: 10
   runSpeed: 14
-  crouchSpeed: 0
+  crouchSpeed: 6
   speed: 0
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
