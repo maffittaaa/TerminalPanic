@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -20,7 +21,8 @@ public class AnxietyBar : MonoBehaviour
     public float normalizedHealth = 0.0f;
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
-    [SerializeField] private Camera focusCamera;
+    [SerializeField] private PostProcessLayer focusCamera;
+    private float depthOfField;
     [SerializeField] private float distanceDecrease;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
@@ -29,7 +31,8 @@ public class AnxietyBar : MonoBehaviour
         normalizedHealth = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
         IncreaseAnxiety();
-        focusCamera.focusDistance = 3.3f;
+        depthOfField = focusCamera.GetSettings<DepthOfField>().focusDistance.value;
+        Debug.Log("wtf: " + depthOfField);
     }
     
     private void ModifyAnxiety(float modifier)
@@ -44,16 +47,6 @@ public class AnxietyBar : MonoBehaviour
         normalizedHealth = currentAnxiety / maxAnxiety;
         
         OnPlayerHealthChangedEvent.Invoke(normalizedHealth);
-    }
-    
-    private void ModifyFocusDistance(float modifier)
-    {
-        //focusCamera.focusDistance = Mathf.Clamp(focusCamera.focusDistance - modifier, 3.3f, 0f);
-    }
-
-    private void VisionEffectsFromAnxiety(float distanceAmount)
-    {
-        //ModifyFocusDistance(distanceAmount);
     }
     
     private IEnumerator AnxietyLevelsUp()
@@ -74,7 +67,9 @@ public class AnxietyBar : MonoBehaviour
             if (currentAnxiety > maxAnxiety * 0.75f)
             {
                 state.color = Color.red;
-                //VisionEffectsFromAnxiety(distanceDecrease);
+                yield return new WaitForSeconds(timeSeconds);
+                depthOfField -= distanceDecrease;
+                Debug.Log("???" + depthOfField);
             }
             else
                 state.color = Color.yellow;
