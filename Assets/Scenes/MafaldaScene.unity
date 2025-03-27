@@ -393,6 +393,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1363311211}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: aberrationIncrease
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: anxietyTimeSeconds
       value: 0.1
       objectReference: {fileID: 0}
