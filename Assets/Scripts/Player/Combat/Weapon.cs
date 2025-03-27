@@ -12,11 +12,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private GameObject shootingLight;
     [SerializeField] private float lightLifeSec;
 
-    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private ParticleSystem particleSystems;
 
     [SerializeField] private int maxBullets;
     [SerializeField] private int currentBullets;
-    [SerializeField] private int currentMagBullets;
+    [SerializeField] private int bulletsShoot;
     [SerializeField] private float shootingDelay;
     private float currentShootingDelay = 0f;
 
@@ -29,7 +29,13 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            currentMagBullets = 0;
+            bulletsShoot = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Debug.Log("Bullets in mag: " + CurrentBulletsInMag());
+            Debug.Log("Total bullets stored: " + TotalStoredBullets());
         }
     }
 
@@ -40,7 +46,7 @@ public class Weapon : MonoBehaviour
 
     private bool CanShoot()
     {
-        if(currentBullets <= 0 || currentShootingDelay < shootingDelay || currentMagBullets >= maxBullets)
+        if(currentBullets <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBullets)
         {
             return false;
         }
@@ -53,8 +59,8 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         StartCoroutine(ShootingLight());
-        currentMagBullets++;
-        particleSystem.Play();
+        bulletsShoot++;
+        particleSystems.Play();
         GameObject newBullet = Instantiate(bulletPrefab, shootingSpawn.transform.position, Quaternion.identity);
         newBullet.transform.parent = bulletsHolder.transform;
         newBullet.GetComponent<Bullet>().shootingPoint = shootingPoint.transform.position;
@@ -72,5 +78,15 @@ public class Weapon : MonoBehaviour
     public void AddBullets(int amount)
     {
         currentBullets += amount;
+    }
+
+    public int CurrentBulletsInMag()
+    {
+        return maxBullets - bulletsShoot;
+    }
+
+    public int TotalStoredBullets()
+    {
+        return currentBullets - CurrentBulletsInMag();
     }
 }

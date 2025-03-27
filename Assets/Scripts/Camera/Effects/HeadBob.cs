@@ -51,7 +51,6 @@ public class HeadBob : MonoBehaviour
     {
         time += Time.deltaTime;
         newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed), Time.deltaTime * speed);
-        //newPosition = viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed);
         transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
     }
 }
