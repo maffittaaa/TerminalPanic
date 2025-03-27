@@ -532,29 +532,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5418714333405369534, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a226694859b0da740936ba25c3a34577, type: 2}
-    - target: {fileID: 5902093139069486945, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+    - target: {fileID: 4846529544870446486, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6229897700841401242, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 1579824750}
-    - target: {fileID: 7101909800826102464, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 6.5
+    - target: {fileID: 7447682808814941043, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7101909800826102464, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
-      propertyPath: m_LocalScale.z
-      value: -24
+    - target: {fileID: 7447682808814941043, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.73467785
       objectReference: {fileID: 0}
-    - target: {fileID: 7231374519798466790, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
-      propertyPath: m_Name
-      value: WeaponsRoom
+    - target: {fileID: 7447682808814941043, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447682808814941043, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -94.56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1017,6 +1017,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 173751533993368139, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4846529544870446486, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}

@@ -56,7 +56,6 @@ public class AnxietyBar : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(interacted);
             if (interacted == false)
             {
                 yield return new WaitForSeconds(timeSeconds);
