@@ -23,6 +23,7 @@ public class PlayerWorldInteractions : MonoBehaviour
     private void Start()
     {
         layerMask = LayerMask.GetMask("Default");
+            
     }
 
     void Update()
@@ -33,47 +34,47 @@ public class PlayerWorldInteractions : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
-            outline = hit.collider.gameObject.GetComponent<Outline>();
+            //outline = hit.collider.gameObject.GetComponent<Outline>();
 
-            if (outline != null && hit.distance < distanceToInteract)
-            {
-                itemType = outline.GetItemType();
+            //if (outline != null && hit.distance < distanceToInteract)
+            //{
+            //    itemType = outline.GetItemType();
 
-                if (highLightObject != hit.collider.gameObject)
-                {
-                    if (highLightObject == null)
-                    {
-                        highLightObject = hit.collider.gameObject;
-                        highLightObject.GetComponent<Outline>().enabled = true;
-                    }
-                    else if (highLightObject != null)
-                    {
-                        highLightObject.GetComponent<Outline>().enabled = false;
-                        highLightObject = hit.collider.gameObject;
-                        highLightObject.GetComponent<Outline>().enabled = true;
-                    }
-                }
-            }
-            else
-            {
-                itemType = ItemType.None;
+            //    if (highLightObject != hit.collider.gameObject)
+            //    {
+            //        if (highLightObject == null)
+            //        {
+            //            highLightObject = hit.collider.gameObject;
+            //            highLightObject.GetComponent<Outline>().enabled = true;
+            //        }
+            //        else if (highLightObject != null)
+            //        {
+            //            highLightObject.GetComponent<Outline>().enabled = false;
+            //            highLightObject = hit.collider.gameObject;
+            //            highLightObject.GetComponent<Outline>().enabled = true;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    itemType = ItemType.None;
 
-                if (highLightObject != null)
-                {
-                    highLightObject.GetComponent<Outline>().enabled = false;
-                }
-                highLightObject = null;
-            }
+            //    if (highLightObject != null)
+            //    {
+            //        highLightObject.GetComponent<Outline>().enabled = false;
+            //    }
+            //    highLightObject = null;
+            //}
         }
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            hit.point = transform.TransformDirection(Vector3.forward) * 1000;
+            //hit.point = transform.TransformDirection(Vector3.forward) * 1000;
         }
 
-        shootingPoint.transform.position = hit.point;
+        //shootingPoint.transform.position = hit.point;
 
-        Interact();
+        //Interact();
     }
 
     private void Interact()
