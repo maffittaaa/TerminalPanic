@@ -304,6 +304,7 @@ GameObject:
   - component: {fileID: 1053728048027124444}
   - component: {fileID: 4977599081670525957}
   - component: {fileID: 8927570696330065085}
+  - component: {fileID: 7381413330606067355}
   - component: {fileID: 8910239255728772586}
   - component: {fileID: 1256509201228644111}
   m_Layer: 0
@@ -407,6 +408,18 @@ MonoBehaviour:
   shootingPoint: {fileID: 5739983096105328553}
   player: {fileID: 0}
   sensivity: 10
+--- !u!114 &7381413330606067355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760631584822870011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172a068adfddf814ab9ff77dc67a3c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   distanceToInteract: 5
   weapon: {fileID: 0}
   body: {fileID: 0}

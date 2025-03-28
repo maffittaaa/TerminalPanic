@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeyCard
       objectReference: {fileID: 0}
+    - target: {fileID: 2767564895522173391, guid: 8a22ae9950b4e314b8c2b4bc7662014f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767564895522173391, guid: 8a22ae9950b4e314b8c2b4bc7662014f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.003
+      objectReference: {fileID: 0}
     - target: {fileID: 4648838020382522260, guid: 8a22ae9950b4e314b8c2b4bc7662014f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.658
@@ -635,6 +643,16 @@ Transform:
   - {fileID: 1981032510}
   m_Father: {fileID: 632773805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1038768609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2732794376696537611, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 2875122812098800739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1128185751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3305785852537821137, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 2875122812098800739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1374950632
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +685,11 @@ Transform:
   - {fileID: 715858423}
   m_Father: {fileID: 632773805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1419304946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4549382358596299043, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 2875122812098800739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1635253046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -824,17 +847,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2091566897 stripped
+--- !u!114 &2072983094 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5893051772723632471, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
   m_PrefabInstance: {fileID: 2875122812098800739}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffe538da7fcc374f8f0dc446d9e6232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2091566897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 2875122812098800739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419304946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fb0fcb7286b6504da0d52194efe2316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2143423957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5231876786214375388, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 2875122812098800739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2482786362482491757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1471,6 +1510,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 2143423957}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1419304946}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 2072983094}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: testDoor
+      value: 
+      objectReference: {fileID: 1767122101}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 2091566897}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: shootingPoint
+      value: 
+      objectReference: {fileID: 1038768609}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: cameraViewPoint
+      value: 
+      objectReference: {fileID: 1128185751}
+    - target: {fileID: 879431626674664249, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: distanceToInteract
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: state
       value: 
