@@ -5,42 +5,45 @@ using UnityEngine;
 using UnityEngine.UI;
 public enum ItemType { None, Mirror, Weapon, Bullets, KeyCardMachine, KeyCard, Ticket }
 
-public class CameraMovement : MonoBehaviour
+public class WorldInteractions : MonoBehaviour
 {
-    [SerializeField] private GameObject cameraViewPoint;
-    [SerializeField] private GameObject player;
-    [SerializeField] private float sensivity = 15f;
-    float rotationX = 0;
-    float rotationY = 0;
-
-    [SerializeField] private GameObject shootingPoint;
-    [SerializeField] private float distanceToInteract = 5f;
-
+    [Header("Interaction Items")]
     [SerializeField] private Weapon weapon;
     [SerializeField] private GameObject body;
+    [SerializeField] private GameObject flashLight;
     [SerializeField] private GameObject testDoor;
     [SerializeField] private ItemType itemType;
     [SerializeField] private AnxietyBar anxietyBar;
     private bool gotKeyCard = false;
+
+    [Header("Interaction Settings")]
+    [SerializeField] private float distanceToInteract = 5f;
     private GameObject highLightObject;
     private Outline outline;
     private LayerMask layerMask;
 
+    [Header("FlashLight")]
+    [SerializeField] private GameObject shootingPoint;
+    [SerializeField] private float flashLightTimeDelay = 0.1f;
+    [SerializeField] private float FLmMaxFlickerTimeDist = 10f;
+    [SerializeField] private float FLmMinFlickerTimeDist = 20f;
+
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         layerMask = LayerMask.GetMask("Default");
     }
 
     void Update()
     {
-        Cursor.visible = false;
-        MoveAroundWithMouse();
+        RayCast();
+    }
 
+    private void RayCast()
+    {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, layerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
@@ -117,6 +120,85 @@ public class CameraMovement : MonoBehaviour
                     break;
             }
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(FlashLight());
+        }
+    }
+
+    private IEnumerator FlashLight()
+    {
+        if (flashLight.gameObject.activeSelf == true)
+        {
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            
+            StopAllCoroutines();
+        }
+        else
+        {
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay * 2);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay * 3);
+
+            float maxIntensity = flashLight.gameObject.GetComponent<Light>().intensity;
+
+            flashLight.gameObject.GetComponent<Light>().intensity = 0;
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            while (flashLight.gameObject.GetComponent<Light>().intensity < maxIntensity)
+            {
+                yield return new WaitForSeconds(0.01f);
+                flashLight.gameObject.GetComponent<Light>().intensity += 0.3f;
+            }
+            
+            flashLight.gameObject.GetComponent<Light>().intensity = maxIntensity;
+
+            StartCoroutine(FlickerFlashLight());
+        }
+    }
+
+    private IEnumerator FlickerFlashLight()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(FLmMinFlickerTimeDist, FLmMaxFlickerTimeDist));
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay * 2);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+
+            yield return new WaitForSeconds(flashLightTimeDelay * 2);
+
+            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+        }
     }
 
     private IEnumerator OpenDoor()
@@ -126,14 +208,5 @@ public class CameraMovement : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         testDoor.transform.localEulerAngles = new Vector3(0, 0, 0);
-    }
-
-    private void MoveAroundWithMouse()
-    {
-        rotationY += Input.GetAxis("Mouse X") * sensivity;
-        rotationX += Input.GetAxis("Mouse Y") * -1 * sensivity;
-        rotationX = Mathf.Clamp(rotationX, -90, 60);
-        transform.localEulerAngles = new Vector3(rotationX, 0, 0);
-        player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, rotationY, player.transform.localEulerAngles.z);
     }
 }
