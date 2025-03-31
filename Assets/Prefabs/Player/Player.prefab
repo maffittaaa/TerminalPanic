@@ -488,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512742513511494270, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3091362518976983259, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_Layer
@@ -789,6 +789,26 @@ PrefabInstance:
     - target: {fileID: 7349311899899086695, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7381413330606067355, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 5231876786214375388}
+    - target: {fileID: 7381413330606067355, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 5893051772723632471}
+    - target: {fileID: 7381413330606067355, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 1028580006078134479}
+    - target: {fileID: 7381413330606067355, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: shootingPoint
+      value: 
+      objectReference: {fileID: 2732794376696537611}
+    - target: {fileID: 7381413330606067355, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: distanceToInteract
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7418171060907995620, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: viewPoint
