@@ -9,9 +9,9 @@ public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class AnxietyBar : MonoBehaviour
 {
     [Header("Anxiety")]
-    public float maxAnxiety;
+    public float maxAnxiety = 200f;
     public float currentAnxiety = 0.0f;
-    [SerializeField] private float anxietyIncrease = 2.0f;
+    [SerializeField] private float anxietyIncrease = 0.5f;
     
     [Header("Increasing Over Time")]
     [SerializeField] private float timeSeconds;
@@ -24,8 +24,8 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField] private PostProcessVolume focusCamera;
     public DepthOfField dOF;
     public ChromaticAberration cA;
-    [SerializeField] private float distanceDecrease;
-    [SerializeField] private float aberrationIncrease;
+    [SerializeField] private float distanceDecrease = 0.03f;
+    [SerializeField] private float aberrationIncrease = 0.03f;
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
     private void Start()
