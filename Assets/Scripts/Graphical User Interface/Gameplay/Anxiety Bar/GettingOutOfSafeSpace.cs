@@ -8,8 +8,12 @@ public class GettingOutOfSafeSpace : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            anxietyBar.interacted = false;
-            anxietyBar.IncreaseAnxiety();
+            if (anxietyBar.coroutineRunning == false)
+            {
+                anxietyBar.interacted = false;
+                anxietyBar.coroutineRunning = true;
+                anxietyBar.IncreaseAnxiety();
+            }
         }
     } 
 }
