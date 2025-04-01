@@ -12,13 +12,14 @@ public class AnxietyBar : MonoBehaviour
     public float maxAnxiety = 200f;
     public float currentAnxiety = 0.0f;
     [SerializeField] private float anxietyIncrease = 0.5f;
+    public float normalizedAnxiety = 0.0f;
     
     [Header("Increasing Over Time")]
     [SerializeField] private float timeSeconds;
 
     public bool interacted;
-    
-    public float normalizedAnxiety = 0.0f;
+    public bool coroutineRunning;
+
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     [SerializeField] private PostProcessVolume focusCamera;
@@ -35,6 +36,8 @@ public class AnxietyBar : MonoBehaviour
         
         normalizedAnxiety = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
+        
+        coroutineRunning = false;
         IncreaseAnxiety();
     }
     
@@ -65,6 +68,8 @@ public class AnxietyBar : MonoBehaviour
             {
                 yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(-anxietyIncrease);
+                if (currentAnxiety == 0f)
+                    coroutineRunning = false;
             }
 
             if (currentAnxiety > maxAnxiety * 0.75f)
@@ -81,11 +86,13 @@ public class AnxietyBar : MonoBehaviour
 
     public void IncreaseAnxiety()
     {
+        coroutineRunning = true;
         StartCoroutine(AnxietyLevelsUp());
     }
     
     public void ResetAnxiety()
     {
+        coroutineRunning = false;
         StopAllCoroutines();
     }
 }
