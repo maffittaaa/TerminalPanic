@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 public enum ItemType { None, Mirror, Weapon, Bullets, KeyCardMachine, KeyCard, Ticket }
@@ -22,6 +23,17 @@ public class WorldInteractions : MonoBehaviour
     private Outline outline;
     private LayerMask layerMask;
 
+    [Header("Door")]
+    [SerializeField] private float doorAngleOpen;
+    [SerializeField] private float doorAngleClose;
+    [SerializeField] private float doorOpenTime;
+    [SerializeField] private float doorOpenAddAngle;
+    [SerializeField] private float doorOpenSpeed;
+    [SerializeField] private float doorCloseSpeed;
+    [SerializeField] private float doorCloseAddAngle;
+    [SerializeField] private float time = 0f;
+
+
     [Header("FlashLight")]
     [SerializeField] private GameObject shootingPoint;
     [SerializeField] private float flashLightTimeDelay = 0.1f;
@@ -37,6 +49,11 @@ public class WorldInteractions : MonoBehaviour
     void Update()
     {
         RayCast();
+    }
+
+    private void FixedUpdate()
+    {
+        time += Time.fixedDeltaTime;
     }
 
     private void RayCast()
@@ -203,10 +220,22 @@ public class WorldInteractions : MonoBehaviour
 
     private IEnumerator OpenDoor()
     {
-        testDoor.transform.localEulerAngles = new Vector3(0, 60, 0);
+        time = 0;
+        while(testDoor.transform.localEulerAngles.y < doorAngleOpen)
+        {
+            testDoor.transform.localEulerAngles = new Vector3(0, testDoor.transform.localEulerAngles.y + doorAngleOpen * Mathf.Cos( (90 - time * doorOpenAddAngle) * Mathf.Deg2Rad ) , 0);
+            yield return new WaitForSeconds(doorOpenSpeed);
+        }
+        testDoor.transform.localEulerAngles = new Vector3(0, doorAngleOpen, 0);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(doorOpenTime);
 
-        testDoor.transform.localEulerAngles = new Vector3(0, 0, 0);
+        time = 0;
+        while (testDoor.transform.localEulerAngles.y > doorAngleClose && testDoor.transform.localEulerAngles.y <= doorAngleOpen)
+        {
+            testDoor.transform.localEulerAngles = new Vector3(0, testDoor.transform.localEulerAngles.y - doorAngleOpen * Mathf.Sin(Mathf.Deg2Rad * (time * doorCloseAddAngle)), 0);
+            yield return new WaitForSeconds(doorCloseSpeed);
+        }
+        testDoor.transform.localEulerAngles = new Vector3(0, doorAngleClose, 0);
     }
 }
