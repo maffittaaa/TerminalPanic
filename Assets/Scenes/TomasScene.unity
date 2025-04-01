@@ -1487,16 +1487,20 @@ PrefabInstance:
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: doorOpenTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: doorCloseSpeed
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: doorOpenAddAngle
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: doorCloseAddAngle
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1289108468170500168, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_Enabled
