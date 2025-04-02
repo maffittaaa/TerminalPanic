@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LightManager : MonoBehaviour
+{
+
+    private bool lightCheat = false;
+    [SerializeField] private Flickering[] lights;
+
+    void Start()
+    {
+        lights = FindObjectsByType<Flickering>(FindObjectsSortMode.None);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TurnOnAndOff();
+        }
+    }
+
+    public void TurnOnAndOff()
+    {
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].TurnOnAndOff();
+        }
+    }
+}

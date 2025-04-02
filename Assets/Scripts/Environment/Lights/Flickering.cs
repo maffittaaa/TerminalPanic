@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FlickerMode { On, Off}
+
 public class Flickering : MonoBehaviour
 {
     [SerializeField] private int minFlickers = 1;
@@ -17,6 +19,8 @@ public class Flickering : MonoBehaviour
 
     [SerializeField] private GameObject lightMaterial;
 
+    [SerializeField] private FlickerMode mode;
+
     [field: SerializeField] public Color mainColor { get; set; }
     [field: SerializeField] public Color currentColor { get; set; }
 
@@ -26,7 +30,11 @@ public class Flickering : MonoBehaviour
     {
         mainColor = light1.color;
         currentColor = mainColor;
-        StartCoroutine(FlickerEffect());
+     
+        if(mode == FlickerMode.On)
+        {
+            StartCoroutine(FlickerEffect());
+        }
     }
 
     private IEnumerator FlickerEffect()
@@ -74,14 +82,6 @@ public class Flickering : MonoBehaviour
         lightMaterial.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            TurnOnAndOff();
-        }
-    }
-
     public void TurnOnAndOff()
     {
         if (!lightCheat)
@@ -94,5 +94,9 @@ public class Flickering : MonoBehaviour
             currentColor = mainColor;
             lightCheat = false;
         }
+
+        light1.color = currentColor;
+        light2.color = currentColor;
+        light3.color = currentColor;
     }
 }

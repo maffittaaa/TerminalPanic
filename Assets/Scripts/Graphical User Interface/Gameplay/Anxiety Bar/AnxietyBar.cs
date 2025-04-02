@@ -23,7 +23,7 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField]private float timeOnReality;
 
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private Flickering flickeringLights;
+    [SerializeField] private LightManager flickeringLights;
     
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;

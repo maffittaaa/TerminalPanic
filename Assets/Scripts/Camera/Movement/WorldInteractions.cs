@@ -49,6 +49,11 @@ public class WorldInteractions : MonoBehaviour
         layerMask = LayerMask.GetMask("Default");
     }
 
+    private void Update()
+    {
+        Interact();
+    }    
+    
     private void FixedUpdate()
     {
         time += Time.fixedDeltaTime;
@@ -105,8 +110,6 @@ public class WorldInteractions : MonoBehaviour
             potencialEnemy = hit.collider.gameObject;
 
         shootingPoint.transform.position = hit.point;
-
-        Interact();
     }
 
     private void Interact()
