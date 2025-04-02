@@ -278,7 +278,7 @@ Light:
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -498,15 +498,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b02797ac4712749beb22785d7ebe33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPoint: {fileID: 5739983096105328553}
-  flashLightTimeDelay: 0.05
-  distanceToInteract: 5
   weapon: {fileID: 0}
   body: {fileID: 0}
   flashLight: {fileID: 0}
+  flashLightPhysic: {fileID: 0}
   testDoor: {fileID: 0}
   itemType: 0
   anxietyBar: {fileID: 0}
+  <potencialEnemy>k__BackingField: {fileID: 0}
+  distanceToInteract: 5
+  doorAngleOpen: 0
+  doorAngleClose: 0
+  doorOpenTime: 0
+  doorOpenAddAngle: 0
+  doorOpenSpeed: 0
+  doorCloseSpeed: 0
+  doorCloseAddAngle: 0
+  time: 0
+  flashLightOnOff: 0
+  shootingPoint: {fileID: 5739983096105328553}
+  flashLightTimeDelay: 0.05
+  FLmMaxFlickerTimeDist: 10
+  FLmMinFlickerTimeDist: 20
 --- !u!114 &8910239255728772586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
+    - target: {fileID: 5062182441150928911, guid: c751974a5f9e42445b1bbcd6cea7655e, type: 3}
+      propertyPath: worldInteractions
+      value: 
+      objectReference: {fileID: 8927570696330065085}
     m_RemovedComponents:
     - {fileID: 4855463492176891132, guid: c751974a5f9e42445b1bbcd6cea7655e, type: 3}
     - {fileID: 6067578991874034008, guid: c751974a5f9e42445b1bbcd6cea7655e, type: 3}

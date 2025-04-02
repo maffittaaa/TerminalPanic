@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private GameObject bulletsHolder;
-    [SerializeField] private GameObject shootingSpawn;
+    [SerializeField] private WorldInteractions worldInteractions;
     [SerializeField] private GameObject shootingPoint;
-
     [SerializeField] private GameObject shootingLight;
     [SerializeField] private float lightLifeSec;
-
     [SerializeField] private ParticleSystem particleSystems;
-
     [SerializeField] private int maxBullets;
     [SerializeField] private int currentBullets;
     [SerializeField] private int bulletsShoot;
@@ -61,11 +56,13 @@ public class Weapon : MonoBehaviour
         StartCoroutine(ShootingLight());
         bulletsShoot++;
         particleSystems.Play();
-        GameObject newBullet = Instantiate(bulletPrefab, shootingSpawn.transform.position, Quaternion.identity);
-        newBullet.transform.parent = bulletsHolder.transform;
-        newBullet.GetComponent<Bullet>().shootingPoint = shootingPoint.transform.position;
         currentShootingDelay = 0;
         currentBullets--;
+
+        if (worldInteractions.potencialEnemy.CompareTag("Enemy"))
+        {
+            Destroy(worldInteractions.potencialEnemy);
+        }
     }
 
     private IEnumerator ShootingLight()

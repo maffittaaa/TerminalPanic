@@ -10,7 +10,7 @@ public class RespawnAfterFaint : MonoBehaviour
     
     private void Update()
     {
-        Debug.Log(anxietyBar.coroutineRunning);
+        //Debug.Log(anxietyBar.coroutineRunning);
         if (anxietyBar.currentAnxiety == anxietyBar.maxAnxiety && playerFainting.FadeEnded() == false && fadeStarted == false)
         {
             fadeStarted = true;

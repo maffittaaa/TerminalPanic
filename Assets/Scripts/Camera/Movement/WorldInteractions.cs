@@ -12,10 +12,12 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private Weapon weapon;
     [SerializeField] private GameObject body;
     [SerializeField] private GameObject flashLight;
+    [SerializeField] private GameObject flashLightPhysic;
     [SerializeField] private GameObject testDoor;
     [SerializeField] private ItemType itemType;
     [SerializeField] private AnxietyBar anxietyBar;
     private bool gotKeyCard = false;
+    [field: SerializeField] public GameObject potencialEnemy { get; private set; }
 
     [Header("Interaction Settings")]
     [SerializeField] private float distanceToInteract = 5f;
@@ -32,6 +34,8 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float doorCloseSpeed;
     [SerializeField] private float doorCloseAddAngle;
     [SerializeField] private float time = 0f;
+    private bool doorOpeningClosing = false;
+    [SerializeField] private bool flashLightOnOff = false;
 
 
     [Header("FlashLight")]
@@ -56,7 +60,7 @@ public class WorldInteractions : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 100, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
@@ -98,6 +102,9 @@ public class WorldInteractions : MonoBehaviour
             hit.point = transform.TransformDirection(Vector3.forward) * 1000;
         }
 
+        if(hit.collider.gameObject != null)
+            potencialEnemy = hit.collider.gameObject;
+
         shootingPoint.transform.position = hit.point;
 
         Interact();
@@ -122,8 +129,9 @@ public class WorldInteractions : MonoBehaviour
                     anxietyBar.interacted = true;
                     break;
                 case ItemType.KeyCardMachine:
-                    if (gotKeyCard)
+                    if (gotKeyCard && !doorOpeningClosing)
                     {
+                        doorOpeningClosing = true;
                         StartCoroutine(OpenDoor());
                     }
                     break;
@@ -134,8 +142,9 @@ public class WorldInteractions : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !flashLightOnOff)
         {
+            flashLightOnOff = true;
             StartCoroutine(FlashLight());
         }
     }
@@ -159,39 +168,47 @@ public class WorldInteractions : MonoBehaviour
             yield return new WaitForSeconds(doorCloseSpeed);
         }
         testDoor.transform.localEulerAngles = new Vector3(0, doorAngleClose, 0);
+        doorOpeningClosing = false;
     }
 
     private IEnumerator FlashLight()
     {
         if (flashLight.gameObject.activeSelf == true)
         {
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(false);
+            flashLightPhysic.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(flashLightTimeDelay);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(true);
+            flashLightPhysic.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(flashLightTimeDelay);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
-            
+            flashLight.gameObject.SetActive(false);
+            flashLightPhysic.gameObject.SetActive(false);
+
             StopAllCoroutines();
         }
         else
         {
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(true);
+            flashLightPhysic.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(flashLightTimeDelay * 2);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(false);
+            flashLightPhysic.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(flashLightTimeDelay);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(true);
+            flashLightPhysic.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(flashLightTimeDelay);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(false);
+            flashLightPhysic.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(flashLightTimeDelay * 3);
 
@@ -199,7 +216,8 @@ public class WorldInteractions : MonoBehaviour
 
             flashLight.gameObject.GetComponent<Light>().intensity = 0;
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(true);
+            flashLightPhysic.gameObject.SetActive(true);
 
             while (flashLight.gameObject.GetComponent<Light>().intensity < maxIntensity)
             {
@@ -211,6 +229,7 @@ public class WorldInteractions : MonoBehaviour
 
             StartCoroutine(FlickerFlashLight());
         }
+        flashLightOnOff = false;
     }
 
     private IEnumerator FlickerFlashLight()
@@ -219,19 +238,23 @@ public class WorldInteractions : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(FLmMinFlickerTimeDist, FLmMaxFlickerTimeDist));
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(false);
+            flashLightPhysic.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(flashLightTimeDelay * 2);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(true);
+            flashLightPhysic.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(flashLightTimeDelay);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(false);
+            flashLightPhysic.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(flashLightTimeDelay * 2);
 
-            flashLight.gameObject.SetActive(!flashLight.gameObject.activeSelf);
+            flashLight.gameObject.SetActive(true);
+            flashLightPhysic.gameObject.SetActive(true);
         }
     }
 }
