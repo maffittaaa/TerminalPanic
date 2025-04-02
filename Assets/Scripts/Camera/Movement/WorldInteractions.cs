@@ -128,6 +128,7 @@ public class WorldInteractions : MonoBehaviour
                     if (anxietyBar.interacted == false)
                     {
                         anxietyBar.interacted = true;
+                        anxietyBar.realityMode = true;
                         anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());
                     }
                     break;

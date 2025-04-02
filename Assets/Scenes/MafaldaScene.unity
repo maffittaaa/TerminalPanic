@@ -212,6 +212,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1015166954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8776418240384990296, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+  m_PrefabInstance: {fileID: 1364368076}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec8a1206ae61fd459797fdb82330302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1072941869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,13 +244,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1363311211}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 1754948056}
-    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: aberrationIncrease
-      value: 0.04
+      propertyPath: timeOfReality
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: flickeringLights
+      value: 
+      objectReference: {fileID: 1015166954}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: anxietyTimeSeconds
       value: 0.1
@@ -335,10 +346,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4657544322304970105, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
 --- !u!114 &1363311211 stripped
 MonoBehaviour:
@@ -1000,17 +1008,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1754948056 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2760616104000520053, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-  m_PrefabInstance: {fileID: 1072941869}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89fea591af87f7f46a210ed5288fd98a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1804956318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6753166170413551382, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}

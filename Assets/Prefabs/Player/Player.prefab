@@ -138,14 +138,17 @@ MonoBehaviour:
   timeSeconds: 0.2
   interacted: 0
   coroutineRunning: 0
+  realityMode: 0
+  timeOnReality: 4
   playerMovement: {fileID: 2760616104000520053}
+  flickeringLights: {fileID: 0}
   state: {fileID: 0}
   trigger: {fileID: 0}
   focusCamera: {fileID: 6214514152561195501}
   dOF: {fileID: 0}
   cA: {fileID: 0}
   distanceDecrease: 0.03
-  aberrationIncrease: 0.03
+  aberrationIncrease: 0.04
   OnPlayerHealthChangedEvent:
     m_PersistentCalls:
       m_Calls:

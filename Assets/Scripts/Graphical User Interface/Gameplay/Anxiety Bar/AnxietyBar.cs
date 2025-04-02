@@ -19,8 +19,11 @@ public class AnxietyBar : MonoBehaviour
 
     public bool interacted;
     public bool coroutineRunning;
+    public bool realityMode;
+    [SerializeField]private float timeOnReality;
 
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private Flickering flickeringLights;
     
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
@@ -61,7 +64,7 @@ public class AnxietyBar : MonoBehaviour
     {
         while (true)
         {
-            if (interacted == false)
+            if (interacted == false && realityMode == false)
             {
                 yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(anxietyIncrease);
@@ -71,7 +74,10 @@ public class AnxietyBar : MonoBehaviour
                 yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(-anxietyIncrease);
                 if (currentAnxiety == 0f)
+                {
+                    interacted = false;
                     coroutineRunning = false;
+                }
             }
 
             if (currentAnxiety > maxAnxiety * 0.75f)
@@ -90,7 +96,14 @@ public class AnxietyBar : MonoBehaviour
     {
         playerMovement.speed = 0f;
         yield return new WaitUntil(currentAnxietyIsZero);
-        playerMovement.speed = playerMovement.initialSpeed;
+        flickeringLights.TurnOnAndOff();
+    }
+
+    public IEnumerator RealityVsPanicMode()
+    {
+        yield return new WaitForSeconds(timeOnReality);
+        realityMode = false;
+        flickeringLights.TurnOnAndOff();
     }
 
     private bool currentAnxietyIsZero()

@@ -17,8 +17,8 @@ public class Flickering : MonoBehaviour
 
     [SerializeField] private GameObject lightMaterial;
 
-    private Color mainColor;
-    private Color currentColor;
+    [field: SerializeField] public Color mainColor { get; set; }
+    [field: SerializeField] public Color currentColor { get; set; }
 
     private bool lightCheat = false;
 
@@ -78,16 +78,21 @@ public class Flickering : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.L))
         {
-            if (!lightCheat)
-            {
-                currentColor = Color.white;
-                lightCheat = true;
-            }
-            else
-            {
-                currentColor = mainColor;
-                lightCheat = false;
-            }
+            TurnOnAndOff();
+        }
+    }
+
+    public void TurnOnAndOff()
+    {
+        if (!lightCheat)
+        {
+            currentColor = Color.white;
+            lightCheat = true;
+        }
+        else
+        {
+            currentColor = mainColor;
+            lightCheat = false;
         }
     }
 }
