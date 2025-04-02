@@ -567,6 +567,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3305785852537821137}
     - target: {fileID: 2245772966828216352, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 1028580006078134479}
+    - target: {fileID: 2245772966828216352, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: playerMovementScript
       value: 
       objectReference: {fileID: 2760616104000520053}

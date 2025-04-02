@@ -29,7 +29,7 @@ public class CameraMovement : MonoBehaviour
         else
         {
             transform.localEulerAngles = new Vector3(Mathf.Lerp(transform.localEulerAngles.x, 0, Time.deltaTime * speed), 0, 0);
-            player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, Mathf.Lerp(transform.localEulerAngles.x, 90, Time.deltaTime * speed), player.transform.localEulerAngles.z);
+            player.transform.localEulerAngles = new Vector3(player.transform.localEulerAngles.x, Mathf.Lerp(player.transform.localEulerAngles.y, 90, Time.deltaTime * speed), player.transform.localEulerAngles.z);
         }
     }
 
