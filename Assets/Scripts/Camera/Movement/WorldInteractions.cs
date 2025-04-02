@@ -35,7 +35,6 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float doorCloseAddAngle;
     [SerializeField] private float time = 0f;
     private bool doorOpeningClosing = false;
-    [SerializeField] private bool flashLightOnOff = false;
 
 
     [Header("FlashLight")]
@@ -146,9 +145,8 @@ public class WorldInteractions : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1) && !flashLightOnOff)
+        if (Input.GetMouseButtonDown(1))
         {
-            flashLightOnOff = true;
             StartCoroutine(FlashLight());
         }
     }
@@ -233,7 +231,6 @@ public class WorldInteractions : MonoBehaviour
 
             StartCoroutine(FlickerFlashLight());
         }
-        flashLightOnOff = false;
     }
 
     private IEnumerator FlickerFlashLight()
