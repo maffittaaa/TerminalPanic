@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private float crouchView;
     [SerializeField] private float jumpForce;
-    [field: SerializeField] public float initialSpeed { get; private set; }
+    public float initialSpeed { get; private set; }
 
     private bool crouched;
 

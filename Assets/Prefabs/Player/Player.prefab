@@ -109,13 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89fea591af87f7f46a210ed5288fd98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <speed>k__BackingField: 0
+  <speed>k__BackingField: 6
   crouchMultiplier: 0.5
   sprintMultiplier: 2
   viewPoint: {fileID: 3305785852537821137}
   crouchView: 3
   jumpForce: 6
-  <initialSpeed>k__BackingField: 0
   horizontalAxis: 0
   verticalAxis: 0
   behaviorType: 0
@@ -1072,6 +1071,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3305785852537821137}
     - target: {fileID: 8910239255728772586, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 1028580006078134479}
+    - target: {fileID: 8910239255728772586, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: crouchSpeed
       value: 6
       objectReference: {fileID: 0}
@@ -1201,6 +1204,8 @@ MonoBehaviour:
   cameraViewPoint: {fileID: 3305785852537821137}
   player: {fileID: 4549382358596299043}
   sensivity: 7
+  speed: 10
+  anxietyBar: {fileID: 1028580006078134479}
 --- !u!1 &2732794376696537611 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5739983096105328553, guid: 492f9e516791092438d86616e22c66b0, type: 3}

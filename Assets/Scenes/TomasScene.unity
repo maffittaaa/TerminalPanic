@@ -848,11 +848,6 @@ Transform:
   - {fileID: 715858423}
   m_Father: {fileID: 632773805}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1608741960 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6164246152193110523, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-  m_PrefabInstance: {fileID: 2875122812098800739}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1635253046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1606,61 +1601,9 @@ PrefabInstance:
       propertyPath: testDoor
       value: 
       objectReference: {fileID: 1767122101}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorOpenTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorAngleOpen
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorOpenSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorOpenTimer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorCloseSpeed
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorOpenAddAngle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: flashLightPhysic
-      value: 
-      objectReference: {fileID: 1608741960}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: doorCloseAddAngle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1289108468170500168, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2363634819207242462, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: sensivity
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4549382358596299043, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231876786214375388, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5893051772723632471, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: bulletsHolder
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1702,14 +1645,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6164246152193110523, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_Name
-      value: FlashLightModel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6164246152193110523, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: playerFainting
       value: 
@@ -1718,10 +1653,6 @@ PrefabInstance:
       propertyPath: gettingOutOfSafeSpace
       value: 
       objectReference: {fileID: 200863043}
-    - target: {fileID: 8519920699713624307, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

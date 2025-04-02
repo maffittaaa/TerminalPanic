@@ -11,6 +11,7 @@ public class HeadBob : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private PlayerMovement playerMovementScript;
+    [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private float newPosition;
     [SerializeField] private float time;
 
@@ -22,28 +23,31 @@ public class HeadBob : MonoBehaviour
 
     private void Update()
     {
-        if(playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
+        if (!anxietyBar.interacted)
         {
-            if (playerMovementScript.CurrentType() == BehaviorType.Crouching)
+            if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
             {
-                speed = crouchSpeed;
+                if (playerMovementScript.CurrentType() == BehaviorType.Crouching)
+                {
+                    speed = crouchSpeed;
+                }
+                else if (playerMovementScript.CurrentType() == BehaviorType.Runing)
+                {
+                    speed = runSpeed;
+                }
+                else if (playerMovementScript.CurrentType() == BehaviorType.Walking)
+                {
+                    speed = walkSpeed;
+                }
+                DetorEffect();
             }
-            else if (playerMovementScript.CurrentType() == BehaviorType.Runing)
+            else if (playerMovementScript.CurrentType() == BehaviorType.Idleing)
             {
-                speed = runSpeed;
-            }
-            else if (playerMovementScript.CurrentType() == BehaviorType.Walking)
-            {
-                speed = walkSpeed;
-            }
-            DetorEffect();
-        }
-        else if (playerMovementScript.CurrentType() == BehaviorType.Idleing)
-        {
-            time = 0f;
+                time = 0f;
 
-            newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y, Time.deltaTime * speed);
-            transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
+                newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y, Time.deltaTime * speed);
+                transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
+            }
         }
     }
 
