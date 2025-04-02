@@ -20,6 +20,8 @@ public class AnxietyBar : MonoBehaviour
     public bool interacted;
     public bool coroutineRunning;
 
+    [SerializeField] private PlayerMovement playerMovement;
+    
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     [SerializeField] private PostProcessVolume focusCamera;
@@ -82,6 +84,18 @@ public class AnxietyBar : MonoBehaviour
             else
                 state.color = Color.yellow;
         }
+    }
+
+    public IEnumerator FreezeMovementWhileCalming()
+    {
+        playerMovement.speed = 0f;
+        yield return new WaitUntil(currentAnxietyIsZero);
+        playerMovement.speed = playerMovement.initialSpeed;
+    }
+
+    private bool currentAnxietyIsZero()
+    {
+        return currentAnxiety <= 0;
     }
 
     public void IncreaseAnxiety()

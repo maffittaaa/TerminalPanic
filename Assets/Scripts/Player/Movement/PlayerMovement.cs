@@ -8,13 +8,13 @@ public enum BehaviorType { Idleing, Walking, Runing, Jumping, Crouching }
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
-    [SerializeField] private float speed;
+    [field: SerializeField] public float speed { get; set; }
     [SerializeField] private float crouchMultiplier;
     [SerializeField] private float sprintMultiplier;
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private float crouchView;
     [SerializeField] private float jumpForce;
-    private float initialSpeed;
+    [field: SerializeField] public float initialSpeed { get; private set; }
 
     private bool crouched;
 
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCount = 0;
 
     [SerializeField] private BehaviorType behaviorType;
+    [SerializeField] private AnxietyBar anxietyBar;
 
     private void Start()
     {
@@ -79,15 +80,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (initialSpeed * sprintMultiplier > speed)
-                {
                     speed *= sprintMultiplier;
-                }
                 return true;
             }
-            else
-            {
+            else if (!anxietyBar.interacted)
                 speed = initialSpeed;
-            }
         }
         return false;
     }
@@ -135,5 +132,10 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCount = 0;
         }
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 }

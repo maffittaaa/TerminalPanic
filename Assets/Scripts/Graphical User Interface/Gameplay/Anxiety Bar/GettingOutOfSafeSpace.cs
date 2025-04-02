@@ -6,14 +6,11 @@ public class GettingOutOfSafeSpace : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && anxietyBar.coroutineRunning == false)
         {
-            if (anxietyBar.coroutineRunning == false)
-            {
-                anxietyBar.interacted = false;
-                anxietyBar.coroutineRunning = true;
-                anxietyBar.IncreaseAnxiety();
-            }
+            anxietyBar.interacted = false;
+            anxietyBar.coroutineRunning = true;
+            anxietyBar.IncreaseAnxiety();
         }
     } 
 }

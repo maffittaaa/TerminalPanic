@@ -126,7 +126,11 @@ public class WorldInteractions : MonoBehaviour
                     weapon.AddBullets(5);
                     break;
                 case ItemType.Mirror:
-                    anxietyBar.interacted = true;
+                    if (anxietyBar.interacted == false)
+                    {
+                        anxietyBar.interacted = true;
+                        anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());
+                    }
                     break;
                 case ItemType.KeyCardMachine:
                     if (gotKeyCard && !doorOpeningClosing)
