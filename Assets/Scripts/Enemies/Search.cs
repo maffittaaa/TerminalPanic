@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Search : MonoBehaviour
 {
-    [SerializeField] private AITileMapGenerator generator;
+    [SerializeField] private float speed;
+    [SerializeField] private int currentTargetIndex;
+    [SerializeField] private float tileSize;
     [SerializeField] private TileMapTile player;
 
-    public GameObject start;
-    public GameObject finish;
+    public GameObject currentTile;
+    public GameObject playerTile;
 
     Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
 
@@ -36,19 +40,21 @@ public class Search : MonoBehaviour
             floorTiles[roundedPos] = floor;
         }
 
+        SetCurrentTile();
         player.tileChanged.AddListener(AStar);
     }
 
     private void AStar()
     {
         ClearPath();
-        finish = player.currentTile;
+        playerTile = player.currentTile;
+        SetCurrentTile();
         Dictionary<GameObject, GameObject> cameFrom = new Dictionary<GameObject, GameObject>();
         Dictionary<GameObject, float> costSoFar = new Dictionary<GameObject, float>();
         PriorityQueue<GameObject> priorityQueue = new PriorityQueue<GameObject>();
-        priorityQueue.Enqueue(start, 0);
-        cameFrom[start] = null;
-        costSoFar[start] = 0;
+        priorityQueue.Enqueue(currentTile, 0);
+        cameFrom[currentTile] = null;
+        costSoFar[currentTile] = 0;
 
         int i = 0;
 
@@ -56,12 +62,12 @@ public class Search : MonoBehaviour
         {
             GameObject current = priorityQueue.Dequeue();
 
-            Debug.Log("CURRENT = " + current.name);
+            //Debug.Log("CURRENT = " + current.name);
 
-            if (GameObject.ReferenceEquals(current, finish))
+            if (GameObject.ReferenceEquals(current, playerTile))
             {
-                Debug.Log("Path Found!");
-                ReconstructPath(cameFrom, finish);
+                //Debug.Log("Path Found!");
+                ReconstructPath(cameFrom, playerTile);
                 return;
             }
 
@@ -83,8 +89,18 @@ public class Search : MonoBehaviour
             }
         }
 
-        Debug.Log("No path found!");
+        //Debug.Log("No path found!");
     }
+
+    private void SetCurrentTile()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, transform.localScale.y, LayerMask.GetMask("AITilemap")))
+        {
+            currentTile = hit.collider.gameObject;
+        }
+    }
+
 
     private void ClearPath()
     {
@@ -92,6 +108,7 @@ public class Search : MonoBehaviour
         {
             tile.GetComponent<Renderer>().material.color = Color.white;
         }
+        currentTargetIndex = 1;
         path.Clear();
     }
 
@@ -114,7 +131,7 @@ public class Search : MonoBehaviour
 
         if (currentTile != null) 
         {
-            heuristics = new Vector2(finish.transform.position.x - currentTile.transform.position.x, finish.transform.position.z - currentTile.transform.position.z).magnitude;
+            heuristics = new Vector2(playerTile.transform.position.x - currentTile.transform.position.x, playerTile.transform.position.z - currentTile.transform.position.z).magnitude;
         }
 
         return heuristics;
@@ -128,10 +145,10 @@ public class Search : MonoBehaviour
         // Possible movement directions (now including up/down variations)
         Vector3[] directions = new Vector3[]
         {
-            new Vector3(0, 0, generator.size),  // Forward
-            new Vector3(0, 0, -generator.size), // Backward
-            new Vector3(generator.size, 0, 0),  // Right
-            new Vector3(-generator.size, 0, 0), // Left
+            new Vector3(0, 0, tileSize),  // Forward
+            new Vector3(0, 0, -tileSize), // Backward
+            new Vector3(tileSize, 0, 0),  // Right
+            new Vector3(-tileSize, 0, 0), // Left
         };
 
         float yTolerance = 2f; // Maximum allowed height difference
@@ -152,7 +169,7 @@ public class Search : MonoBehaviour
             else
             {
                 RaycastHit hit;
-                if (Physics.Raycast(pos, dir, out hit, generator.size, LayerMask.GetMask("AITilemap")))
+                if (Physics.Raycast(pos, dir, out hit, tileSize, LayerMask.GetMask("AITilemap")))
                 {
                     if (floorTiles.ContainsKey(RoundPosition(hit.collider.gameObject.transform.position, 1.0f)) && !neighbors.Contains(hit.collider.gameObject))
                     {
@@ -176,10 +193,39 @@ public class Search : MonoBehaviour
 
         path.Reverse(); // Reverse to get start -> goal order
         
-        Debug.Log("Path Length: " + path.Count);
+        //Debug.Log("Path Length: " + path.Count);
         foreach (GameObject tile in path)
         {
             tile.GetComponent<Renderer>().material.color = Color.red; 
+        }
+    }
+
+    private void MoveAlongPath()
+    {
+        if (currentTargetIndex >= path.Count) return;
+
+        // Get target tile position
+        Vector3 targetPos = path[currentTargetIndex].transform.position;
+        targetPos.y = transform.parent.position.y;
+
+        Vector3 direction = (player.transform.position - transform.parent.position).normalized;
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, targetRotation, 10 * Time.deltaTime);
+        transform.parent.position = Vector3.MoveTowards(transform.parent.position, targetPos, speed * Time.deltaTime);
+
+        if (Vector3.Distance(transform.position, targetPos) < tileSize)
+        {
+            currentTargetIndex++;
+        }
+        Debug.DrawRay(transform.position, targetPos, Color.magenta, tileSize / 2);
+    }
+
+    void FixedUpdate()
+    {
+        if (currentTile && playerTile)
+        {
+            MoveAlongPath();
         }
     }
 }

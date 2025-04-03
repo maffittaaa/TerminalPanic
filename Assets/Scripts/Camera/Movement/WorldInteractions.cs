@@ -16,7 +16,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private GameObject testDoor;
     [SerializeField] private ItemType itemType;
     [SerializeField] private AnxietyBar anxietyBar;
-    private bool gotKeyCard = false;
+    [SerializeField] private bool gotKeyCard = false;
     [field: SerializeField] public GameObject potencialEnemy { get; private set; }
 
     [Header("Interaction Settings")]

@@ -12,7 +12,7 @@ public class AITileMapGenerator : MonoBehaviour
     [SerializeField] private float tilesZ;
     [field: SerializeField] public List<GameObject> tiles { get; private set; }
 
-    void Start()
+    void Awake()
     {
         GenerateTileMap();
     }
