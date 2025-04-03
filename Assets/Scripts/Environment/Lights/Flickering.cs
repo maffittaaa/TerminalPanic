@@ -25,6 +25,7 @@ public class Flickering : MonoBehaviour
     [field: SerializeField] public Color currentColor { get; set; }
 
     private bool lightCheat = false;
+    private bool lightsWhite = false;
 
     void Start()
     {

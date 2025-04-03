@@ -66,7 +66,7 @@ public class AnxietyBar : MonoBehaviour
         while (true)
         {
             if (interacted == false && realityMode == false)
-            {
+            { 
                 yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(anxietyIncrease);
             }
@@ -74,7 +74,7 @@ public class AnxietyBar : MonoBehaviour
             {
                 yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(-anxietyIncrease);
-                if (currentAnxiety == 0f)
+                if (currentAnxiety <= 0f)
                 {
                     interacted = false;
                     coroutineRunning = false;

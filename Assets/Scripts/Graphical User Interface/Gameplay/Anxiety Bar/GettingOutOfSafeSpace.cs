@@ -4,14 +4,13 @@ public class GettingOutOfSafeSpace : MonoBehaviour
 {
     [SerializeField] private AnxietyBar anxietyBar;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && anxietyBar.coroutineRunning == false)
+        if (other.CompareTag("Player") && !anxietyBar.coroutineRunning)
         {
-            Debug.Log("Getting out of safe space");
             StartCoroutine(anxietyBar.RealityVsPanicMode());
             anxietyBar.coroutineRunning = true;
-            if (!anxietyBar.realityMode)
+            if (!anxietyBar.realityMode && !anxietyBar.coroutineRunning)
                 anxietyBar.IncreaseAnxiety();
         }
     } 
