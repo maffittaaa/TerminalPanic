@@ -18,7 +18,8 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField] private float timeSeconds;
 
     public bool interacted;
-    public bool coroutineRunning;
+    [field: SerializeField] public bool coroutineRunning { get; 
+        set; }
     public bool realityMode;
     [SerializeField]private float timeOnReality;
 
@@ -103,7 +104,9 @@ public class AnxietyBar : MonoBehaviour
     public IEnumerator RealityVsPanicMode()
     {
         yield return new WaitForSeconds(timeOnReality);
+        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         realityMode = false;
+        coroutineRunning = true;
         flickeringLights.TurnOnAndOff();
     }
 

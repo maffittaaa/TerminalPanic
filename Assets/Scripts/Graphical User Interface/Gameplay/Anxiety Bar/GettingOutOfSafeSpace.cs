@@ -8,6 +8,7 @@ public class GettingOutOfSafeSpace : MonoBehaviour
     {
         if (other.CompareTag("Player") && !anxietyBar.coroutineRunning)
         {
+            Debug.Log("GettingOutOfSafeSpace");
             StartCoroutine(anxietyBar.RealityVsPanicMode());
             anxietyBar.coroutineRunning = true;
             if (!anxietyBar.realityMode && !anxietyBar.coroutineRunning)
