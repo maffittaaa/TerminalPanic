@@ -17,11 +17,11 @@ public class LightManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            TurnOnAndOff();
+            TurnOnAndOffManager();
         }
     }
 
-    public void TurnOnAndOff()
+    public void TurnOnAndOffManager()
     {
         for (int i = 0; i < lights.Length; i++)
         {
