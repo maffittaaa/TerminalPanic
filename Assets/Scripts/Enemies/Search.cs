@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SearchType {BFS, DFS, UCS, AStar}
-
 public class Search : MonoBehaviour
 {
-    [SerializeField] private SearchType searchType;
     [SerializeField] private AITileMapGenerator generator;
+    [SerializeField] private TileMapTile player;
 
     public GameObject start;
     public GameObject finish;
 
     Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
 
-    Queue<GameObject> queue = new Queue<GameObject>();
     List<GameObject> path = new List<GameObject>();
-    private int currentTargetIndex = 0; 
-    private float moveSpeed = 2f; 
 
     Vector3 RoundPosition(Vector3 pos, float gridSize = 1.0f)
     {
@@ -29,10 +24,9 @@ public class Search : MonoBehaviour
     }
     
 
-    void OnEnable()
+    void Start()
     {
-        if (start == null || finish == null)
-            Debug.Log("Start and/or Finish are not defined!");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<TileMapTile>();
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
 
@@ -42,29 +36,13 @@ public class Search : MonoBehaviour
             floorTiles[roundedPos] = floor;
         }
 
-        switch(searchType)
-        {
-            case SearchType.BFS:
-                BFS();
-                break;
-            case SearchType.DFS:
-                DFS();
-                break;
-            case SearchType.UCS:
-                UCS();
-                break;
-            case SearchType.AStar:
-                AStar();
-                break;
-            default:
-                searchType = SearchType.AStar;
-                AStar();
-                break;
-        }
+        player.tileChanged.AddListener(AStar);
     }
 
     private void AStar()
     {
+        ClearPath();
+        finish = player.currentTile;
         Dictionary<GameObject, GameObject> cameFrom = new Dictionary<GameObject, GameObject>();
         Dictionary<GameObject, float> costSoFar = new Dictionary<GameObject, float>();
         PriorityQueue<GameObject> priorityQueue = new PriorityQueue<GameObject>();
@@ -108,49 +86,13 @@ public class Search : MonoBehaviour
         Debug.Log("No path found!");
     }
 
-    private void UCS()
+    private void ClearPath()
     {
-        Dictionary<GameObject, GameObject> cameFrom = new Dictionary<GameObject, GameObject>();
-        Dictionary<GameObject, float> costSoFar = new Dictionary<GameObject, float>();
-        PriorityQueue<GameObject> priorityQueue = new PriorityQueue<GameObject>();
-        priorityQueue.Enqueue(start, 0);
-        cameFrom[start] = null;
-        costSoFar[start] = 0;
-
-        int i = 0;
-
-        while (priorityQueue.Count > 0)
+        foreach (GameObject tile in path)
         {
-            GameObject current = priorityQueue.Dequeue();
-
-            Debug.Log("CURRENT = " + current.name);
-
-            if (GameObject.ReferenceEquals(current, finish))
-            {
-                Debug.Log("Path Found!");
-                ReconstructPath(cameFrom, finish);
-                return;
-            }
-
-            List<GameObject> neighbors = GetNeighbors(current);
-
-            foreach (GameObject neighbor in neighbors)
-            {
-                float newCost = costSoFar[current] + getCost(neighbor);
-
-                if (!costSoFar.ContainsKey(neighbor) || newCost < costSoFar[neighbor])
-                {
-                    costSoFar[neighbor] = newCost;
-                    cameFrom[neighbor] = current;
-
-                    priorityQueue.EnqueueOrUpdate(neighbor, newCost);
-
-                    i++; // Increment visit order counter
-                }
-            }
+            tile.GetComponent<Renderer>().material.color = Color.white;
         }
-
-        Debug.Log("No path found!");
+        path.Clear();
     }
 
     private int getCost(GameObject tile)
@@ -210,7 +152,7 @@ public class Search : MonoBehaviour
             else
             {
                 RaycastHit hit;
-                if (Physics.Raycast(pos, dir, out hit, generator.size))
+                if (Physics.Raycast(pos, dir, out hit, generator.size, LayerMask.GetMask("AITilemap")))
                 {
                     if (floorTiles.ContainsKey(RoundPosition(hit.collider.gameObject.transform.position, 1.0f)) && !neighbors.Contains(hit.collider.gameObject))
                     {
@@ -222,82 +164,6 @@ public class Search : MonoBehaviour
         }
 
         return neighbors;
-    }
-
-    private void BFS()
-    {
-        Dictionary<GameObject, GameObject> cameFrom = new Dictionary<GameObject, GameObject>();
-        Queue<GameObject> queue = new Queue<GameObject>();
-        queue.Enqueue(start);
-        cameFrom[start] = null;
-
-        int i = 0;
-
-        while (queue.Count > 0)
-        {
-            GameObject current = queue.Dequeue();
-
-            Debug.Log("CURRENT = " + current.name);
-
-            if (GameObject.ReferenceEquals(current, finish))
-            {
-                Debug.Log("Path Found!");
-                ReconstructPath(cameFrom, finish);
-                return;
-            }
-
-            List<GameObject> neighbors = GetNeighbors(current);
-
-            foreach (GameObject neighbor in neighbors)
-            {
-                if (!cameFrom.ContainsKey(neighbor))
-                {
-                    queue.Enqueue(neighbor);
-
-                    i++; // Increment visit order counter
-                }
-            }
-        }
-
-        Debug.Log("No path found!");
-    }
-
-    private void DFS()
-    {
-        Dictionary<GameObject, GameObject> cameFrom = new Dictionary<GameObject, GameObject>();
-        Stack<GameObject> stack = new Stack<GameObject>();
-        stack.Push(start);
-        cameFrom[start] = null;
-
-        int i = 0;
-
-        while (stack.Count > 0)
-        {
-            GameObject current = stack.Pop();
-            Debug.Log("CURRENT = " + current.name);
-
-            if (GameObject.ReferenceEquals(current, finish))
-            {
-                Debug.Log("Path Found!");
-                ReconstructPath(cameFrom, finish);
-                return;
-            }
-
-            List<GameObject> neighbors = GetNeighbors(current);
-
-            foreach (GameObject neighbor in neighbors)
-            {
-                if (!cameFrom.ContainsKey(neighbor))
-                {
-                    stack.Push(neighbor);
-                    cameFrom[neighbor] = current;
-
-                    i++; // Increment visit order counter
-                }
-            }
-        }
-
-        Debug.Log("No path found!");
     }
 
     void ReconstructPath(Dictionary<GameObject, GameObject> cameFrom, GameObject current)

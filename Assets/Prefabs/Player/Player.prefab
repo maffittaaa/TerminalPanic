@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8329125688882015320}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 4630396374431105097}
   - component: {fileID: 2612922926821111006}
   - component: {fileID: 1005237623880098037}
+  - component: {fileID: 4924786132364619258}
   m_Layer: 0
   m_Name: BodyCapsule
   m_TagString: Player
@@ -369,6 +370,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: -0.000011444092, y: 0, z: -3.410605e-13}
+--- !u!114 &4924786132364619258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214865468543346777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4d9c9e7bec0be40b3b5da026f5be29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
+  currentTile: {fileID: 0}
+  tileBefore: {fileID: 0}
+  tileChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &7657335664344858018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1207,7 +1228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2717233878312370777}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172a068adfddf814ab9ff77dc67a3c64, type: 3}
   m_Name: 

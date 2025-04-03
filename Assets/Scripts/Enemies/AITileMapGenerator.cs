@@ -24,7 +24,6 @@ public class AITileMapGenerator : MonoBehaviour
             tilesX = floor[i].transform.localScale.x / size;
             tilesZ = floor[i].transform.localScale.z / size;
             prefab.transform.localScale = new Vector3(size, 0.5f, size);
-            //Vector3 tilePosition = new Vector3((width/2 + tileWidth/2) - (i * tileWidth),-yPosistion, (height/2 + tileHeight/2) - (y * tileHeight));
             Vector3 startingPoint = new Vector3(floor[i].transform.position.x + (floor[i].transform.localScale.x/2 + size/2), 1, floor[i].transform.position.z + (floor[i].transform.localScale.z / 2 + size/2));
 
             for (int x = 1; x <= tilesX; x++)
