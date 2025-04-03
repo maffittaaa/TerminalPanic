@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Enemy
   - Floor
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - AITilemap
   - PostProcessing
   - Focused
-  - 
+  - Obstacles
   - 
   - 
   - 

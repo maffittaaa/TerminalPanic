@@ -173,6 +173,9 @@ MonoBehaviour:
   - {fileID: 715409493}
   - {fileID: 1057506025}
   tileParent: {fileID: 67713429}
+  obstaclesMask:
+    serializedVersion: 2
+    m_Bits: 1024
   prefab: {fileID: 835997037}
   <size>k__BackingField: 8
   tilesX: 0
@@ -538,7 +541,7 @@ Transform:
   m_GameObject: {fileID: 835997037}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.25, y: -0.13, z: -34.81}
+  m_LocalPosition: {x: 42.25, y: -0.13, z: 92.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1165,10 +1168,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5902093139069486945, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6229897700841401242, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
       propertyPath: anxietyBar
       value: 
@@ -1661,17 +1660,9 @@ PrefabInstance:
       propertyPath: testDoor
       value: 
       objectReference: {fileID: 1767122101}
-    - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: gotKeyCard
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4549382358596299043, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5231876786214375388, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x

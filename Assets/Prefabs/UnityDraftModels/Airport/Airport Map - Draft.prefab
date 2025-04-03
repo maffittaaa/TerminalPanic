@@ -5240,9 +5240,9 @@ GameObject:
   - component: {fileID: 7893538259268853901}
   - component: {fileID: 2099976104226234849}
   - component: {fileID: 3986319323055613602}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5256,8 +5256,8 @@ Transform:
   m_GameObject: {fileID: 4264326996400826437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.8, y: 20.5, z: -28.0376}
-  m_LocalScale: {x: 6.4359, y: 22.90484, z: 6.4359}
+  m_LocalPosition: {x: 87.8, y: 21.8242, z: -28.0376}
+  m_LocalScale: {x: 6.4359, y: 21.581116, z: 6.4359}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3357436619598580603}
@@ -7846,9 +7846,9 @@ GameObject:
   - component: {fileID: 37559188903775351}
   - component: {fileID: 1102860974351557054}
   - component: {fileID: 3426171382561247178}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7862,8 +7862,8 @@ Transform:
   m_GameObject: {fileID: 6049572165168492346}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.3, y: 20.5, z: -28.0376}
-  m_LocalScale: {x: 6.4359, y: 22.90484, z: 6.4359}
+  m_LocalPosition: {x: 13.3, y: 21.8242, z: -28.0376}
+  m_LocalScale: {x: 6.4359, y: 21.581116, z: 6.4359}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3357436619598580603}
@@ -10355,9 +10355,9 @@ GameObject:
   - component: {fileID: 9127657634023628848}
   - component: {fileID: 8129757732673685106}
   - component: {fileID: 515916211619187258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10371,8 +10371,8 @@ Transform:
   m_GameObject: {fileID: 8499717168663396685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.6, y: 20.5, z: -28.0376}
-  m_LocalScale: {x: 6.4359, y: 22.90484, z: 6.4359}
+  m_LocalPosition: {x: 49.6, y: 21.8242, z: -28.0376}
+  m_LocalScale: {x: 6.4359, y: 21.581116, z: 6.4359}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3357436619598580603}
@@ -10567,9 +10567,9 @@ GameObject:
   - component: {fileID: 2568435505310012516}
   - component: {fileID: 7462699883860447699}
   - component: {fileID: 6821299500274029124}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10583,8 +10583,8 @@ Transform:
   m_GameObject: {fileID: 8846772098104010469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 124.5, y: 20.5, z: -28.0376}
-  m_LocalScale: {x: 6.4359, y: 22.90484, z: 6.4359}
+  m_LocalPosition: {x: 124.5, y: 21.8242, z: -28.0376}
+  m_LocalScale: {x: 6.4359, y: 21.581116, z: 6.4359}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3357436619598580603}

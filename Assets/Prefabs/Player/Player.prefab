@@ -470,7 +470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1053728048027124444, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 55
+      value: 1079
       objectReference: {fileID: 0}
     - target: {fileID: 1074679258135159920, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_Layer
@@ -1136,6 +1136,10 @@ PrefabInstance:
       propertyPath: flashLight
       value: 
       objectReference: {fileID: 8519920699713624307}
+    - target: {fileID: 8927570696330065085, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: gotKeyCard
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8927570696330065085, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: doorOpenTime
       value: 2
