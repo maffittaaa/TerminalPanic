@@ -41,15 +41,10 @@ public class Search : MonoBehaviour
         }
 
         SetCurrentTile();
-        player.tileChanged.AddListener(StartSearch);
+        player.tileChanged.AddListener(AStarPathFinding);
     }
 
-    private void StartSearch()
-    {
-        StartCoroutine(AStarPathFinding());
-    }
-
-    private IEnumerator AStarPathFinding()
+    private void AStarPathFinding()
     {
         ClearPath();
         playerTile = player.currentTile;
@@ -71,7 +66,7 @@ public class Search : MonoBehaviour
             {
                 //Debug.Log("Path Found!");
                 ReconstructPath(cameFrom, playerTile);
-                yield return null;
+                return;
             }
 
             List<GameObject> neighbors = GetNeighbors(current);

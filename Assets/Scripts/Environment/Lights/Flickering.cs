@@ -95,8 +95,8 @@ public class Flickering : MonoBehaviour
             lightCheat = false;
         }
 
-        // light1.color = currentColor;
-        // light2.color = currentColor;
-        // light3.color = currentColor;
+        light1.color = currentColor;
+        light2.color = currentColor;
+        light3.color = currentColor;
     }
 }
