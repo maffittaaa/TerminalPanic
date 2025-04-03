@@ -41,10 +41,15 @@ public class Search : MonoBehaviour
         }
 
         SetCurrentTile();
-        player.tileChanged.AddListener(AStar);
+        player.tileChanged.AddListener(StartSearch);
     }
 
-    private void AStar()
+    private void StartSearch()
+    {
+        StartCoroutine(AStarPathFinding());
+    }
+
+    private IEnumerator AStarPathFinding()
     {
         ClearPath();
         playerTile = player.currentTile;
@@ -56,8 +61,6 @@ public class Search : MonoBehaviour
         cameFrom[currentTile] = null;
         costSoFar[currentTile] = 0;
 
-        int i = 0;
-
         while (priorityQueue.Count > 0)
         {
             GameObject current = priorityQueue.Dequeue();
@@ -68,7 +71,7 @@ public class Search : MonoBehaviour
             {
                 //Debug.Log("Path Found!");
                 ReconstructPath(cameFrom, playerTile);
-                return;
+                yield return null;
             }
 
             List<GameObject> neighbors = GetNeighbors(current);
@@ -83,8 +86,6 @@ public class Search : MonoBehaviour
                     cameFrom[neighbor] = current;
 
                     priorityQueue.EnqueueOrUpdate(neighbor, newCost);
-
-                    i++; // Increment visit order counter
                 }
             }
         }
@@ -106,7 +107,7 @@ public class Search : MonoBehaviour
     {
         foreach (GameObject tile in path)
         {
-            tile.GetComponent<Renderer>().material.color = Color.white;
+            //tile.GetComponent<Renderer>().material.color = Color.white;
         }
         currentTargetIndex = 1;
         path.Clear();
@@ -194,10 +195,10 @@ public class Search : MonoBehaviour
         path.Reverse(); // Reverse to get start -> goal order
         
         //Debug.Log("Path Length: " + path.Count);
-        foreach (GameObject tile in path)
+/*        foreach (GameObject tile in path)
         {
             tile.GetComponent<Renderer>().material.color = Color.red; 
-        }
+        }*/
     }
 
     private void MoveAlongPath()

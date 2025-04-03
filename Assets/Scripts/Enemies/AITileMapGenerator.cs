@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AITileMapGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject[] floor;
     [SerializeField] private GameObject tileParent;
+    [SerializeField] private LayerMask obstaclesMask;
     [SerializeField] private GameObject prefab;
     [field: SerializeField] public float size { get; private set; }
     [SerializeField] private float tilesX;
@@ -33,6 +35,12 @@ public class AITileMapGenerator : MonoBehaviour
                     Vector3 newPos = new Vector3(startingPoint.x - (x * size), startingPoint.y, startingPoint.z - (z * size));
                     GameObject newTile = Instantiate(prefab, newPos, transform.rotation, tileParent.transform);
                     tiles.Add(newTile);
+
+                    RaycastHit hit;
+                    if (Physics.Raycast(newTile.transform.position, new Vector3(0, 1, 0), out hit, 10, obstaclesMask))
+                    {
+                        newTile.tag = "Obstacle";
+                    }
                 }
             }
         }
