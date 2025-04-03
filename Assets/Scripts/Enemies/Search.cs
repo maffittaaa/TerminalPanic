@@ -7,15 +7,10 @@ public enum SearchType {BFS, DFS, UCS, AStar}
 public class Search : MonoBehaviour
 {
     [SerializeField] private SearchType searchType;
+    [SerializeField] private AITileMapGenerator generator;
 
     public GameObject start;
     public GameObject finish;
-    public Material start_material;
-    public Material finish_material;
-    public Material debug_material;
-    public Material path_material;
-    public GameObject label;
-    public GameObject player;
 
     Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
 
@@ -24,7 +19,6 @@ public class Search : MonoBehaviour
     private int currentTargetIndex = 0; 
     private float moveSpeed = 2f; 
 
-    
     Vector3 RoundPosition(Vector3 pos, float gridSize = 1.0f)
     {
         return new Vector3(
@@ -35,17 +29,10 @@ public class Search : MonoBehaviour
     }
     
 
-    void Start()
+    void OnEnable()
     {
-
         if (start == null || finish == null)
             Debug.Log("Start and/or Finish are not defined!");
-        else
-        {
-            // change color
-            start.GetComponent<Renderer>().material = new Material(start_material);
-            finish.GetComponent<Renderer>().material = new Material(finish_material);
-        }
 
         GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
 
@@ -54,16 +41,6 @@ public class Search : MonoBehaviour
             Vector3 roundedPos = RoundPosition(floor.transform.position, 1.0f);
             floorTiles[roundedPos] = floor;
         }
-
-        GameObject[] bridges = GameObject.FindGameObjectsWithTag("Bridge");
-
-        foreach (GameObject bridge in bridges)
-        {
-            Vector3 roundedPos = RoundPosition(bridge.transform.position, 1.0f);
-            floorTiles[roundedPos] = bridge;
-        }
-
-        DebugNeighbours();
 
         switch(searchType)
         {
@@ -100,7 +77,6 @@ public class Search : MonoBehaviour
         while (priorityQueue.Count > 0)
         {
             GameObject current = priorityQueue.Dequeue();
-            current.GetComponent<Renderer>().material = new Material(path_material);
 
             Debug.Log("CURRENT = " + current.name);
 
@@ -124,14 +100,6 @@ public class Search : MonoBehaviour
 
                     priorityQueue.EnqueueOrUpdate(neighbor, newCost);
 
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
-                    Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
-                    GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
-                    numLabel.GetComponent<TextMesh>().text = i.ToString();
-
-                    // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
-
                     i++; // Increment visit order counter
                 }
             }
@@ -139,7 +107,6 @@ public class Search : MonoBehaviour
 
         Debug.Log("No path found!");
     }
-        
 
     private void UCS()
     {
@@ -155,7 +122,6 @@ public class Search : MonoBehaviour
         while (priorityQueue.Count > 0)
         {
             GameObject current = priorityQueue.Dequeue();
-            current.GetComponent<Renderer>().material = new Material(path_material);
 
             Debug.Log("CURRENT = " + current.name);
 
@@ -179,14 +145,6 @@ public class Search : MonoBehaviour
 
                     priorityQueue.EnqueueOrUpdate(neighbor, newCost);
 
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
-                    Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
-                    GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
-                    numLabel.GetComponent<TextMesh>().text = i.ToString();
-
-                    // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
-
                     i++; // Increment visit order counter
                 }
             }
@@ -201,31 +159,8 @@ public class Search : MonoBehaviour
 
         if (tile != null) 
         {
-            if (tile.tag.Contains("TrapDoor"))
-            {
-                cost = 8;
-                tile.GetComponent<Renderer>().material.color = Color.red;
-            }
-            else if (tile.tag.Contains("SpikeTrap"))
-            {
-                cost = 6;
-                tile.GetComponent<Renderer>().material.color = new Color(1, 0.624f, 0);
-            }
-            else if (tile.tag.Contains("Grate"))
-            {
-                cost = 4;
-                tile.GetComponent<Renderer>().material.color = Color.yellow;
-            }
-            else if (tile.tag.Contains("Bridge"))
-            {
-                cost = 2;
-                tile.GetComponent<Renderer>().material.color = Color.green;
-            }
-            else if (tile.tag.Contains("Floor"))
-            {
-                cost = 1;
-                tile.GetComponent<Renderer>().material.color = Color.white;
-            }
+            cost = 1;
+//            tile.GetComponent<Renderer>().material.color = Color.white;
         }
 
         return cost;
@@ -243,32 +178,6 @@ public class Search : MonoBehaviour
         return heuristics;
     }
 
-    List<GameObject> GetNeighbors2(GameObject floorTile)
-    {
-        List<GameObject> neighbors = new List<GameObject>();
-        Vector3 pos = RoundPosition(floorTile.transform.position, 1.0f);
-
-        Vector3[] directions = new Vector3[]
-        {
-        new Vector3(2, 0, 0),
-        new Vector3(-2, 0, 0),
-        new Vector3(0, 0, 2),
-        new Vector3(0, 0, -2),
-        };
-
-        foreach (Vector3 dir in directions)
-        {
-            Vector3 neighborPos = RoundPosition(pos + dir, 1.0f);
-            if (floorTiles.ContainsKey(neighborPos))
-            {
-                neighbors.Add(floorTiles[neighborPos]);
-            }
-        }
-
-        Debug.Log(neighbors.Count);
-        return neighbors;
-    }
-
     List<GameObject> GetNeighbors(GameObject floorTile)
     {
         List<GameObject> neighbors = new List<GameObject>();
@@ -277,19 +186,10 @@ public class Search : MonoBehaviour
         // Possible movement directions (now including up/down variations)
         Vector3[] directions = new Vector3[]
         {
-        new Vector3(0, 0, 2),  // Forward
-        new Vector3(0, 0, -2), // Backward
-        new Vector3(2, 2, 0),  // Up slope right
-        new Vector3(-2, 2, 0), // Up slope left
-        new Vector3(0, 2, 2),  // Up slope forward
-        new Vector3(0, 2, -2), // Up slope backward
-        new Vector3(2, -2, 0),  // Down slope right
-        new Vector3(-2, -2, 0), // Down slope left
-        new Vector3(0, -2, 2),  // Down slope forward
-        new Vector3(0, -2, -2),  // Down slope backward
-        new Vector3(2, 0, 0),  // Right
-        new Vector3(-2, 0, 0), // Left
-
+            new Vector3(0, 0, generator.size),  // Forward
+            new Vector3(0, 0, -generator.size), // Backward
+            new Vector3(generator.size, 0, 0),  // Right
+            new Vector3(-generator.size, 0, 0), // Left
         };
 
         float yTolerance = 2f; // Maximum allowed height difference
@@ -307,19 +207,21 @@ public class Search : MonoBehaviour
                     neighbors.Add(neighbor);
                 }
             }
+            else
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(pos, dir, out hit, generator.size))
+                {
+                    if (floorTiles.ContainsKey(RoundPosition(hit.collider.gameObject.transform.position, 1.0f)) && !neighbors.Contains(hit.collider.gameObject))
+                    {
+                        GameObject neighbor = hit.collider.gameObject;
+                        neighbors.Add(neighbor);
+                    }
+                }
+            }
         }
 
         return neighbors;
-    }
-
-    private void DebugNeighbours()
-    {
-        List<GameObject> neighbours = GetNeighbors(start);
-        foreach(GameObject n in neighbours)
-        {
-            n.GetComponent<Renderer>().material = new Material(debug_material);
-        }
-
     }
 
     private void BFS()
@@ -334,7 +236,6 @@ public class Search : MonoBehaviour
         while (queue.Count > 0)
         {
             GameObject current = queue.Dequeue();
-            current.GetComponent<Renderer>().material = new Material(path_material);
 
             Debug.Log("CURRENT = " + current.name);
 
@@ -352,15 +253,6 @@ public class Search : MonoBehaviour
                 if (!cameFrom.ContainsKey(neighbor))
                 {
                     queue.Enqueue(neighbor);
-                    cameFrom[neighbor] = current;
-
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
-                    Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
-                    GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
-                    numLabel.GetComponent<TextMesh>().text = i.ToString();
-
-                    // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
 
                     i++; // Increment visit order counter
                 }
@@ -382,8 +274,6 @@ public class Search : MonoBehaviour
         while (stack.Count > 0)
         {
             GameObject current = stack.Pop();
-            current.GetComponent<Renderer>().material = new Material(path_material);
-
             Debug.Log("CURRENT = " + current.name);
 
             if (GameObject.ReferenceEquals(current, finish))
@@ -401,14 +291,6 @@ public class Search : MonoBehaviour
                 {
                     stack.Push(neighbor);
                     cameFrom[neighbor] = current;
-
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
-                    Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
-                    GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
-                    numLabel.GetComponent<TextMesh>().text = i.ToString();
-
-                    // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
 
                     i++; // Increment visit order counter
                 }
@@ -431,33 +313,7 @@ public class Search : MonoBehaviour
         Debug.Log("Path Length: " + path.Count);
         foreach (GameObject tile in path)
         {
-            tile.GetComponent<Renderer>().material.color = Color.green; 
-        }
-    }
-
-    void MoveAlongPath()
-    {
-        if (currentTargetIndex >= path.Count) return; 
-
-        // Get target tile position
-        Vector3 targetPos = path[currentTargetIndex].transform.position;
-
-        targetPos.y = targetPos.y + path[currentTargetIndex].transform.localScale.y + player.transform.localScale.y;
-
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
-        {
-            currentTargetIndex++; 
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space) && path.Count > 0)
-        {
-            MoveAlongPath();
+            tile.GetComponent<Renderer>().material.color = Color.red; 
         }
     }
 }
