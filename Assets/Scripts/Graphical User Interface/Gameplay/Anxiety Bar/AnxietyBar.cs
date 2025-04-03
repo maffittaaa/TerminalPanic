@@ -23,7 +23,7 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField]private float timeOnReality;
 
     [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private LightManager flickeringLights;
+    [SerializeField] private Flickering flickeringLights;
     
     public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
@@ -43,6 +43,7 @@ public class AnxietyBar : MonoBehaviour
         OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
         
         coroutineRunning = false;
+        realityMode = false;
         IncreaseAnxiety();
     }
     
@@ -95,7 +96,7 @@ public class AnxietyBar : MonoBehaviour
     public IEnumerator FreezeMovementWhileCalming()
     {
         playerMovement.speed = 0f;
-        yield return new WaitUntil(currentAnxietyIsZero);
+        yield return new WaitUntil(CurrentAnxietyIsZero);
         flickeringLights.TurnOnAndOff();
     }
 
@@ -106,7 +107,7 @@ public class AnxietyBar : MonoBehaviour
         flickeringLights.TurnOnAndOff();
     }
 
-    private bool currentAnxietyIsZero()
+    private bool CurrentAnxietyIsZero()
     {
         return currentAnxiety <= 0;
     }

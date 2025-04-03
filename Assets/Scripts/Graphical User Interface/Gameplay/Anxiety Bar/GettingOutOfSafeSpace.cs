@@ -8,9 +8,11 @@ public class GettingOutOfSafeSpace : MonoBehaviour
     {
         if (other.CompareTag("Player") && anxietyBar.coroutineRunning == false)
         {
+            Debug.Log("Getting out of safe space");
             StartCoroutine(anxietyBar.RealityVsPanicMode());
             anxietyBar.coroutineRunning = true;
-            anxietyBar.IncreaseAnxiety();
+            if (!anxietyBar.realityMode)
+                anxietyBar.IncreaseAnxiety();
         }
     } 
 }

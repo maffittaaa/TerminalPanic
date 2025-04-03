@@ -124,13 +124,13 @@ public class Search : MonoBehaviour
 
                     priorityQueue.EnqueueOrUpdate(neighbor, newCost);
 
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
+                    // Instantiate the label at the neighborï¿½s position with a slight Y offset
                     Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
                     GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
                     numLabel.GetComponent<TextMesh>().text = i.ToString();
 
                     // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
+                    // numLabel.AddComponent<Billboard>();
 
                     i++; // Increment visit order counter
                 }
@@ -179,13 +179,13 @@ public class Search : MonoBehaviour
 
                     priorityQueue.EnqueueOrUpdate(neighbor, newCost);
 
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
+                    // Instantiate the label at the neighborï¿½s position with a slight Y offset
                     Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
                     GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
                     numLabel.GetComponent<TextMesh>().text = i.ToString();
 
                     // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
+                    // numLabel.AddComponent<Billboard>();
 
                     i++; // Increment visit order counter
                 }
@@ -354,13 +354,13 @@ public class Search : MonoBehaviour
                     queue.Enqueue(neighbor);
                     cameFrom[neighbor] = current;
 
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
+                    // Instantiate the label at the neighborï¿½s position with a slight Y offset
                     Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
                     GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
                     numLabel.GetComponent<TextMesh>().text = i.ToString();
 
                     // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
+                    // numLabel.AddComponent<Billboard>();
 
                     i++; // Increment visit order counter
                 }
@@ -402,13 +402,13 @@ public class Search : MonoBehaviour
                     stack.Push(neighbor);
                     cameFrom[neighbor] = current;
 
-                    // Instantiate the label at the neighbor’s position with a slight Y offset
+                    // Instantiate the label at the neighborï¿½s position with a slight Y offset
                     Vector3 labelPosition = neighbor.transform.position + new Vector3(0, 0.5f, 0);
                     GameObject numLabel = Instantiate(label, labelPosition, Quaternion.identity);
                     numLabel.GetComponent<TextMesh>().text = i.ToString();
 
                     // Ensure the label always faces the camera
-                    numLabel.AddComponent<Billboard>();
+                    // numLabel.AddComponent<Billboard>();
 
                     i++; // Increment visit order counter
                 }
