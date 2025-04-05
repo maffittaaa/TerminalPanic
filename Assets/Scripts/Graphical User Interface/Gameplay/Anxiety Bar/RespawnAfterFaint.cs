@@ -20,6 +20,7 @@ public class RespawnAfterFaint : MonoBehaviour
         if (fadeEnded == false && playerFainting.FadeEnded() && fadeStarted)
         {
             fadeEnded = true;
+            anxietyBar.respawningAfterFaint = true;
             anxietyBar.ResetAnxiety();
             this.transform.position = new Vector3(27.53f,3.79f,-301.08f);
             anxietyBar.currentAnxiety = 0f;
