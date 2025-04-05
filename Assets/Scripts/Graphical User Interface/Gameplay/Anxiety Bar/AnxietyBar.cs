@@ -8,33 +8,39 @@ using UnityEngine.UI;
 public class OnPlayerHealthChanged : UnityEvent<float> { };
 public class AnxietyBar : MonoBehaviour
 {
-    [Header("Anxiety")]
+    [field: Header("Anxiety")] [field: SerializeField]
     public float maxAnxiety = 200f;
     public float currentAnxiety = 0.0f;
     [SerializeField] private float anxietyIncrease = 0.5f;
-    public float normalizedAnxiety = 0.0f;
+    [SerializeField] private float anxietyDecrease = 1.5f;
+    private float normalizedAnxiety = 0.0f;
     
-    [Header("Increasing Over Time")]
+    [field: Header("Time")]
     [SerializeField] private float timeSeconds;
-
-    public bool interacted;
+    [SerializeField] private float timeOnReality;
+    
+    [field: Header("Booleans")]
+    [field: SerializeField] public bool interacted  { get; set; }
     [field: SerializeField] public bool coroutineRunning { get; set; }
     [field: SerializeField] public bool realityMode { get; set; }
     [field: SerializeField] public bool respawningAfterFaint { get; set; }
-    [SerializeField] private float timeOnReality;
 
+    [field: Header("Scripts")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private LightManager flickeringLights;
-    
-    public Image state;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     [SerializeField] private PostProcessVolume focusCamera;
+    
+    [field: Header("Post-Processing Settings")]
     public DepthOfField dOF;
     public ChromaticAberration cA;
     [SerializeField] private float distanceDecrease = 0.03f;
     [SerializeField] private float aberrationIncrease = 0.03f;
     
+    [field: SerializeField] public Image state { get; set; }
+    
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
+    
     private void Start()
     {
         dOF = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
@@ -75,7 +81,7 @@ public class AnxietyBar : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(timeSeconds);
-                EffectsFromAnxiety(-anxietyIncrease);
+                EffectsFromAnxiety(-anxietyDecrease);
                 if (currentAnxiety <= 0f)
                 {
                     interacted = false;

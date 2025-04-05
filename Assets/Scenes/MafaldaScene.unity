@@ -212,15 +212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1015166954 stripped
+--- !u!114 &895060789 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8776418240384990296, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5690595960390736986, guid: 2a6d32939f2b65d47b5ae0f640959d20, type: 3}
   m_PrefabInstance: {fileID: 1364368076}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aec8a1206ae61fd459797fdb82330302, type: 3}
+  m_Script: {fileID: 11500000, guid: d8bbf2b415c27cf428597ae876a2c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1072941869
@@ -242,7 +242,11 @@ PrefabInstance:
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: flickeringLights
       value: 
-      objectReference: {fileID: 1015166954}
+      objectReference: {fileID: 895060789}
+    - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: <state>k__BackingField
+      value: 
+      objectReference: {fileID: 792721535}
     - target: {fileID: 1028580006078134479, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: OnPlayerHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
