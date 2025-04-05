@@ -37,6 +37,9 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField] private float distanceDecrease = 0.03f;
     [SerializeField] private float aberrationIncrease = 0.03f;
     
+    [Header("Audio")]
+    [SerializeField] private AudioManager audioManager;
+    
     [field: SerializeField] public Image state { get; set; }
     
     public OnPlayerHealthChanged OnPlayerHealthChangedEvent;
@@ -52,7 +55,14 @@ public class AnxietyBar : MonoBehaviour
         coroutineRunning = false;
         realityMode = false;
         respawningAfterFaint = false;
+        
         IncreaseAnxiety();
+    }
+    
+    private void FixedUpdate()
+    {
+        if (audioManager == null)
+            audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
     
     private void ModifyAnxiety(float modifier)
@@ -73,31 +83,43 @@ public class AnxietyBar : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(timeSeconds);
             if (interacted == false && realityMode == false)
             { 
-                yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(anxietyIncrease);
             }
-            else
+            else if (interacted)
             {
-                yield return new WaitForSeconds(timeSeconds);
                 EffectsFromAnxiety(-anxietyDecrease);
                 if (currentAnxiety <= 0f)
                 {
                     interacted = false;
                     coroutineRunning = false;
+                    if (audioManager.heartbeat.isPlaying)
+                        audioManager.heartbeat.Stop();
                 }
             }
 
             if (currentAnxiety > maxAnxiety * 0.75f)
             {
                 state.color = Color.red;
-                yield return new WaitForSeconds(timeSeconds);
                 dOF.focusDistance.value -= distanceDecrease;
                 cA.intensity.value += aberrationIncrease;
+                if (!audioManager.heartbeat2.isPlaying)
+                {
+                    audioManager.heartbeat.Stop();
+                    audioManager.heartbeat2.Play();
+                }
             }
-            else
+            else if (coroutineRunning)
+            {
                 state.color = Color.yellow;
+                if (!audioManager.heartbeat.isPlaying)
+                {
+                    audioManager.heartbeat2.Stop();
+                    audioManager.heartbeat.Play();
+                }
+            }
         }
     }
 
@@ -130,6 +152,8 @@ public class AnxietyBar : MonoBehaviour
     public void ResetAnxiety()
     {
         coroutineRunning = false;
+        audioManager.heartbeat.Stop();
+        audioManager.heartbeat2.Stop();
         StopAllCoroutines();
     }
 }

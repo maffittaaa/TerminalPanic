@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Floor
   - Obstacle
+  - AudioManager
   layers:
   - Default
   - TransparentFX
