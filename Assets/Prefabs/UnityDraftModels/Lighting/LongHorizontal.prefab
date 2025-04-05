@@ -747,7 +747,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.1, y: 16.18, z: -163.23}
-  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
+  m_LocalScale: {x: 0.58516496, y: 0.39011, z: 0.58516496}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4422452863545375572}
@@ -781,3 +781,6 @@ MonoBehaviour:
   light2: {fileID: 741670316661671233}
   light3: {fileID: 5765591683081063490}
   lightMaterial: {fileID: 2744471016637259827}
+  mode: 0
+  <mainColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <currentColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}

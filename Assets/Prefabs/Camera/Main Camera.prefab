@@ -505,6 +505,7 @@ MonoBehaviour:
   testDoor: {fileID: 0}
   itemType: 0
   anxietyBar: {fileID: 0}
+  gotKeyCard: 0
   <potencialEnemy>k__BackingField: {fileID: 0}
   distanceToInteract: 5
   doorAngleOpen: 0
@@ -515,7 +516,6 @@ MonoBehaviour:
   doorCloseSpeed: 0
   doorCloseAddAngle: 0
   time: 0
-  flashLightOnOff: 0
   shootingPoint: {fileID: 5739983096105328553}
   flashLightTimeDelay: 0.05
   FLmMaxFlickerTimeDist: 10
@@ -539,6 +539,7 @@ MonoBehaviour:
   speed: 0
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
+  anxietyBar: {fileID: 0}
   newPosition: 0
   time: 0
 --- !u!114 &1256509201228644111
@@ -653,6 +654,7 @@ MonoBehaviour:
   speed: 0
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
+  anxietyBar: {fileID: 0}
   newPosition: 0
   time: 0
 --- !u!1 &6559058334191983957
