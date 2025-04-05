@@ -34,8 +34,8 @@ public class AnxietyBar : MonoBehaviour
     [field: Header("Post-Processing Settings")]
     public DepthOfField dOF;
     public ChromaticAberration cA;
-    [SerializeField] private float distanceDecrease = 0.03f;
-    [SerializeField] private float aberrationIncrease = 0.03f;
+    [field: SerializeField] public float distanceDecrease { get; set; }
+    [field: SerializeField] public float aberrationIncrease { get; set; }
     
     [Header("Audio")]
     [SerializeField] private AudioManager audioManager;
@@ -91,6 +91,12 @@ public class AnxietyBar : MonoBehaviour
             else if (interacted)
             {
                 EffectsFromAnxiety(-anxietyDecrease);
+                if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f))
+                {
+                    dOF.focusDistance.value += distanceDecrease;
+                    cA.intensity.value -= aberrationIncrease;
+                }
+                
                 if (currentAnxiety <= 0f)
                 {
                     interacted = false;

@@ -130,6 +130,7 @@ public class WorldInteractions : MonoBehaviour
                 case ItemType.Mirror:
                     if (anxietyBar.interacted == false)
                     {
+                        Debug.Log("HELOOOOOOOO");
                         anxietyBar.interacted = true;
                         anxietyBar.realityMode = true;
                         anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());
