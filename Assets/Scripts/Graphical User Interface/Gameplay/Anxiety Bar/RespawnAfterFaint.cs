@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class RespawnAfterFaint : MonoBehaviour
 {
-    [SerializeField] private AnxietyBar anxietyBar;
-    [SerializeField] private GettingOutOfSafeSpace gettingOutOfSafeSpace;
-    [SerializeField] private PlayerFainting playerFainting;
-    [SerializeField] private PlayerMovement player;
     [SerializeField] private List<GameObject> safeSpaces = new List<GameObject>();
-    private Vector3 playerPosition;
+    [SerializeField] private PlayerFainting playerFainting;
+    [SerializeField] private AnxietyBar anxietyBar;
+    [SerializeField] private PlayerMovement player;
+    [SerializeField] private GameObject closestSafeSpace;
     private bool fadeEnded = true;
     private bool fadeStarted = false;
     
@@ -35,27 +34,27 @@ public class RespawnAfterFaint : MonoBehaviour
         }
     }
 
+    private float Magnitude(Vector3 vector)
+    {
+        return Mathf.Sqrt(Mathf.Pow(vector.x, 2) + Mathf.Pow(vector.y, 2) + Mathf.Pow(vector.z, 2));
+    }
+    
     private void RespawnInNearestSafeSpace()
     {
-        GameObject closestSafeSpace = new GameObject();
-        float minimumDistance = float.MaxValue;
-        playerPosition = player.transform.position;
+        float minimumDistance = 10000;
 
-        float currentDistance = float.MaxValue;
+        float currentDistance = 10000;
         foreach (GameObject safeSpace in safeSpaces)
         {
-            currentDistance = Magnitude(playerPosition - safeSpace.transform.position);
+            currentDistance = Magnitude(player.transform.position - safeSpace.transform.position);
             if (currentDistance < minimumDistance)
             {
                 minimumDistance = currentDistance;
                 closestSafeSpace = safeSpace;
             }
         }
-        playerPosition = closestSafeSpace.transform.position;
-    }
-
-    private float Magnitude(Vector3 vector)
-    {
-        return Mathf.Sqrt(Mathf.Pow(vector.x, 2) + Mathf.Pow(vector.y, 2) + Mathf.Pow(vector.z, 2));
+        player.transform.position = closestSafeSpace.transform.position;
+        Debug.Log("Player position" + player.transform.position);
+        Debug.Log("Closest safe space position" + closestSafeSpace.transform.position);
     }
 }
