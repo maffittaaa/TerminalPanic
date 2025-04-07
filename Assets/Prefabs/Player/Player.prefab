@@ -147,8 +147,8 @@ MonoBehaviour:
   focusCamera: {fileID: 6214514152561195501}
   dOF: {fileID: 0}
   cA: {fileID: 0}
-  distanceDecrease: 0.03
-  aberrationIncrease: 0.04
+  <distanceDecrease>k__BackingField: 0.03
+  <aberrationIncrease>k__BackingField: 0.03
   audioManager: {fileID: 0}
   <state>k__BackingField: {fileID: 0}
   OnPlayerHealthChangedEvent:
@@ -181,6 +181,11 @@ MonoBehaviour:
   anxietyBar: {fileID: 1028580006078134479}
   gettingOutOfSafeSpace: {fileID: 0}
   playerFainting: {fileID: 0}
+  player: {fileID: 2760616104000520053}
+  safeSpaces:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6164246152193110523
 GameObject:
   m_ObjectHideFlags: 0
