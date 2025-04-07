@@ -26,7 +26,7 @@ public class RespawnAfterFaint : MonoBehaviour
             fadeEnded = true;
             anxietyBar.respawningAfterFaint = true;
             anxietyBar.ResetAnxiety();
-            this.transform.position = new Vector3(27.53f,3.79f,-301.08f);
+            RespawnInNearestSafeSpace();
             anxietyBar.currentAnxiety = 0f;
             anxietyBar.state.fillAmount = 0f;
             anxietyBar.dOF.focusDistance.value = 3.8f;
@@ -37,6 +37,25 @@ public class RespawnAfterFaint : MonoBehaviour
 
     private void RespawnInNearestSafeSpace()
     {
+        GameObject closestSafeSpace = new GameObject();
+        float minimumDistance = float.MaxValue;
         playerPosition = player.transform.position;
+
+        float currentDistance = float.MaxValue;
+        foreach (GameObject safeSpace in safeSpaces)
+        {
+            currentDistance = Magnitude(playerPosition - safeSpace.transform.position);
+            if (currentDistance < minimumDistance)
+            {
+                minimumDistance = currentDistance;
+                closestSafeSpace = safeSpace;
+            }
+        }
+        playerPosition = closestSafeSpace.transform.position;
+    }
+
+    private float Magnitude(Vector3 vector)
+    {
+        return Mathf.Sqrt(Mathf.Pow(vector.x, 2) + Mathf.Pow(vector.y, 2) + Mathf.Pow(vector.z, 2));
     }
 }
