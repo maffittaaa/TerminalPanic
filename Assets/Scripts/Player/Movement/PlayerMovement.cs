@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rb;
     [field: SerializeField] public float speed { get; set; }
+
     [SerializeField] private float crouchMultiplier;
     [SerializeField] private float sprintMultiplier;
     [SerializeField] private GameObject viewPoint;
