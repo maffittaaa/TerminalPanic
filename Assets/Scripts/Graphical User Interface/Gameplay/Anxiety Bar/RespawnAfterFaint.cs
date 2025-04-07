@@ -54,7 +54,5 @@ public class RespawnAfterFaint : MonoBehaviour
             }
         }
         player.transform.position = closestSafeSpace.transform.position;
-        Debug.Log("Player position" + player.transform.position);
-        Debug.Log("Closest safe space position" + closestSafeSpace.transform.position);
     }
 }
