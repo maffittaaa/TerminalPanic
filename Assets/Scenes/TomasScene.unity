@@ -239,10 +239,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6485491732646334870, guid: 8a22ae9950b4e314b8c2b4bc7662014f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a22ae9950b4e314b8c2b4bc7662014f, type: 3}
 --- !u!114 &231029883 stripped
 MonoBehaviour:
@@ -1182,14 +1179,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1406560988686199089, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 2091566897}
     - target: {fileID: 1964422211811927045, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 2091566897}
-    - target: {fileID: 2600232185771558498, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: orthographic size
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 3141612778960723187, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1234,18 +1231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Airport - RealSize
       objectReference: {fileID: 0}
-    - target: {fileID: 7097914766424343684, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7097914766424343684, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7097914766424343684, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: anxietyBar
+      value: 
+      objectReference: {fileID: 2091566897}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1945,13 +1934,29 @@ PrefabInstance:
       propertyPath: testDoor
       value: 
       objectReference: {fileID: 1943138663}
+    - target: {fileID: 1289108468170500168, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: runSpeed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289108468170500168, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: headDetor
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1289108468170500168, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: walkSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2760616104000520053, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: crouchView
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4549382358596299043, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -81.916
+      value: -81
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1959,7 +1964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -145.22
+      value: -149.71
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2009,6 +2014,18 @@ PrefabInstance:
       propertyPath: safeSpaces.Array.data[2]
       value: 
       objectReference: {fileID: 1810671363}
+    - target: {fileID: 8461916985285733762, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: runSpeed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461916985285733762, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: headDetor
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8461916985285733762, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: walkSpeed
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2029,17 +2046,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Traveller
       objectReference: {fileID: 0}
+    - target: {fileID: 6305702035300675226, guid: 38a9aa42eb3720848b2867cde7b9684d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7809560318470768327, guid: 38a9aa42eb3720848b2867cde7b9684d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -19.2
       objectReference: {fileID: 0}
     - target: {fileID: 7809560318470768327, guid: 38a9aa42eb3720848b2867cde7b9684d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 23.4
       objectReference: {fileID: 0}
     - target: {fileID: 7809560318470768327, guid: 38a9aa42eb3720848b2867cde7b9684d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 307.9
       objectReference: {fileID: 0}
     - target: {fileID: 7809560318470768327, guid: 38a9aa42eb3720848b2867cde7b9684d, type: 3}
       propertyPath: m_LocalRotation.w
