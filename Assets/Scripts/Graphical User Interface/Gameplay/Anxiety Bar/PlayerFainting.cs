@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +44,7 @@ public class PlayerFainting : MonoBehaviour
             currentTimeSeconds += timeBetweenOpacityChanged;
         }
         currentTimeSeconds = 0;
+        fadeEnded = false;
     }
 
     public void ResetAndStartFade()

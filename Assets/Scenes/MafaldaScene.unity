@@ -254,6 +254,10 @@ PrefabInstance:
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 1719093918}
+    - target: {fileID: 2068555677691539685, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.52
+      objectReference: {fileID: 0}
     - target: {fileID: 3141612778960723187, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49.195526
@@ -298,10 +302,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Airport - RealSize
       objectReference: {fileID: 0}
+    - target: {fileID: 6597164439988889942, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.36
+      objectReference: {fileID: 0}
     - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 1719093918}
+    - target: {fileID: 8168648214443586188, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.94
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
