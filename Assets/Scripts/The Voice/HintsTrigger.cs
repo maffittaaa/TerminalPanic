@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HintsTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public EClothesAndAccessoriesTypes clothesAndAccessoriesTypeToFind
     {
-        
+        get; set;
     }
 
-    // Update is called once per frame
-    void Update()
+    public EColorTypes colorTypeToFind
     {
-        
+        get; set;
     }
+
+    private void IdentifyingTheCorrectClues()
+    {
+        HintFinder[] arrayOfAllClothes = FindObjectsOfType<HintFinder>();
+
+        for (int i = 0; i < arrayOfAllClothes.Length; ++i)
+        {
+            if (arrayOfAllClothes[i].clothesAndAccessoriesTypes != clothesAndAccessoriesTypeToFind)
+                continue;
+        }
+    }
+    
+    
+    
 }
