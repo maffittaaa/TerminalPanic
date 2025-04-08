@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LightManager : MonoBehaviour
 {
-
-    private bool lightCheat = false;
     [SerializeField] private Flickering[] lights;
 
     void Start()
