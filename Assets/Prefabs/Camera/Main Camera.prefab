@@ -508,7 +508,7 @@ MonoBehaviour:
   gotKeyCard: 0
   <potencialEnemy>k__BackingField: {fileID: 0}
   distanceToInteract: 5
-  doorAngleOpen: 0
+  doorAngleOpen: 350
   doorAngleClose: 0
   doorOpenTime: 0
   doorOpenAddAngle: 0
