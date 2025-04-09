@@ -16,13 +16,38 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private GameObject destination;
+ 
+    private Transform spawnPoint;
 
-    private Rigidbody rb;
-    private Vector3 moveDirection = Vector3.zero;
+
+    //public GameObject SightZone;
+    //public GameObject HearingZone;
+    public static PlayerMovement player;
+
+
+    public HearingControl hearingZone;
+    public SightControl sightZone;
+
+    public bool iHearPlayer;
+    public bool iSeePlayer;
+
+   
+
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        if(player == null)
+        {
+            player = GameObject.FindFirstObjectByType<PlayerMovement>();
+        }
+        else
+        {
+            Debug.Log("Player is in.");
+        }
+
+        spawnPoint = gameObject.transform;
+        //spawnPoint.position
+
         SetState(TravelerState.Waiting);
     }
 
@@ -36,7 +61,6 @@ public class TravelerAI : MonoBehaviour
         agent.SetDestination(destination.transform.position);
 
         HandleState();
-        MoveTraveler();
     }
 
     void HandleState()
@@ -44,28 +68,22 @@ public class TravelerAI : MonoBehaviour
         switch (currentState)
         {
             case TravelerState.Waiting:
-                SetMoveDirection(Vector3.zero);
+                agent.isStopped = true;
+
+                if (iSeePlayer) {
+                    //currentState = TravelerState.chasing;
+                }
+
+
+            
                 break;
 
+                //case chasing:
+                //destination = 
+                  //  break;
         }
     }
 
-    public void SetMoveDirection(Vector3 direction)
-    {
-        moveDirection = direction.normalized;
-    }
-
-    private void MoveTraveler()
-    {
-        Vector3 targetVelocity = moveDirection * moveSpeed;
-        rb.velocity = Vector3.Lerp(rb.velocity, targetVelocity, acceleration * Time.fixedDeltaTime);
-
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
-        }
-    }
 
     public void SetState(TravelerState newState)
     {

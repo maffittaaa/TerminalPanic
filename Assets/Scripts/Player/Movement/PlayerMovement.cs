@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private int jumpCount = 0;
 
-    [SerializeField] private BehaviorType behaviorType;
+    [field:SerializeField] public BehaviorType behaviorType { get; private set; }
     [SerializeField] private AnxietyBar anxietyBar;
 
     private void Start()
