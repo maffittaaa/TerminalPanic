@@ -1230,6 +1230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Traveler
       objectReference: {fileID: 0}
+    - target: {fileID: 7392656206164499452, guid: fd83029ceb231455ea99fb968046a575, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2617
+      objectReference: {fileID: 0}
     - target: {fileID: 7554116773039418701, guid: fd83029ceb231455ea99fb968046a575, type: 3}
       propertyPath: sightZone
       value: 

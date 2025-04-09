@@ -5,7 +5,8 @@ using UnityEngine.AI;
 
 public enum TravelerState
 {
-    Waiting
+    Waiting,
+    Chasing
 }
 
 public class TravelerAI : MonoBehaviour
@@ -31,7 +32,8 @@ public class TravelerAI : MonoBehaviour
     public bool iHearPlayer;
     public bool iSeePlayer;
 
-   
+
+
 
 
     void Start()
@@ -70,17 +72,33 @@ public class TravelerAI : MonoBehaviour
             case TravelerState.Waiting:
                 agent.isStopped = true;
 
-                if (iSeePlayer) {
-                    //currentState = TravelerState.chasing;
+                if (iSeePlayer || iHearPlayer)
+                {
+                    if (player != null && player.behaviorType != BehaviorType.Crouching) 
+                    {
+                        SetState(TravelerState.Chasing); 
+                    }
                 }
-
-
             
                 break;
 
-                //case chasing:
-                //destination = 
-                  //  break;
+            case TravelerState.Chasing:
+                agent.isStopped = false;
+
+                if (player != null)
+                {
+                    destination.transform.position = player.transform.position;
+                    agent.SetDestination(destination.transform.position);
+                }
+
+                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+                if (distanceToPlayer > 15f && !iSeePlayer && !iHearPlayer)
+                {
+                    SetState(TravelerState.Waiting);
+                }
+                break;
+
         }
     }
 
