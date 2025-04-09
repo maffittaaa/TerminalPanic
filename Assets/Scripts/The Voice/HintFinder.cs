@@ -2,6 +2,7 @@ using UnityEngine;
 
 public enum EClothesAndAccessoriesTypes
 {
+    INVALID = -1,
     Jeans,
     Blouse,
     Purse,
@@ -10,6 +11,7 @@ public enum EClothesAndAccessoriesTypes
 
 public enum EColorTypes
 {
+    INVALID = -1,
     Blue,
     Black,
     Green,
@@ -19,15 +21,15 @@ public enum EColorTypes
 
 public class HintFinder : MonoBehaviour
 {
-    [field: SerializeField] public EClothesAndAccessoriesTypes clothesAndAccessoriesTypes
+    [field: SerializeField] public EClothesAndAccessoriesTypes[] clothesAndAccessoriesTypes
     {
         get;
-        set;
+        private set;
     }
 
-    [field: SerializeField] public EColorTypes colorTypes
+    [field: SerializeField] public EColorTypes[] colorTypes
     {
         get;
-        set;
+        private set;
     }
 }

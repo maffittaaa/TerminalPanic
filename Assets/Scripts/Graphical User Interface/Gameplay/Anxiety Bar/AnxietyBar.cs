@@ -119,7 +119,7 @@ public class AnxietyBar : MonoBehaviour
             }
             else if (coroutineRunning)
             {
-                state.color = Color.yellow;
+                state.color = new Color(1, 1, 0, 0.8f);
                 if (!audioManager.heartbeat.isPlaying)
                 {
                     audioManager.heartbeat2.Stop();

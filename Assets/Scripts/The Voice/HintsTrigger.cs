@@ -1,28 +1,15 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HintsTrigger : MonoBehaviour
 {
-    public EClothesAndAccessoriesTypes clothesAndAccessoriesTypeToFind
-    {
-        get; set;
-    }
+    [SerializeField] private ClueText clueText;
 
-    public EColorTypes colorTypeToFind
+    private void OnTriggerExit(Collider other)
     {
-        get; set;
+        if (other.CompareTag("Player"))
+            clueText.TextForClue();
     }
-
-    private void IdentifyingTheCorrectClues()
-    {
-        HintFinder[] arrayOfAllClothes = FindObjectsOfType<HintFinder>();
-
-        for (int i = 0; i < arrayOfAllClothes.Length; ++i)
-        {
-            if (arrayOfAllClothes[i].clothesAndAccessoriesTypes != clothesAndAccessoriesTypeToFind)
-                continue;
-        }
-    }
-    
-    
-    
 }

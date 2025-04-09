@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 267354692}
   - component: {fileID: 267354691}
   - component: {fileID: 267354690}
+  - component: {fileID: 267354693}
   m_Layer: 0
   m_Name: Capsule6
   m_TagString: Untagged
@@ -271,6 +272,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267354688}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &267354693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267354688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 02000000
+  <colorTypes>k__BackingField: 00000000
 --- !u!1 &302374190
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +298,7 @@ GameObject:
   - component: {fileID: 302374194}
   - component: {fileID: 302374193}
   - component: {fileID: 302374192}
+  - component: {fileID: 302374195}
   m_Layer: 0
   m_Name: Capsule10
   m_TagString: Untagged
@@ -379,6 +395,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302374190}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &302374195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302374190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 02000000
+  <colorTypes>k__BackingField: 00000000
 --- !u!1 &335604014
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,111 +619,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348512423}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &393483976
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 393483977}
-  - component: {fileID: 393483980}
-  - component: {fileID: 393483979}
-  - component: {fileID: 393483978}
-  m_Layer: 0
-  m_Name: Purse
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &393483977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393483976}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0, z: -0.64}
-  m_LocalScale: {x: 0.43432, y: 0.43432, z: 0.43432}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1491333092}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &393483978
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393483976}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &393483979
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393483976}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 3ba2319eb141bdd46857ec7439402dcc, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &393483980
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393483976}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &407089602 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 443433906534943215, guid: c20ac5416622c3046815951012508b5d, type: 3}
@@ -779,6 +704,7 @@ GameObject:
   - component: {fileID: 537087529}
   - component: {fileID: 537087528}
   - component: {fileID: 537087527}
+  - component: {fileID: 537087530}
   m_Layer: 0
   m_Name: Capsule9
   m_TagString: Untagged
@@ -875,6 +801,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 537087525}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &537087530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537087525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 03000000
+  <colorTypes>k__BackingField: 01000000
 --- !u!1 &586965449
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +827,7 @@ GameObject:
   - component: {fileID: 586965453}
   - component: {fileID: 586965452}
   - component: {fileID: 586965451}
+  - component: {fileID: 586965454}
   m_Layer: 0
   m_Name: Capsule3
   m_TagString: Untagged
@@ -983,6 +924,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586965449}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &586965454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586965449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 02000000
+  <colorTypes>k__BackingField: 00000000
 --- !u!114 &701114335 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1219198911433518994, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
@@ -1337,6 +1292,7 @@ GameObject:
   - component: {fileID: 821904502}
   - component: {fileID: 821904501}
   - component: {fileID: 821904500}
+  - component: {fileID: 821904503}
   m_Layer: 0
   m_Name: Capsule8
   m_TagString: Untagged
@@ -1433,6 +1389,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821904498}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &821904503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821904498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 03000000
+  <colorTypes>k__BackingField: 01000000
 --- !u!114 &834038507 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5815328434368005490, guid: 19776085d6ce3f84ebfdd292b318851f, type: 3}
@@ -1456,6 +1426,7 @@ GameObject:
   - component: {fileID: 868206008}
   - component: {fileID: 868206007}
   - component: {fileID: 868206006}
+  - component: {fileID: 868206009}
   m_Layer: 0
   m_Name: Capsule7
   m_TagString: Untagged
@@ -1551,6 +1522,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 868206004}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &868206009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868206004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: ffffffff
+  <colorTypes>k__BackingField: ffffffff
 --- !u!1 &900171774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,6 +1548,7 @@ GameObject:
   - component: {fileID: 900171778}
   - component: {fileID: 900171777}
   - component: {fileID: 900171776}
+  - component: {fileID: 900171779}
   m_Layer: 0
   m_Name: Capsule5
   m_TagString: Untagged
@@ -1659,6 +1645,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900171774}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &900171779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900171774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 03000000
+  <colorTypes>k__BackingField: 01000000
 --- !u!1 &907781791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 201338076927993279, guid: c20ac5416622c3046815951012508b5d, type: 3}
@@ -1724,12 +1724,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Airport - RealSize
       objectReference: {fileID: 0}
+    - target: {fileID: 5866888269167332686, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Name
+      value: TriggerClue
+      objectReference: {fileID: 0}
     - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 1719093918}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5866888269167332686, guid: c20ac5416622c3046815951012508b5d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 928482759883689385, guid: c20ac5416622c3046815951012508b5d, type: 3}
@@ -2538,6 +2543,7 @@ GameObject:
   - component: {fileID: 1374816856}
   - component: {fileID: 1374816855}
   - component: {fileID: 1374816854}
+  - component: {fileID: 1374816857}
   m_Layer: 0
   m_Name: Capsule2
   m_TagString: Untagged
@@ -2635,6 +2641,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374816852}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1374816857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374816852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 0200000003000000
+  <colorTypes>k__BackingField: 0000000001000000
 --- !u!1 &1491333091
 GameObject:
   m_ObjectHideFlags: 0
@@ -2647,6 +2667,7 @@ GameObject:
   - component: {fileID: 1491333095}
   - component: {fileID: 1491333094}
   - component: {fileID: 1491333093}
+  - component: {fileID: 1491333096}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -2666,8 +2687,7 @@ Transform:
   m_LocalPosition: {x: -0.46, y: -134.7, z: -25.62935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 393483977}
+  m_Children: []
   m_Father: {fileID: 179387936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1491333093
@@ -2743,6 +2763,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491333091}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1491333096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491333091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: ffffffff
+  <colorTypes>k__BackingField: 
 --- !u!1 &1506771366
 GameObject:
   m_ObjectHideFlags: 0
@@ -3070,6 +3104,7 @@ GameObject:
   - component: {fileID: 1872993264}
   - component: {fileID: 1872993263}
   - component: {fileID: 1872993262}
+  - component: {fileID: 1872993265}
   m_Layer: 0
   m_Name: Capsule4
   m_TagString: Untagged
@@ -3166,6 +3201,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1872993260}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1872993265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872993260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 02000000
+  <colorTypes>k__BackingField: 00000000
 --- !u!1001 &1958554697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3379,6 +3428,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 603481826524434858, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Color.a
+      value: 0.44705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481826524434858, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481826524434858, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 603481826524434858, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2216424785482961033, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3459,9 +3524,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2677575856508964899, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78039217
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677575856508964899, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677575856508964899, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6753166170413551382, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140835594746875489, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 42.6587
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140835594746875489, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4274523
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140835594746875489, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4274523
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140835594746875489, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4274523
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140835594746875489, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 460
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438811679471489859, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 760
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438811679471489859, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 42.659
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438811679471489859, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438811679471489859, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000035286
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590233457931814366, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
