@@ -282,7 +282,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -429,6 +429,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2216424785482961033}
     m_Modifications:
+    - target: {fileID: 2041292576950045942, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_Color.a
+      value: 0.78039217
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041292576950045942, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540803751771786623, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_Color.a
+      value: 0.44705883
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540803751771786623, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540803751771786623, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540803751771786623, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5218473766061877938, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_Name
       value: AnxietyBar
@@ -463,7 +487,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 42.6587
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4274523
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4274523
+      objectReference: {fileID: 0}
+    - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4274523
       objectReference: {fileID: 0}
     - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -499,7 +535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 450
+      value: 460
       objectReference: {fileID: 0}
     - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -512,6 +548,14 @@ PrefabInstance:
     - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793537143524429718, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 42.659
+      objectReference: {fileID: 0}
+    - target: {fileID: 6793537143524429718, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000035286
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
