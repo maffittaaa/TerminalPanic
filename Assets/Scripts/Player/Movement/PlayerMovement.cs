@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public enum BehaviorType { Idleing, Walking, Runing, Jumping, Crouching }
@@ -10,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     [field: SerializeField] public float speed { get; set; }
 
+    [SerializeField] private float playerHeigth;
+    [SerializeField] private float jumpTolerance;
     [SerializeField] private float crouchMultiplier;
     [SerializeField] private float sprintMultiplier;
     [SerializeField] private GameObject viewPoint;
@@ -21,8 +24,6 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float horizontalAxis;
     [SerializeField] private float verticalAxis;
-
-    private int jumpCount = 0;
 
     [field:SerializeField] public BehaviorType behaviorType { get; private set; }
     [SerializeField] private AnxietyBar anxietyBar;
@@ -92,18 +93,25 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount == 0)
-        {
-            jumpCount++;
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        }
 
-        if(jumpCount > 0)
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(0, -1, 0), out hit, playerHeigth + jumpTolerance))
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
         {
             return true;
         }
-
-        return false;
     }
 
     private void Crouch()
@@ -125,18 +133,5 @@ public class PlayerMovement : MonoBehaviour
     public BehaviorType CurrentType()
     {
         return behaviorType;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            jumpCount = 0;
-        }
-    }
-
-    public float GetSpeed()
-    {
-        return speed;
     }
 }

@@ -16,6 +16,7 @@ public class Flickering : MonoBehaviour
     [SerializeField] private Light light1;
     [SerializeField] private Light light2;
     [SerializeField] private Light light3;
+    [SerializeField] private GameObject lightEffect;
 
     [SerializeField] private GameObject lightMaterial;
 
@@ -62,6 +63,7 @@ public class Flickering : MonoBehaviour
 
     private void ChangeLightsState(bool state)
     {
+
         light1.enabled = state;
         light2.enabled = state;
         light3.enabled = state;
@@ -80,6 +82,11 @@ public class Flickering : MonoBehaviour
         }
 
         lightMaterial.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
+
+        if (lightEffect != null)
+        {
+            lightEffect.SetActive(state);
+        }
     }
 
     public void TurnOnAndOff()
