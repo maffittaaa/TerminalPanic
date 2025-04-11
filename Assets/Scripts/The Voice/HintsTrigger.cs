@@ -6,10 +6,20 @@ using UnityEngine.EventSystems;
 public class HintsTrigger : MonoBehaviour
 {
     [SerializeField] private ClueText clueText;
+    [SerializeField] private WorldInteractions interactions;
+    [field: SerializeField] public Collider trigger { get; set; }
+
+    private void Start()
+    {
+        trigger.isTrigger = true;
+    }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && interactions.body.activeSelf)
+        {
             clueText.TextForClue();
+            trigger.isTrigger = false;
+        }
     }
 }

@@ -8,6 +8,8 @@ public class RespawnAfterFaint : MonoBehaviour
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private PlayerMovement player;
     [SerializeField] private GameObject closestSafeSpace;
+    [SerializeField] private WorldInteractions interactions;
+    [SerializeField] private HintsTrigger hintsTrigger;
     private bool fadeEnded = true;
     private bool fadeStarted = false;
     
@@ -26,11 +28,13 @@ public class RespawnAfterFaint : MonoBehaviour
             anxietyBar.respawningAfterFaint = true;
             anxietyBar.ResetAnxiety();
             RespawnInNearestSafeSpace();
+            interactions.body.SetActive(false);
             anxietyBar.currentAnxiety = 0f;
             anxietyBar.state.fillAmount = 0f;
             anxietyBar.dOF.focusDistance.value = 3.8f;
             anxietyBar.cA.intensity.value = 0.3f;
             fadeStarted = false;
+            hintsTrigger.trigger.isTrigger = true; //not entirely correct but we'll see
         }
     }
 

@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <speed>k__BackingField: 3
+  playerHeigth: 1.204
+  jumpTolerance: 0.12
   crouchMultiplier: 0.5
   sprintMultiplier: 2
   viewPoint: {fileID: 3305785852537821137}
@@ -186,6 +188,8 @@ MonoBehaviour:
   anxietyBar: {fileID: 1028580006078134479}
   player: {fileID: 2760616104000520053}
   closestSafeSpace: {fileID: 0}
+  interactions: {fileID: 0}
+  hintsTrigger: {fileID: 0}
 --- !u!1 &6164246152193110523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,6 +1276,10 @@ PrefabInstance:
       propertyPath: distanceToInteract
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8927570696330065085, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: <body>k__BackingField
+      value: 
+      objectReference: {fileID: 5231876786214375388}
     - target: {fileID: 9053341350012956783, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5196

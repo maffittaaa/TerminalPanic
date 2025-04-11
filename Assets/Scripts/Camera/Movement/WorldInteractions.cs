@@ -10,7 +10,7 @@ public class WorldInteractions : MonoBehaviour
 {
     [Header("Interaction Items")]
     [SerializeField] private Weapon weapon;
-    [SerializeField] private GameObject body;
+    [field: SerializeField] public GameObject body { get; set; }
     [SerializeField] private GameObject flashLight;
     [SerializeField] private GameObject flashLightPhysic;
     [SerializeField] private GameObject testDoor;
