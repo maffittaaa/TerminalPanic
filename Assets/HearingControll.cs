@@ -22,30 +22,32 @@ public class HearingControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         PlayerMovement player = other.GetComponent<PlayerMovement>();
 
-        if (player != null || other.CompareTag("Player")) 
+        if (player != null || other.CompareTag("Player"))
         {
-            if (player != null && (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
-            {
-                if (player.behaviorType != BehaviorType.Crouching)
+
+            Debug.Log("Player entered the hearing zone");
+
+
+            if (player != null)
+            {   
+                if (player.behaviorType != BehaviorType.Crouching &&
+                    (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
+
                 {
                     MyTraveller.iHearPlayer = true;
+                    Debug.Log("Player is moving and making noise. iHearPlayer = true");
                 }
-
                 else
                 {
                     MyTraveller.iHearPlayer = false; 
+                    Debug.Log("Player is crouching or idle. iHearPlayer = false");
                 }
-            }
-
-            else
-            {
-                MyTraveller.iHearPlayer = false; 
             }
         }
     }
-
 
     private void OnTriggerExit(Collider other)
     {
@@ -53,12 +55,16 @@ public class HearingControl : MonoBehaviour
 
         if (player != null || other.CompareTag("Player"))
         {
-            if (player != null && player.behaviorType == BehaviorType.Crouching)
-            {
-                return; 
-            }
 
-            MyTraveller.iHearPlayer = false;
+            Debug.Log("Player exited the hearing zone");
+
+            if (player != null && player.behaviorType != BehaviorType.Crouching && (player.behaviorType == BehaviorType.Idleing || player.behaviorType == BehaviorType.Crouching))
+            {
+                MyTraveller.iHearPlayer = false;
+                Debug.Log("Player stopped moving or crouching, iHearPlayer = false");
+            }
         }
     }
+
+
 }

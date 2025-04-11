@@ -72,14 +72,21 @@ public class TravelerAI : MonoBehaviour
             case TravelerState.Waiting:
                 agent.isStopped = true;
 
-                if (iSeePlayer || iHearPlayer)
+                if (iSeePlayer)
                 {
-                    if (player != null && player.behaviorType != BehaviorType.Crouching) 
+                    SetState(TravelerState.Chasing);
+                    Debug.Log("Traveler sees the player ? chasing.");
+                }
+
+                else if (iHearPlayer)
+                {
+                    if (player != null && player.behaviorType != BehaviorType.Crouching)
                     {
-                        SetState(TravelerState.Chasing); 
+                        SetState(TravelerState.Chasing);
+                        Debug.Log("Traveler hears the player (not crouching) ? chasing.");
                     }
                 }
-            
+
                 break;
 
             case TravelerState.Chasing:
