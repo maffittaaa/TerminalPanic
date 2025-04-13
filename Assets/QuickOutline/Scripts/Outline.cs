@@ -52,10 +52,6 @@ public class Outline : MonoBehaviour, IInteractable {
 
     [SerializeField] private Mode outlineMode;
 
-    [SerializeField] private ItemType type;
-
-    [SerializeField] private GameObject interactingText;
-
     [SerializeField] private Color outlineColor = Color.white;
 
     [SerializeField, Range(0f, 50f)] private float outlineWidth = 2f;
@@ -95,10 +91,7 @@ public class Outline : MonoBehaviour, IInteractable {
         needsUpdate = true;
     }
 
-    public ItemType GetItemType()
-    {
-        return type;
-    }
+    
 
     void OnEnable() {
         foreach (var renderer in renderers) {
@@ -111,7 +104,6 @@ public class Outline : MonoBehaviour, IInteractable {
 
             renderer.materials = materials.ToArray();
         }
-        interactingText.SetActive(true);
     }
 
     void OnValidate() {
@@ -149,7 +141,6 @@ public class Outline : MonoBehaviour, IInteractable {
 
             renderer.materials = materials.ToArray();
         }
-        interactingText.SetActive(false);
     }
 
     void OnDestroy() {

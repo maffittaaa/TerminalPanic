@@ -22,7 +22,7 @@ public class WorldInteractions : MonoBehaviour
     [Header("Interaction Settings")]
     [SerializeField] private float distanceToInteract = 5f;
     private GameObject highLightObject;
-    private Outline outline;
+    private InteractableObject interactable;
     private LayerMask layerMask;
 
     [Header("Door")]
@@ -68,24 +68,24 @@ public class WorldInteractions : MonoBehaviour
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
-            outline = hit.collider.gameObject.GetComponent<Outline>();
+            interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
 
-            if (outline != null && hit.distance < distanceToInteract)
+            if (interactable != null && hit.distance < distanceToInteract)
             {
-                itemType = outline.GetItemType();
+                itemType = interactable.GetItemType();
 
                 if (highLightObject != hit.collider.gameObject)
                 {
                     if (highLightObject == null)
                     {
                         highLightObject = hit.collider.gameObject;
-                        highLightObject.GetComponent<Outline>().enabled = true;
+                        highLightObject.GetComponent<InteractableObject>().ChangeOutlineState(true);
                     }
                     else if (highLightObject != null)
                     {
-                        highLightObject.GetComponent<Outline>().enabled = false;
+                        highLightObject.GetComponent<InteractableObject>().ChangeOutlineState(false);
                         highLightObject = hit.collider.gameObject;
-                        highLightObject.GetComponent<Outline>().enabled = true;
+                        highLightObject.GetComponent<InteractableObject>().ChangeOutlineState(true);
                     }
                 }
             }
@@ -95,7 +95,7 @@ public class WorldInteractions : MonoBehaviour
 
                 if (highLightObject != null)
                 {
-                    highLightObject.GetComponent<Outline>().enabled = false;
+                    highLightObject.GetComponent<InteractableObject>().ChangeOutlineState(false);
                 }
                 highLightObject = null;
             }
