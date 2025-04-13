@@ -23199,7 +23199,7 @@ PrefabInstance:
       objectReference: {fileID: 306466487}
     - target: {fileID: 6380487539121105612, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17057
+      value: 17063
       objectReference: {fileID: 0}
     - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
@@ -23972,9 +23972,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4657544322304970105, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 526015840641038048, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
