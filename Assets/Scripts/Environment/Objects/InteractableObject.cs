@@ -26,4 +26,9 @@ public class InteractableObject : MonoBehaviour
         outline.enabled = state;
         interactingText.enabled = state;
     }
+
+    private void OnDestroy()
+    {
+        interactingText.enabled = false;
+    }
 }

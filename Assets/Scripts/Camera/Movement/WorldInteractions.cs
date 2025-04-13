@@ -36,17 +36,18 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float time = 0f;
     private bool doorOpeningClosing = false;
 
-
     [Header("FlashLight")]
     [SerializeField] private GameObject shootingPoint;
     [SerializeField] private float flashLightTimeDelay = 0.1f;
     [SerializeField] private float FLmMaxFlickerTimeDist = 10f;
     [SerializeField] private float FLmMinFlickerTimeDist = 20f;
+    private AudioManager audioManager;
 
 
     private void Start()
     {
         layerMask = LayerMask.GetMask("Default");
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -181,6 +182,9 @@ public class WorldInteractions : MonoBehaviour
     {
         if (flashLight.gameObject.activeSelf == true)
         {
+            audioManager.flashLightOn.Stop();
+            audioManager.flashLightOff.Play();
+
             flashLight.gameObject.SetActive(false);
             flashLightPhysic.gameObject.SetActive(false);
 
@@ -198,6 +202,9 @@ public class WorldInteractions : MonoBehaviour
         }
         else
         {
+            audioManager.flashLightOff.Stop();
+            audioManager.flashLightOn.Play();
+
             flashLight.gameObject.SetActive(true);
             flashLightPhysic.gameObject.SetActive(true);
 

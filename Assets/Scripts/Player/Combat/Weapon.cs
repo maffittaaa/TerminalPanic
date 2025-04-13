@@ -13,7 +13,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int currentBullets;
     [SerializeField] private int bulletsShoot;
     [SerializeField] private float shootingDelay;
+    [SerializeField] private AudioManager audioManager;
     private float currentShootingDelay = 0f;
+
+    private void Start()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
 
     private void Update()
     {
@@ -56,9 +62,9 @@ public class Weapon : MonoBehaviour
         StartCoroutine(ShootingLight());
         bulletsShoot++;
         particleSystems.Play();
+        audioManager.shoot.Play();
         currentShootingDelay = 0;
         currentBullets--;
-
         if (worldInteractions.potencialEnemy.CompareTag("Enemy"))
         {
             Destroy(worldInteractions.potencialEnemy);
