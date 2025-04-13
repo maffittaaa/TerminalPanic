@@ -188,7 +188,7 @@ MonoBehaviour:
   anxietyBar: {fileID: 1028580006078134479}
   player: {fileID: 2760616104000520053}
   closestSafeSpace: {fileID: 0}
-  interactions: {fileID: 0}
+  interactions: {fileID: 1270375769541232927}
   hintsTrigger: {fileID: 0}
 --- !u!1 &6164246152193110523
 GameObject:
@@ -1326,6 +1326,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7962504216437614841, guid: 492f9e516791092438d86616e22c66b0, type: 3}
   m_PrefabInstance: {fileID: 7657335664344858018}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1270375769541232927 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8927570696330065085, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+  m_PrefabInstance: {fileID: 7657335664344858018}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717233878312370777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b02797ac4712749beb22785d7ebe33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2717233878312370777 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5760631584822870011, guid: 492f9e516791092438d86616e22c66b0, type: 3}

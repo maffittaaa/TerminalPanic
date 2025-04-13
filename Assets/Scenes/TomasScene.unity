@@ -23107,6 +23107,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4648838020382522260, guid: 8a22ae9950b4e314b8c2b4bc7662014f, type: 3}
   m_PrefabInstance: {fileID: 191899233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2026996005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+  m_PrefabInstance: {fileID: 2875122812098800739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99b02797ac4712749beb22785d7ebe33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2082956274 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2052515084000054967, guid: c20ac5416622c3046815951012508b5d, type: 3}
@@ -23199,7 +23210,7 @@ PrefabInstance:
       objectReference: {fileID: 306466487}
     - target: {fileID: 6380487539121105612, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 16997
+      value: 17009
       objectReference: {fileID: 0}
     - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
@@ -23914,7 +23925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -120.3
+      value: -152.32
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -23922,11 +23933,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -144.38
+      value: -120.58
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.016579883
+      value: 0.9523958
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.x
@@ -23934,7 +23945,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.99986255
+      value: -0.30486432
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.z
@@ -23946,12 +23957,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 178.1
+      value: -35.5
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: interactions
+      value: 
+      objectReference: {fileID: 2026996005}
     - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: playerFainting
       value: 

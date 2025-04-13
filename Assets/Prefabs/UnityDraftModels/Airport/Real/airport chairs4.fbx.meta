@@ -5,25 +5,35 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark Blue Plastic Material
+    second: {fileID: 2100000, guid: b83a1be5f721b784894f955d2094332c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: chair legs.001
+    second: {fileID: 2100000, guid: c351787c3b73c9947adfd1de83b1de36, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Navy_Blue_Base_Color
-    second: {fileID: 2800000, guid: b315d01d3712a3e4f9cfc18598bb6e0b, type: 3}
+    second: {fileID: 2800000, guid: 4264028289425d04e9ee0b9c7cfcf94a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Plastic_Metallic
-    second: {fileID: 2800000, guid: 5fe003d59a5ea89419bcdc670d65c382, type: 3}
+    second: {fileID: 2800000, guid: 4e4da59bfcc894e4eb4cb8034b4b2050, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Plastic_Normal copy
-    second: {fileID: 2800000, guid: 23c76a5633bc0f64199ce9df7f1c0b79, type: 3}
+    second: {fileID: 2800000, guid: 1de670a51f581444597a457602afb912, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Plastic_Specular
-    second: {fileID: 2800000, guid: 8d188505e6fa1fa43a59e91f8acc1002, type: 3}
+    second: {fileID: 2800000, guid: a4d2091d338999446a08d7521ac07846, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
