@@ -163,6 +163,7 @@ public class WorldInteractions : MonoBehaviour
 
     private void ChangeCameraView()
     {
+        float mirrorAngle = highLightObject.transform.rotation.y;
         transform.localEulerAngles = new Vector3(Mathf.Lerp(transform.localEulerAngles.x, 0, Time.deltaTime * 10), 0, 0);
         transform.parent.localEulerAngles = new Vector3(transform.parent.localEulerAngles.x, Mathf.Lerp(transform.parent.localEulerAngles.y, 90, Time.deltaTime * 10), transform.parent.localEulerAngles.z);
     }
