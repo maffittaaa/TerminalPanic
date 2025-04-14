@@ -7,37 +7,32 @@ using Random = UnityEngine.Random;
 public class ClueText : MonoBehaviour
 {
     private TextMeshProUGUI clueText;
-    private HashSet<int> usedClues = new HashSet<int>();
-    private EClothesAndAccessoriesTypes clothesAndAccessories;
-    private EColorTypes color;
-    public int newClue = 0;
+    private Dictionary<EClothesAndAccessoriesTypes, EColorTypes> usedClues = new Dictionary<EClothesAndAccessoriesTypes, EColorTypes>();
+    private List<EClothesAndAccessoriesTypes> clothesClues = new List<EClothesAndAccessoriesTypes>();
+    private List<EColorTypes> colorClues = new List<EColorTypes>();
+    [SerializeField] private IdentifyingThief thief;
+    private int numberOfClues = 0;
     
     private void Start()
     {
         clueText = GetComponent<TextMeshProUGUI>();
         clueText.enabled = false;
+
+        for (int i = 0; i < thief.thiefClothes.Count; i++)
+        {
+            clothesClues.Add(thief.thiefClothes[i]);
+            colorClues.Add(thief.thiefClothesColor[i]);
+        }
     }
 
     public string TextForClue()
     {
-        int safetyCounter = 5;
-        int maxClothes = Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1;
-        int maxColors = Enum.GetValues(typeof(EColorTypes)).Length - 1;
-
-        while (safetyCounter > 0) //safety
-        {
-            clothesAndAccessories = (EClothesAndAccessoriesTypes)Random.Range(1, maxClothes); //random clothes
-            color = (EColorTypes)Random.Range(1, maxColors); //random colors
-
-            newClue = ((int)clothesAndAccessories * maxColors) + (int)color; //multiply by max colors, because it can give the same int, meaning the "same clue"
-            
-            if (!usedClues.Contains(newClue))
-                usedClues.Add(newClue);
-            
-            safetyCounter--;
-        }
+        if (!usedClues.ContainsKey(clothesClues[numberOfClues]))
+            usedClues.Add(clothesClues[numberOfClues], colorClues[numberOfClues]);
         
         clueText.enabled = true;
-        return clueText.text = $"Clue {usedClues.Count}: Find the person who has {clothesAndAccessories} with a {color} color";
+        clueText.text = $"Clue {usedClues.Count - 1}: Find the person who has {clothesClues[numberOfClues]} with a {colorClues[numberOfClues]} color";
+        numberOfClues++;
+        return clueText.text;
     }
 }

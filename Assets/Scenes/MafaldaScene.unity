@@ -1015,8 +1015,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1719093920}
-  clue: {fileID: 1571832475}
   thief: {fileID: 469084570}
+  clue: {fileID: 1571832475}
 --- !u!4 &681523655
 Transform:
   m_ObjectHideFlags: 0

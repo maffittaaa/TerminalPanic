@@ -5,16 +5,18 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Behavior : MonoBehaviour
+public class IdentifyingThief : MonoBehaviour
 {
     [SerializeField] private PlayerMovement player;
-    [SerializeField] private ClueText clue;
     [SerializeField] private GameObject thief;
-    private Dictionary<EClothesAndAccessoriesTypes, EColorTypes> howManyHasPlayerSeen = new Dictionary<EClothesAndAccessoriesTypes, EColorTypes>();
-    private HintFinder hintsForThief;
+    [SerializeField] private ClueText clue;
+    public List<EClothesAndAccessoriesTypes> thiefClothes = new List<EClothesAndAccessoriesTypes>();
+    public List<EColorTypes> thiefClothesColor = new List<EColorTypes>();
+    
+    public HintFinder hintsForThief;
     private int peopleNeededToNextClue;
     private int numberOfObjects;
-    private int clothesAndAccessoriesNumber;
+    public int clothesAndAccessoriesNumber;
     
     private void Awake()
     {
@@ -53,18 +55,21 @@ public class Behavior : MonoBehaviour
             }
             k++;
         }
+
+        for (i = 0; i < clothesAndAccessoriesNumber; i++)
+        {
+            thiefClothes.Add(hintsForThief.clothesAndAccessoriesTypes[i]);
+            thiefClothesColor.Add(hintsForThief.colorTypes[i]);
+        }
     }
     
-    // public void IdentifyingTheCorrectClues(int clothesAndAccessories, int color)
+    // public bool DoesTheThiefHasThis(int clothesAndAccessories, int color)
     // {
-    //     EClothesAndAccessoriesTypes clueType1 = hintsForThief.clothesAndAccessoriesTypes[clothesAndAccessories];
     //     
-    //    if (!howManyHasPlayerSeen.ContainsKey(clueType1))
-    //      howManyHasPlayerSeen[clueType1] = 0;
+    // }
     //
-    //     howManyHasPlayerSeen[clueType1]++;
-    //         
-    //     if (howManyHasPlayerSeen[clueType1] == peopleNeededToNextClue.ConvertTo<EColorTypes>()) //this is wrong!!!!!!
-    //        clue.TextForClue();
+    // public void SeeingThief()
+    // {
+    //     
     // }
 }
