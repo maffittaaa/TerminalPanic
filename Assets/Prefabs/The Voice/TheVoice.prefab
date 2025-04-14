@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53285daf1152b8c45b4c5bdc1051a580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  playerCamera: {fileID: 0}
   thief: {fileID: 0}
   clue: {fileID: 0}
   thiefClothes: 
   thiefClothesColor: 
   hintsForThief: {fileID: 0}
-  clothesAndAccessoriesNumber: 0
+  peopleNeededToNextClue: 2
+  distanceToEnemie: 10.2

@@ -9,7 +9,7 @@ public class ClueText : MonoBehaviour
     public List<EColorTypes> colorClues = new List<EColorTypes>();
     [SerializeField] private IdentifyingThief thief;
     private TextMeshProUGUI clueText;
-    private int numberOfClues = -1;
+    public int numberOfClues = -1;
     private bool thiefFound = false;
     
     private void Start()
@@ -27,6 +27,7 @@ public class ClueText : MonoBehaviour
     public string TextForClue()
     {
         numberOfClues++;
+        
         if (numberOfClues >= thief.thiefClothes.Count)
         {
             thiefFound = true;
@@ -38,7 +39,7 @@ public class ClueText : MonoBehaviour
                 usedClues.Add(clothesClues[numberOfClues], colorClues[numberOfClues]);
         
             clueText.enabled = true;
-            clueText.text = $"Clue {usedClues.Count - 1}: Find the person who has {clothesClues[numberOfClues]} with a {colorClues[numberOfClues]} color";
+            clueText.text = $"Clue {usedClues.Count}: Find the person who has {clothesClues[numberOfClues]} with a {colorClues[numberOfClues]} color";
         }
         return clueText.text;
     }

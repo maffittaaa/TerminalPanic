@@ -5,15 +5,17 @@ using Random = UnityEngine.Random;
 
 public class IdentifyingThief : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement player;
+    [SerializeField] private Camera playerCamera;
     [SerializeField] private GameObject thief;
     [SerializeField] private ClueText clue;
     public List<EClothesAndAccessoriesTypes> thiefClothes = new List<EClothesAndAccessoriesTypes>();
     public List<EColorTypes> thiefClothesColor = new List<EColorTypes>();
-    
+    private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
     public HintFinder hintsForThief;
-    private int peopleNeededToNextClue;
+    [SerializeField] private int peopleNeededToNextClue;
+    private int currentPeopleToNextClue = 0;
     private int clothesAndAccessoriesNumber;
+    [SerializeField] private float distanceToEnemie;
     
     private void Awake()
     {
@@ -60,18 +62,53 @@ public class IdentifyingThief : MonoBehaviour
         }
     }
     
-    public bool DoesTheThiefHasThis()
+    public bool DoesTheThiefHasThis(List<EClothesAndAccessoriesTypes> clothesAndAccessoriesType, List<EColorTypes> colorType)
     {
-        for (int i = 0; i < thiefClothes.Count; i++)
+        int matchingOutfits = 0;
+        
+        for (int i = 0; i < clothesAndAccessoriesType.Count; i++)
         {
-            if (thiefClothes[i] == clue.clothesClues[i] && thiefClothesColor[i] == clue.colorClues[i])
-                return true;
+            for (int j = 0; j < clue.numberOfClues + 1; j++)
+            {
+                if (clothesAndAccessoriesType[i] == clue.clothesClues[j] && colorType[i] == clue.colorClues[j])
+                    matchingOutfits++;
+            }
         }
+
+        if (matchingOutfits >= clue.numberOfClues)
+            return true;
         return false;
     }
     
     public void SeeingThief()
     {
-        
+        RaycastHit hit;
+
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, distanceToEnemie))
+        {
+            //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+            if (hit.collider.gameObject.CompareTag("Enemy") && !peopleSeen.ContainsKey(hit.collider.gameObject))
+            {
+                List<EClothesAndAccessoriesTypes> tempListClothes = hit.collider.gameObject.GetComponent<HintFinder>().clothesAndAccessoriesTypes;
+                List<EColorTypes> tempListColor = hit.collider.gameObject.GetComponent<HintFinder>().colorTypes;
+
+                if (DoesTheThiefHasThis(tempListClothes, tempListColor))
+                {
+                    currentPeopleToNextClue++;
+                    peopleSeen.Add(hit.collider.gameObject, hit.collider.gameObject);
+                    if (currentPeopleToNextClue >= peopleNeededToNextClue)
+                    {
+                        clue.TextForClue();
+                        currentPeopleToNextClue = 0;
+                        peopleSeen.Clear();
+                    }
+                }
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        SeeingThief();
     }
 }
