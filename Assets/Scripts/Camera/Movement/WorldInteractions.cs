@@ -43,7 +43,6 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float FLmMinFlickerTimeDist = 20f;
     private AudioManager audioManager;
 
-
     private void Start()
     {
         layerMask = LayerMask.GetMask("Default");
@@ -115,6 +114,12 @@ public class WorldInteractions : MonoBehaviour
 
     private void Interact()
     {
+        if (anxietyBar.interacted)
+        {
+            ChangeCameraView();
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             switch (itemType)
@@ -154,6 +159,12 @@ public class WorldInteractions : MonoBehaviour
         {
             StartCoroutine(FlashLight());
         }
+    }
+
+    private void ChangeCameraView()
+    {
+        transform.localEulerAngles = new Vector3(Mathf.Lerp(transform.localEulerAngles.x, 0, Time.deltaTime * 10), 0, 0);
+        transform.parent.localEulerAngles = new Vector3(transform.parent.localEulerAngles.x, Mathf.Lerp(transform.parent.localEulerAngles.y, 90, Time.deltaTime * 10), transform.parent.localEulerAngles.z);
     }
 
     private IEnumerator OpenDoor()

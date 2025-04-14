@@ -745,8 +745,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3477269014710007839}
   - component: {fileID: 6824321659660530882}
-  - component: {fileID: 6230415436030980688}
   - component: {fileID: 3814518454820195478}
+  - component: {fileID: 6230415436030980688}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -807,7 +807,7 @@ MonoBehaviour:
   <currentColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
   flicker: {fileID: 3814518454820195478}
   noise: {fileID: 6230415436030980688}
---- !u!82 &6230415436030980688
+--- !u!82 &3814518454820195478
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -817,11 +817,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 140302934d01e8e4591550e150feefa0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 740ac11f046cb9d43be73a140297669c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -833,7 +833,7 @@ AudioSource:
   rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 1
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -903,7 +903,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &3814518454820195478
+--- !u!82 &6230415436030980688
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -913,11 +913,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 740ac11f046cb9d43be73a140297669c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 140302934d01e8e4591550e150feefa0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -929,7 +929,7 @@ AudioSource:
   rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
