@@ -17,24 +17,29 @@ public class Flickering : MonoBehaviour
     [SerializeField] private Light light2;
     [SerializeField] private Light light3;
     [SerializeField] private GameObject lightEffect;
-
     [SerializeField] private GameObject lightMaterial;
-
     [SerializeField] private FlickerMode mode;
-
     [field: SerializeField] public Color mainColor { get; set; }
     [field: SerializeField] public Color currentColor { get; set; }
 
     private bool lightCheat = false;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource flicker;
+    [SerializeField] private AudioSource noise;
+
 
     void Start()
     {
         mainColor = light1.color;
         currentColor = mainColor;
-     
-        if(mode == FlickerMode.On)
+        if (mode == FlickerMode.On)
         {
             StartCoroutine(FlickerEffect());
+        }
+        else
+        {
+            noise.Play();
         }
     }
 
@@ -44,6 +49,10 @@ public class Flickering : MonoBehaviour
         {
             if (!lightCheat)
             {
+                noise.Stop();
+                flicker.Stop();
+                flicker.Play();
+
                 for (int i = 0; i < Random.Range(minFlickers, maxFlickers); i++)
                 {
                     ChangeLightsState(true);
@@ -63,7 +72,6 @@ public class Flickering : MonoBehaviour
 
     private void ChangeLightsState(bool state)
     {
-
         light1.enabled = state;
         light2.enabled = state;
         light3.enabled = state;
@@ -95,6 +103,8 @@ public class Flickering : MonoBehaviour
         {
             currentColor = Color.white;
             lightCheat = true;
+            flicker.Stop();
+            noise.Play();
         }
         else
         {

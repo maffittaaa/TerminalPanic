@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private float crouchView;
     [SerializeField] private float jumpForce;
+    [SerializeField] private AudioManager audioManager;
     public float initialSpeed { get; private set; }
 
     private bool crouched;
@@ -33,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         initialSpeed = speed;
         behaviorType = BehaviorType.Idleing;
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update()
@@ -46,19 +48,47 @@ public class PlayerMovement : MonoBehaviour
         else if (crouched)
         {
             behaviorType = BehaviorType.Crouching;
+            if (!audioManager.crouchPlayer.isPlaying)
+            {
+                audioManager.walkPlayer.Stop();
+                audioManager.runPlayer.Stop();
+                audioManager.crouchPlayer.Play();
+            }
         }
         else if (Sprint()) 
         {
             behaviorType = BehaviorType.Runing;
+
+            if (!audioManager.runPlayer.isPlaying)
+            {
+                audioManager.crouchPlayer.Stop();
+                audioManager.walkPlayer.Stop();
+                audioManager.runPlayer.Play();
+            }
         }
         else if (horizontalAxis != 0 || verticalAxis != 0)
         {
             behaviorType = BehaviorType.Walking;
+
+            if (!audioManager.walkPlayer.isPlaying)
+            {
+                audioManager.runPlayer.Stop();
+                audioManager.crouchPlayer.Stop();
+                audioManager.walkPlayer.Play();
+            }
         }
 
         if (horizontalAxis == 0 && verticalAxis == 0)
         {
             behaviorType = BehaviorType.Idleing;
+
+            if (audioManager.runPlayer.isPlaying || audioManager.walkPlayer.isPlaying)
+            {
+                audioManager.runPlayer.Stop();
+                audioManager.crouchPlayer.Stop();
+                audioManager.walkPlayer.Stop();
+                //audioManager.stopPlayer.Play();
+            }
         }
     }
 

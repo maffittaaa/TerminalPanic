@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4592238372710981399}
   - component: {fileID: 1660708105940379645}
   - component: {fileID: 3751519882685071400}
+  - component: {fileID: 128587323124416145}
   m_Layer: 0
   m_Name: ModelAk
   m_TagString: Untagged
@@ -173,13 +174,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  type: 2
-  interactingText: {fileID: 9075812074105329444}
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &128587323124416145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399794913543473725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442c3f74ced1ec748a2ae5eafe7f89ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  interactingText: {fileID: 0}
+  outline: {fileID: 0}
 --- !u!1 &9075812074105329444
 GameObject:
   m_ObjectHideFlags: 0
