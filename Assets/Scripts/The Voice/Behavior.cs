@@ -28,8 +28,6 @@ public class Behavior : MonoBehaviour
         while (i < clothesAndAccessoriesNumber)
         {
             bool equalType = false;
-            Debug.Log("i: " + i);
-            Debug.Log("clothes: " + clothesAndAccessoriesNumber);
             if (k >= 1000)
             {
                 Debug.Log("something went wrong");
@@ -39,8 +37,6 @@ public class Behavior : MonoBehaviour
             EClothesAndAccessoriesTypes clothesType = (EClothesAndAccessoriesTypes)Random.Range(1, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
             for (int j = 0; j < hintsForThief.clothesAndAccessoriesTypes.Count; j++)
             {
-                Debug.Log("j: " + j);
-                Debug.Log("types of clothes number: " + hintsForThief.clothesAndAccessoriesTypes.Count);
                 if (clothesType == hintsForThief.clothesAndAccessoriesTypes[j])
                 {
                     equalType = true;
