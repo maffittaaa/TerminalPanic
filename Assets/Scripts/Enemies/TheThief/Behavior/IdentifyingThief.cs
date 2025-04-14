@@ -15,7 +15,7 @@ public class IdentifyingThief : MonoBehaviour
     [SerializeField] private int peopleNeededToNextClue;
     private int currentPeopleToNextClue = 0;
     private int clothesAndAccessoriesNumber;
-    [SerializeField] private float distanceToEnemie;
+    [SerializeField] private float distanceToEnemy;
     
     private void Awake()
     {
