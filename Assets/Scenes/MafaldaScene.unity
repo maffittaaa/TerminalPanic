@@ -3493,6 +3493,17 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1642227441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 694390440902228412, guid: c20ac5416622c3046815951012508b5d, type: 3}
+  m_PrefabInstance: {fileID: 987264071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daad62bf45227b84dac4dd90aae5c3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1656872733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3915,6 +3926,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: hintsTrigger
+      value: 
+      objectReference: {fileID: 1642227441}
     - target: {fileID: 8329125688882015320, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: playerFainting
       value: 
