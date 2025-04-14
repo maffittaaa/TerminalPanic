@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EClothesAndAccessoriesTypes
@@ -21,15 +22,15 @@ public enum EColorTypes
 
 public class HintFinder : MonoBehaviour
 {
-    [field: SerializeField] public EClothesAndAccessoriesTypes[] clothesAndAccessoriesTypes
+    [field: SerializeField] public List<EClothesAndAccessoriesTypes> clothesAndAccessoriesTypes
     {
         get;
-        private set;
+        set;
     }
 
-    [field: SerializeField] public EColorTypes[] colorTypes
+    [field: SerializeField] public List<EColorTypes> colorTypes
     {
         get;
-        private set;
+        set;
     }
 }

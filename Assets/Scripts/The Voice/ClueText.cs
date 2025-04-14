@@ -7,7 +7,10 @@ using Random = UnityEngine.Random;
 public class ClueText : MonoBehaviour
 {
     private TextMeshProUGUI clueText;
-    private HashSet<string> usedClues = new HashSet<string>();
+    private HashSet<int> usedClues = new HashSet<int>();
+    private EClothesAndAccessoriesTypes clothesAndAccessories;
+    private EColorTypes color;
+    public int newClue = 0;
     
     private void Start()
     {
@@ -17,23 +20,24 @@ public class ClueText : MonoBehaviour
 
     public string TextForClue()
     {
-        string newClue = "";
-        int safetyCounter = 6;
+        int safetyCounter = 5;
+        int maxClothes = Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1;
+        int maxColors = Enum.GetValues(typeof(EColorTypes)).Length - 1;
 
         while (safetyCounter > 0) //safety
         {
-            EClothesAndAccessoriesTypes clothesAndAccessoriesTypes = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length);
-            EColorTypes colorTypes = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length);
-        
-            newClue = $"{clothesAndAccessoriesTypes}-{colorTypes}"; //creates a single string that combines two enum values separating them by a -
+            clothesAndAccessories = (EClothesAndAccessoriesTypes)Random.Range(1, maxClothes); //random clothes
+            color = (EColorTypes)Random.Range(1, maxColors); //random colors
+
+            newClue = ((int)clothesAndAccessories * maxColors) + (int)color; //multiply by max colors, because it can give the same int, meaning the "same clue"
             
-            if (usedClues.Contains(newClue))
+            if (!usedClues.Contains(newClue))
                 usedClues.Add(newClue);
             
             safetyCounter--;
         }
         
         clueText.enabled = true;
-        return clueText.text = $"Clue {usedClues.Count}: Find the person who has {newClue.Replace("-", " with a ")} color";
+        return clueText.text = $"Clue {usedClues.Count}: Find the person who has {clothesAndAccessories} with a {color} color";
     }
 }
