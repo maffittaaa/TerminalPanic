@@ -1,17 +1,16 @@
-using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ClueText : MonoBehaviour
 {
-    private TextMeshProUGUI clueText;
     private Dictionary<EClothesAndAccessoriesTypes, EColorTypes> usedClues = new Dictionary<EClothesAndAccessoriesTypes, EColorTypes>();
-    private List<EClothesAndAccessoriesTypes> clothesClues = new List<EClothesAndAccessoriesTypes>();
-    private List<EColorTypes> colorClues = new List<EColorTypes>();
+    public List<EClothesAndAccessoriesTypes> clothesClues = new List<EClothesAndAccessoriesTypes>();
+    public List<EColorTypes> colorClues = new List<EColorTypes>();
     [SerializeField] private IdentifyingThief thief;
-    private int numberOfClues = 0;
+    private TextMeshProUGUI clueText;
+    private int numberOfClues = -1;
+    private bool thiefFound = false;
     
     private void Start()
     {
@@ -27,12 +26,26 @@ public class ClueText : MonoBehaviour
 
     public string TextForClue()
     {
-        if (!usedClues.ContainsKey(clothesClues[numberOfClues]))
-            usedClues.Add(clothesClues[numberOfClues], colorClues[numberOfClues]);
-        
-        clueText.enabled = true;
-        clueText.text = $"Clue {usedClues.Count - 1}: Find the person who has {clothesClues[numberOfClues]} with a {colorClues[numberOfClues]} color";
         numberOfClues++;
+        if (numberOfClues >= thief.thiefClothes.Count)
+        {
+            thiefFound = true;
+            clueText.text = "Catch the Thief!";
+        }
+        else
+        {
+            if (!usedClues.ContainsKey(clothesClues[numberOfClues]))
+                usedClues.Add(clothesClues[numberOfClues], colorClues[numberOfClues]);
+        
+            clueText.enabled = true;
+            clueText.text = $"Clue {usedClues.Count - 1}: Find the person who has {clothesClues[numberOfClues]} with a {colorClues[numberOfClues]} color";
+        }
         return clueText.text;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+            TextForClue();
     }
 }

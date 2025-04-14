@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,8 +13,7 @@ public class IdentifyingThief : MonoBehaviour
     
     public HintFinder hintsForThief;
     private int peopleNeededToNextClue;
-    private int numberOfObjects;
-    public int clothesAndAccessoriesNumber;
+    private int clothesAndAccessoriesNumber;
     
     private void Awake()
     {
@@ -63,13 +60,18 @@ public class IdentifyingThief : MonoBehaviour
         }
     }
     
-    // public bool DoesTheThiefHasThis(int clothesAndAccessories, int color)
-    // {
-    //     
-    // }
-    //
-    // public void SeeingThief()
-    // {
-    //     
-    // }
+    public bool DoesTheThiefHasThis()
+    {
+        for (int i = 0; i < thiefClothes.Count; i++)
+        {
+            if (thiefClothes[i] == clue.clothesClues[i] && thiefClothesColor[i] == clue.colorClues[i])
+                return true;
+        }
+        return false;
+    }
+    
+    public void SeeingThief()
+    {
+        
+    }
 }
