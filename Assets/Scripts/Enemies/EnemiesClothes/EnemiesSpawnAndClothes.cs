@@ -19,12 +19,7 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
     {
         for (int i = 1; i < maxNumberOfPeople; i++)
         {
-            Vector3 spawnLocation;
-            
-            if(spawnLocations != null && spawnLocations.Count > i)
-                spawnLocation = spawnLocations[i];
-            else
-                spawnLocation = new Vector3(Random.Range(-10, -130), 19, Random.Range(10, 60));
+            Vector3 spawnLocation = new Vector3(Random.Range(-10, -130), 19, Random.Range(10, 60));;
             
             GameObject tempEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity);
             clothesAndColors = tempEnemy.GetComponent<ClothesAndColors>();
@@ -89,6 +84,7 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
         colorForClothes.Clear();
         
         List<EClothesAndAccessoriesTypes> thiefClothes = identifyingThief.hintsForThief.clothesAndAccessoriesTypes;
+        List<EColorTypes> thiefColorOfClothes = identifyingThief.hintsForThief.colorTypes;
         int k = 0;
         
         clothesNumber = Random.Range(1, 3);
@@ -104,12 +100,15 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
             }
 
             EClothesAndAccessoriesTypes clothes;
+            EColorTypes color;
             bool matching = false;
 
             if (!matchingWithThiefClothes)
             {
                 int randomCloth = Random.Range(0, thiefClothes.Count - 1);
+                int randomColor = Random.Range(0, thiefColorOfClothes.Count - 1);
                 clothes = thiefClothes[randomCloth];
+                color = thiefColorOfClothes[randomColor];
                 matching = true;
             }
             else
@@ -117,14 +116,13 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
                 while (true)
                 {
                     clothes = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
+                    color = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
 
-                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes))
+                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) && !thiefColorOfClothes.Contains(color) && !colorForClothes.Contains(color))
                         break;
                 }
             }
-            EColorTypes color = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
-
-            if (!clothesForEnemies.Contains(clothes) || matching)
+            if (!clothesForEnemies.Contains(clothes) && colorForClothes.Contains(color)|| matching)
             {
                 clothesForEnemies.Add(clothes);
                 colorForClothes.Add(color);
@@ -147,7 +145,9 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
         colorForClothes.Clear();
         
         List<EClothesAndAccessoriesTypes> thiefClothes = identifyingThief.hintsForThief.clothesAndAccessoriesTypes;
+        List<EColorTypes> thiefColorOfClothes = identifyingThief.hintsForThief.colorTypes;
         List<EClothesAndAccessoriesTypes> clothesUsed = new List<EClothesAndAccessoriesTypes>();
+        List<EColorTypes> colorsUsed = new List<EColorTypes>();
         int k = 0;
         
         clothesNumber = Random.Range(1, 3);
@@ -163,12 +163,15 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
             }
 
             EClothesAndAccessoriesTypes clothes;
+            EColorTypes color;
             bool matching = false;
 
             if (matchingWithThiefClothes < 2)
             {
                 int randomCloth = Random.Range(0, thiefClothes.Count - 1);
+                int randomColor = Random.Range(0, thiefColorOfClothes.Count - 1);
                 clothes = thiefClothes[randomCloth];
+                color = thiefColorOfClothes[randomColor];
                 matching = true;
             }
             else
@@ -176,18 +179,18 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
                 while (true)
                 {
                     clothes = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
-
-                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) && !clothesUsed.Contains(clothes))
+                    color = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
+                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) && !thiefColorOfClothes.Contains(color) && !colorForClothes.Contains(color) && !clothesUsed.Contains(clothes) && !colorsUsed.Contains(color))
                         break;
                 }
             }
-            EColorTypes color = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
 
-            if (!clothesUsed.Contains(clothes))
+            if (!clothesUsed.Contains(clothes) && !colorsUsed.Contains(color))
             {
                 clothesForEnemies.Add(clothes);
                 colorForClothes.Add(color);
                 clothesUsed.Add(clothes);
+                colorsUsed.Add(color);
                 if (matching)
                     matchingWithThiefClothes++;
                 j++;
