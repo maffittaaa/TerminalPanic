@@ -1840,10 +1840,6 @@ PrefabInstance:
       propertyPath: hintsForThief
       value: 
       objectReference: {fileID: 469084571}
-    - target: {fileID: 2809602760443036910, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
-      propertyPath: distanceToEnemy
-      value: 10.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5399447244945353139, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
