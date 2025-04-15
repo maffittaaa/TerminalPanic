@@ -7,7 +7,12 @@ public enum EClothesAndAccessoriesTypes
     Jeans,
     Blouse,
     Purse,
-    Hat
+    Hat,
+    Shoes,
+    Belt,
+    Necklace,
+    Bracelet,
+    Scarf
 }
 
 public enum EColorTypes
@@ -17,10 +22,13 @@ public enum EColorTypes
     Black,
     Green,
     Red,
-    Yellow
+    Yellow,
+    Pink,
+    Orange,
+    Purple
 }
 
-public class HintFinder : MonoBehaviour
+public class ClothesAndColors : MonoBehaviour
 {
     [field: SerializeField] public List<EClothesAndAccessoriesTypes> clothesAndAccessoriesTypes
     {

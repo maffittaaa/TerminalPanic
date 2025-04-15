@@ -6,12 +6,12 @@ using Random = UnityEngine.Random;
 public class IdentifyingThief : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private GameObject thief;
+    [SerializeField] public GameObject thief;
     [SerializeField] private ClueText clue;
     public List<EClothesAndAccessoriesTypes> thiefClothes = new List<EClothesAndAccessoriesTypes>();
     public List<EColorTypes> thiefClothesColor = new List<EColorTypes>();
     private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
-    public HintFinder hintsForThief;
+    public ClothesAndColors hintsForThief;
     [SerializeField] private int peopleNeededToNextClue;
     private int currentPeopleToNextClue = 0;
     private int clothesAndAccessoriesNumber;
@@ -20,9 +20,9 @@ public class IdentifyingThief : MonoBehaviour
     private void Awake()
     {
         thief = Instantiate(thief, new Vector3(0, 0, 0), Quaternion.identity); //instantiate the thief into the world
-        hintsForThief = thief.GetComponent<HintFinder>(); //add the hint finder component
+        hintsForThief = thief.GetComponent<ClothesAndColors>(); //add the hint finder component
         
-        clothesAndAccessoriesNumber = Random.Range(3, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
+        clothesAndAccessoriesNumber = Random.Range(3, 5);
         int i = 0;
         int k = 0;
         
@@ -35,7 +35,7 @@ public class IdentifyingThief : MonoBehaviour
                 break;
             }
             
-            EClothesAndAccessoriesTypes clothesType = (EClothesAndAccessoriesTypes)Random.Range(1, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
+            EClothesAndAccessoriesTypes clothesType = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
             for (int j = 0; j < hintsForThief.clothesAndAccessoriesTypes.Count; j++)
             {
                 if (clothesType == hintsForThief.clothesAndAccessoriesTypes[j])
@@ -47,7 +47,7 @@ public class IdentifyingThief : MonoBehaviour
 
             if (!equalType)
             {
-                EColorTypes colorsType = (EColorTypes)Random.Range(1, Enum.GetValues(typeof(EColorTypes)).Length - 1);
+                EColorTypes colorsType = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
                 hintsForThief.clothesAndAccessoriesTypes.Add(clothesType);
                 hintsForThief.colorTypes.Add(colorsType);
                 i++;
@@ -89,8 +89,8 @@ public class IdentifyingThief : MonoBehaviour
             //Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             if (hit.collider.gameObject.CompareTag("Enemy") && !peopleSeen.ContainsKey(hit.collider.gameObject))
             {
-                List<EClothesAndAccessoriesTypes> tempListClothes = hit.collider.gameObject.GetComponent<HintFinder>().clothesAndAccessoriesTypes;
-                List<EColorTypes> tempListColor = hit.collider.gameObject.GetComponent<HintFinder>().colorTypes;
+                List<EClothesAndAccessoriesTypes> tempListClothes = hit.collider.gameObject.GetComponent<ClothesAndColors>().clothesAndAccessoriesTypes;
+                List<EColorTypes> tempListColor = hit.collider.gameObject.GetComponent<ClothesAndColors>().colorTypes;
 
                 if (DoesTheThiefHasThis(tempListClothes, tempListColor))
                 {

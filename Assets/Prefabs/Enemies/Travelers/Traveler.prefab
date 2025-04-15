@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 8791063398159852860}
   - component: {fileID: 303073248732645958}
   - component: {fileID: 7554116773039418701}
+  - component: {fileID: 814557335534832805}
   m_Layer: 0
   m_Name: Traveler
   m_TagString: Untagged
@@ -315,11 +316,24 @@ MonoBehaviour:
   rotationSpeed: 5
   agent: {fileID: 303073248732645958}
   destination: {fileID: 0}
-  detectionZone: {fileID: 0}
-  hearingzone: {fileID: 1097358167278823696}
-  sightzone: {fileID: 8790361807859859862}
-  I_Hear_Player: 0
-  I_See_Player: 0
+  hearingZone: {fileID: 0}
+  sightZone: {fileID: 0}
+  iHearPlayer: 0
+  iSeePlayer: 0
+--- !u!114 &814557335534832805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6910eb39d6ad85b42ab70e8d43a84126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <clothesAndAccessoriesTypes>k__BackingField: 
+  <colorTypes>k__BackingField: 
 --- !u!1 &8639509630202951989
 GameObject:
   m_ObjectHideFlags: 0

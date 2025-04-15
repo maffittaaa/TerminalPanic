@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HintsTrigger : MonoBehaviour
+public class CluesTrigger : MonoBehaviour
 {
     [SerializeField] private ClueText clueText;
     [SerializeField] private WorldInteractions interactions;

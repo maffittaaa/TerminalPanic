@@ -9,7 +9,7 @@ public class RespawnAfterFaint : MonoBehaviour
     [SerializeField] private PlayerMovement player;
     [SerializeField] private GameObject closestSafeSpace;
     [SerializeField] private WorldInteractions interactions;
-    [SerializeField] private HintsTrigger hintsTrigger;
+    [SerializeField] private CluesTrigger hintsTrigger;
     private bool fadeEnded = true;
     private bool fadeStarted = false;
     
