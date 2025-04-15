@@ -488,8 +488,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5874105233413801211}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -3.5, y: -0.037, z: -0.001}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -657,9 +657,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7730271050157469153}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 4.73, y: 10.399, z: 0.834}
-  m_LocalScale: {x: 0.08, y: 12, z: -46}
+  m_LocalScale: {x: 46, y: -12, z: 0.08}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6527167527148797403}
@@ -729,8 +729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  type: 1
-  interactingText: {fileID: 1658285410852479545}
   outlineColor: {r: 0.990566, g: 0.5093005, b: 0.5093005, a: 1}
   outlineWidth: 2
   precomputeOutline: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,6 +23,8 @@ public class WorldInteractions : MonoBehaviour
     [Header("Interaction Settings")]
     [SerializeField] private float distanceToInteract = 5f;
     private GameObject highLightObject;
+    private GameObject mirror;
+    [SerializeField]  private float lookToMirrorSpeed;
     private InteractableObject interactable;
     private LayerMask layerMask;
 
@@ -136,6 +139,7 @@ public class WorldInteractions : MonoBehaviour
                 case ItemType.Mirror:
                     if (anxietyBar.interacted == false)
                     {
+                        mirror = highLightObject.gameObject;
                         anxietyBar.interacted = true;
                         anxietyBar.realityMode = true;
                         anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());
@@ -163,9 +167,11 @@ public class WorldInteractions : MonoBehaviour
 
     private void ChangeCameraView()
     {
-        float mirrorAngle = highLightObject.transform.rotation.y;
-        transform.localEulerAngles = new Vector3(Mathf.Lerp(transform.localEulerAngles.x, 0, Time.deltaTime * 10), 0, 0);
-        transform.parent.localEulerAngles = new Vector3(transform.parent.localEulerAngles.x, Mathf.Lerp(transform.parent.localEulerAngles.y, 90, Time.deltaTime * 10), transform.parent.localEulerAngles.z);
+        Vector3 mirrorAngle = mirror.transform.forward;
+        transform.rotation = Quaternion.LookRotation(new Vector3(mirrorAngle.x, transform.forward.y, transform.forward.z));
+        transform.parent.rotation = Quaternion.LookRotation(new Vector3(transform.parent.forward.x, Mathf.Lerp(transform.parent.forward.y, mirrorAngle.y, Time.deltaTime * lookToMirrorSpeed), transform.parent.forward.z));
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), Time.deltaTime * lookToMirrorSpeed);
+        //transform.parent.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(0, mirrorAngle, 0)), Time.deltaTime * lookToMirrorSpeed);
     }
 
     private IEnumerator OpenDoor()
