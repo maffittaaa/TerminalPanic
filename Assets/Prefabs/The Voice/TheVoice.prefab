@@ -51,4 +51,4 @@ MonoBehaviour:
   thiefClothesColor: 
   hintsForThief: {fileID: 0}
   peopleNeededToNextClue: 2
-  distanceToEnemie: 10.2
+  distanceToEnemy: 10.2

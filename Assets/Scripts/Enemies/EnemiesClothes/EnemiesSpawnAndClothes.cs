@@ -118,7 +118,8 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
                     clothes = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
                     color = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
 
-                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) && !thiefColorOfClothes.Contains(color) && !colorForClothes.Contains(color))
+                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) && 
+                        !thiefColorOfClothes.Contains(color) && !colorForClothes.Contains(color))
                         break;
                 }
             }
@@ -180,7 +181,9 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
                 {
                     clothes = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
                     color = (EColorTypes)Random.Range(0, Enum.GetValues(typeof(EColorTypes)).Length - 1);
-                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) && !thiefColorOfClothes.Contains(color) && !colorForClothes.Contains(color) && !clothesUsed.Contains(clothes) && !colorsUsed.Contains(color))
+                    if (!thiefClothes.Contains(clothes) && !clothesForEnemies.Contains(clothes) &&
+                        !thiefColorOfClothes.Contains(color) && !colorForClothes.Contains(color) 
+                        && !clothesUsed.Contains(clothes) && !colorsUsed.Contains(color))
                         break;
                 }
             }
