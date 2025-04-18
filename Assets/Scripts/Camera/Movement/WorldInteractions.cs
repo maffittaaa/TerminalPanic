@@ -18,6 +18,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private ItemType itemType;
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private bool gotKeyCard = false;
+    [SerializeField] private bool gotTicket = false;
     [field: SerializeField] public GameObject potencialEnemy { get; private set; }
 
     [Header("Interaction Settings")]
@@ -127,6 +128,10 @@ public class WorldInteractions : MonoBehaviour
         {
             switch (itemType)
             {
+                case ItemType.Ticket:
+                    Destroy(highLightObject);
+                    gotTicket = true;
+                    break;
                 case ItemType.Weapon:
                     Destroy(highLightObject);
                     body.SetActive(true);
