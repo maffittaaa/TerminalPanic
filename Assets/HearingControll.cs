@@ -49,6 +49,30 @@ public class HearingControl : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        PlayerMovement player = other.GetComponent<PlayerMovement>();
+
+        if (player != null)
+        {
+            if (player.behaviorType != BehaviorType.Crouching &&
+                (player.behaviorType == BehaviorType.Walking ||
+                 player.behaviorType == BehaviorType.Runing ||
+                 player.behaviorType == BehaviorType.Jumping))
+            {
+                MyTraveller.iHearPlayer = true;
+                Debug.Log("Player is making noise. iHearPlayer = true (OnTriggerStay)");
+            }
+            else
+            {
+                MyTraveller.iHearPlayer = false;
+                Debug.Log("Player is quiet or crouching. iHearPlayer = false (OnTriggerStay)");
+            }
+        }
+    }
+
+
+
     private void OnTriggerExit(Collider other)
     {
         PlayerMovement player = other.GetComponent<PlayerMovement>();
