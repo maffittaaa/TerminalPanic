@@ -62,18 +62,10 @@ public class HearingControl : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-
-        if (player != null || other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-
-            Debug.Log("Player exited the hearing zone");
-
-            if (player != null && player.behaviorType != BehaviorType.Crouching && (player.behaviorType == BehaviorType.Idleing || player.behaviorType == BehaviorType.Crouching))
-            {
-                Enemy.iHearPlayer = false;
-                Debug.Log("Player stopped moving or crouching, iHearPlayer = false");
-            }
+            Enemy.iHearPlayer = false;
+            Debug.Log("Player exited hearing zone. iHearPlayer = false");
         }
     }
 

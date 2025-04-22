@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public enum TravelerState
 {
     Waiting,
-    Chasing
+    Chasing,
+    Returning
 }
 
 public class TravelerAI : MonoBehaviour
@@ -16,9 +17,9 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private GameObject destination;
+    //[SerializeField] private GameObject destination;
  
-    private Transform spawnPoint;
+    public Vector3 spawnPoint;
 
     public static PlayerMovement player;
 
@@ -38,14 +39,30 @@ public class TravelerAI : MonoBehaviour
         if(player == null)
         {
             player = GameObject.FindFirstObjectByType<PlayerMovement>();
+            if (player == null)
+                Debug.LogWarning("TravelerAI: Player not found in scene.");
         }
         else
         {
             Debug.Log("Player is in.");
         }
 
-        spawnPoint = gameObject.transform;
-        //spawnPoint.position
+        if (agent == null)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            if (agent == null)
+                Debug.LogError("TravelerAI: No NavMeshAgent found on traveler.");
+        }
+
+
+        if (agent != null)
+        {
+            agent.speed = moveSpeed;
+            agent.acceleration = acceleration;
+            agent.angularSpeed = rotationSpeed * 100f;
+        }
+
+        spawnPoint = transform.position;
 
         SetState(TravelerState.Waiting);
     }
@@ -53,7 +70,9 @@ public class TravelerAI : MonoBehaviour
     void FixedUpdate()
     {
         //if the player is far enough go back to the spawnPoint
-        agent.SetDestination(destination.transform.position);
+        //agent.SetDestination(destination.transform.position);
+        if (agent == null || player == null)
+            return;
 
         HandleState();
     }
@@ -68,7 +87,7 @@ public class TravelerAI : MonoBehaviour
                 if (iSeePlayer)
                 {
                     SetState(TravelerState.Chasing);
-                    Debug.Log("Traveler sees the player ? chasing.");
+                    Debug.Log("Traveler sees the player -> chasing.");
                 }
 
                 else if (iHearPlayer)
@@ -76,7 +95,7 @@ public class TravelerAI : MonoBehaviour
                     if (player != null && player.behaviorType != BehaviorType.Crouching)
                     {
                         SetState(TravelerState.Chasing);
-                        Debug.Log("Traveler hears the player (not crouching) ? chasing.");
+                        Debug.Log("Traveler hears the player (not crouching) -> chasing.");
                     }
                 }
 
@@ -84,18 +103,25 @@ public class TravelerAI : MonoBehaviour
 
             case TravelerState.Chasing:
                 agent.isStopped = false;
-
-                if (player != null)
-                {
-                    destination.transform.position = player.transform.position;
-                    agent.SetDestination(destination.transform.position);
-                }
+                agent.SetDestination(player.transform.position);
 
                 float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
                 if (distanceToPlayer > 15f && !iSeePlayer && !iHearPlayer)
                 {
+                    SetState(TravelerState.Returning);
+                    Debug.Log("Player escaped → Returning to spawn.");
+                }
+                break;
+
+            case TravelerState.Returning:
+                agent.isStopped = false;
+                agent.SetDestination(spawnPoint);
+
+                float distanceToSpawn = Vector3.Distance(transform.position, spawnPoint);
+                if (distanceToSpawn < 0.5f)
+                {
                     SetState(TravelerState.Waiting);
+                    Debug.Log("Traveler returned to spawn → Waiting.");
                 }
                 break;
 
