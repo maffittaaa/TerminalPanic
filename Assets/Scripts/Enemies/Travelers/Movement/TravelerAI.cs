@@ -7,7 +7,8 @@ public enum TravelerState
 {
     Waiting,
     Chasing,
-    Returning
+    Returning,
+    Suspicious
 }
 
 public class TravelerAI : MonoBehaviour
@@ -17,7 +18,6 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private NavMeshAgent agent;
-    //[SerializeField] private GameObject destination;
  
     public Vector3 spawnPoint;
 
@@ -30,7 +30,14 @@ public class TravelerAI : MonoBehaviour
     public bool iHearPlayer;
     public bool iSeePlayer;
 
-
+    private Vector3 lastKnownPlayerPosition;
+    private float suspiciousWaitTime = 3f;
+    private float suspiciousTimer = 0f;
+    private float lookAroundDuration = 3f;
+    private float lookAroundTimer = 0f;
+    private float chaseMemoryTime = 5f;
+    private float chaseMemoryTimer = 0f;
+    private float maxChaseDistance = 15f;
 
 
 
@@ -69,10 +76,14 @@ public class TravelerAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        //if the player is far enough go back to the spawnPoint
-        //agent.SetDestination(destination.transform.position);
         if (agent == null || player == null)
             return;
+
+        if ((iHearPlayer || iSeePlayer) && currentState != TravelerState.Chasing)
+        {
+            SetState(TravelerState.Chasing);
+            return;
+        }
 
         HandleState();
     }
@@ -106,10 +117,24 @@ public class TravelerAI : MonoBehaviour
                 agent.SetDestination(player.transform.position);
 
                 float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-                if (distanceToPlayer > 15f && !iSeePlayer && !iHearPlayer)
+                if (iSeePlayer || iHearPlayer)
                 {
-                    SetState(TravelerState.Returning);
-                    Debug.Log("Player escaped → Returning to spawn.");
+                    chaseMemoryTimer = 0f;
+                }
+                else
+                {
+                    chaseMemoryTimer += Time.deltaTime;
+
+                    if (distanceToPlayer < maxChaseDistance && chaseMemoryTimer < chaseMemoryTime)
+                    {
+                        agent.SetDestination(player.transform.position);
+                    }
+                    else
+                    {
+                        lastKnownPlayerPosition = player.transform.position;
+                        SetState(TravelerState.Suspicious);
+                        Debug.Log("Chase lost -> Entering Suspicious state.");
+                    }
                 }
                 break;
 
@@ -125,6 +150,35 @@ public class TravelerAI : MonoBehaviour
                 }
                 break;
 
+            case TravelerState.Suspicious:
+                agent.isStopped = false;
+                agent.SetDestination(lastKnownPlayerPosition);
+
+                float distanceToLastKnown = Vector3.Distance(transform.position, lastKnownPlayerPosition);
+
+                if (distanceToLastKnown < 1f)
+                {
+                    agent.isStopped = true;
+                    lookAroundTimer += Time.deltaTime;
+
+                    float angle = Mathf.PingPong(Time.time * rotationSpeed * 20f, 90f) - 45f;
+                    transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y + angle * Time.deltaTime, 0);
+
+                    if (iSeePlayer || iHearPlayer)
+                    {
+                        SetState(TravelerState.Chasing);
+                        Debug.Log("Player seen/heard during Suspicious → Chasing.");
+                    }
+                    else if (lookAroundTimer >= lookAroundDuration)
+                    {
+                        lookAroundTimer = 0f;
+                        SetState(TravelerState.Returning);
+                        Debug.Log("Finished looking around → Returning to spawn.");
+                    }
+                }
+                break;
+
+
         }
     }
 
@@ -132,6 +186,13 @@ public class TravelerAI : MonoBehaviour
     public void SetState(TravelerState newState)
     {
         currentState = newState;
+
+        if (newState == TravelerState.Suspicious)
+        {
+            suspiciousTimer = 0f;
+            lookAroundTimer = 0f;
+        }
+
         Debug.Log($"Traveler state changed to: {newState}");
     }
 
