@@ -17,6 +17,10 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float minChaseSpeed = 1.5f;
+    [SerializeField] private float maxChaseSpeed = 5f;
+    [SerializeField] private float slowdownDistance = 7f;
+
     [SerializeField] private NavMeshAgent agent;
  
     public Vector3 spawnPoint;
@@ -94,6 +98,7 @@ public class TravelerAI : MonoBehaviour
         {
             case TravelerState.Waiting:
                 agent.isStopped = true;
+                agent.speed = maxChaseSpeed;
 
                 if (iSeePlayer)
                 {
@@ -114,9 +119,14 @@ public class TravelerAI : MonoBehaviour
 
             case TravelerState.Chasing:
                 agent.isStopped = false;
-                agent.SetDestination(player.transform.position);
 
                 float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+                float speedFactor = Mathf.Clamp01(distanceToPlayer / slowdownDistance);
+                agent.speed = Mathf.Lerp(minChaseSpeed, maxChaseSpeed, speedFactor);
+
+                agent.SetDestination(player.transform.position);
+
                 if (iSeePlayer || iHearPlayer)
                 {
                     chaseMemoryTimer = 0f;
@@ -140,6 +150,8 @@ public class TravelerAI : MonoBehaviour
 
             case TravelerState.Returning:
                 agent.isStopped = false;
+                agent.speed = maxChaseSpeed;
+
                 agent.SetDestination(spawnPoint);
 
                 float distanceToSpawn = Vector3.Distance(transform.position, spawnPoint);
@@ -152,6 +164,8 @@ public class TravelerAI : MonoBehaviour
 
             case TravelerState.Suspicious:
                 agent.isStopped = false;
+                agent.speed = maxChaseSpeed;
+
                 agent.SetDestination(lastKnownPlayerPosition);
 
                 float distanceToLastKnown = Vector3.Distance(transform.position, lastKnownPlayerPosition);
