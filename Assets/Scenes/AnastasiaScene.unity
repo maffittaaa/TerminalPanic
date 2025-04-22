@@ -651,6 +651,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3305785852537821137, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1946903292}
+    - targetCorrespondingSourceObject: {fileID: 526015840641038048, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -1258,6 +1261,10 @@ PrefabInstance:
       value: SightZone
       objectReference: {fileID: 0}
     - target: {fileID: 1097358167278823696, guid: fd83029ceb231455ea99fb968046a575, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 1349030131}
+    - target: {fileID: 1097358167278823696, guid: fd83029ceb231455ea99fb968046a575, type: 3}
       propertyPath: MyTraveller
       value: 
       objectReference: {fileID: 1349030131}
@@ -1329,6 +1336,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8790361807859859862, guid: fd83029ceb231455ea99fb968046a575, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 1349030131}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

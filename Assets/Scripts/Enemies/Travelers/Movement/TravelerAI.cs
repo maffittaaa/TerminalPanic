@@ -20,9 +20,6 @@ public class TravelerAI : MonoBehaviour
  
     private Transform spawnPoint;
 
-
-    //public GameObject SightZone;
-    //public GameObject HearingZone;
     public static PlayerMovement player;
 
 
@@ -55,10 +52,6 @@ public class TravelerAI : MonoBehaviour
 
     void FixedUpdate()
     {
-        //add a variable for the collider
-        //be on waiting mode
-        //check if the player collided with that collider
-        //if it did change to chase mode
         //if the player is far enough go back to the spawnPoint
         agent.SetDestination(destination.transform.position);
 

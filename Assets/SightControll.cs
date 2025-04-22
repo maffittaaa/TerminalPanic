@@ -5,26 +5,14 @@ using UnityEngine;
 public class SightControl : MonoBehaviour
 {
 
-    public TravelerAI MyTraveller;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    public TravelerAI Enemy;
 
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
         {
-            MyTraveller.iSeePlayer = true;
+            Enemy.iSeePlayer = true;
         }
     }
 
@@ -34,7 +22,7 @@ public class SightControl : MonoBehaviour
 
         if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
         {
-            MyTraveller.iSeePlayer = false;
+            Enemy.iSeePlayer = false;
         }
         
     }

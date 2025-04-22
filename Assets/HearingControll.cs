@@ -5,21 +5,8 @@ using UnityEngine;
 public class HearingControl : MonoBehaviour
 {
 
-    public TravelerAI MyTraveller;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-
+    public TravelerAI Enemy;
+    
     private void OnTriggerEnter(Collider other)
     {
 
@@ -37,12 +24,12 @@ public class HearingControl : MonoBehaviour
                     (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
 
                 {
-                    MyTraveller.iHearPlayer = true;
+                    Enemy.iHearPlayer = true;
                     Debug.Log("Player is moving and making noise. iHearPlayer = true");
                 }
                 else
                 {
-                    MyTraveller.iHearPlayer = false; 
+                    Enemy.iHearPlayer = false; 
                     Debug.Log("Player is crouching or idle. iHearPlayer = false");
                 }
             }
@@ -60,12 +47,12 @@ public class HearingControl : MonoBehaviour
                  player.behaviorType == BehaviorType.Runing ||
                  player.behaviorType == BehaviorType.Jumping))
             {
-                MyTraveller.iHearPlayer = true;
+                Enemy.iHearPlayer = true;
                 Debug.Log("Player is making noise. iHearPlayer = true (OnTriggerStay)");
             }
             else
             {
-                MyTraveller.iHearPlayer = false;
+                Enemy.iHearPlayer = false;
                 Debug.Log("Player is quiet or crouching. iHearPlayer = false (OnTriggerStay)");
             }
         }
@@ -84,7 +71,7 @@ public class HearingControl : MonoBehaviour
 
             if (player != null && player.behaviorType != BehaviorType.Crouching && (player.behaviorType == BehaviorType.Idleing || player.behaviorType == BehaviorType.Crouching))
             {
-                MyTraveller.iHearPlayer = false;
+                Enemy.iHearPlayer = false;
                 Debug.Log("Player stopped moving or crouching, iHearPlayer = false");
             }
         }
