@@ -19,7 +19,7 @@ public class IdentifyingThief : MonoBehaviour
     
     private void Awake()
     {
-        thief = Instantiate(thief, new Vector3(0, 0, 0), Quaternion.identity); //instantiate the thief into the world
+        thief = Instantiate(thief, new Vector3(0, 19.10258f, 0), Quaternion.identity); //instantiate the thief into the world
         hintsForThief = thief.GetComponent<ClothesAndColors>(); //add the hint finder component
         
         clothesAndAccessoriesNumber = Random.Range(3, 5);

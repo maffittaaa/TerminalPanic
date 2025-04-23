@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5165912803599498158}
+  - component: {fileID: 2690324739121114770}
   - component: {fileID: 5915723919768458068}
   m_Layer: 0
   m_Name: HearingRadius
@@ -26,12 +27,33 @@ Transform:
   m_GameObject: {fileID: 357476229810200801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 3.497554, y: 3.497554, z: 3.497554}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095309635609945819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2690324739121114770
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357476229810200801}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5915723919768458068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171c8b4eb636549cc90fac7aeb8f813c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 0}
+  enemy: {fileID: 0}
 --- !u!1 &2184176344453078842
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +78,7 @@ GameObject:
   - component: {fileID: 1095309635609945819}
   - component: {fileID: 1566938181192383099}
   - component: {fileID: 9019156862135223219}
+  - component: {fileID: 5448424393328647405}
   m_Layer: 0
   m_Name: Thief
   m_TagString: Untagged
@@ -72,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 2184176344453078842}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -62, y: 1, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -108,19 +131,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  movementSpeed: 5
-  rotationSpeed: 5
-  accuracy: 3
+  movementSpeed: 1
+  rotationSpeed: 10
+  accuracy: 1
   hearingZone: {fileID: 5915723919768458068}
   sightZone: {fileID: 5933225100548735250}
+  iHearPlayer: 0
+  iSeePlayer: 0
+  randomPositionsToGo: []
   player: {fileID: 0}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
+--- !u!54 &5448424393328647405
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184176344453078842}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &3163700768933636131
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443221812571831922}
   - component: {fileID: 5933225100548735250}
+  - component: {fileID: 4118187489593573054}
   m_Layer: 0
   m_Name: SightRadius
   m_TagString: Untagged
@@ -147,8 +195,8 @@ Transform:
   m_GameObject: {fileID: 3163700768933636131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 6.6104097, y: 6.6104097, z: 6.6104097}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1095309635609945819}
@@ -165,7 +213,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401d94363990d4c2994de6ffd1c95368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 0}
+  enemy: {fileID: 0}
+--- !u!135 &4118187489593573054
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163700768933636131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6864462475818495053
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 6864462475818495053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
