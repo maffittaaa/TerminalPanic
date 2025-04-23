@@ -12,12 +12,12 @@ public class HeadBob : MonoBehaviour
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private PlayerMovement playerMovementScript;
     [SerializeField] private AnxietyBar anxietyBar;
-    [SerializeField] private float newPosition;
+    [SerializeField] private Vector3 newPosition;
     [SerializeField] private float time;
 
     private void Start()
     {
-        newPosition = viewPoint.transform.position.y;
+        newPosition = viewPoint.transform.position;
         time = 0f;
     }
 
@@ -45,8 +45,9 @@ public class HeadBob : MonoBehaviour
             {
                 time = 0f;
 
-                newPosition = Mathf.Lerp(transform.position.y, viewPoint.transform.position.y, Time.fixedDeltaTime * speed);
-                transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
+                newPosition.y = Mathf.Lerp(transform.position.y, viewPoint.transform.position.y, Time.fixedDeltaTime * speed);
+                newPosition.z = Mathf.Lerp(transform.position.z, viewPoint.transform.position.z, Time.fixedDeltaTime * speed);
+                transform.position = new Vector3(viewPoint.transform.position.x, newPosition.y, newPosition.z);
             }
         }
     }
@@ -54,7 +55,8 @@ public class HeadBob : MonoBehaviour
     private void DetorEffect()
     {
         time += Time.fixedDeltaTime;
-        newPosition = Mathf.Lerp(newPosition, viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed), Time.fixedDeltaTime * speed);
-        transform.position = new Vector3(viewPoint.transform.position.x, newPosition, viewPoint.transform.position.z);
+        newPosition.y = Mathf.Lerp(newPosition.y, viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed), Time.fixedDeltaTime * speed);
+        newPosition.z = Mathf.Lerp(newPosition.z, viewPoint.transform.position.z + headDetor * Mathf.Cos(time * speed), Time.fixedDeltaTime * speed);
+        transform.position = new Vector3(viewPoint.transform.position.x, newPosition.y, newPosition.z);
     }
 }
