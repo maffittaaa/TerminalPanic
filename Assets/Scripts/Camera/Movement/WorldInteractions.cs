@@ -172,11 +172,12 @@ public class WorldInteractions : MonoBehaviour
 
     private void ChangeCameraView()
     {
-        Vector3 mirrorAngle = mirror.transform.forward;
-        transform.rotation = Quaternion.LookRotation(new Vector3(mirrorAngle.x, transform.forward.y, transform.forward.z));
-        transform.parent.rotation = Quaternion.LookRotation(new Vector3(transform.parent.forward.x, Mathf.Lerp(transform.parent.forward.y, mirrorAngle.y, Time.deltaTime * lookToMirrorSpeed), transform.parent.forward.z));
-        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), Time.deltaTime * lookToMirrorSpeed);
-        //transform.parent.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(new Vector3(0, mirrorAngle, 0)), Time.deltaTime * lookToMirrorSpeed);
+        Vector3 parentRotation = mirror.transform.rotation.eulerAngles;
+
+        parentRotation.x = parentRotation.z = 0;
+
+        transform.parent.rotation = Quaternion.Euler(parentRotation);
+        transform.localRotation = Quaternion.identity;
     }
 
     private IEnumerator OpenDoor()
