@@ -20,6 +20,9 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float minChaseSpeed = 1.5f;
     [SerializeField] private float maxChaseSpeed = 5f;
     [SerializeField] private float slowdownDistance = 7f;
+    [SerializeField] private float detectionDelay = 1f;
+
+    private float detectionDelayTimer;
 
     [SerializeField] private NavMeshAgent agent;
  
@@ -74,6 +77,10 @@ public class TravelerAI : MonoBehaviour
         }
 
         spawnPoint = transform.position;
+        detectionDelayTimer = detectionDelay;
+
+        iSeePlayer = false;
+        iHearPlayer = false;
 
         SetState(TravelerState.Waiting);
     }
@@ -82,6 +89,12 @@ public class TravelerAI : MonoBehaviour
     {
         if (agent == null || player == null)
             return;
+
+        if (detectionDelayTimer > 0f)
+        {
+            detectionDelayTimer -= Time.deltaTime;
+            return;
+        }
 
         if ((iHearPlayer || iSeePlayer) && currentState != TravelerState.Chasing)
         {
