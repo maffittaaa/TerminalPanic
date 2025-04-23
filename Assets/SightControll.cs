@@ -5,14 +5,18 @@ using UnityEngine;
 public class SightControl : MonoBehaviour
 {
 
-    public TravelerAI Enemy;
+    public ThiefBehavior enemy;
 
+    private void Start()
+    {
+        enemy = FindObjectOfType<ThiefBehavior>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
         {
-            Enemy.iSeePlayer = true;
+            enemy.iSeePlayer = true;
         }
     }
 
@@ -22,7 +26,7 @@ public class SightControl : MonoBehaviour
 
         if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
         {
-            Enemy.iSeePlayer = false;
+            enemy.iSeePlayer = false;
         }
         
     }

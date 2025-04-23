@@ -10,6 +10,7 @@ TagManager:
   - Obstacle
   - AudioManager
   - InteractText
+  - Waypoint
   layers:
   - Default
   - TransparentFX

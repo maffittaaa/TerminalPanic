@@ -13,6 +13,7 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
     [SerializeField] private IdentifyingThief identifyingThief;
     private int maxNumberOfPeople = 10;
     private ClothesAndColors clothesAndColors;
+
     private int clothesNumber;
 
     private void Start()
