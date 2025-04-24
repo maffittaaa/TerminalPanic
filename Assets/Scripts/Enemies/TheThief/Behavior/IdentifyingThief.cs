@@ -16,10 +16,12 @@ public class IdentifyingThief : MonoBehaviour
     private int currentPeopleToNextClue = 0;
     private int clothesAndAccessoriesNumber;
     [SerializeField] private float distanceToEnemy;
+    private Vector3 thiefPosition;
     
     private void Awake()
     {
-        thief = Instantiate(thief, new Vector3(0, 19.10258f, 0), Quaternion.identity); //instantiate the thief into the world
+        thiefPosition = new Vector3(Random.Range(0, -109f), 19.10258f, Random.Range(-3f, 69f));
+        thief = Instantiate(thief, thiefPosition, Quaternion.identity); //instantiate the thief into the world
         hintsForThief = thief.GetComponent<ClothesAndColors>(); //add the hint finder component
         
         clothesAndAccessoriesNumber = Random.Range(3, 5);
