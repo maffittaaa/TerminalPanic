@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5165912803599498158}
   - component: {fileID: 2690324739121114770}
-  - component: {fileID: 5915723919768458068}
+  - component: {fileID: 1805981106054111657}
   m_Layer: 0
   m_Name: HearingRadius
   m_TagString: Untagged
@@ -54,7 +54,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5915723919768458068
+--- !u!114 &1805981106054111657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,10 +63,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 357476229810200801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 171c8b4eb636549cc90fac7aeb8f813c, type: 3}
+  m_Script: {fileID: 11500000, guid: 41dd78eb0b2c26449b2751343fd34cec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
+  thief: {fileID: 0}
 --- !u!1 &2184176344453078842
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,8 +134,8 @@ MonoBehaviour:
   movementSpeed: 1
   rotationSpeed: 10
   accuracy: 1
-  hearingZone: {fileID: 5915723919768458068}
-  sightZone: {fileID: 5933225100548735250}
+  hearingZone: {fileID: 0}
+  sightZone: {fileID: 0}
   iHearPlayer: 0
   iSeePlayer: 0
   randomPositionsToGo: []
@@ -177,8 +177,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1443221812571831922}
-  - component: {fileID: 5933225100548735250}
   - component: {fileID: 4118187489593573054}
+  - component: {fileID: 503533119397918096}
   m_Layer: 0
   m_Name: SightRadius
   m_TagString: Untagged
@@ -201,19 +201,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1095309635609945819}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5933225100548735250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163700768933636131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 401d94363990d4c2994de6ffd1c95368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
 --- !u!135 &4118187489593573054
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -235,6 +222,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &503533119397918096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163700768933636131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab1e481e173e414aa7ae0d5247daadd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thief: {fileID: 0}
 --- !u!1 &6864462475818495053
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,30 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SightControl : MonoBehaviour
+public class ThiefSightControl : MonoBehaviour
 {
-    public TravelerAI traveler;
+    public ThiefBehavior thief;
 
     private void Start()
     {
-        traveler = FindObjectOfType<TravelerAI>();
+        thief = FindObjectOfType<ThiefBehavior>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
-        {
-            traveler.iSeePlayer = true;
-        }
+            thief.iSeePlayer = true;
     }
-    
+
+
     private void OnTriggerExit(Collider other)
     {
 
         if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
-        {
-            traveler.iSeePlayer = false;
-        }
-        
+            thief.iSeePlayer = false;
     }
 }

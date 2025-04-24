@@ -22,8 +22,8 @@ public class ThiefBehavior : MonoBehaviour
     [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float accuracy = 1f;
-    [SerializeField] private HearingControl hearingZone;
-    [SerializeField] private SightControl sightZone;
+    [SerializeField] private ThiefHearingControl hearingZone;
+    [SerializeField] private ThiefSightControl sightZone;
     public bool iHearPlayer;
     public bool iSeePlayer;
     
@@ -42,8 +42,8 @@ public class ThiefBehavior : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
-        hearingZone = GetComponentInChildren<HearingControl>();
-        sightZone = GetComponentInChildren<SightControl>();
+        hearingZone = GetComponentInChildren<ThiefHearingControl>();
+        sightZone = GetComponentInChildren<ThiefSightControl>();
         rb = GetComponent<Rigidbody>();
 
        GameObject[] tempWaypoints = GameObject.FindGameObjectsWithTag("Waypoint");

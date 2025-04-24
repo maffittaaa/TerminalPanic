@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class HearingControl : MonoBehaviour
 {
-
-    public ThiefBehavior enemy;
+    public TravelerAI traveler;
 
     private void Start()
     {
-        enemy = FindObjectOfType<ThiefBehavior>();
+        traveler = FindObjectOfType<TravelerAI>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,12 +29,12 @@ public class HearingControl : MonoBehaviour
                     (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
 
                 {
-                    enemy.iHearPlayer = true;
+                    traveler.iHearPlayer = true;
                     Debug.Log("Player is moving and making noise. iHearPlayer = true");
                 }
                 else
                 {
-                    enemy.iHearPlayer = false; 
+                    traveler.iHearPlayer = false; 
                     Debug.Log("Player is crouching or idle. iHearPlayer = false");
                 }
             }
@@ -53,12 +52,12 @@ public class HearingControl : MonoBehaviour
                  player.behaviorType == BehaviorType.Runing ||
                  player.behaviorType == BehaviorType.Jumping))
             {
-                enemy.iHearPlayer = true;
+                traveler.iHearPlayer = true;
                 Debug.Log("Player is making noise. iHearPlayer = true (OnTriggerStay)");
             }
             else
             {
-                enemy.iHearPlayer = false;
+                traveler.iHearPlayer = false;
                 Debug.Log("Player is quiet or crouching. iHearPlayer = false (OnTriggerStay)");
             }
         }
@@ -70,10 +69,8 @@ public class HearingControl : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            enemy.iHearPlayer = false;
+            traveler.iHearPlayer = false;
             Debug.Log("Player exited hearing zone. iHearPlayer = false");
         }
     }
-
-
 }
