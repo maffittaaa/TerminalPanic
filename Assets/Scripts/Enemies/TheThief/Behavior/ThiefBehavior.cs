@@ -16,6 +16,7 @@ public class ThiefBehavior : MonoBehaviour
 {
     [field: Header("Thief")]
     [SerializeField] private ThiefState currentState;
+    [SerializeField] private ThiefAStar thiefAStar;
     private Vector3 currentPosition;
     private float nextPositionX;
     private float nextPositionZ;
@@ -77,6 +78,12 @@ public class ThiefBehavior : MonoBehaviour
         UpdateState();
     }
 
+    private void FixedUpdate()
+    {
+        if (ThiefState.Fleeing == currentState)
+            thiefAStar.MoveAlongPath();
+    }
+
     private void UpdateState()
     {
         switch (currentState)
@@ -112,6 +119,7 @@ public class ThiefBehavior : MonoBehaviour
                 currentWaypoint = wp;
             }
         }
+        thiefAStar.SetWaypointAndGo(currentWaypoint);
     }
 
     private void IdleState()
@@ -127,11 +135,7 @@ public class ThiefBehavior : MonoBehaviour
 
     private void FleeingState()
     {
-        Quaternion lookRotation = Quaternion.LookRotation(currentWaypoint.transform.position - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, lookRotation.y, 0)), Time.deltaTime * rotationSpeed);
-        Vector3 direction = currentWaypoint.transform.position - transform.position;
-        direction = direction.normalized * movementSpeed;
-        rb.AddForce(direction, ForceMode.Impulse);
+
                 
         if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < accuracy) //if thief reaches waypoint, stays hidden
             StartState(ThiefState.Hiding);
@@ -145,7 +149,6 @@ public class ThiefBehavior : MonoBehaviour
     private IEnumerator WaitingToGoBack()
     {
         yield return new WaitUntil(() => Vector3.Distance(currentWaypoint.transform.position, transform.position) < accuracy);
-        Debug.Log("Hello");
         if (!iSeePlayer)
         {
             //randomize the next position that the thief will be

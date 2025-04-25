@@ -4,9 +4,10 @@ using UnityEngine;
 public class ThiefAStar : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private int currentTargetIndex;
+    [SerializeField] private float accuracy = 1f;
+    private int currentTargetIndex;
     [SerializeField] private float tileSize;
-    [SerializeField] private TileMapTile player;
+    [SerializeField] private TileMapTile waypointToGo;
 
     public GameObject currentTile;
     public GameObject waypointTile;
@@ -14,6 +15,8 @@ public class ThiefAStar : MonoBehaviour
     Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
 
     List<GameObject> path = new List<GameObject>();
+    
+    [SerializeField] private Rigidbody rb;
 
     Vector3 RoundPosition(Vector3 pos, float gridSize = 1.0f)
     {
@@ -24,11 +27,8 @@ public class ThiefAStar : MonoBehaviour
         );
     }
     
-
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<TileMapTile>();
-
         GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
 
         foreach (GameObject floor in floors)
@@ -36,15 +36,12 @@ public class ThiefAStar : MonoBehaviour
             Vector3 roundedPos = RoundPosition(floor.transform.position, 1.0f);
             floorTiles[roundedPos] = floor;
         }
-
-        SetCurrentTile();
-        player.tileChanged.AddListener(AStarPathFinding);
     }
 
     private void AStarPathFinding()
     {
         ClearPath();
-        waypointTile = player.currentTile;
+        waypointTile = waypointToGo.currentTile;
         SetCurrentTile();
         Dictionary<GameObject, GameObject> cameFrom = new Dictionary<GameObject, GameObject>();
         Dictionary<GameObject, float> costSoFar = new Dictionary<GameObject, float>();
@@ -57,11 +54,8 @@ public class ThiefAStar : MonoBehaviour
         {
             GameObject current = priorityQueue.Dequeue();
 
-            //Debug.Log("CURRENT = " + current.name);
-
             if (GameObject.ReferenceEquals(current, waypointTile))
             {
-                //Debug.Log("Path Found!");
                 ReconstructPath(cameFrom, waypointTile);
                 return;
             }
@@ -82,25 +76,19 @@ public class ThiefAStar : MonoBehaviour
             }
         }
 
-        //Debug.Log("No path found!");
+        Debug.Log("No path found!");
     }
 
     private void SetCurrentTile()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, transform.localScale.y, LayerMask.GetMask("AITilemap")))
-        {
+        if (Physics.Raycast(transform.position, new Vector3(0, -1, 0), out hit, 10, LayerMask.GetMask("AITilemap")))
             currentTile = hit.collider.gameObject;
-        }
     }
 
 
     private void ClearPath()
     {
-        foreach (GameObject tile in path)
-        {
-            //tile.GetComponent<Renderer>().material.color = Color.white;
-        }
         currentTargetIndex = 1;
         path.Clear();
     }
@@ -110,11 +98,7 @@ public class ThiefAStar : MonoBehaviour
         int cost = 0;
 
         if (tile != null) 
-        {
             cost = 1;
-//            tile.GetComponent<Renderer>().material.color = Color.white;
-        }
-
         return cost;
     }
 
@@ -123,10 +107,7 @@ public class ThiefAStar : MonoBehaviour
         float heuristics = 0;
 
         if (currentTile != null) 
-        {
             heuristics = new Vector2(waypointTile.transform.position.x - currentTile.transform.position.x, waypointTile.transform.position.z - currentTile.transform.position.z).magnitude;
-        }
-
         return heuristics;
     }
 
@@ -134,17 +115,16 @@ public class ThiefAStar : MonoBehaviour
     {
         List<GameObject> neighbors = new List<GameObject>();
         Vector3 pos = RoundPosition(floorTile.transform.position, 1.0f);
-
-        // Possible movement directions (now including up/down variations)
+        
         Vector3[] directions = new Vector3[]
         {
-            new Vector3(0, 0, tileSize),  // Forward
-            new Vector3(0, 0, -tileSize), // Backward
-            new Vector3(tileSize, 0, 0),  // Right
-            new Vector3(-tileSize, 0, 0), // Left
+            new Vector3(0, 0, tileSize),
+            new Vector3(0, 0, -tileSize),
+            new Vector3(tileSize, 0, 0),
+            new Vector3(-tileSize, 0, 0),
         };
 
-        float yTolerance = 2f; // Maximum allowed height difference
+        float yTolerance = 2f;
 
         foreach (Vector3 dir in directions)
         {
@@ -155,9 +135,7 @@ public class ThiefAStar : MonoBehaviour
                 GameObject neighbor = floorTiles[neighborPos];
 
                 if (Mathf.Abs(neighbor.transform.position.y - pos.y) <= yTolerance)
-                {
                     neighbors.Add(neighbor);
-                }
             }
             else
             {
@@ -184,42 +162,45 @@ public class ThiefAStar : MonoBehaviour
             current = cameFrom[current]; 
         }
 
-        path.Reverse(); // Reverse to get start -> goal order
+        path.Reverse();
         
-        //Debug.Log("Path Length: " + path.Count);
-/*        foreach (GameObject tile in path)
-        {
-            tile.GetComponent<Renderer>().material.color = Color.red; 
-        }*/
+        // Debug.Log("Path Length: " + path.Count);
+        // foreach (GameObject tile in path)
+        // {
+        //     tile.GetComponent<Renderer>().material.color = Color.red; 
+        // }
     }
 
-    private void MoveAlongPath()
+    public void MoveAlongPath()
     {
-        if (currentTargetIndex >= path.Count) return;
-
         // Get target tile position
         Vector3 targetPos = path[currentTargetIndex].transform.position;
+
+        if (currentTargetIndex >= path.Count)
+        {
+            targetPos = waypointToGo.transform.position;
+            if (Vector3.Distance(transform.position, targetPos) < accuracy)
+                return;
+        }
+
         targetPos.y = transform.parent.position.y;
 
-        Vector3 direction = (player.transform.position - transform.parent.position).normalized;
+        Vector3 direction = (targetPos - transform.parent.position).normalized;
+        
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+        transform.parent.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, lookRotation.y, 0)), Time.deltaTime * speed);
+        rb.velocity = direction * speed;
 
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, targetRotation, 10 * Time.deltaTime);
-        transform.parent.position = Vector3.MoveTowards(transform.parent.position, targetPos, speed * Time.deltaTime);
-
-        if (Vector3.Distance(transform.position, targetPos) < tileSize)
-        {
+        if (Vector3.Distance(transform.position, targetPos) < accuracy)
             currentTargetIndex++;
-        }
         Debug.DrawRay(transform.position, targetPos, Color.magenta, tileSize / 2);
     }
 
-    void FixedUpdate()
+    public void SetWaypointAndGo(GameObject waypoint)
     {
-        if (currentTile && waypointTile)
-        {
-            MoveAlongPath();
-        }
+        waypointToGo = waypoint.GetComponent<TileMapTile>();
+        SetCurrentTile();
+        AStarPathFinding();
     }
 }
 
