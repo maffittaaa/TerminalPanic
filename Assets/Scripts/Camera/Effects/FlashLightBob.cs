@@ -31,28 +31,31 @@ public class FlashLightBob : MonoBehaviour
 
         if (!anxietyBar.interacted)
         {
-            if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
-            {
-                if (playerMovementScript.CurrentType() == BehaviorType.Crouching && speed != crouchSpeed)
-                {
-                    speed = crouchSpeed;
-                }
-                else if (playerMovementScript.CurrentType() == BehaviorType.Runing && speed != runSpeed)
-                {
-                    speed = runSpeed;
-                }
-                else if (playerMovementScript.CurrentType() == BehaviorType.Walking && speed != walkSpeed)
-                {
-                    speed = walkSpeed;
-                }
-                DetorEffect();
-            }
-            else
+            if (playerMovementScript.KeysRealeased())
             {
                 time = 0f;
                 newPosition.y = Mathf.Lerp(transform.position.y, currentInitialPosition.y, Time.fixedDeltaTime * speed);
                 transform.position = new Vector3(currentInitialPosition.x, newPosition.y, currentInitialPosition.z);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * 10);
+                transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
+            }
+            else
+            {
+                if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
+                {
+                    if (playerMovementScript.CurrentType() == BehaviorType.Crouching && speed != crouchSpeed)
+                    {
+                        speed = crouchSpeed;
+                    }
+                    else if (playerMovementScript.CurrentType() == BehaviorType.Runing && speed != runSpeed)
+                    {
+                        speed = runSpeed;
+                    }
+                    else if (playerMovementScript.CurrentType() == BehaviorType.Walking && speed != walkSpeed)
+                    {
+                        speed = walkSpeed;
+                    }
+                    DetorEffect();
+                }
             }
         }
     }
@@ -62,6 +65,6 @@ public class FlashLightBob : MonoBehaviour
         time += Time.fixedDeltaTime;
         newPosition.y = Mathf.Lerp(newPosition.y, currentInitialPosition.y + headDetor * Mathf.Sin(time * speed), Time.fixedDeltaTime * speed);
         transform.position = new Vector3(currentInitialPosition.x, newPosition.y, currentInitialPosition.z);
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(15, 0, 0), Time.fixedDeltaTime * speed);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(15, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
     }
 }

@@ -87,9 +87,17 @@ public class PlayerMovement : MonoBehaviour
                 audioManager.runPlayer.Stop();
                 audioManager.crouchPlayer.Stop();
                 audioManager.walkPlayer.Stop();
-                //audioManager.stopPlayer.Play();
             }
         }
+    }
+
+    public bool KeysRealeased()
+    {
+        if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            return true;
+        }
+        return false;
     }
 
     private void Movement()
