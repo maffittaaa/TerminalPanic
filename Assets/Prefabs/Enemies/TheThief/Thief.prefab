@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 1566938181192383099}
   - component: {fileID: 9019156862135223219}
   - component: {fileID: 5448424393328647405}
-  - component: {fileID: 1041720113037109336}
+  - component: {fileID: 2171717483999284760}
   m_Layer: 0
   m_Name: Thief
   m_TagString: Untagged
@@ -169,7 +169,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1041720113037109336
+--- !u!114 &2171717483999284760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,12 +178,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2184176344453078842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afef5b574ae0eba448e72b3d43a6d477, type: 3}
+  m_Script: {fileID: 11500000, guid: f55f112b84016e743bcc1a5bb432dd87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 0}
-  finish: {fileID: 0}
-  label: {fileID: 0}
+  speed: 5
+  currentTargetIndex: 0
+  tileSize: 4
+  player: {fileID: 0}
+  currentTile: {fileID: 0}
+  playerTile: {fileID: 0}
 --- !u!1 &3163700768933636131
 GameObject:
   m_ObjectHideFlags: 0
