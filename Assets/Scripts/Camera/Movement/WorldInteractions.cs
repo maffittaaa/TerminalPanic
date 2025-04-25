@@ -38,7 +38,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float doorCloseSpeed;
     [SerializeField] private float doorCloseAddAngle;
     [SerializeField] private float time = 0f;
-    private bool doorOpeningClosing = false;
+    public bool doorOpeningClosing = false;
 
     [Header("FlashLight")]
     [SerializeField] private GameObject shootingPoint;

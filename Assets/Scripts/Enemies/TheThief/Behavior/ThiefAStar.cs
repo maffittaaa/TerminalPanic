@@ -8,6 +8,7 @@ public class ThiefAStar : MonoBehaviour
     private int currentTargetIndex;
     [SerializeField] private float tileSize;
     [SerializeField] private TileMapTile waypointToGo;
+    [SerializeField] private TileMapTile positionToGo;
 
     public GameObject currentTile;
     public GameObject waypointTile;

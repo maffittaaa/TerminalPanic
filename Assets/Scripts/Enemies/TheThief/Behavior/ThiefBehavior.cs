@@ -18,7 +18,7 @@ public class ThiefBehavior : MonoBehaviour
     [SerializeField] private ThiefState currentState;
     [SerializeField] private ThiefAStar thiefAStar;
     private Vector3 currentPosition;
-    private float nextPositionX;
+    private Vector3 nextPosition;
     private float nextPositionZ;
     [SerializeField] private float movementSpeed = 1f;
     [SerializeField] private float rotationSpeed = 10f;
@@ -135,8 +135,6 @@ public class ThiefBehavior : MonoBehaviour
 
     private void FleeingState()
     {
-
-                
         if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < accuracy) //if thief reaches waypoint, stays hidden
             StartState(ThiefState.Hiding);
     }
@@ -151,11 +149,16 @@ public class ThiefBehavior : MonoBehaviour
         yield return new WaitUntil(() => Vector3.Distance(currentWaypoint.transform.position, transform.position) < accuracy);
         if (!iSeePlayer)
         {
-            //randomize the next position that the thief will be
-            nextPositionX = Random.Range(randomPositionsToGo[0].transform.position.x, randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.x);
-            nextPositionZ = Random.Range(randomPositionsToGo[0].transform.position.z, randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.z);
-            currentPosition = new Vector3(nextPositionX, currentPosition.y, nextPositionZ);
-            rb.AddForce(currentPosition * movementSpeed, ForceMode.Impulse);
+            float y = transform.position.y;
+            float minX = randomPositionsToGo[0].transform.position.x;
+            float maxX = randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.x;
+            float minZ = randomPositionsToGo[0].transform.position.z;
+            float maxZ = randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.z;
+            
+            //randomize the next position that the thief needs to go to blend
+            nextPosition = new Vector3(Random.Range(minX, maxX), y, Random.Range(minZ, maxZ));
+            currentPosition = nextPosition;
+            thiefAStar.MoveAlongPath();
         }
     }
 }
