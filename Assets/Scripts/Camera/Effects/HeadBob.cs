@@ -46,8 +46,8 @@ public class HeadBob : MonoBehaviour
                 time = 0f;
 
                 newPosition.y = Mathf.Lerp(transform.position.y, viewPoint.transform.position.y, Time.fixedDeltaTime * speed);
-                newPosition.z = Mathf.Lerp(transform.position.z, viewPoint.transform.position.z, Time.fixedDeltaTime * speed);
-                transform.position = new Vector3(viewPoint.transform.position.x, newPosition.y, newPosition.z);
+                //newPosition.z = Mathf.Lerp(transform.position.z, viewPoint.transform.position.z, Time.fixedDeltaTime * speed);
+                transform.position = new Vector3(viewPoint.transform.position.x, newPosition.y, viewPoint.transform.position.z);
             }
         }
     }
@@ -56,7 +56,7 @@ public class HeadBob : MonoBehaviour
     {
         time += Time.fixedDeltaTime;
         newPosition.y = Mathf.Lerp(newPosition.y, viewPoint.transform.position.y + headDetor * Mathf.Sin(time * speed), Time.fixedDeltaTime * speed);
-        newPosition.z = Mathf.Lerp(newPosition.z, viewPoint.transform.position.z + headDetor * Mathf.Cos(time * speed), Time.fixedDeltaTime * speed);
-        transform.position = new Vector3(viewPoint.transform.position.x, newPosition.y, newPosition.z);
+        //newPosition.z = Mathf.Lerp(newPosition.z, viewPoint.transform.position.z + headDetor * Mathf.Cos(time * speed), Time.fixedDeltaTime * speed);
+        transform.position = new Vector3(viewPoint.transform.position.x, newPosition.y, viewPoint.transform.position.z);
     }
 }
