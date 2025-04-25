@@ -47,8 +47,11 @@ public class ThiefBehavior : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
        GameObject[] tempWaypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+       GameObject[] tempPositions = GameObject.FindGameObjectsWithTag("NewPositions");
        foreach (GameObject wp in tempWaypoints)
            waypoints.Add(wp);
+       foreach (GameObject rp in tempPositions)
+            randomPositionsToGo.Add(rp);
         
         currentWaypoint = waypoints[0];
         StartState(ThiefState.Idle);
@@ -141,14 +144,15 @@ public class ThiefBehavior : MonoBehaviour
     
     private IEnumerator WaitingToGoBack()
     {
-        yield return new WaitUntil(() => iSeePlayer == false);
-        
-        //randomize the next position that the thief will be
-        nextPositionX = Random.Range(randomPositionsToGo[0].transform.position.x, randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.x);
-        nextPositionZ = Random.Range(randomPositionsToGo[0].transform.position.z, randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.z);
-        currentPosition = new Vector3(nextPositionX, currentPosition.y, nextPositionZ);
-        
-        //thief moving
-        transform.Translate(currentPosition.x, currentPosition.y, movementSpeed * Time.deltaTime);
+        yield return new WaitUntil(() => Vector3.Distance(currentWaypoint.transform.position, transform.position) < accuracy);
+        Debug.Log("Hello");
+        if (!iSeePlayer)
+        {
+            //randomize the next position that the thief will be
+            nextPositionX = Random.Range(randomPositionsToGo[0].transform.position.x, randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.x);
+            nextPositionZ = Random.Range(randomPositionsToGo[0].transform.position.z, randomPositionsToGo[randomPositionsToGo.Count - 1].transform.position.z);
+            currentPosition = new Vector3(nextPositionX, currentPosition.y, nextPositionZ);
+            rb.AddForce(currentPosition * movementSpeed, ForceMode.Impulse);
+        }
     }
 }

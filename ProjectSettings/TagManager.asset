@@ -11,6 +11,7 @@ TagManager:
   - AudioManager
   - InteractText
   - Waypoint
+  - NewPositions
   layers:
   - Default
   - TransparentFX
