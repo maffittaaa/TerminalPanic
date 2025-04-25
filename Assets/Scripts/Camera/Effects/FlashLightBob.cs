@@ -36,7 +36,7 @@ public class FlashLightBob : MonoBehaviour
                 time = 0f;
                 newPosition.y = Mathf.Lerp(transform.position.y, currentInitialPosition.y, Time.fixedDeltaTime * speed);
                 transform.position = new Vector3(currentInitialPosition.x, newPosition.y, currentInitialPosition.z);
-                transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
+                transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
             }
             else
             {
@@ -65,6 +65,6 @@ public class FlashLightBob : MonoBehaviour
         time += Time.fixedDeltaTime;
         newPosition.y = Mathf.Lerp(newPosition.y, currentInitialPosition.y + headDetor * Mathf.Sin(time * speed), Time.fixedDeltaTime * speed);
         transform.position = new Vector3(currentInitialPosition.x, newPosition.y, currentInitialPosition.z);
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(15, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(15, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
     }
 }
