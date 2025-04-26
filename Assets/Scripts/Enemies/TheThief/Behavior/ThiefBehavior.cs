@@ -56,11 +56,9 @@ public class ThiefBehavior : MonoBehaviour
     
     public void StartState(ThiefState newState)
     {
-        Debug.Log("newState: " + newState);
         switch (newState)
         {
             case ThiefState.Fleeing:
-                Debug.Log("Fleeing");
                 PickFurThestWaypointToGo();
                 break;
             case ThiefState.Hiding:
@@ -88,6 +86,7 @@ public class ThiefBehavior : MonoBehaviour
                 IdleState();
                 break;
             case ThiefState.Fleeing:
+                FleeingState();
                 if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) //if thief reaches waypoint, stays hidden
                     StartState(ThiefState.Hiding);
                 break;
@@ -150,5 +149,11 @@ public class ThiefBehavior : MonoBehaviour
             StartState(ThiefState.Fleeing);
         if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy)
             StartState(ThiefState.Idle);
+    }
+
+    private void FleeingState()
+    {
+        if (!(Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) && iSeePlayer)
+            StartState(ThiefState.Fleeing);
     }
 }
