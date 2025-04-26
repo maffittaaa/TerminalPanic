@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class ThiefAStar : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float accuracy = 1f;
+    public float speed;
+    public float accuracy;
     private int currentTargetIndex;
     [SerializeField] private float tileSize;
     [SerializeField] private TileMapTile waypointToGo;
-    [SerializeField] private TileMapTile positionToGo;
 
     public GameObject currentTile;
     public GameObject waypointTile;
@@ -175,14 +174,12 @@ public class ThiefAStar : MonoBehaviour
     public void MoveAlongPath()
     {
         // Get target tile position
-        Vector3 targetPos = path[currentTargetIndex].transform.position;
-
+        Vector3 targetPos;
+        
         if (currentTargetIndex >= path.Count)
-        {
             targetPos = waypointToGo.transform.position;
-            if (Vector3.Distance(transform.position, targetPos) < accuracy)
-                return;
-        }
+        else
+            targetPos = path[currentTargetIndex].transform.position;
 
         targetPos.y = transform.parent.position.y;
 
