@@ -9,7 +9,6 @@ public class CameraMovement : MonoBehaviour
     [SerializeField] private GameObject cameraViewPoint;
     [SerializeField] private GameObject player;
     [SerializeField] private float sensivity = 15f;
-    [SerializeField] private float speed = 10f;
     [SerializeField] private AnxietyBar anxietyBar;
     float rotationX = 0;
     float rotationY = 0;

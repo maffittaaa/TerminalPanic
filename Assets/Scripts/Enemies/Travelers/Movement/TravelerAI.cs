@@ -19,48 +19,37 @@ public enum TravelerType
 
 public class TravelerAI : MonoBehaviour
 {
-    [SerializeField] private TravelerState currentState = TravelerState.Waiting;
+    [SerializeField] public TravelerState currentState { get; set; }
     [field:SerializeField] public TravelerType type { get; set; }
+
+    [Header("Traveller Settings")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float acceleration = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float minChaseSpeed = 1.5f;
     [SerializeField] private float maxChaseSpeed = 5f;
-    [SerializeField] private float slowdownDistance = 7f;
-    [SerializeField] private float detectionDelay = 1f;
+    [SerializeField] private float slowDownDistance = 7f;
+    [SerializeField] private float wanderRadius = 5f;
 
-    private float detectionDelayTimer;
-
+    [Header("Traveller Needs")]
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] public Vector3 spawnPoint;
-    [SerializeField] public static PlayerMovement player;
-
-
-    [SerializeField] public HearingControl hearingZone;
-    [SerializeField] public SightControl sightZone;
-
-    [SerializeField] public bool iHearPlayer;
-    [SerializeField] public bool iSeePlayer;
+    [SerializeField] public Vector3 spawnPoint { get; set; }
+    [SerializeField] public static PlayerMovement player { get; set; }
+    [SerializeField] public bool iHearPlayer { get; set; }
+    [SerializeField] public bool iSeePlayer { get; set; }
+    [SerializeField] public bool lostPlayer { get; set; }
 
     private Vector3 lastKnownPlayerPosition;
-    private float suspiciousWaitTime = 3f;
-    private float suspiciousTimer = 0f;
     private float lookAroundDuration = 3f;
     private float lookAroundTimer = 0f;
     private float chaseMemoryTime = 5f;
     private float chaseMemoryTimer = 0f;
     private float maxChaseDistance = 15f;
-
     private TravelerSpawner spawner;
-
     private Vector3 wanderTarget;
-    [SerializeField] public float wanderRadius = 5f;
     private float wanderTimer = 3f;
     private float wanderCounter;
-
     private float stateChangeTimer = 6f;
     private float stateChangeCounter = 0f;
-
 
     public void InitWithSpawner(TravelerSpawner spawner)
     {
@@ -72,27 +61,20 @@ public class TravelerAI : MonoBehaviour
         if (player == null)
         {
             player = GameObject.FindFirstObjectByType<PlayerMovement>();
-            //if (player == null)
-                //Debug.LogWarning("TravelerAI: Player not found in scene.");
         }
 
         if (agent == null)
         {
             agent = GetComponent<NavMeshAgent>();
-            //if (agent == null)
-                //Debug.LogError("TravelerAI: No NavMeshAgent found on traveler.");
         }
-
 
         if (agent != null)
         {
             agent.speed = moveSpeed;
-            agent.acceleration = acceleration;
             agent.angularSpeed = rotationSpeed * 100f;
         }
 
         spawnPoint = transform.position;
-        detectionDelayTimer = detectionDelay;
 
         iSeePlayer = false;
         iHearPlayer = false;
@@ -123,17 +105,6 @@ public class TravelerAI : MonoBehaviour
             return;
         }
 
-        if (detectionDelayTimer > 0f)
-        {
-            detectionDelayTimer -= Time.deltaTime;
-            return;
-        }
-
-        if ((iHearPlayer || iSeePlayer) && currentState != TravelerState.Chasing)
-        {
-            SetState(TravelerState.Chasing);
-        }
-
         HandleState();
     }
 
@@ -145,10 +116,9 @@ public class TravelerAI : MonoBehaviour
                 agent.isStopped = true;
                 agent.speed = maxChaseSpeed;
 
-                if (iSeePlayer)
+/*                if (iSeePlayer)
                 {
                     SetState(TravelerState.Chasing);
-                    //Debug.Log("Traveler sees the player -> chasing.");
                 }
 
                 else if (iHearPlayer)
@@ -156,9 +126,8 @@ public class TravelerAI : MonoBehaviour
                     if (player != null && player.behaviorType != BehaviorType.Crouching)
                     {
                         SetState(TravelerState.Chasing);
-                        //Debug.Log("Traveler hears the player (not crouching) -> chasing.");
                     }
-                }
+                }*/
 
                 break;
 
@@ -167,7 +136,7 @@ public class TravelerAI : MonoBehaviour
 
                 float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
-                float speedFactor = Mathf.Clamp01(distanceToPlayer / slowdownDistance);
+                float speedFactor = Mathf.Clamp01(distanceToPlayer / slowDownDistance);
                 agent.speed = Mathf.Lerp(minChaseSpeed, maxChaseSpeed, speedFactor);
 
                 agent.SetDestination(player.transform.position);
@@ -187,8 +156,7 @@ public class TravelerAI : MonoBehaviour
                     else
                     {
                         lastKnownPlayerPosition = player.transform.position;
-                        SetState(TravelerState.Suspicious);
-                        //Debug.Log("Chase lost -> Entering Suspicious state.");
+                        lostPlayer = true;
                     }
                 }
                 break;
@@ -203,7 +171,6 @@ public class TravelerAI : MonoBehaviour
                 if (distanceToSpawn < 0.5f)
                 {
                     SetState(TravelerState.Waiting);
-                    //Debug.Log("Traveler returned to spawn → Waiting.");
                 }
                 break;
 
@@ -226,13 +193,11 @@ public class TravelerAI : MonoBehaviour
                     if (iSeePlayer || iHearPlayer)
                     {
                         SetState(TravelerState.Chasing);
-                        //Debug.Log("Player seen/heard during Suspicious → Chasing.");
                     }
                     else if (lookAroundTimer >= lookAroundDuration)
                     {
                         lookAroundTimer = 0f;
                         SetState(TravelerState.Returning);
-                        //Debug.Log("Finished looking around → Returning to spawn.");
                     }
                 }
                 break;
@@ -267,7 +232,6 @@ public class TravelerAI : MonoBehaviour
 
         if (newState == TravelerState.Suspicious)
         {
-            suspiciousTimer = 0f;
             lookAroundTimer = 0f;
         }
 
@@ -275,8 +239,6 @@ public class TravelerAI : MonoBehaviour
         {
             agent.isStopped = false; 
         }
-
-        //Debug.Log($"Traveler state changed to: {newState}");
     }
 
     void SetNewWanderTarget()
@@ -339,21 +301,14 @@ public class TravelerAI : MonoBehaviour
 
     void KillPlayer()
     {
-        Debug.Log("Player has been caught by traveler.");
-
-        //Destroy(player.gameObject);
+        //Debug.Log("Player has been caught by traveler.");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Something triggered me: " + other.gameObject.name);
-
         if (spawner.currentMode == AirportMode.Panic && currentState == TravelerState.Chasing && other.CompareTag("Player"))
         {
-            //Debug.Log("Traveler caught the player. (in panic mode)");
             KillPlayer();
         }
     }
-
 }
-

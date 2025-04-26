@@ -150,6 +150,8 @@ GameObject:
   - component: {fileID: 303073248732645958}
   - component: {fileID: 7554116773039418701}
   - component: {fileID: 814557335534832805}
+  - component: {fileID: 2685692673341724480}
+  - component: {fileID: 3700625462854709877}
   m_Layer: 12
   m_Name: Traveler
   m_TagString: Enemy
@@ -313,19 +315,12 @@ MonoBehaviour:
   currentState: 0
   <type>k__BackingField: 0
   moveSpeed: 3
-  acceleration: 5
   rotationSpeed: 5
   minChaseSpeed: 1.5
   maxChaseSpeed: 5
-  slowdownDistance: 7
-  detectionDelay: 1
+  slowDownDistance: 7
+  wanderRadius: 10
   agent: {fileID: 303073248732645958}
-  spawnPoint: {x: 0, y: 0, z: 0}
-  hearingZone: {fileID: 0}
-  sightZone: {fileID: 0}
-  iHearPlayer: 0
-  iSeePlayer: 0
-  wanderRadius: 5
 --- !u!114 &814557335534832805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +335,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <clothesAndAccessoriesTypes>k__BackingField: 
   <colorTypes>k__BackingField: 
+--- !u!114 &2685692673341724480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a1e179feaf1e841bb58e63fd1b9fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldManager: {fileID: 3700625462854709877}
+  moveSpeed: 1
+--- !u!114 &3700625462854709877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fecdc9dfbda549468dbe2a54fc1b416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traveller: {fileID: 7554116773039418701}
+  <playerInSight>k__BackingField: 0
+  <playerLost>k__BackingField: 0
 --- !u!1 &8639509630202951989
 GameObject:
   m_ObjectHideFlags: 0

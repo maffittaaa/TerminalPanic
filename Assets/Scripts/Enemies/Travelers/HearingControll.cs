@@ -18,19 +18,15 @@ public class HearingControl : MonoBehaviour
         {
             PlayerMovement player = other.transform.parent.GetComponent<PlayerMovement>();
 
-            Debug.Log("Player entered the hearing zone");
-
             if (player != null)
             {   
                 if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
                 {
                     traveler.iHearPlayer = true;
-                    Debug.Log("Player is moving and making noise. iHearPlayer = true");
                 }
                 else
                 {
-                    traveler.iHearPlayer = false; 
-                    Debug.Log("Player is crouching or idle. iHearPlayer = false");
+                    traveler.iHearPlayer = false;
                 }
             }
         }
@@ -47,12 +43,10 @@ public class HearingControl : MonoBehaviour
                 if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
                 {
                     traveler.iHearPlayer = true;
-                    Debug.Log("Player is moving and making noise. iHearPlayer = true");
                 }
                 else
                 {
                     traveler.iHearPlayer = false;
-                    Debug.Log("Player is crouching or idle. iHearPlayer = false");
                 }
             }
         }
@@ -63,9 +57,6 @@ public class HearingControl : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             traveler.iHearPlayer = false;
-            Debug.Log("Player exited hearing zone. iHearPlayer = false");
         }
     }
-
-
 }

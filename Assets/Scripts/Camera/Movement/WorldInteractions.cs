@@ -133,8 +133,11 @@ public class WorldInteractions : MonoBehaviour
             switch (itemType)
             {
                 case ItemType.Ticket:
-                    Destroy(highLightObject);
-                    gotTicket = true;
+                    if (!gotTicket)
+                    {
+                        Destroy(highLightObject);
+                        gotTicket = true;
+                    }
                     break;
                 case ItemType.Weapon:
                     Destroy(highLightObject);
