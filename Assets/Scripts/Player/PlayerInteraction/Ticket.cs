@@ -19,11 +19,12 @@ public class Ticket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && worldInteractions.gotTicket)
+        Debug.Log(worldInteractions.gotTicket);
+        if (other.gameObject.CompareTag("Player") && worldInteractions.gotTicket)
         {
             wonText.enabled = true;
             wonText.text = "You feel calm now...";
-            playerFainting.ResetAndStartFade();
+            StartCoroutine(playerFainting.WinPlayerOpacity());
         }
     }
 }

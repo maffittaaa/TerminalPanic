@@ -35,6 +35,20 @@ public class PlayerFainting : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
+    public IEnumerator WinPlayerOpacity()
+    {
+        fadeEnded = false;
+        while (currentTimeSeconds < timeToFadeSeconds)
+        {
+            blackScreen.color = new Color(0, 0, 0, Mathf.Clamp(blackScreen.color.a + opacityChangePerTick, 0f, 1f));
+            yield return new WaitForSeconds(timeBetweenOpacityChanged);
+            currentTimeSeconds += timeBetweenOpacityChanged;
+        }
+        currentTimeSeconds = 0;
+        fadeEnded = true;
+        Application.Quit();
+    }
+
     public IEnumerator ChangeBlackScreenOpacityUp()
     {
         fadeEnded = false;

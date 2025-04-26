@@ -1,9 +1,7 @@
-using Palmmedia.ReportGenerator.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEditor.PlayerSettings;
 
 public class TileMapTile : MonoBehaviour
 {

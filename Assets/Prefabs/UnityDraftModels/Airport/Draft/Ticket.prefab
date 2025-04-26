@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442c3f74ced1ec748a2ae5eafe7f89ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 5
+  type: 6
   interactingText: {fileID: 0}
   outline: {fileID: 0}
 --- !u!1 &6485491732646334870

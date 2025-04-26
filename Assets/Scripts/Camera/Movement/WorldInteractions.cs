@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 public enum ItemType { None, Mirror, Weapon, Bullets, KeyCardMachine, KeyCard, Ticket }
@@ -77,7 +75,6 @@ public class WorldInteractions : MonoBehaviour
         }
     }
 
-
     private void RayCast()
     {
         RaycastHit hit;
@@ -148,11 +145,8 @@ public class WorldInteractions : MonoBehaviour
             switch (itemType)
             {
                 case ItemType.Ticket:
-                    if (!gotTicket)
-                    {
-                        Destroy(highLightObject);
-                        gotTicket = true;
-                    }
+                    gotTicket = true;
+                    Destroy(highLightObject.transform.parent.gameObject);
                     break;
                 case ItemType.Weapon:
                     Destroy(highLightObject);
@@ -186,7 +180,7 @@ public class WorldInteractions : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && body.activeSelf == true)
         {
             StartCoroutine(FlashLight());
         }
