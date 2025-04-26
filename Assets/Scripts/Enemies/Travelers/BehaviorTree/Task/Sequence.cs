@@ -14,18 +14,15 @@ public class Sequence : Task
                 TaskStatus childrenStatus = task.Run(agent, manager);
                 if(childrenStatus == TaskStatus.FAILURE)
                 {
-                    Debug.Log("Failure S: " + task);
                     status = TaskStatus.FAILURE;
                     return status;
                 }
                 else if (childrenStatus == TaskStatus.SUCCESS)
                 {
-                    Debug.Log("Sucess S: " + task);
                     successCount++;
                 }
                 else if (childrenStatus == TaskStatus.RUNNING)
                 {
-                    Debug.Log("Running S: " + task);
                     status = TaskStatus.RUNNING;
                     return status;
                 }

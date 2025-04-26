@@ -22,48 +22,40 @@ public class BehaviorConditions : Task
             case ConditionType.CHECK_PLAYER_SIGHT:
                 if (worldManager.IsPlayerInSight())
                 {
-                    Debug.Log("PlayerInSight");
                     status = TaskStatus.SUCCESS;
                 }
                 else
                 {
-                    Debug.Log("PlayerInSight FAILURE");
                     status = TaskStatus.FAILURE;
                 }
                 break;            
             case ConditionType.LOST_PLAYER:
                 if (worldManager.PlayerLost())
                 {
-                    Debug.Log("LostPlayer");
                     status = TaskStatus.SUCCESS;
                 }
                 else
                 {
-                    Debug.Log("LostPlayer FAILURE");
                     status = TaskStatus.FAILURE;
                 }
                 break;
             case ConditionType.IS_WANDER:
                 if (worldManager.IsWander())
                 {
-                    Debug.Log("WanderGuy");
                     status = TaskStatus.SUCCESS;
                 }
                 else
                 {
-                    Debug.Log("WanderGuy FAILURE");
                     status = TaskStatus.FAILURE;
                 }
                 break;
             case ConditionType.IS_SITTER:
                 if (worldManager.IsSitter())
                 {
-                    Debug.Log("Sitter");
                     status = TaskStatus.SUCCESS;
                 }
                 else
                 {
-                    Debug.Log("Sitter FAILURE");
                     status = TaskStatus.FAILURE;
                 }
                 break;

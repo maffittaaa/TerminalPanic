@@ -150,8 +150,12 @@ GameObject:
   - component: {fileID: 303073248732645958}
   - component: {fileID: 7554116773039418701}
   - component: {fileID: 814557335534832805}
-  - component: {fileID: 2685692673341724480}
-  - component: {fileID: 3700625462854709877}
+  - component: {fileID: 3548670115813031163}
+  - component: {fileID: 657721310090105936}
+  - component: {fileID: 1706666523467069116}
+  - component: {fileID: 6754632797414614438}
+  - component: {fileID: 7129329179740795941}
+  - component: {fileID: 5581114570429060382}
   m_Layer: 12
   m_Name: Traveler
   m_TagString: Enemy
@@ -312,7 +316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ec7afa5d5c54fda8dfc6f044710563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
   <type>k__BackingField: 0
   moveSpeed: 3
   rotationSpeed: 5
@@ -335,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <clothesAndAccessoriesTypes>k__BackingField: 
   <colorTypes>k__BackingField: 
---- !u!114 &2685692673341724480
+--- !u!114 &3548670115813031163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,12 +347,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7193216844300829422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a1e179feaf1e841bb58e63fd1b9fa3, type: 3}
+  m_Script: {fileID: 11500000, guid: 379dedb0f44e01746888bd96bd6c70a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldManager: {fileID: 3700625462854709877}
-  moveSpeed: 1
---- !u!114 &3700625462854709877
+--- !u!114 &657721310090105936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -358,12 +359,64 @@ MonoBehaviour:
   m_GameObject: {fileID: 7193216844300829422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fecdc9dfbda549468dbe2a54fc1b416, type: 3}
+  m_Script: {fileID: 11500000, guid: ae6fa50eea61e7d4c806cae059db2e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  traveller: {fileID: 7554116773039418701}
-  <playerInSight>k__BackingField: 0
-  <playerLost>k__BackingField: 0
+--- !u!114 &1706666523467069116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881ead92ac6764141a7c22459fd0acb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6754632797414614438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a28818b0545b3a4b886f8b6f7f1b853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7129329179740795941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd352c80ceca6a24da3aa045e8ad7cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5581114570429060382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0df4864f749c74999c0566ee8abab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateBehaviours:
+  - {fileID: 7129329179740795941}
+  - {fileID: 6754632797414614438}
+  - {fileID: 3548670115813031163}
+  - {fileID: 1706666523467069116}
+  - {fileID: 657721310090105936}
+  defaultState: 1
 --- !u!1 &8639509630202951989
 GameObject:
   m_ObjectHideFlags: 0

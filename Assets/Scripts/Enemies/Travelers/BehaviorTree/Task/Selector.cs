@@ -14,18 +14,15 @@ public class Selector : Task
                 TaskStatus childrenStatus = task.Run(agent, manager);
                 if (childrenStatus == TaskStatus.SUCCESS)
                 {
-                    Debug.Log("Sucess: " + task);
                     status = TaskStatus.SUCCESS;
                     return status;
                 }
                 else if (childrenStatus == TaskStatus.FAILURE)
                 {
-                    Debug.Log("Failure: " + task);
                     failureCount++;
                 }
                 else if (childrenStatus == TaskStatus.RUNNING)
                 {
-                    Debug.Log("Running: " + task);
                     status = TaskStatus.RUNNING;
                     return status;
                 }
@@ -40,7 +37,4 @@ public class Selector : Task
         
         return status;
     }
-
 }
-
-

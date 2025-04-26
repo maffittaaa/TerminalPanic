@@ -9,7 +9,7 @@ public enum TravelerState
     Chasing,
     Returning,
     Suspicious,
-    Wandering // for normal mode, differs from steering behavior 
+    Wandering
 }
 public enum TravelerType
 {
@@ -39,8 +39,8 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] public bool lostPlayer { get; set; }
 
     private Vector3 lastKnownPlayerPosition;
-    private float lookAroundDuration = 3f;
-    private float lookAroundTimer = 0f;
+    [HideInInspector] public float lookAroundDuration { get; set; }
+    [HideInInspector] public float lookAroundTimer { get; set; }
     private float chaseMemoryTime = 5f;
     private float chaseMemoryTimer = 0f;
     private float maxChaseDistance = 15f;
@@ -79,6 +79,9 @@ public class TravelerAI : MonoBehaviour
         iSeePlayer = false;
         iHearPlayer = false;
 
+        lookAroundDuration = 3f;
+        lookAroundTimer = 0f;
+
         SetRandomNormalState();
         wanderCounter = wanderTimer;
         SetNewWanderTarget();
@@ -95,7 +98,7 @@ public class TravelerAI : MonoBehaviour
 
             if (currentState == TravelerState.Wandering)
             {
-                WanderBehavior();
+                Wander();
             }
             else if (currentState == TravelerState.Waiting)
             {
@@ -104,111 +107,73 @@ public class TravelerAI : MonoBehaviour
 
             return;
         }
-
-        HandleState();
     }
 
-    void HandleState()
+    public void Waiting()
     {
-        switch (currentState)
+        agent.isStopped = true;
+        agent.speed = maxChaseSpeed;
+    }
+
+    public void Chase()
+    {
+        agent.isStopped = false;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        float speedFactor = Mathf.Clamp01(distanceToPlayer / slowDownDistance);
+        agent.speed = Mathf.Lerp(minChaseSpeed, maxChaseSpeed, speedFactor);
+
+        agent.SetDestination(player.transform.position);
+
+        if (iSeePlayer || iHearPlayer)
         {
-            case TravelerState.Waiting:
-                agent.isStopped = true;
-                agent.speed = maxChaseSpeed;
+            chaseMemoryTimer = 0f;
+        }
+        else
+        {
+            chaseMemoryTimer += Time.deltaTime;
 
-/*                if (iSeePlayer)
-                {
-                    SetState(TravelerState.Chasing);
-                }
-
-                else if (iHearPlayer)
-                {
-                    if (player != null && player.behaviorType != BehaviorType.Crouching)
-                    {
-                        SetState(TravelerState.Chasing);
-                    }
-                }*/
-
-                break;
-
-            case TravelerState.Chasing:
-                agent.isStopped = false;
-
-                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-
-                float speedFactor = Mathf.Clamp01(distanceToPlayer / slowDownDistance);
-                agent.speed = Mathf.Lerp(minChaseSpeed, maxChaseSpeed, speedFactor);
-
+            if (distanceToPlayer < maxChaseDistance && chaseMemoryTimer < chaseMemoryTime)
+            {
                 agent.SetDestination(player.transform.position);
-
-                if (iSeePlayer || iHearPlayer)
-                {
-                    chaseMemoryTimer = 0f;
-                }
-                else
-                {
-                    chaseMemoryTimer += Time.deltaTime;
-
-                    if (distanceToPlayer < maxChaseDistance && chaseMemoryTimer < chaseMemoryTime)
-                    {
-                        agent.SetDestination(player.transform.position);
-                    }
-                    else
-                    {
-                        lastKnownPlayerPosition = player.transform.position;
-                        lostPlayer = true;
-                    }
-                }
-                break;
-
-            case TravelerState.Returning:
-                agent.isStopped = false;
-                agent.speed = maxChaseSpeed;
-
-                agent.SetDestination(spawnPoint);
-
-                float distanceToSpawn = Vector3.Distance(transform.position, spawnPoint);
-                if (distanceToSpawn < 0.5f)
-                {
-                    SetState(TravelerState.Waiting);
-                }
-                break;
-
-            case TravelerState.Suspicious:
-                agent.isStopped = false;
-                agent.speed = maxChaseSpeed;
-
-                agent.SetDestination(lastKnownPlayerPosition);
-
-                float distanceToLastKnown = Vector3.Distance(transform.position, lastKnownPlayerPosition);
-
-                if (distanceToLastKnown < 1f)
-                {
-                    agent.isStopped = true;
-                    lookAroundTimer += Time.deltaTime;
-
-                    float angle = Mathf.PingPong(Time.time * rotationSpeed * 20f, 90f) - 45f;
-                    transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y + angle * Time.deltaTime, 0);
-
-                    if (iSeePlayer || iHearPlayer)
-                    {
-                        SetState(TravelerState.Chasing);
-                    }
-                    else if (lookAroundTimer >= lookAroundDuration)
-                    {
-                        lookAroundTimer = 0f;
-                        SetState(TravelerState.Returning);
-                    }
-                }
-                break;
-
-            case TravelerState.Wandering:
-                WanderBehavior();
-                break;
+            }
+            else
+            {
+                lastKnownPlayerPosition = player.transform.position;
+                lostPlayer = true;
+            }
         }
     }
 
-    void WanderBehavior()
+    public void Returning()
+    {
+        agent.isStopped = false;
+        agent.speed = maxChaseSpeed;
+
+        agent.SetDestination(spawnPoint);
+    }
+
+    public void Suspicious()
+    {
+        agent.isStopped = false;
+        agent.speed = maxChaseSpeed;
+
+        agent.SetDestination(lastKnownPlayerPosition);
+
+        float distanceToLastKnown = Vector3.Distance(transform.position, lastKnownPlayerPosition);
+
+        if (distanceToLastKnown < 1f)
+        {
+            agent.isStopped = true;
+            lookAroundTimer += Time.deltaTime;
+
+            float angle = Mathf.PingPong(Time.time * rotationSpeed * 20f, 90f) - 45f;
+            transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y + angle * Time.deltaTime, 0);
+        }
+    }
+
+    public void Wander()
     {
         wanderCounter -= Time.deltaTime;
 

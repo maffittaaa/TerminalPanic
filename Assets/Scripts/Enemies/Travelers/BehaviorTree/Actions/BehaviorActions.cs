@@ -20,23 +20,18 @@ public class BehaviorActions : Task
         switch (type)
         {
             case ActionType.WANDER:
-                Debug.Log("Wander");
                 worldManager.Wander();
                 break;
             case ActionType.STAY_STILL:
-                Debug.Log("Wait");
                 worldManager.Wait();
                 break;
             case ActionType.CHASE:
-                Debug.Log("Chase");
                 worldManager.ChasePlayer();
                 break;
             case ActionType.SUSPICIOUS:
-                Debug.Log("Suspicious");
                 worldManager.Suspect();
                 break;
             case ActionType.RETURN:
-                Debug.Log("Returning");
                 worldManager.Return();
                 break;
         }
