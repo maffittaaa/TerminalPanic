@@ -132,6 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   thiefAStar: {fileID: 1136649301386955148}
+  nextPosition: {fileID: 0}
   rotationSpeed: 10
   hearingZone: {fileID: 0}
   sightZone: {fileID: 0}
@@ -298,6 +299,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c6eaf41cc42af42539b29bbe28c3cc2a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -358,7 +360,6 @@ MonoBehaviour:
   accuracy: 3
   tileSize: 4
   waypointToGo: {fileID: 0}
-  positionToGo: {fileID: 0}
   currentTile: {fileID: 0}
   waypointTile: {fileID: 0}
   rb: {fileID: 5448424393328647405}
