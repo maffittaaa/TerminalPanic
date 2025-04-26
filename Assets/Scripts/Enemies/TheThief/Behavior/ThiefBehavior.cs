@@ -143,7 +143,7 @@ public class ThiefBehavior : MonoBehaviour
 
     private void HidingState()
     {
-        if (transform.position == nextPosition.transform.position)
+        if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy)
             StartState(ThiefState.Idle);
     }
 }
