@@ -40,9 +40,7 @@ public class ThiefHearingControl : MonoBehaviour
                 thief.iHearPlayer = false;
         }
     }
-
-
-
+    
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
