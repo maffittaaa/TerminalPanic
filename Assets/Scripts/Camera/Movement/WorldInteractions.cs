@@ -103,6 +103,15 @@ public class WorldInteractions : MonoBehaviour
                 highLightObject = null;
             }
         }
+        else
+        {
+            itemType = ItemType.None;
+            if (highLightObject != null)
+            {
+                highLightObject.GetComponent<InteractableObject>().ChangeOutlineState(false);
+            }
+            highLightObject = null;
+        }
 
         if(hit.collider != null)
         {
