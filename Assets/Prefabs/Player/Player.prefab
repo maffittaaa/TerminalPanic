@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 2760616104000520053}
   - component: {fileID: 1028580006078134479}
   - component: {fileID: 8329125688882015320}
+  - component: {fileID: 5298147487467055970}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -362,6 +363,22 @@ MonoBehaviour:
   closestSafeSpace: {fileID: 0}
   interactions: {fileID: 1270375769541232927}
   hintsTrigger: {fileID: 0}
+--- !u!114 &5298147487467055970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4549382358596299043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d12cd55fef178b844b0653ecf4666484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clueText: {fileID: 0}
+  lightManager: {fileID: 0}
+  anxietyBar: {fileID: 1028580006078134479}
+  travelerSpawner: {fileID: 0}
 --- !u!1 &6164246152193110523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,7 +1592,6 @@ MonoBehaviour:
   cameraViewPoint: {fileID: 3305785852537821137}
   player: {fileID: 4549382358596299043}
   sensivity: 5
-  speed: 10
   anxietyBar: {fileID: 1028580006078134479}
 --- !u!1 &2732794376696537611 stripped
 GameObject:
