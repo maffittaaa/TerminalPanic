@@ -8,7 +8,8 @@ public enum TravelerState
     Waiting,
     Chasing,
     Returning,
-    Suspicious
+    Suspicious,
+    Wandering // for normal mode, differs from steering behavior 
 }
 
 public class TravelerAI : MonoBehaviour
@@ -46,11 +47,25 @@ public class TravelerAI : MonoBehaviour
     private float chaseMemoryTimer = 0f;
     private float maxChaseDistance = 15f;
 
+    private TravelerSpawner spawner;
 
+    private Vector3 wanderTarget;
+    public float wanderRadius = 5f;
+    private float wanderTimer = 3f;
+    private float wanderCounter;
+
+    private float stateChangeTimer = 6f;
+    private float stateChangeCounter = 0f;
+
+
+    public void InitWithSpawner(TravelerSpawner Spawner)
+    {
+        spawner = Spawner;
+    }
 
     void Start()
     {
-        if(player == null)
+        if (player == null)
         {
             player = GameObject.FindFirstObjectByType<PlayerMovement>();
             if (player == null)
@@ -82,13 +97,31 @@ public class TravelerAI : MonoBehaviour
         iSeePlayer = false;
         iHearPlayer = false;
 
-        SetState(TravelerState.Waiting);
+        SetRandomNormalState();
+        wanderCounter = wanderTimer;
+        SetNewWanderTarget();
     }
 
     void FixedUpdate()
     {
         if (agent == null || player == null)
             return;
+
+        if (TravelerSpawner.currentMode == AirportMode.Normal)
+        {
+            UpdateStateOverTime();
+
+            if (currentState == TravelerState.Wandering)
+            {
+                WanderBehavior();
+            }
+            else if (currentState == TravelerState.Waiting)
+            {
+                agent.isStopped = true;
+            }
+
+            return;
+        }
 
         if (detectionDelayTimer > 0f)
         {
@@ -99,7 +132,6 @@ public class TravelerAI : MonoBehaviour
         if ((iHearPlayer || iSeePlayer) && currentState != TravelerState.Chasing)
         {
             SetState(TravelerState.Chasing);
-            return;
         }
 
         HandleState();
@@ -205,10 +237,29 @@ public class TravelerAI : MonoBehaviour
                 }
                 break;
 
-
+            case TravelerState.Wandering:
+                WanderBehavior();
+                break;
         }
     }
 
+    void WanderBehavior()
+    {
+        wanderCounter -= Time.deltaTime;
+
+        if (wanderCounter <= 0f)
+        {
+            SetNewWanderTarget();
+            wanderCounter = wanderTimer;
+        }
+
+        if (agent != null && agent.isOnNavMesh)
+        {
+            agent.isStopped = false;
+            agent.speed = minChaseSpeed;
+            agent.SetDestination(wanderTarget);
+        }
+    }
 
     public void SetState(TravelerState newState)
     {
@@ -220,12 +271,84 @@ public class TravelerAI : MonoBehaviour
             lookAroundTimer = 0f;
         }
 
+        if (newState == TravelerState.Chasing)
+        {
+            agent.isStopped = false; 
+        }
+
         Debug.Log($"Traveler state changed to: {newState}");
+    }
+
+    void SetNewWanderTarget()
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
+        randomDirection.y = 0f;
+        wanderTarget = spawnPoint + randomDirection;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(wanderTarget, out hit, wanderRadius, NavMesh.AllAreas))
+        {
+            wanderTarget = hit.position;
+        }
+    }
+
+    public void SetRandomNormalState()
+    {
+        if (Random.value > 0.5f)
+            SetState(TravelerState.Wandering);
+        else
+            SetState(TravelerState.Waiting);
+    }
+
+    public void UpdateStateOverTime()
+    {
+        stateChangeCounter += Time.deltaTime;
+        if (stateChangeCounter >= stateChangeTimer)
+        {
+            stateChangeCounter = 0f;
+            SetRandomNormalState();
+        }
+    }
+
+    public void OnAirportModeChanged(AirportMode newMode)
+    {
+        if (newMode == AirportMode.Panic)
+        {
+            if (currentState == TravelerState.Wandering || currentState == TravelerState.Waiting)
+            {
+                SetState(TravelerState.Waiting);
+            }
+        }
+        else if (newMode == AirportMode.Normal)
+        {
+            SetRandomNormalState();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            KillPlayer();
+        }
+    }
+
+    void KillPlayer()
+    {
+        Debug.Log("Player has been caught by traveler.");
+        Destroy(player.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log("Something triggered me: " + other.gameObject.name);
+
+        if (currentState == TravelerState.Chasing && other.CompareTag("Player"))
+        {
+            Debug.Log("Traveler caught the player.");
+            KillPlayer();
+        }
     }
+
 }
 
