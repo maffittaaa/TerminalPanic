@@ -340,6 +340,7 @@ public class TravelerAI : MonoBehaviour
     void KillPlayer()
     {
         Debug.Log("Player has been caught by traveler.");
+
         //Destroy(player.gameObject);
     }
 

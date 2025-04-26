@@ -13,7 +13,7 @@ public class SightControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             traveler.iSeePlayer = true;
         }
@@ -21,11 +21,9 @@ public class SightControl : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-
-        if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             traveler.iSeePlayer = false;
         }
-        
     }
 }
