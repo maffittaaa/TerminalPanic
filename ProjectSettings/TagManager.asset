@@ -12,6 +12,7 @@ TagManager:
   - InteractText
   - Waypoint
   - NewPositions
+  - Thief
   layers:
   - Default
   - TransparentFX

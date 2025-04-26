@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 5448424393328647405}
   m_Layer: 0
   m_Name: Thief
-  m_TagString: Untagged
+  m_TagString: Thief
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   thiefAStar: {fileID: 1136649301386955148}
-  nextPosition: {fileID: 0}
   rotationSpeed: 10
   hearingZone: {fileID: 0}
   sightZone: {fileID: 0}
