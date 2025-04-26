@@ -27,7 +27,7 @@ public class WorldInteractions : MonoBehaviour
     private GameObject mirror;
     [SerializeField]  private float lookToMirrorSpeed;
     private InteractableObject interactable;
-    private LayerMask layerMask;
+    [SerializeField] private LayerMask layerMask;
 
     [Header("Door")]
     [SerializeField] private float doorAngleOpen;
@@ -49,7 +49,6 @@ public class WorldInteractions : MonoBehaviour
 
     private void Start()
     {
-        layerMask = LayerMask.GetMask("Default");
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
     }
 

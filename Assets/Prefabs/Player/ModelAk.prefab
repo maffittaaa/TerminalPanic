@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1660708105940379645}
   - component: {fileID: 3751519882685071400}
   - component: {fileID: 128587323124416145}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ModelAk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 555729361422455259}
   - component: {fileID: 707305166051584676}
   - component: {fileID: 2849020573705717246}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}

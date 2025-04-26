@@ -274,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 1990469363}
     - target: {fileID: 6380487539121105612, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 17450
+      value: 17468
       objectReference: {fileID: 0}
     - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
@@ -2195,17 +2195,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3183586238664850114, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3183586238664850114, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3183586238664850114, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
+    - target: {fileID: 5161974735598333974, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: travelerCount
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2249,27 +2241,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7142997682229633519, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7142997682229633519, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 7142997682229633519, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -18.63
       objectReference: {fileID: 0}
     - target: {fileID: 7285985986757854573, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7285985986757854573, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
+      value: -29.85
       objectReference: {fileID: 0}
     - target: {fileID: 7285985986757854573, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -13.96
       objectReference: {fileID: 0}
     - target: {fileID: 8758146550561445307, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_Name
@@ -3089,6 +3073,10 @@ PrefabInstance:
       propertyPath: OnPlayerHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1258560241550643336, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 6152
+      objectReference: {fileID: 0}
     - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: testDoor
       value: 
@@ -3103,7 +3091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -150
+      value: -74.7
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3111,7 +3099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -128
+      value: 18.8
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3161,6 +3149,10 @@ PrefabInstance:
       propertyPath: safeSpaces.Array.data[2]
       value: 
       objectReference: {fileID: 156532697}
+    - target: {fileID: 8733057188747085418, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4608
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

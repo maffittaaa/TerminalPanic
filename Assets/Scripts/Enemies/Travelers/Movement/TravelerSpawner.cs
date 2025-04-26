@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum AirportMode
 {
@@ -11,6 +13,7 @@ public enum AirportMode
 public class TravelerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject travelerPrefab;
+    [SerializeField] private GameObject travellersHolder;
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
 
@@ -49,7 +52,9 @@ public class TravelerSpawner : MonoBehaviour
     {
         if (travelerPrefab == null) return;
 
-        Vector3 randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+        int randomNum = Random.Range(0, transform.childCount);
+
+        Vector3 randomSpawnPoint = spawnPoints[randomNum].transform.position;
 
         Vector3 randomPosition = new Vector3(
             Random.Range(randomSpawnPoint.x - spawnSize.x / 2, randomSpawnPoint.x + spawnSize.x / 2),
@@ -57,10 +62,15 @@ public class TravelerSpawner : MonoBehaviour
             Random.Range(randomSpawnPoint.z - spawnSize.z / 2, randomSpawnPoint.z + spawnSize.z / 2)
         );
 
-        GameObject newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity);
+        GameObject newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity, travellersHolder.transform);
         currentTravelers.Add(newTraveler);
-
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
+
+        TravelerType randomType = (TravelerType)Random.Range(0, Enum.GetValues(typeof(TravelerType)).Length);
+
+        travelerAI.type = randomType;
+
+        travelerAI.InitWithSpawner(this);
 
         if (travelerAI != null)
         {
@@ -84,19 +94,17 @@ public class TravelerSpawner : MonoBehaviour
     public void SetAirportMode(AirportMode mode)
     {
         currentMode = mode;
-        Debug.Log("Airport mode set to: " + currentMode);
+        //Debug.Log("Airport mode set to: " + currentMode);
 
         // inform all travelers
-        TravelerSpawner spawner = FindObjectOfType<TravelerSpawner>();
-        if (spawner != null)
+        if (travelerAIs != null)
         {
-            foreach (TravelerAI traveler in spawner.travelerAIs)
+            foreach (TravelerAI traveler in travelerAIs)
             {
                 traveler.OnAirportModeChanged(mode);
             }
         }
     }
-
 
     void SwitchToPanicMode()
     {
@@ -120,5 +128,4 @@ public class TravelerSpawner : MonoBehaviour
             SwitchToNormalMode();
         }
     }
-
 }

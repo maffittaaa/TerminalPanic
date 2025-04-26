@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 6527167527148797403}
   - component: {fileID: 6700427166545117234}
   - component: {fileID: 5187796845472917760}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Interact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598965529539991357}
   - component: {fileID: 5811209325613012443}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   - component: {fileID: 4507176265113546940}
   - component: {fileID: 7390935806574457838}
   - component: {fileID: 1329685400837046414}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -466,7 +466,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7223
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -499,15 +499,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  body: {fileID: 0}
+  <body>k__BackingField: {fileID: 0}
   flashLight: {fileID: 0}
   flashLightPhysic: {fileID: 0}
   testDoor: {fileID: 0}
   itemType: 0
   anxietyBar: {fileID: 0}
   gotKeyCard: 0
+  gotTicket: 0
   <potencialEnemy>k__BackingField: {fileID: 0}
   distanceToInteract: 5
+  lookToMirrorSpeed: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4096
   doorAngleOpen: 350
   doorAngleClose: 0
   doorOpenTime: 0
@@ -516,6 +521,7 @@ MonoBehaviour:
   doorCloseSpeed: 0
   doorCloseAddAngle: 0
   time: 0
+  doorOpeningClosing: 0
   shootingPoint: {fileID: 5739983096105328553}
   flashLightTimeDelay: 0.05
   FLmMaxFlickerTimeDist: 10
@@ -540,7 +546,7 @@ MonoBehaviour:
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
   anxietyBar: {fileID: 0}
-  newPosition: 0
+  newPosition: {x: 0, y: 0, z: 0}
   time: 0
 --- !u!114 &1256509201228644111
 MonoBehaviour:
@@ -655,7 +661,7 @@ MonoBehaviour:
   viewPoint: {fileID: 0}
   playerMovementScript: {fileID: 0}
   anxietyBar: {fileID: 0}
-  newPosition: 0
+  newPosition: {x: 0, y: 0, z: 0}
   time: 0
 --- !u!1 &6559058334191983957
 GameObject:

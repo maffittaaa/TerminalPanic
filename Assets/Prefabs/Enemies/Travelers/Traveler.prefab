@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401d94363990d4c2994de6ffd1c95368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyTraveller: {fileID: 7554116773039418701}
+  <traveler>k__BackingField: {fileID: 0}
 --- !u!1 &2422081693313611832
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171c8b4eb636549cc90fac7aeb8f813c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MyTraveller: {fileID: 7554116773039418701}
+  <traveler>k__BackingField: {fileID: 0}
 --- !u!1 &7193216844300829422
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,9 +150,9 @@ GameObject:
   - component: {fileID: 303073248732645958}
   - component: {fileID: 7554116773039418701}
   - component: {fileID: 814557335534832805}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Traveler
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,15 +311,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  moveSpeed: 5
+  <type>k__BackingField: 0
+  moveSpeed: 3
   acceleration: 5
   rotationSpeed: 5
+  minChaseSpeed: 1.5
+  maxChaseSpeed: 5
+  slowdownDistance: 7
+  detectionDelay: 1
   agent: {fileID: 303073248732645958}
-  destination: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
   hearingZone: {fileID: 0}
   sightZone: {fileID: 0}
   iHearPlayer: 0
   iSeePlayer: 0
+  wanderRadius: 5
 --- !u!114 &814557335534832805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +352,7 @@ GameObject:
   - component: {fileID: 4690302694546660853}
   - component: {fileID: 4611693309430852165}
   - component: {fileID: 7686608646559126531}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}

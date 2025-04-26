@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class HearingControl : MonoBehaviour
 {
-    public TravelerAI traveler;
+    [field: SerializeField] public TravelerAI traveler { get; set; }
 
     private void Start()
     {
-        traveler = FindObjectOfType<TravelerAI>();
+        traveler = transform.parent.GetComponent<TravelerAI>();
     }
 
     private void OnTriggerEnter(Collider other)

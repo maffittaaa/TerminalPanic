@@ -11,10 +11,16 @@ public enum TravelerState
     Suspicious,
     Wandering // for normal mode, differs from steering behavior 
 }
+public enum TravelerType
+{
+    Sitters,
+    Wanders
+}
 
 public class TravelerAI : MonoBehaviour
 {
     [SerializeField] private TravelerState currentState = TravelerState.Waiting;
+    [field:SerializeField] public TravelerType type { get; set; }
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float acceleration = 5f;
     [SerializeField] private float rotationSpeed = 5f;
@@ -26,17 +32,15 @@ public class TravelerAI : MonoBehaviour
     private float detectionDelayTimer;
 
     [SerializeField] private NavMeshAgent agent;
- 
-    public Vector3 spawnPoint;
-
-    public static PlayerMovement player;
+    [SerializeField] public Vector3 spawnPoint;
+    [SerializeField] public static PlayerMovement player;
 
 
-    public HearingControl hearingZone;
-    public SightControl sightZone;
+    [SerializeField] public HearingControl hearingZone;
+    [SerializeField] public SightControl sightZone;
 
-    public bool iHearPlayer;
-    public bool iSeePlayer;
+    [SerializeField] public bool iHearPlayer;
+    [SerializeField] public bool iSeePlayer;
 
     private Vector3 lastKnownPlayerPosition;
     private float suspiciousWaitTime = 3f;
@@ -50,7 +54,7 @@ public class TravelerAI : MonoBehaviour
     private TravelerSpawner spawner;
 
     private Vector3 wanderTarget;
-    public float wanderRadius = 5f;
+    [SerializeField] public float wanderRadius = 5f;
     private float wanderTimer = 3f;
     private float wanderCounter;
 
@@ -68,19 +72,15 @@ public class TravelerAI : MonoBehaviour
         if (player == null)
         {
             player = GameObject.FindFirstObjectByType<PlayerMovement>();
-            if (player == null)
-                Debug.LogWarning("TravelerAI: Player not found in scene.");
-        }
-        else
-        {
-            Debug.Log("Player is in.");
+            //if (player == null)
+                //Debug.LogWarning("TravelerAI: Player not found in scene.");
         }
 
         if (agent == null)
         {
             agent = GetComponent<NavMeshAgent>();
-            if (agent == null)
-                Debug.LogError("TravelerAI: No NavMeshAgent found on traveler.");
+            //if (agent == null)
+                //Debug.LogError("TravelerAI: No NavMeshAgent found on traveler.");
         }
 
 
@@ -148,7 +148,7 @@ public class TravelerAI : MonoBehaviour
                 if (iSeePlayer)
                 {
                     SetState(TravelerState.Chasing);
-                    Debug.Log("Traveler sees the player -> chasing.");
+                    //Debug.Log("Traveler sees the player -> chasing.");
                 }
 
                 else if (iHearPlayer)
@@ -156,7 +156,7 @@ public class TravelerAI : MonoBehaviour
                     if (player != null && player.behaviorType != BehaviorType.Crouching)
                     {
                         SetState(TravelerState.Chasing);
-                        Debug.Log("Traveler hears the player (not crouching) -> chasing.");
+                        //Debug.Log("Traveler hears the player (not crouching) -> chasing.");
                     }
                 }
 
@@ -188,7 +188,7 @@ public class TravelerAI : MonoBehaviour
                     {
                         lastKnownPlayerPosition = player.transform.position;
                         SetState(TravelerState.Suspicious);
-                        Debug.Log("Chase lost -> Entering Suspicious state.");
+                        //Debug.Log("Chase lost -> Entering Suspicious state.");
                     }
                 }
                 break;
@@ -203,7 +203,7 @@ public class TravelerAI : MonoBehaviour
                 if (distanceToSpawn < 0.5f)
                 {
                     SetState(TravelerState.Waiting);
-                    Debug.Log("Traveler returned to spawn → Waiting.");
+                    //Debug.Log("Traveler returned to spawn → Waiting.");
                 }
                 break;
 
@@ -226,13 +226,13 @@ public class TravelerAI : MonoBehaviour
                     if (iSeePlayer || iHearPlayer)
                     {
                         SetState(TravelerState.Chasing);
-                        Debug.Log("Player seen/heard during Suspicious → Chasing.");
+                        //Debug.Log("Player seen/heard during Suspicious → Chasing.");
                     }
                     else if (lookAroundTimer >= lookAroundDuration)
                     {
                         lookAroundTimer = 0f;
                         SetState(TravelerState.Returning);
-                        Debug.Log("Finished looking around → Returning to spawn.");
+                        //Debug.Log("Finished looking around → Returning to spawn.");
                     }
                 }
                 break;
@@ -276,7 +276,7 @@ public class TravelerAI : MonoBehaviour
             agent.isStopped = false; 
         }
 
-        Debug.Log($"Traveler state changed to: {newState}");
+        //Debug.Log($"Traveler state changed to: {newState}");
     }
 
     void SetNewWanderTarget()
@@ -314,9 +314,13 @@ public class TravelerAI : MonoBehaviour
     {
         if (newMode == AirportMode.Panic)
         {
-            if (currentState == TravelerState.Wandering || currentState == TravelerState.Waiting)
+            if (type == TravelerType.Sitters)
             {
                 SetState(TravelerState.Waiting);
+            }
+            else if(type == TravelerType.Wanders)
+            {
+                SetState(TravelerState.Wandering);
             }
         }
         else if (newMode == AirportMode.Normal)
@@ -336,16 +340,16 @@ public class TravelerAI : MonoBehaviour
     void KillPlayer()
     {
         Debug.Log("Player has been caught by traveler.");
-        Destroy(player.gameObject);
+        //Destroy(player.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Something triggered me: " + other.gameObject.name);
+        //Debug.Log("Something triggered me: " + other.gameObject.name);
 
         if (spawner.currentMode == AirportMode.Panic && currentState == TravelerState.Chasing && other.CompareTag("Player"))
         {
-            Debug.Log("Traveler caught the player. (in panic mode)");
+            //Debug.Log("Traveler caught the player. (in panic mode)");
             KillPlayer();
         }
     }
