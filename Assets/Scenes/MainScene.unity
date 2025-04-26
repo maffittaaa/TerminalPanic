@@ -2970,10 +2970,6 @@ PrefabInstance:
       propertyPath: OnPlayerHealthChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 1258560241550643336, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 6152
-      objectReference: {fileID: 0}
     - target: {fileID: 1270375769541232927, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: testDoor
       value: 
@@ -3132,6 +3128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   thiefAStar: {fileID: 0}
+  nextPosition: {fileID: 0}
   rotationSpeed: 0
   hearingZone: {fileID: 0}
   sightZone: {fileID: 0}

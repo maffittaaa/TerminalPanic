@@ -1396,10 +1396,6 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
-    - target: {fileID: 8877474373804109098, guid: 492f9e516791092438d86616e22c66b0, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 2056
-      objectReference: {fileID: 0}
     - target: {fileID: 8910239255728772586, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: speed
       value: 0
