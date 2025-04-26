@@ -14,12 +14,10 @@ public class HearingControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         PlayerMovement player = other.GetComponent<PlayerMovement>();
 
         if (player != null || other.CompareTag("Player"))
         {
-
             Debug.Log("Player entered the hearing zone");
 
 

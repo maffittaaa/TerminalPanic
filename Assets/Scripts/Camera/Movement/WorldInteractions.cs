@@ -103,16 +103,12 @@ public class WorldInteractions : MonoBehaviour
                 highLightObject = null;
             }
         }
-        else
+
+        if(hit.collider != null)
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            hit.point = transform.TransformDirection(Vector3.forward) * 1000;
-        }
-
-        if(hit.collider.gameObject != null)
             potencialEnemy = hit.collider.gameObject;
-
-        shootingPoint.transform.position = hit.point;
+            shootingPoint.transform.position = hit.point;
+        }
     }
 
     private void Interact()
