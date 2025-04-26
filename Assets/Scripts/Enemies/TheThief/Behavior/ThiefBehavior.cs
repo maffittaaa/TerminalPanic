@@ -34,7 +34,6 @@ public class ThiefBehavior : MonoBehaviour
     [field: Header("Waypoints")]
     [SerializeField] private List<GameObject> waypoints = new List<GameObject>();
     private GameObject currentWaypoint;
-    private int currentWaypointIndex = 0;
     
     private void Start()
     {
