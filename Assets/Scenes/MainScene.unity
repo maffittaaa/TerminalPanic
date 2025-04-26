@@ -5487,7 +5487,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1659214448}
-  - component: {fileID: 1659214447}
   m_Layer: 0
   m_Name: WaypointsForThiefToHide
   m_TagString: Untagged
@@ -5495,35 +5494,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1659214447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659214446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cff0ab2d6052ab74e82358d00fa685b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  thiefAStar: {fileID: 0}
-  nextPosition: {fileID: 0}
-  rotationSpeed: 0
-  hearingZone: {fileID: 0}
-  sightZone: {fileID: 0}
-  iHearPlayer: 0
-  iSeePlayer: 0
-  randomPositionsToGo: []
-  player: {fileID: 0}
-  waypoints:
-  - {fileID: 1471800143}
-  - {fileID: 887463286}
-  - {fileID: 472574899}
-  - {fileID: 1389509997}
-  - {fileID: 1694550002}
-  - {fileID: 611422914}
 --- !u!4 &1659214448
 Transform:
   m_ObjectHideFlags: 0

@@ -134,11 +134,15 @@ public class ThiefBehavior : MonoBehaviour
         if (!iSeePlayer)
         {
             thiefAStar.speed = 5f;
-            Debug.Log("speed 3 : " + thiefAStar.speed);
             int nextPositionIndex = Random.Range(0, randomPositionsToGo.Count);
             nextPosition = randomPositionsToGo[nextPositionIndex];
+            thiefAStar.SetWaypointAndGo(nextPosition);
         }
-        thiefAStar.SetWaypointAndGo(nextPosition);
+        else if (iSeePlayer)
+        {
+            thiefAStar.speed = 5f;
+            StartState(ThiefState.Fleeing);
+        }
     }
 
     private void HidingState()

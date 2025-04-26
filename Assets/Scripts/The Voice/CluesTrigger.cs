@@ -19,7 +19,7 @@ public class CluesTrigger : MonoBehaviour
         if (other.CompareTag("Player") && interactions.body.activeSelf)
         {
             clueText.TextForClue();
-            trigger.isTrigger = false;
+            Destroy(trigger);
         }
     }
 }
