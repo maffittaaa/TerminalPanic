@@ -260,20 +260,14 @@ public class TravelerAI : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            KillPlayer();
+            WorldInteractions player = FindFirstObjectByType<WorldInteractions>();
+
+            KillPlayer(player);
         }
     }
 
-    void KillPlayer()
+    void KillPlayer(WorldInteractions player)
     {
-        //Debug.Log("Player has been caught by traveler.");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (spawner.currentMode == AirportMode.Panic && currentState == TravelerState.Chasing && other.CompareTag("Player"))
-        {
-            KillPlayer();
-        }
+        player.KillPlayer();
     }
 }

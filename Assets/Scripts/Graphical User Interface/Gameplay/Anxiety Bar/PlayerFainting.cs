@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerFainting : MonoBehaviour
@@ -18,6 +19,20 @@ public class PlayerFainting : MonoBehaviour
     {
         opacityChangePerTick = 1 / (timeToFadeSeconds / timeBetweenOpacityChanged);
         blackScreen = GetComponent<Image>();
+    }
+
+    public IEnumerator KillPlayerOpacity()
+    {
+        fadeEnded = false;
+        while (currentTimeSeconds < timeToFadeSeconds)
+        {
+            blackScreen.color = new Color(0, 0, 0, Mathf.Clamp(blackScreen.color.a + opacityChangePerTick, 0f, 1f));
+            yield return new WaitForSeconds(timeBetweenOpacityChanged);
+            currentTimeSeconds += timeBetweenOpacityChanged;
+        }
+        currentTimeSeconds = 0;
+        fadeEnded = true;
+        SceneManager.LoadScene("MainScene");
     }
 
     public IEnumerator ChangeBlackScreenOpacityUp()

@@ -47,9 +47,14 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float FLmMinFlickerTimeDist = 20f;
     private AudioManager audioManager;
 
+    [Header("Die")]
+    private bool dead;
+    private PlayerFainting faint;
+
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        faint = FindFirstObjectByType<PlayerFainting>();
     }
 
     private void Update()
@@ -62,6 +67,15 @@ public class WorldInteractions : MonoBehaviour
         time += Time.fixedDeltaTime;
         RayCast();
     }
+
+    public void KillPlayer()
+    {
+        if (!dead)
+        {
+            StartCoroutine(faint.KillPlayerOpacity());
+        }
+    }
+
 
     private void RayCast()
     {

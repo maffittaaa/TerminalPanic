@@ -73,7 +73,7 @@ public class Weapon : MonoBehaviour
         }
         else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
         {
-            Instantiate(ticketPrefab, worldInteractions.transform.position, ticketPrefab.transform.rotation);
+            Instantiate(ticketPrefab, worldInteractions.potencialEnemy.transform.position, ticketPrefab.transform.rotation);
             Destroy(worldInteractions.potencialEnemy);
         }
     }
