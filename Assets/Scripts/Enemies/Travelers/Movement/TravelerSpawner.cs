@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,7 +17,7 @@ public class TravelerSpawner : MonoBehaviour
     [SerializeField] private GameObject travellersHolder;
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
-
+    private EnemiesClothes enemiesClothes;
     [SerializeField] private int travelerCount = 10;
 
     [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
@@ -25,6 +26,7 @@ public class TravelerSpawner : MonoBehaviour
 
     void Start()
     {
+        enemiesClothes = GetComponent<EnemiesClothes>();
         spawnPoints = GetAllChilds();
         SpawnAllTravelers();
     }
@@ -44,11 +46,11 @@ public class TravelerSpawner : MonoBehaviour
     {
         for (int i = 0; i < travelerCount; i++)
         {
-            SpawnTraveler();
+            SpawnTraveler(i);
         }
     }
 
-    void SpawnTraveler()
+    void SpawnTraveler(int i)
     {
         if (travelerPrefab == null) return;
 
@@ -65,6 +67,8 @@ public class TravelerSpawner : MonoBehaviour
         GameObject newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity, travellersHolder.transform);
         currentTravelers.Add(newTraveler);
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
+        enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
+        SpawningClothes(i);
 
         TravelerType randomType = (TravelerType)Random.Range(0, Enum.GetValues(typeof(TravelerType)).Length);
 
@@ -127,5 +131,15 @@ public class TravelerSpawner : MonoBehaviour
         {
             SwitchToNormalMode();
         }
+    }
+
+    private void SpawningClothes(int i)
+    {
+        if (i <= 2)
+            enemiesClothes.GivingClothesTo2Enemies();
+        else if (i > 2 && i <= 4)
+            enemiesClothes.MatchingWithOneCloth();
+        else
+            enemiesClothes.MatchingWithTwoClothes();
     }
 }

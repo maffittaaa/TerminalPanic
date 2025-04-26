@@ -3,39 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemiesSpawnAndClothes : MonoBehaviour
+public class EnemiesClothes : MonoBehaviour
 {
-    private List<GameObject> enemies = new List<GameObject>();
-    [SerializeField] private GameObject enemy;
-    [SerializeField] private List<Vector3> spawnLocations;
-    private List<EClothesAndAccessoriesTypes> clothesForEnemies = new List<EClothesAndAccessoriesTypes>();
-    private List<EColorTypes> colorForClothes = new List<EColorTypes>();
+    public List<EClothesAndAccessoriesTypes> clothesForEnemies = new List<EClothesAndAccessoriesTypes>();
+    public List<EColorTypes> colorForClothes = new List<EColorTypes>();
     [SerializeField] private IdentifyingThief identifyingThief;
-    private int maxNumberOfPeople = 10;
-    private ClothesAndColors clothesAndColors;
-
+    public ClothesAndColors clothesAndColors;
     private int clothesNumber;
 
-    private void Start()
-    {
-        for (int i = 1; i < maxNumberOfPeople; i++)
-        {
-            Vector3 spawnLocation = new Vector3(Random.Range(-10, -130), 19, Random.Range(10, 60));;
-            
-            GameObject tempEnemy = Instantiate(enemy, spawnLocation, Quaternion.identity);
-            clothesAndColors = tempEnemy.GetComponent<ClothesAndColors>();
-            enemies.Add(tempEnemy);
-            
-            if (i <= 2)
-                GivingClothesTo2Enemies();
-            else if (i > 2 && i <= 4)
-                MatchingWithOneCloth();
-            else
-                MatchingWithTwoClothes();
-        }
-    }
-
-    private void GivingClothesTo2Enemies()
+    public void GivingClothesTo2Enemies()
     {
         clothesForEnemies.Clear();
         colorForClothes.Clear();
@@ -79,7 +55,7 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
         }
     }
 
-    private void MatchingWithOneCloth()
+    public void MatchingWithOneCloth()
     {
         clothesForEnemies.Clear();
         colorForClothes.Clear();
@@ -141,7 +117,7 @@ public class EnemiesSpawnAndClothes : MonoBehaviour
         }
     }
 
-    private void MatchingWithTwoClothes()
+    public void MatchingWithTwoClothes()
     {
         clothesForEnemies.Clear();
         colorForClothes.Clear();
