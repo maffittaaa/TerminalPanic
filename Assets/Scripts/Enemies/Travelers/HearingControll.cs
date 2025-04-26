@@ -14,18 +14,15 @@ public class HearingControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-
-        if (player != null || other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered the hearing zone");
+            PlayerMovement player = other.transform.parent.GetComponent<PlayerMovement>();
 
+            Debug.Log("Player entered the hearing zone");
 
             if (player != null)
             {   
-                if (player.behaviorType != BehaviorType.Crouching &&
-                    (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
-
+                if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
                 {
                     traveler.iHearPlayer = true;
                     Debug.Log("Player is moving and making noise. iHearPlayer = true");
@@ -41,27 +38,25 @@ public class HearingControl : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-
-        if (player != null)
+        if (other.CompareTag("Player"))
         {
-            if (player.behaviorType != BehaviorType.Crouching &&
-                (player.behaviorType == BehaviorType.Walking ||
-                 player.behaviorType == BehaviorType.Runing ||
-                 player.behaviorType == BehaviorType.Jumping))
+            PlayerMovement player = other.transform.parent.GetComponent<PlayerMovement>();
+
+            if (player != null)
             {
-                traveler.iHearPlayer = true;
-                Debug.Log("Player is making noise. iHearPlayer = true (OnTriggerStay)");
-            }
-            else
-            {
-                traveler.iHearPlayer = false;
-                Debug.Log("Player is quiet or crouching. iHearPlayer = false (OnTriggerStay)");
+                if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
+                {
+                    traveler.iHearPlayer = true;
+                    Debug.Log("Player is moving and making noise. iHearPlayer = true");
+                }
+                else
+                {
+                    traveler.iHearPlayer = false;
+                    Debug.Log("Player is crouching or idle. iHearPlayer = false");
+                }
             }
         }
     }
-
-
 
     private void OnTriggerExit(Collider other)
     {
@@ -71,4 +66,6 @@ public class HearingControl : MonoBehaviour
             Debug.Log("Player exited hearing zone. iHearPlayer = false");
         }
     }
+
+
 }
