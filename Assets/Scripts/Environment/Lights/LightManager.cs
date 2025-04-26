@@ -11,14 +11,6 @@ public class LightManager : MonoBehaviour
         lights = FindObjectsByType<Flickering>(FindObjectsSortMode.None);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            TurnOnAndOffManager();
-        }
-    }
-
     public void TurnOnAndOffManager()
     {
         for (int i = 0; i < lights.Length; i++)

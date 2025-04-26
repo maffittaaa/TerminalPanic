@@ -44,10 +44,4 @@ public class ClueText : MonoBehaviour
         }
         return clueText.text;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-            TextForClue();
-    }
 }

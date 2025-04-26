@@ -113,29 +113,16 @@ public class TravelerSpawner : MonoBehaviour
         }
     }
 
-    void SwitchToPanicMode()
+    public void SwitchToPanicMode()
     {
         SetAirportMode(AirportMode.Panic);
     }
 
-    void SwitchToNormalMode()
+    public void SwitchToNormalMode()
     {
         SetAirportMode(AirportMode.Normal);
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SwitchToPanicMode();
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            SwitchToNormalMode();
-        }
-    }
-
+    
     private void SpawningClothes(int i)
     {
         if (i <= 10)

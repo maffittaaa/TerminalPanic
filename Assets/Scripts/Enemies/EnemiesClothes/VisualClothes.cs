@@ -13,10 +13,12 @@ public class VisualClothes : MonoBehaviour
     private TextMeshPro colorText;
     private List<EClothesAndAccessoriesTypes> clothesList = new List<EClothesAndAccessoriesTypes>();
     private List<EColorTypes> colorList = new List<EColorTypes>();
+    private PlayerMovement player;
 
     private void Start()
     {
         traveler = gameObject;
+        player = FindObjectOfType<PlayerMovement>();
         
         GameObject clothes = new GameObject("ClothesText");
         clothes.transform.SetParent(traveler.transform);
