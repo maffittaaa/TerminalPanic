@@ -56,9 +56,11 @@ public class ThiefBehavior : MonoBehaviour
     
     public void StartState(ThiefState newState)
     {
+        Debug.Log("newState: " + newState);
         switch (newState)
         {
             case ThiefState.Fleeing:
+                Debug.Log("Fleeing");
                 PickFurThestWaypointToGo();
                 break;
             case ThiefState.Hiding:
@@ -138,15 +140,14 @@ public class ThiefBehavior : MonoBehaviour
             nextPosition = randomPositionsToGo[nextPositionIndex];
             thiefAStar.SetWaypointAndGo(nextPosition);
         }
-        else if (iSeePlayer)
-        {
+        else
             thiefAStar.speed = 5f;
-            StartState(ThiefState.Fleeing);
-        }
     }
 
     private void HidingState()
     {
+        if (iSeePlayer)
+            StartState(ThiefState.Fleeing);
         if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy)
             StartState(ThiefState.Idle);
     }
