@@ -11,7 +11,7 @@ public class EnemiesClothes : MonoBehaviour
     public ClothesAndColors clothesAndColors;
     public int clothesNumber;
 
-    public void GivingClothesTo2Enemies()
+    public void GivingClothesToEnemies()
     {
         clothesForEnemies.Clear();
         colorForClothes.Clear();
@@ -70,7 +70,7 @@ public class EnemiesClothes : MonoBehaviour
         int j = 0;
         while (j < clothesNumber)
         {
-            if (k >= 1000)
+            if (k >= 100)
             {
                 Debug.Log("something went wrong");
                 break;
@@ -100,7 +100,7 @@ public class EnemiesClothes : MonoBehaviour
                         break;
                 }
             }
-            if (!clothesForEnemies.Contains(clothes) && colorForClothes.Contains(color)|| matching)
+            if (!clothesForEnemies.Contains(clothes) || matching)
             {
                 clothesForEnemies.Add(clothes);
                 colorForClothes.Add(color);
@@ -134,7 +134,7 @@ public class EnemiesClothes : MonoBehaviour
         int j = 0;
         while (j < clothesNumber)
         {
-            if (k >= 1000)
+            if (k >= 10000)
             {
                 Debug.Log("something went wrong");
                 break;

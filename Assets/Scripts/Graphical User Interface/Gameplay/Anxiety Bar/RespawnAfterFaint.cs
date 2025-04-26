@@ -34,7 +34,6 @@ public class RespawnAfterFaint : MonoBehaviour
             anxietyBar.dOF.focusDistance.value = 3.8f;
             anxietyBar.cA.intensity.value = 0.3f;
             fadeStarted = false;
-            hintsTrigger.trigger.isTrigger = true; //not entirely correct but we'll see
         }
     }
 
