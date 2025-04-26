@@ -191,7 +191,6 @@ public class ThiefAStar : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetPos) < accuracy)
             currentTargetIndex++;
-        //Debug.DrawRay(transform.position, targetPos, Color.magenta, tileSize / 2);
     }
 
     public void SetWhereToGo(GameObject waypoint)

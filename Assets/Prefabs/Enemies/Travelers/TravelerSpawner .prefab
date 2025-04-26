@@ -351,6 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4736519258463268291}
   - component: {fileID: 5161974735598333974}
+  - component: {fileID: 5003679286819012102}
   m_Layer: 0
   m_Name: SpawnLocation
   m_TagString: Untagged
@@ -412,9 +413,26 @@ MonoBehaviour:
   travellersHolder: {fileID: 7408943774916012876}
   spawnPoints: []
   spawnSize: {x: 10, y: 0, z: 10}
+  enemiesClothes: {fileID: 0}
   travelerCount: 10
   currentTravelers: []
   travelerAIs: []
+--- !u!114 &5003679286819012102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749939547887966161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856793aea44566e46bd46bf4a5007275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clothesForEnemies: 
+  colorForClothes: 
+  identifyingThief: {fileID: 0}
+  clothesAndColors: {fileID: 0}
 --- !u!1 &4111900024444467846
 GameObject:
   m_ObjectHideFlags: 0

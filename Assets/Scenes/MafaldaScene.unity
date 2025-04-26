@@ -813,9 +813,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  movementSpeed: 5
+  thiefAStar: {fileID: 0}
   rotationSpeed: 0
-  accuracy: 0
   hearingZone: {fileID: 0}
   sightZone: {fileID: 0}
   iHearPlayer: 0
@@ -860,6 +859,7 @@ GameObject:
   m_Component:
   - component: {fileID: 677850025}
   - component: {fileID: 677850024}
+  - component: {fileID: 677850026}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -879,9 +879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856793aea44566e46bd46bf4a5007275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7193216844300829422, guid: fd83029ceb231455ea99fb968046a575, type: 3}
-  spawnLocations: []
+  clothesForEnemies: 
+  colorForClothes: 
   identifyingThief: {fileID: 681523654}
+  clothesAndColors: {fileID: 0}
+  clothesNumber: 0
 --- !u!4 &677850025
 Transform:
   m_ObjectHideFlags: 0
@@ -897,6 +899,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &677850026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677850023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc10ee7c141bb437fa523e6375e5ed9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  travelerPrefab: {fileID: 7193216844300829422, guid: fd83029ceb231455ea99fb968046a575, type: 3}
+  travellersHolder: {fileID: 0}
+  spawnPoints: []
+  spawnSize: {x: 10, y: 0, z: 10}
+  enemiesClothes: {fileID: 677850024}
+  travelerCount: 30
+  currentTravelers: []
+  travelerAIs: []
 --- !u!114 &681523654 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2809602760443036910, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
@@ -3520,6 +3542,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4657544322304970105, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
     - targetCorrespondingSourceObject: {fileID: 526015840641038048, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}

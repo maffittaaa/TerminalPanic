@@ -9,7 +9,7 @@ public class EnemiesClothes : MonoBehaviour
     public List<EColorTypes> colorForClothes = new List<EColorTypes>();
     [SerializeField] private IdentifyingThief identifyingThief;
     public ClothesAndColors clothesAndColors;
-    private int clothesNumber;
+    public int clothesNumber;
 
     public void GivingClothesTo2Enemies()
     {
