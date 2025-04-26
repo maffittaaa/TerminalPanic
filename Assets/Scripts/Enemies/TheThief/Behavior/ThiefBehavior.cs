@@ -18,8 +18,6 @@ public class ThiefBehavior : MonoBehaviour
     [SerializeField] private ThiefState currentState;
     [SerializeField] private ThiefAStar thiefAStar;
     [SerializeField] private float rotationSpeed;
-    [SerializeField] private ThiefHearingControl hearingZone;
-    [SerializeField] private ThiefSightControl sightZone;
     private Rigidbody rb;
     public bool iHearPlayer;
     public bool iSeePlayer;
@@ -38,8 +36,6 @@ public class ThiefBehavior : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
-        hearingZone = GetComponentInChildren<ThiefHearingControl>();
-        sightZone = GetComponentInChildren<ThiefSightControl>();
         rb = GetComponent<Rigidbody>();
 
        GameObject[] tempWaypoints = GameObject.FindGameObjectsWithTag("Waypoint");
@@ -133,13 +129,13 @@ public class ThiefBehavior : MonoBehaviour
         yield return new WaitForSeconds(3f);
         if (!iSeePlayer)
         {
-            thiefAStar.speed = 5f;
+            thiefAStar.speed = 10f;
             int nextPositionIndex = Random.Range(0, randomPositionsToGo.Count);
             nextPosition = randomPositionsToGo[nextPositionIndex];
             thiefAStar.SetWhereToGo(nextPosition);
         }
         else
-            thiefAStar.speed = 5f;
+            thiefAStar.speed = 10f;
     }
 
     private void HidingState()

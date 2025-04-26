@@ -18,7 +18,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private ItemType itemType;
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private bool gotKeyCard = false;
-    [SerializeField] private bool gotTicket = false;
+    [field: SerializeField] public bool gotTicket{ get; set; }
     [field: SerializeField] public GameObject potencialEnemy { get; private set; }
 
     [Header("Interaction Settings")]
@@ -55,6 +55,7 @@ public class WorldInteractions : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         faint = FindFirstObjectByType<PlayerFainting>();
+        gotTicket = false;
     }
 
     private void Update()

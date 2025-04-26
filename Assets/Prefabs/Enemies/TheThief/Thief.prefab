@@ -133,8 +133,6 @@ MonoBehaviour:
   currentState: 0
   thiefAStar: {fileID: 1136649301386955148}
   rotationSpeed: 10
-  hearingZone: {fileID: 0}
-  sightZone: {fileID: 0}
   iHearPlayer: 0
   iSeePlayer: 0
   randomPositionsToGo: []
@@ -355,7 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afef5b574ae0eba448e72b3d43a6d477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   accuracy: 3
   tileSize: 4
   waypointToGo: {fileID: 0}
