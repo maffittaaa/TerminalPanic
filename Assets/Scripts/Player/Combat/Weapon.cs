@@ -16,6 +16,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     private float currentShootingDelay = 0f;
 
+    [SerializeField] private GameObject ticketPrefab;
+
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
@@ -67,6 +69,11 @@ public class Weapon : MonoBehaviour
         currentBullets--;
         if (worldInteractions.potencialEnemy.CompareTag("Enemy"))
         {
+            Destroy(worldInteractions.potencialEnemy);
+        }
+        else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
+        {
+            Instantiate(ticketPrefab, worldInteractions.transform.position, ticketPrefab.transform.rotation);
             Destroy(worldInteractions.potencialEnemy);
         }
     }
