@@ -10,15 +10,15 @@ public enum AirportMode
 
 public class TravelerSpawner : MonoBehaviour
 {
-    public GameObject travelerPrefab;
-    public Vector3 spawnCenter = Vector3.zero;
-    public Vector3 spawnSize = new Vector3(10f, 0f, 10f);
+    [SerializeField] private GameObject travelerPrefab;
+    [SerializeField] private GameObject[] spawnPoints;
+    [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
 
-    public int travelerCount = 10;
+    [SerializeField] private int travelerCount = 10;
 
-    private List<GameObject> currentTravelers = new List<GameObject>();
-    public List<TravelerAI> travelerAIs = new List<TravelerAI>();
-    public static AirportMode currentMode = AirportMode.Normal;
+    [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
+    [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
+    [SerializeField] private static AirportMode currentMode = AirportMode.Normal;
 
     void Start()
     {
@@ -36,6 +36,8 @@ public class TravelerSpawner : MonoBehaviour
     void SpawnTraveler()
     {
         if (travelerPrefab == null) return;
+
+        int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
 
         Vector3 randomPosition = new Vector3(
             Random.Range(spawnCenter.x - spawnSize.x / 2, spawnCenter.x + spawnSize.x / 2),

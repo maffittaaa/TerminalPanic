@@ -464,37 +464,6 @@ Transform:
   - {fileID: 468677300}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &606336362
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 606336363}
-  m_Layer: 0
-  m_Name: SpawnPoint1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &606336363
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 606336362}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1409154869}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &616515116
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,37 +753,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &891409645
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 891409646}
-  m_Layer: 0
-  m_Name: SpawnPoint2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &891409646
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891409645}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.12, y: 0, z: 9.83}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1409154869}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1349030130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8706378655852808923, guid: fd83029ceb231455ea99fb968046a575, type: 3}
@@ -836,57 +774,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7193216844300829422, guid: fd83029ceb231455ea99fb968046a575, type: 3}
   m_PrefabInstance: {fileID: 2306566076185516888}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1409154868
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1409154869}
-  - component: {fileID: 1409154870}
-  m_Layer: 0
-  m_Name: SpawnLocation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1409154869
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409154868}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 891409646}
-  - {fileID: 606336363}
-  m_Father: {fileID: 2104266912}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1409154870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409154868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc10ee7c141bb437fa523e6375e5ed9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  travelerPrefab: {fileID: 1373177254}
-  spawnCenter: {x: 7, y: 0, z: 10}
-  spawnSize: {x: 10, y: 0, z: 10}
-  travelerCount: 10
-  travelerAIs: []
 --- !u!1 &1529322540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,38 +1257,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955128047}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2104266911
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2104266912}
-  m_Layer: 0
-  m_Name: 'TravelerSpawner '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2104266912
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104266911}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.988562, y: 5.915129, z: 0.46730885}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1409154869}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2306566076185516888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1527,6 +1382,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd83029ceb231455ea99fb968046a575, type: 3}
+--- !u!1001 &7697948904877400150
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5161974735598333974, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: travelerPrefab
+      value: 
+      objectReference: {fileID: 1373177254}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.988562
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.915129
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.46730885
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758146550561445307, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: m_Name
+      value: 'TravelerSpawner '
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1537,4 +1453,4 @@ SceneRoots:
   - {fileID: 473966771}
   - {fileID: 1672299681}
   - {fileID: 620254523}
-  - {fileID: 2104266912}
+  - {fileID: 7697948904877400150}
