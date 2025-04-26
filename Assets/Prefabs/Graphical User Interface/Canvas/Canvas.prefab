@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db109d8fd282b294db375dcde15c58c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFadeSeconds: 2
+  timeToFadeSeconds: 1
   timeBetweenOpacityChanged: 0.01
   timeBetweenFades: 1
   currentTimeSeconds: 0

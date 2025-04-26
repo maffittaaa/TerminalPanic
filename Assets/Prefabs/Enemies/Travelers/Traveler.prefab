@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 6754632797414614438}
   - component: {fileID: 7129329179740795941}
   - component: {fileID: 5581114570429060382}
+  - component: {fileID: 6943753352770482785}
   m_Layer: 12
   m_Name: Traveler
   m_TagString: Enemy
@@ -417,6 +418,18 @@ MonoBehaviour:
   - {fileID: 1706666523467069116}
   - {fileID: 657721310090105936}
   defaultState: 1
+--- !u!114 &6943753352770482785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193216844300829422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74db2a737cf8f4949a9d334c59aa2f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8639509630202951989
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class PlayerFainting : MonoBehaviour
     private Image blackScreen;
     
     [Header("Time")]
-    [SerializeField] private int timeToFadeSeconds = 3;
+    [SerializeField] private float timeToFadeSeconds = 3;
     [SerializeField] private float timeBetweenOpacityChanged = 0.1f;
     [SerializeField] private float timeBetweenFades;
     [SerializeField] private float currentTimeSeconds;

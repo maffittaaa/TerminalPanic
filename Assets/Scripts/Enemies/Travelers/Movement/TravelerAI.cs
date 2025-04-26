@@ -255,19 +255,4 @@ public class TravelerAI : MonoBehaviour
             SetRandomNormalState();
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            WorldInteractions player = FindFirstObjectByType<WorldInteractions>();
-
-            KillPlayer(player);
-        }
-    }
-
-    void KillPlayer(WorldInteractions player)
-    {
-        player.KillPlayer();
-    }
 }

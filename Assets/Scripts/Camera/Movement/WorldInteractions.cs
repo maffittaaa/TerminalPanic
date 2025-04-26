@@ -48,7 +48,7 @@ public class WorldInteractions : MonoBehaviour
     private AudioManager audioManager;
 
     [Header("Die")]
-    private bool dead;
+    private bool dead = false;
     private PlayerFainting faint;
 
     private void Start()
@@ -74,6 +74,7 @@ public class WorldInteractions : MonoBehaviour
         if (!dead)
         {
             StartCoroutine(faint.KillPlayerOpacity());
+            dead = true;
         }
     }
 
