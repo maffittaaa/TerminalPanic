@@ -18,11 +18,23 @@ public class TravelerSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
     [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
-    [SerializeField] private static AirportMode currentMode = AirportMode.Normal;
+    [SerializeField] public AirportMode currentMode { get; private set; }
 
     void Start()
     {
+        spawnPoints = GetAllChilds();
         SpawnAllTravelers();
+    }
+
+
+    private GameObject[] GetAllChilds()
+    {
+        GameObject[] childs = new GameObject[transform.childCount];
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            childs[i] = transform.GetChild(i).gameObject;
+        }
+        return childs;
     }
 
     void SpawnAllTravelers()
@@ -37,18 +49,19 @@ public class TravelerSpawner : MonoBehaviour
     {
         if (travelerPrefab == null) return;
 
-        int randomSpawnPoint = Random.Range(0, spawnPoints.Length);
+        Vector3 randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
 
         Vector3 randomPosition = new Vector3(
-            Random.Range(spawnCenter.x - spawnSize.x / 2, spawnCenter.x + spawnSize.x / 2),
-            spawnCenter.y,
-            Random.Range(spawnCenter.z - spawnSize.z / 2, spawnCenter.z + spawnSize.z / 2)
+            Random.Range(randomSpawnPoint.x - spawnSize.x / 2, randomSpawnPoint.x + spawnSize.x / 2),
+            randomSpawnPoint.y,
+            Random.Range(randomSpawnPoint.z - spawnSize.z / 2, randomSpawnPoint.z + spawnSize.z / 2)
         );
 
         GameObject newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity);
         currentTravelers.Add(newTraveler);
 
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
+
         if (travelerAI != null)
         {
             travelerAIs.Add(travelerAI); 
@@ -68,7 +81,7 @@ public class TravelerSpawner : MonoBehaviour
     }
 
 
-    public static void SetAirportMode(AirportMode mode)
+    public void SetAirportMode(AirportMode mode)
     {
         currentMode = mode;
         Debug.Log("Airport mode set to: " + currentMode);

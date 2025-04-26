@@ -58,9 +58,9 @@ public class TravelerAI : MonoBehaviour
     private float stateChangeCounter = 0f;
 
 
-    public void InitWithSpawner(TravelerSpawner Spawner)
+    public void InitWithSpawner(TravelerSpawner spawner)
     {
-        spawner = Spawner;
+        this.spawner = spawner;
     }
 
     void Start()
@@ -107,7 +107,7 @@ public class TravelerAI : MonoBehaviour
         if (agent == null || player == null)
             return;
 
-        if (TravelerSpawner.currentMode == AirportMode.Normal)
+        if (spawner.currentMode == AirportMode.Normal)
         {
             UpdateStateOverTime();
 
@@ -343,7 +343,7 @@ public class TravelerAI : MonoBehaviour
     {
         Debug.Log("Something triggered me: " + other.gameObject.name);
 
-        if (TravelerSpawner.currentMode == AirportMode.Panic && currentState == TravelerState.Chasing && other.CompareTag("Player"))
+        if (spawner.currentMode == AirportMode.Panic && currentState == TravelerState.Chasing && other.CompareTag("Player"))
         {
             Debug.Log("Traveler caught the player. (in panic mode)");
             KillPlayer();
