@@ -17,7 +17,7 @@ public class ThiefBehavior : MonoBehaviour
     [field: Header("Thief")]
     [SerializeField] private ThiefState currentState;
     [SerializeField] private ThiefAStar thiefAStar;
-    [SerializeField] private GameObject nextPosition;
+    private GameObject nextPosition;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private ThiefHearingControl hearingZone;
     [SerializeField] private ThiefSightControl sightZone;
