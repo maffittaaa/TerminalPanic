@@ -343,9 +343,9 @@ public class TravelerAI : MonoBehaviour
     {
         Debug.Log("Something triggered me: " + other.gameObject.name);
 
-        if (currentState == TravelerState.Chasing && other.CompareTag("Player"))
+        if (TravelerSpawner.currentMode == AirportMode.Panic && currentState == TravelerState.Chasing && other.CompareTag("Player"))
         {
-            Debug.Log("Traveler caught the player.");
+            Debug.Log("Traveler caught the player. (in panic mode)");
             KillPlayer();
         }
     }
