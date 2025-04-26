@@ -17,7 +17,6 @@ public class ThiefBehavior : MonoBehaviour
     [field: Header("Thief")]
     [SerializeField] private ThiefState currentState;
     [SerializeField] private ThiefAStar thiefAStar;
-    private GameObject nextPosition;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private ThiefHearingControl hearingZone;
     [SerializeField] private ThiefSightControl sightZone;
@@ -27,6 +26,7 @@ public class ThiefBehavior : MonoBehaviour
     
     [field: Header("Points To Go")]
     [SerializeField] private List<GameObject> randomPositionsToGo = new List<GameObject>();
+    private GameObject nextPosition;
     
     [field: Header("Scripts")]
     [SerializeField] private PlayerMovement player;
@@ -115,7 +115,7 @@ public class ThiefBehavior : MonoBehaviour
                 currentWaypoint = wp;
             }
         }
-        thiefAStar.SetWaypointAndGo(currentWaypoint);
+        thiefAStar.SetWhereToGo(currentWaypoint);
     }
 
     private void IdleState()
@@ -137,7 +137,7 @@ public class ThiefBehavior : MonoBehaviour
             thiefAStar.speed = 5f;
             int nextPositionIndex = Random.Range(0, randomPositionsToGo.Count);
             nextPosition = randomPositionsToGo[nextPositionIndex];
-            thiefAStar.SetWaypointAndGo(nextPosition);
+            thiefAStar.SetWhereToGo(nextPosition);
         }
         else
             thiefAStar.speed = 5f;

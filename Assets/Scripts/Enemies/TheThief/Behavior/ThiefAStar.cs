@@ -194,7 +194,7 @@ public class ThiefAStar : MonoBehaviour
         //Debug.DrawRay(transform.position, targetPos, Color.magenta, tileSize / 2);
     }
 
-    public void SetWaypointAndGo(GameObject waypoint)
+    public void SetWhereToGo(GameObject waypoint)
     {
         waypointToGo = waypoint.GetComponent<TileMapTile>();
         SetCurrentTile();
