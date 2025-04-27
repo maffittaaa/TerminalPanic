@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Weapon : MonoBehaviour
 {
@@ -15,12 +16,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float shootingDelay;
     [SerializeField] private AudioManager audioManager;
     private float currentShootingDelay = 0f;
-
     [SerializeField] private GameObject ticketPrefab;
+    private string _saveFilePath;
+    public string debug = "";
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        _saveFilePath = Application.persistentDataPath + "/debug.txt";
+        print(_saveFilePath);
     }
 
     private void Update()
@@ -37,8 +41,7 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            Debug.Log("Bullets in mag: " + CurrentBulletsInMag());
-            Debug.Log("Total bullets stored: " + TotalStoredBullets());
+            /*File.WriteAllText(_saveFilePath, debug);*/
         }
     }
 
@@ -67,14 +70,27 @@ public class Weapon : MonoBehaviour
         audioManager.shoot.Play();
         currentShootingDelay = 0;
         currentBullets--;
-        if (worldInteractions.potencialEnemy.CompareTag("Enemy"))
+
+        debug += "Shoot\n";
+        debug += worldInteractions.potencialEnemy.transform.parent.name + "\n";
+        debug += worldInteractions.potencialEnemy.name + "\n";
+        debug += worldInteractions.potencialEnemy.tag + "\n";
+
+        if (worldInteractions.potencialEnemy)
         {
-            Destroy(worldInteractions.potencialEnemy);
-        }
-        else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
-        {
-            Instantiate(ticketPrefab, worldInteractions.potencialEnemy.transform.position, ticketPrefab.transform.rotation);
-            Destroy(worldInteractions.potencialEnemy);
+            if (worldInteractions.potencialEnemy.GetComponent<TravelerAI>())
+            {
+                Destroy(worldInteractions.potencialEnemy);
+            }
+            else if (worldInteractions.potencialEnemy.transform.parent.GetComponent<TravelerAI>())
+            {
+                Destroy(worldInteractions.potencialEnemy.transform.parent.gameObject);
+            }
+            else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
+            {
+                Instantiate(ticketPrefab, worldInteractions.potencialEnemy.transform.position, ticketPrefab.transform.rotation);
+                Destroy(worldInteractions.potencialEnemy);
+            }
         }
     }
 

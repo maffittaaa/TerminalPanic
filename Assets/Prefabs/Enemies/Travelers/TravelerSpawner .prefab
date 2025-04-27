@@ -118,7 +118,7 @@ Transform:
   m_GameObject: {fileID: 973479239567023819}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.15, y: 0, z: -18.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -414,7 +414,7 @@ MonoBehaviour:
   spawnPoints: []
   spawnSize: {x: 10, y: 0, z: 10}
   enemiesClothes: {fileID: 0}
-  travelerCount: 10
+  travelerCount: 30
   currentTravelers: []
   travelerAIs: []
 --- !u!114 &5003679286819012102
@@ -433,6 +433,7 @@ MonoBehaviour:
   colorForClothes: 
   identifyingThief: {fileID: 0}
   clothesAndColors: {fileID: 0}
+  clothesNumber: 0
 --- !u!1 &4111900024444467846
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +831,7 @@ Transform:
   m_GameObject: {fileID: 8480695952411921618}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -29.85, y: 0, z: -13.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

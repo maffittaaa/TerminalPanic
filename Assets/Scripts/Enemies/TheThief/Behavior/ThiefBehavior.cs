@@ -100,7 +100,7 @@ public class ThiefBehavior : MonoBehaviour
     {
         float maximumDistance = 0;
 
-        float currentDistance = 0;
+        float currentDistance;
         foreach (GameObject wp in waypoints)
         {
             currentDistance = Magnitude(transform.position - wp.transform.position);

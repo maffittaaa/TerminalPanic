@@ -44,8 +44,7 @@ public class PlayerFainting : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenOpacityChanged);
             currentTimeSeconds += timeBetweenOpacityChanged;
         }
-        currentTimeSeconds = 0;
-        fadeEnded = true;
+        yield return new WaitForSeconds(4);
         Application.Quit();
     }
 

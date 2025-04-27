@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5165912803599498158}
   - component: {fileID: 2690324739121114770}
   - component: {fileID: 1805981106054111657}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HearingRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 1443221812571831922}
   - component: {fileID: 4118187489593573054}
   - component: {fileID: 503533119397918096}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SightRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}

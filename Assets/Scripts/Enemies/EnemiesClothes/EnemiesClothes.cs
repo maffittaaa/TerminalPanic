@@ -24,8 +24,6 @@ public class EnemiesClothes : MonoBehaviour
         int j = 0;
         while (j < clothesNumber)
         {
-            bool equalClothes = false;
-
             if (k >= 1000)
             {
                 Debug.Log("something went wrong");
@@ -42,7 +40,6 @@ public class EnemiesClothes : MonoBehaviour
             }
             else
             {
-                equalClothes = true;
                 clothes = (EClothesAndAccessoriesTypes)Random.Range(0, Enum.GetValues(typeof(EClothesAndAccessoriesTypes)).Length - 1);
             }
             k++;

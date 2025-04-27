@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  thief: {fileID: 0}
+  thief: {fileID: 2184176344453078842, guid: 3c4c9bb0c53b18244a5512515285ea34, type: 3}
   clue: {fileID: 0}
   thiefClothes: 
   thiefClothesColor: 

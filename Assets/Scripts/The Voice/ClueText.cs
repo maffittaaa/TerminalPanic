@@ -11,7 +11,6 @@ public class ClueText : MonoBehaviour
     [SerializeField] private IdentifyingThief thief;
     private TextMeshProUGUI clueText;
     public int numberOfClues = -1;
-    private bool thiefFound = false;
     
     private void Start()
     {
@@ -28,10 +27,8 @@ public class ClueText : MonoBehaviour
     public string TextForClue()
     {
         numberOfClues++;
-        
         if (numberOfClues >= thief.thiefClothes.Count)
         {
-            thiefFound = true;
             clueText.text = "Catch the Thief!";
         }
         else

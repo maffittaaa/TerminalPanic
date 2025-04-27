@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 5298147487467055970}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -721,6 +721,10 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 1402412827125578696, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4608
+      objectReference: {fileID: 0}
     - target: {fileID: 1710121669499957405, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -851,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512742513511494270, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3091362518976983259, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_Layer
@@ -873,6 +877,10 @@ PrefabInstance:
       propertyPath: lightLifeSec
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 4290806100612736245, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: ticketPrefab
+      value: 
+      objectReference: {fileID: 1417900168769703852, guid: b94618f011991c243a1b044450190673, type: 3}
     - target: {fileID: 4290806100612736245, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: shootingLight
       value: 

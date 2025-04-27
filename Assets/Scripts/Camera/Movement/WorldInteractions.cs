@@ -25,7 +25,6 @@ public class WorldInteractions : MonoBehaviour
     private GameObject mirror;
     [SerializeField]  private float lookToMirrorSpeed;
     private InteractableObject interactable;
-    [SerializeField] private LayerMask layerMask;
 
     [Header("Door")]
     [SerializeField] private float doorAngleOpen;
@@ -53,6 +52,8 @@ public class WorldInteractions : MonoBehaviour
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         faint = FindFirstObjectByType<PlayerFainting>();
+/*        weapon.debug += layerMask.value + " LayerMask\n";
+        weapon.debug += layerMask.value.ToString() + " LayerMask\n";*/
     }
 
     private void Update()
@@ -79,7 +80,7 @@ public class WorldInteractions : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 100))
         {
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
@@ -114,6 +115,9 @@ public class WorldInteractions : MonoBehaviour
                 }
                 highLightObject = null;
             }
+
+            potencialEnemy = hit.collider.gameObject;
+            shootingPoint.transform.position = hit.point;
         }
         else
         {
@@ -123,12 +127,6 @@ public class WorldInteractions : MonoBehaviour
                 highLightObject.GetComponent<InteractableObject>().ChangeOutlineState(false);
             }
             highLightObject = null;
-        }
-
-        if(hit.collider != null)
-        {
-            potencialEnemy = hit.collider.gameObject;
-            shootingPoint.transform.position = hit.point;
         }
     }
 

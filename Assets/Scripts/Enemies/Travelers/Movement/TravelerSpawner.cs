@@ -13,13 +13,13 @@ public enum AirportMode
 
 public class TravelerSpawner : MonoBehaviour
 {
+    [SerializeField] private Weapon weapon;
     [SerializeField] private GameObject travelerPrefab;
     [SerializeField] private GameObject travellersHolder;
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
     public EnemiesClothes enemiesClothes;
     public int travelerCount = 10;
-    private VisualClothes visualClothes;
 
     [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
     [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
@@ -31,7 +31,6 @@ public class TravelerSpawner : MonoBehaviour
         spawnPoints = GetAllChilds();
         SpawnAllTravelers();
     }
-
 
     private GameObject[] GetAllChilds()
     {
@@ -67,6 +66,14 @@ public class TravelerSpawner : MonoBehaviour
 
         GameObject newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity, travellersHolder.transform);
         currentTravelers.Add(newTraveler);
+        newTraveler.tag = "Enemy";
+
+/*        weapon.debug += newTraveler.layer + " Enemy " + i + "\n";
+        for(int j = 0; j < newTraveler.transform.childCount; j++)
+        {
+            weapon.debug += newTraveler.transform.GetChild(j).gameObject.layer + " Child " + j + "\n";
+        }*/
+
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
         enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
         VisualClothes visualClothes = newTraveler.AddComponent<VisualClothes>();

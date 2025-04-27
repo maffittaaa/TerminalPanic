@@ -84,7 +84,7 @@ public class TravelerAI : MonoBehaviour
 
         SetRandomNormalState();
         wanderCounter = wanderTimer;
-        SetNewWanderTarget();
+        /*SetNewWanderTarget();*/
     }
 
     void FixedUpdate()
@@ -92,7 +92,7 @@ public class TravelerAI : MonoBehaviour
         if (agent == null || player == null)
             return;
 
-        if (spawner.currentMode == AirportMode.Normal)
+/*        if (spawner.currentMode == AirportMode.Normal)
         {
             UpdateStateOverTime();
 
@@ -106,7 +106,7 @@ public class TravelerAI : MonoBehaviour
             }
 
             return;
-        }
+        }*/
     }
 
     public void Waiting()
@@ -212,11 +212,11 @@ public class TravelerAI : MonoBehaviour
         randomDirection.y = 0f;
         wanderTarget = spawnPoint + randomDirection;
 
-        NavMeshHit hit;
+/*        NavMeshHit hit;
         if (NavMesh.SamplePosition(wanderTarget, out hit, wanderRadius, NavMesh.AllAreas))
         {
             wanderTarget = hit.position;
-        }
+        }*/
     }
 
     public void SetRandomNormalState()
