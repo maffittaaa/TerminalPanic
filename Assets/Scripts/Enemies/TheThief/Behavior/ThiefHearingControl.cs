@@ -4,46 +4,58 @@ using UnityEngine;
 
 public class ThiefHearingControl : MonoBehaviour
 {
-    public ThiefBehavior thief;
+    [field: SerializeField] public ThiefBehavior thief { get; set; }
 
     private void Start()
     {
-        thief = FindObjectOfType<ThiefBehavior>();
+        thief = transform.parent.GetComponent<ThiefBehavior>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-
-        if (player != null || other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
+            PlayerMovement player = other.transform.parent.GetComponent<PlayerMovement>();
+
             if (player != null)
             {   
-                if (player.behaviorType != BehaviorType.Crouching && (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
+                if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
+                {
                     thief.iHearPlayer = true;
+                }
                 else
-                    thief.iHearPlayer = false; 
+                {
+                    thief.iHearPlayer = false;
+                }
             }
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        PlayerMovement player = other.GetComponent<PlayerMovement>();
-
-        if (player != null)
+        if (other.CompareTag("Player"))
         {
-            if (player.behaviorType != BehaviorType.Crouching && (player.behaviorType == BehaviorType.Walking || player.behaviorType == BehaviorType.Runing || player.behaviorType == BehaviorType.Jumping))
-                thief.iHearPlayer = true;
-            else
-                thief.iHearPlayer = false;
+            PlayerMovement player = other.transform.parent.GetComponent<PlayerMovement>();
+
+            if (player != null)
+            {
+                if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
+                {
+                    thief.iHearPlayer = true;
+                }
+                else
+                {
+                    thief.iHearPlayer = false;
+                }
+            }
         }
     }
-    
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             thief.iHearPlayer = false;
+        }
     }
 }

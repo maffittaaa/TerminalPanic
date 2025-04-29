@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class ThiefSightControl : MonoBehaviour
 {
-    public ThiefBehavior thief;
+    [field: SerializeField] public ThiefBehavior thief { get; set; }
 
     private void Start()
     {
-        thief = FindObjectOfType<ThiefBehavior>();
+        thief = transform.parent.GetComponent<ThiefBehavior>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
+        if (other.CompareTag("Player"))
+        {
             thief.iSeePlayer = true;
+        }
     }
-
-
+    
     private void OnTriggerExit(Collider other)
     {
-
-        if (other.GetComponent<PlayerMovement>() || other.tag == "Player")
+        if (other.CompareTag("Player"))
+        {
             thief.iSeePlayer = false;
+        }
     }
 }
