@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -31,6 +32,7 @@ public class ThiefBehavior : MonoBehaviour
     
     [field: Header("Waypoints")]
     [SerializeField] private List<GameObject> waypoints = new List<GameObject>();
+    private Dictionary<GameObject, float> waypointDistances = new Dictionary<GameObject, float>();
     private GameObject currentWaypoint;
     
     private void Start()
@@ -54,7 +56,7 @@ public class ThiefBehavior : MonoBehaviour
         switch (newState)
         {
             case ThiefState.Fleeing:
-                PickFurThestWaypointToGo();
+                PickFurThestWaypointsToGo();
                 break;
             case ThiefState.Hiding:
                 thiefAStar.speed = 0f;
@@ -96,21 +98,22 @@ public class ThiefBehavior : MonoBehaviour
         return Mathf.Sqrt(Mathf.Pow(vector.x, 2) + Mathf.Pow(vector.y, 2) + Mathf.Pow(vector.z, 2));
     }
     
-    private void PickFurThestWaypointToGo()
+    private void PickFurThestWaypointsToGo()
     {
-        float maximumDistance = 0;
-
         float currentDistance;
         foreach (GameObject wp in waypoints)
         {
             currentDistance = Magnitude(transform.position - wp.transform.position);
-            if (currentDistance > maximumDistance)
-            {
-                maximumDistance = currentDistance;
-                currentWaypoint = wp;
-            }
+            waypointDistances[wp] = currentDistance;
         }
-        thiefAStar.SetWhereToGo(currentWaypoint);
+
+        List<GameObject> sortedWaypoints = new List<GameObject>(waypointDistances.Keys); //created this list because you cant sort a dictionary directly
+        sortedWaypoints.Sort((a, b) => waypointDistances[b].CompareTo(waypointDistances[a]));
+        List<GameObject> threeFurthest = new List<GameObject>(); //this list stores the 3 furthest
+        for (int i = 0; i < Mathf.Min(3, sortedWaypoints.Count); i++) //the Mathf.Min it's just to not get out of the index range basically, but it only increments until 3 because its minimum
+            threeFurthest.Add(sortedWaypoints[i]);
+        int randomWaypointIndex = Random.Range(0, threeFurthest.Count);
+        thiefAStar.SetWhereToGo(threeFurthest[randomWaypointIndex]);
     }
 
     private void IdleState()
@@ -129,13 +132,13 @@ public class ThiefBehavior : MonoBehaviour
         yield return new WaitForSeconds(3f);
         if (!iSeePlayer)
         {
-            thiefAStar.speed = 10f;
+            thiefAStar.speed = 7f;
             int nextPositionIndex = Random.Range(0, randomPositionsToGo.Count);
             nextPosition = randomPositionsToGo[nextPositionIndex];
             thiefAStar.SetWhereToGo(nextPosition);
         }
         else
-            thiefAStar.speed = 10f;
+            thiefAStar.speed = 7f;
     }
 
     private void HidingState()
