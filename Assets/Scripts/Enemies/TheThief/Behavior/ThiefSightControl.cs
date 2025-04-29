@@ -14,16 +14,12 @@ public class ThiefSightControl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
             thief.iSeePlayer = true;
-        }
     }
     
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
             thief.iSeePlayer = false;
-        }
     }
 }

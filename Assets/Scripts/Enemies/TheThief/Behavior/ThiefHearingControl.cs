@@ -20,13 +20,9 @@ public class ThiefHearingControl : MonoBehaviour
             if (player != null)
             {   
                 if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
-                {
                     thief.iHearPlayer = true;
-                }
                 else
-                {
                     thief.iHearPlayer = false;
-                }
             }
         }
     }
@@ -40,13 +36,9 @@ public class ThiefHearingControl : MonoBehaviour
             if (player != null)
             {
                 if (player.behaviorType != BehaviorType.Crouching && player.behaviorType != BehaviorType.Idleing)
-                {
                     thief.iHearPlayer = true;
-                }
                 else
-                {
                     thief.iHearPlayer = false;
-                }
             }
         }
     }
@@ -54,8 +46,6 @@ public class ThiefHearingControl : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
             thief.iHearPlayer = false;
-        }
     }
 }
