@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public enum ThiefState
@@ -17,9 +14,7 @@ public class ThiefBehavior : MonoBehaviour
 {
     [field: Header("Thief")]
     [SerializeField] private ThiefState currentState;
-    [SerializeField] private ThiefAStar thiefAStar;
     [SerializeField] private float rotationSpeed;
-    private Rigidbody rb;
     public bool iHearPlayer;
     public bool iSeePlayer;
     
@@ -27,19 +22,18 @@ public class ThiefBehavior : MonoBehaviour
     [SerializeField] private List<GameObject> randomPositionsToGo = new List<GameObject>();
     private GameObject nextPosition;
     
-    [field: Header("Scripts")]
-    [SerializeField] private PlayerMovement player;
-    
     [field: Header("Waypoints")]
     [SerializeField] private List<GameObject> waypoints = new List<GameObject>();
     private Dictionary<GameObject, float> waypointDistances = new Dictionary<GameObject, float>();
     private GameObject currentWaypoint;
     
+    [field: Header("Scripts")]
+    [SerializeField] private PlayerMovement player;
+    [SerializeField] private ThiefAStar thiefAStar;
     
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
-        rb = GetComponent<Rigidbody>();
 
        GameObject[] tempWaypoints = GameObject.FindGameObjectsWithTag("Waypoint");
        GameObject[] tempPositions = GameObject.FindGameObjectsWithTag("NewPositions");

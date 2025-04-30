@@ -5,18 +5,25 @@ using Random = UnityEngine.Random;
 
 public class IdentifyingThief : MonoBehaviour
 {
-    [SerializeField] private Camera playerCamera;
+    [field: Header("Thief")]
     [SerializeField] public GameObject thief;
+    private Vector3 thiefPosition;
+    [SerializeField] private float distanceToEnemy;
+    
+    [field: Header("Clues")]
     [SerializeField] private ClueText clue;
-    public List<EClothesAndAccessoriesTypes> thiefClothes = new List<EClothesAndAccessoriesTypes>();
-    public List<EColorTypes> thiefClothesColor = new List<EColorTypes>();
-    private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
     public ClothesAndColors hintsForThief;
     [SerializeField] private int peopleNeededToNextClue;
     private int currentPeopleToNextClue = 0;
+    private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
+    
+    [field: Header("Clothes")]
+    public List<EClothesAndAccessoriesTypes> thiefClothes = new List<EClothesAndAccessoriesTypes>();
+    public List<EColorTypes> thiefClothesColor = new List<EColorTypes>();
     private int clothesAndAccessoriesNumber;
-    [SerializeField] private float distanceToEnemy;
-    private Vector3 thiefPosition;
+    
+    [field: Header("Scripts")]
+    [SerializeField] private Camera playerCamera;
     
     private void Awake()
     {
