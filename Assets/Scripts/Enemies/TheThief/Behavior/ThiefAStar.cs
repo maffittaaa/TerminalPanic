@@ -187,9 +187,8 @@ public class ThiefAStar : MonoBehaviour
             angle = -angle;
         
         Vector3 direction = (targetPos - transform.parent.position).normalized;
-        Debug.Log("ANGLE " + angle);
-        Debug.Log("cross" + cross);
-        transform.parent.localEulerAngles = new Vector3(0, Mathf.Lerp(transform.parent.localEulerAngles.y, angle, Time.fixedDeltaTime * speed), 0);
+        Quaternion targetRotation = Quaternion.LookRotation(direction); 
+        transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, targetRotation, speed * Time.deltaTime);
         rb.velocity = direction * speed;
 
         if (Vector3.Distance(transform.position, targetPos) < accuracy)
