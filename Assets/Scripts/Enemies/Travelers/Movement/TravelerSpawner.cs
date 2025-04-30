@@ -132,9 +132,9 @@ public class TravelerSpawner : MonoBehaviour
     
     private void SpawningClothes(int i)
     {
-        if (i <= 10)
+        if (i <= travelerCount * 0.2)
             enemiesClothes.GivingClothesToEnemies();
-        else if (i > 10 && i <= 20)
+        else if (i > travelerCount * 0.2 && i <= travelerCount * 0.6)
             enemiesClothes.MatchingWithOneCloth();
         else
             enemiesClothes.MatchingWithTwoClothes();

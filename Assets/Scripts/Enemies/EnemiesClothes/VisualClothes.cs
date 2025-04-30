@@ -9,8 +9,7 @@ public class VisualClothes : MonoBehaviour
 {
     private GameObject traveler;
     public TravelerSpawner travelerSpawner;
-    private TextMeshPro clothesText;
-    private TextMeshPro colorText;
+    private TextMeshPro clothesAndColorsText;
     private List<EClothesAndAccessoriesTypes> clothesList = new List<EClothesAndAccessoriesTypes>();
     private List<EColorTypes> colorList = new List<EColorTypes>();
     private PlayerMovement player;
@@ -19,19 +18,7 @@ public class VisualClothes : MonoBehaviour
     {
         traveler = gameObject;
         player = FindObjectOfType<PlayerMovement>();
-        
-        GameObject clothes = new GameObject("ClothesText");
-        clothes.transform.SetParent(traveler.transform);
-        clothesText = clothes.AddComponent<TextMeshPro>();
-        clothesText.fontSize = 5;
-        clothes.transform.localPosition = new Vector3(10.9f, 0.5f, 0);
-        
-        GameObject colors = new GameObject("ColorsText");
-        colors.transform.SetParent(traveler.transform);
-        colorText = colors.AddComponent<TextMeshPro>();
-        colorText.fontSize = 5;
-        colors.transform.localPosition = new Vector3(10.9f, 0f, 0);
-        
+        clothesAndColorsText = traveler.GetComponentInChildren<TextMeshPro>();
         TextForClothesAndColors();
     }
     
@@ -45,8 +32,7 @@ public class VisualClothes : MonoBehaviour
         {
             clothesList.Add(GetComponent<ClothesAndColors>().clothesAndAccessoriesTypes[j]);
             colorList.Add(GetComponent<ClothesAndColors>().colorTypes[j]);
-            clothesText.text += $"\n {clothesList[j]}\n";
-            colorText.text += $"\n {colorList[j]}\n";
+            clothesAndColorsText.text += $"{clothesList[j]} | {colorList[j]}\n";
         }
     }
 }

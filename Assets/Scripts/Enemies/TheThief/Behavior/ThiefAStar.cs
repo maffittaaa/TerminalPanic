@@ -12,12 +12,12 @@ public class ThiefAStar : MonoBehaviour
     [SerializeField] private TileMapTile waypointToGo;
     
     [field: Header("Tiles")]
-    public GameObject currentTile;
-    public GameObject enemyTile;
-    public GameObject enemy;
-    public GameObject waypointTile;
-    Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
-    List<GameObject> path = new List<GameObject>();
+    [SerializeField] private GameObject currentTile;
+    [SerializeField] private GameObject enemyTile;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject waypointTile;
+    [SerializeField] private Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
+    [SerializeField] private List<GameObject> path = new List<GameObject>();
     
     [field: Header("Raycasts")]
     [SerializeField] private float distanceInFront;
