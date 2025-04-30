@@ -7,17 +7,18 @@ using UnityEngine;
 
 public class VisualClothes : MonoBehaviour
 {
+    [field: Header("Traveler")]
     private GameObject traveler;
     public TravelerSpawner travelerSpawner;
+    
+    [field: Header("Travelers Clothes")]
     private TextMeshPro clothesAndColorsText;
     private List<EClothesAndAccessoriesTypes> clothesList = new List<EClothesAndAccessoriesTypes>();
     private List<EColorTypes> colorList = new List<EColorTypes>();
-    private PlayerMovement player;
-
+    
     private void Start()
     {
         traveler = gameObject;
-        player = FindObjectOfType<PlayerMovement>();
         clothesAndColorsText = traveler.GetComponentInChildren<TextMeshPro>();
         TextForClothesAndColors();
     }
