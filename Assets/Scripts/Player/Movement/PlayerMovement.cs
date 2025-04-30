@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public enum BehaviorType { Idleing, Walking, Runing, Jumping, Crouching }
+public enum BehaviorType { Idleing, Walking, Running, Jumping, Crouching }
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -57,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Sprint()) 
         {
-            behaviorType = BehaviorType.Runing;
+            behaviorType = BehaviorType.Running;
 
             if (!audioManager.runPlayer.isPlaying)
             {

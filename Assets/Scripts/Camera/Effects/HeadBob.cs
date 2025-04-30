@@ -31,7 +31,7 @@ public class HeadBob : MonoBehaviour
                 {
                     speed = crouchSpeed;
                 }
-                else if (playerMovementScript.CurrentType() == BehaviorType.Runing && speed != runSpeed)
+                else if (playerMovementScript.CurrentType() == BehaviorType.Running && speed != runSpeed)
                 {
                     speed = runSpeed;
                 }

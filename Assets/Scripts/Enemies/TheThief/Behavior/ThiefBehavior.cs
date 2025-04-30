@@ -143,15 +143,15 @@ public class ThiefBehavior : MonoBehaviour
 
     private void HidingState()
     {
-        if (iSeePlayer)
+        if (iSeePlayer) //if he sees the player while hiding
             StartState(ThiefState.Fleeing);
-        if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy)
+        if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy) //if he reaches the next position after hiding, he resets to idle
             StartState(ThiefState.Idle);
     }
 
     private void FleeingState()
     {
-        if (!(Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) && iSeePlayer)
+        if (!(Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) && iSeePlayer) //while he is in fleeing mode to the waypoint and he sees the player, recalculate another waypoint to go
             StartState(ThiefState.Fleeing);
     }
 }
