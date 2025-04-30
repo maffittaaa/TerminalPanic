@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class ThiefAStar : MonoBehaviour
 {
+    [field: Header("Thief")]
     public float speed;
     public float accuracy;
+    [SerializeField] private Rigidbody rb;
     private int currentTargetIndex;
     [SerializeField] private float tileSize;
     [SerializeField] private TileMapTile waypointToGo;
-
+    
+    [field: Header("Tiles")]
     public GameObject currentTile;
     public GameObject enemyTile;
     public GameObject enemy;
     public GameObject waypointTile;
-
     Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
-
     List<GameObject> path = new List<GameObject>();
     
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private Camera playerCamera;
+    [field: Header("Raycasts")]
     [SerializeField] private float distanceInFront;
     [SerializeField] private float distanceToGround;
 
@@ -34,7 +34,6 @@ public class ThiefAStar : MonoBehaviour
     
     void Start()
     {
-        playerCamera = Camera.main;
         GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
 
         foreach (GameObject floor in floors)
