@@ -245,10 +245,7 @@ public class ThiefAStar : MonoBehaviour
                     {
                         tileBelowEnemy.tag = "ProhibitedFloor";
                         if (getCost(tileBelowEnemy) > 1)
-                        {
-                            Debug.Log("Occupied!");
                             AStarPathFinding();
-                        }
                     }
                 }
             }
