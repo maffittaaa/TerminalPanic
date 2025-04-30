@@ -48,7 +48,7 @@ public class ThiefBehavior : MonoBehaviour
        foreach (GameObject rp in tempPositions)
             randomPositionsToGo.Add(rp);
        currentWaypoint = waypoints[0];
-        StartState(ThiefState.Idle);
+       StartState(ThiefState.Idle);
     }
     
     public void StartState(ThiefState newState)
