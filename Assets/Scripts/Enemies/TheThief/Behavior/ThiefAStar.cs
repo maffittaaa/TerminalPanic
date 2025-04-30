@@ -166,9 +166,7 @@ public class ThiefAStar : MonoBehaviour
         
         // Debug.Log("Path Length: " + path.Count);
         // foreach (GameObject tile in path)
-        // {
         //     tile.GetComponent<Renderer>().material.color = Color.red; 
-        // }
     }
 
     public void MoveAlongPath()
@@ -182,22 +180,38 @@ public class ThiefAStar : MonoBehaviour
             targetPos = path[currentTargetIndex].transform.position;
 
         targetPos.y = transform.parent.position.y;
-
-        Vector3 direction = (targetPos - transform.parent.position).normalized;
         
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
-        transform.parent.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, lookRotation.y, 0)), Time.deltaTime * speed);
+        float angle = DotProduct(transform.parent.forward, targetPos) * Mathf.Rad2Deg;
+        float cross = CrossProduct(transform.parent.forward, targetPos);
+        if (cross < 0)
+            angle = -angle;
+        
+        Vector3 direction = (targetPos - transform.parent.position).normalized;
+        Debug.Log("ANGLE " + angle);
+        Debug.Log("cross" + cross);
+        transform.parent.localEulerAngles = new Vector3(0, Mathf.Lerp(transform.parent.localEulerAngles.y, angle, Time.fixedDeltaTime * speed), 0);
         rb.velocity = direction * speed;
 
         if (Vector3.Distance(transform.position, targetPos) < accuracy)
             currentTargetIndex++;
     }
-
+    
     public void SetWhereToGo(GameObject waypoint)
     {
         waypointToGo = waypoint.GetComponent<TileMapTile>();
         SetCurrentTile();
         AStarPathFinding();
+    }
+    
+    private float DotProduct(Vector3 vector1, Vector3 vector2)
+    {
+        return Mathf.Acos(Vector3.Dot(vector1.normalized, vector2.normalized));
+    }
+    
+    private float CrossProduct(Vector3 vector1, Vector3 vector2)
+    {
+        Vector3 resultCross = Vector3.Cross(vector1.normalized, vector2.normalized);
+        return resultCross.y;
     }
 }
 
