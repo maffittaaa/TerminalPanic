@@ -175,9 +175,9 @@ public class ThiefAStar : MonoBehaviour
 
         path.Reverse();
         
-        Debug.Log("Path Length: " + path.Count);
-        foreach (GameObject tile in path)
-            tile.GetComponent<Renderer>().material.color = Color.red; 
+        // Debug.Log("Path Length: " + path.Count);
+        // foreach (GameObject tile in path)
+        //     tile.GetComponent<Renderer>().material.color = Color.red; 
     }
 
     public void MoveAlongPath()
@@ -197,6 +197,7 @@ public class ThiefAStar : MonoBehaviour
         if (cross < 0)
             angle = -angle;
         
+        //rotation to the target
         Vector3 direction = (targetPos - transform.parent.position).normalized;
         Quaternion targetRotation = Quaternion.LookRotation(direction); 
         transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, targetRotation, speed * Time.deltaTime);
@@ -250,7 +251,7 @@ public class ThiefAStar : MonoBehaviour
                 }
             }
         }
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceInFront, Color.red);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceInFront, Color.red);
     }
 }
 
