@@ -464,5 +464,9 @@ MonoBehaviour:
   tileSize: 4
   waypointToGo: {fileID: 0}
   currentTile: {fileID: 0}
+  enemyTile: {fileID: 0}
   waypointTile: {fileID: 0}
   rb: {fileID: 5448424393328647405}
+  playerCamera: {fileID: 0}
+  distanceInFront: 6
+  distanceToGround: 1

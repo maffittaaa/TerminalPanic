@@ -35,6 +35,7 @@ public class ThiefBehavior : MonoBehaviour
     private Dictionary<GameObject, float> waypointDistances = new Dictionary<GameObject, float>();
     private GameObject currentWaypoint;
     
+    
     private void Start()
     {
         player = FindObjectOfType<PlayerMovement>();

@@ -10,6 +10,8 @@ public class ThiefAStar : MonoBehaviour
     [SerializeField] private TileMapTile waypointToGo;
 
     public GameObject currentTile;
+    public GameObject enemyTile;
+    public GameObject enemy;
     public GameObject waypointTile;
 
     Dictionary<Vector3, GameObject> floorTiles = new Dictionary<Vector3, GameObject>();
@@ -17,6 +19,9 @@ public class ThiefAStar : MonoBehaviour
     List<GameObject> path = new List<GameObject>();
     
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private float distanceInFront;
+    [SerializeField] private float distanceToGround;
 
     Vector3 RoundPosition(Vector3 pos, float gridSize = 1.0f)
     {
@@ -29,6 +34,7 @@ public class ThiefAStar : MonoBehaviour
     
     void Start()
     {
+        playerCamera = Camera.main;
         GameObject[] floors = GameObject.FindGameObjectsWithTag("Floor");
 
         foreach (GameObject floor in floors)
@@ -97,8 +103,13 @@ public class ThiefAStar : MonoBehaviour
     {
         int cost = 0;
 
-        if (tile != null) 
+        if (tile != null)
+        {
             cost = 1;
+            if (tile.CompareTag("ProhibitedFloor"))
+                cost = 10000;
+        }
+        
         return cost;
     }
 
@@ -164,9 +175,9 @@ public class ThiefAStar : MonoBehaviour
 
         path.Reverse();
         
-        // Debug.Log("Path Length: " + path.Count);
-        // foreach (GameObject tile in path)
-        //     tile.GetComponent<Renderer>().material.color = Color.red; 
+        Debug.Log("Path Length: " + path.Count);
+        foreach (GameObject tile in path)
+            tile.GetComponent<Renderer>().material.color = Color.red; 
     }
 
     public void MoveAlongPath()
@@ -190,7 +201,8 @@ public class ThiefAStar : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(direction); 
         transform.parent.rotation = Quaternion.Slerp(transform.parent.rotation, targetRotation, speed * Time.deltaTime);
         rb.velocity = direction * speed;
-
+        SeeingObstacles(targetPos);
+        
         if (Vector3.Distance(transform.position, targetPos) < accuracy)
             currentTargetIndex++;
     }
@@ -211,6 +223,37 @@ public class ThiefAStar : MonoBehaviour
     {
         Vector3 resultCross = Vector3.Cross(vector1.normalized, vector2.normalized);
         return resultCross.y;
+    }
+    
+    private void SeeingObstacles(Vector3 targetPos)
+    {
+        RaycastHit hit;
+        
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceInFront))
+        {
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                enemy = hit.collider.gameObject;
+                Vector3 enemyTile = enemy.transform.position;
+                
+                RaycastHit hit2;
+                
+                if (Physics.Raycast(enemyTile, transform.TransformDirection(Vector3.down), out hit2, distanceToGround))
+                {
+                    GameObject tileBelowEnemy  = hit2.collider.gameObject;
+                    if (tileBelowEnemy.CompareTag("Floor"))
+                    {
+                        tileBelowEnemy.tag = "ProhibitedFloor";
+                        if (getCost(tileBelowEnemy) > 1)
+                        {
+                            Debug.Log("Occupied!");
+                            AStarPathFinding();
+                        }
+                    }
+                }
+            }
+        }
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceInFront, Color.red);
     }
 }
 

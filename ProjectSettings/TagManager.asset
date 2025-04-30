@@ -13,6 +13,7 @@ TagManager:
   - Waypoint
   - NewPositions
   - Thief
+  - ProhibitedFloor
   layers:
   - Default
   - TransparentFX
