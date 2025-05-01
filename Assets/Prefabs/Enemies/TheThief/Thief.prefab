@@ -459,8 +459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afef5b574ae0eba448e72b3d43a6d477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  accuracy: 1.5
+  speed: 5
+  accuracy: 3
   rb: {fileID: 5448424393328647405}
   tileSize: 4
   waypointToGo: {fileID: 0}

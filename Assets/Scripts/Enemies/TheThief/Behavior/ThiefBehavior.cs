@@ -78,6 +78,9 @@ public class ThiefBehavior : MonoBehaviour
                 break;
             case ThiefState.Fleeing:
                 FleeingState();
+                Debug.Log("currentWaypoint position: " + currentWaypoint.transform.position);
+                Debug.Log("thief position: " + transform.position);
+                Debug.Log("distance: " + (Vector3.Distance(currentWaypoint.transform.position, transform.position)));
                 if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) //if thief reaches waypoint, stays hidden
                     StartState(ThiefState.Hiding);
                 break;
@@ -107,7 +110,8 @@ public class ThiefBehavior : MonoBehaviour
         for (int i = 0; i < Mathf.Min(3, sortedWaypoints.Count); i++) //the Mathf.Min it's just to not get out of the index range basically, but it only increments until 3 because its minimum
             threeFurthest.Add(sortedWaypoints[i]);
         int randomWaypointIndex = Random.Range(0, threeFurthest.Count);
-        thiefAStar.SetWhereToGo(threeFurthest[randomWaypointIndex]);
+        currentWaypoint = threeFurthest[randomWaypointIndex];
+        thiefAStar.SetWhereToGo(currentWaypoint);
     }
 
     private void IdleState()
