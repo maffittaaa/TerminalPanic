@@ -26,6 +26,10 @@ public class AudioManager : MonoBehaviour
     [field: Header("   People")]
     [field: SerializeField] public AudioSource crowd { get; set; }
 
+    [field: Header("All Sounds")]
+
+    [field: SerializeField] public List<AudioSource> allAudios { get; private set; }
+
     private static AudioManager instance;
     public static AudioManager Instance { get { return instance; } }
     
@@ -41,5 +45,29 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+
+        SetAllAudiosList();
+    }
+
+    private void SetAllAudiosList()
+    {
+        allAudios = new List<AudioSource>();
+
+        //Geral 
+        allAudios.Add(heartbeat);
+        allAudios.Add(heartbeat2);
+        allAudios.Add(shoot);
+        allAudios.Add(walkPlayer);
+        allAudios.Add(runPlayer);
+        allAudios.Add(crouchPlayer);
+        allAudios.Add(stopPlayer);
+        allAudios.Add(flashLightOn);
+        allAudios.Add(flashLightOff);
+        allAudios.Add(crowd);
+    }
+
+    public void AddToAudioList(AudioSource audio)
+    {
+        allAudios.Add(audio);
     }
 }

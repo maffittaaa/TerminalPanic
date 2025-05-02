@@ -15,6 +15,7 @@ TagManager:
   - Thief
   - ProhibitedFloor
   - GameManager
+  - PostProcessEffects
   layers:
   - Default
   - TransparentFX

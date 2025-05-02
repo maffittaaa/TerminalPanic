@@ -294,6 +294,7 @@ MonoBehaviour:
   verticalAxis: 0
   <behaviorType>k__BackingField: 0
   anxietyBar: {fileID: 1028580006078134479}
+  gameManager: {fileID: 0}
 --- !u!114 &1028580006078134479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   flickeringLights: {fileID: 0}
   trigger: {fileID: 0}
   focusCamera: {fileID: 6214514152561195501}
+  gameManager: {fileID: 0}
   dOF: {fileID: 0}
   cA: {fileID: 0}
   <distanceDecrease>k__BackingField: 0.03
@@ -681,6 +683,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1053728048027124444, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 7191
+      objectReference: {fileID: 0}
     - target: {fileID: 1074679258135159920, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_Layer
       value: 3
@@ -855,7 +861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2512742513511494270, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3091362518976983259, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_Layer
@@ -1104,6 +1110,10 @@ PrefabInstance:
     - target: {fileID: 6437124111751223986, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559058334191983957, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: m_TagString
+      value: PostProcessEffects
       objectReference: {fileID: 0}
     - target: {fileID: 6630703788741536457, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: m_LocalScale.x
@@ -1421,6 +1431,10 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 8877474373804109098, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2088
+      objectReference: {fileID: 0}
     - target: {fileID: 8910239255728772586, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: speed
       value: 0
@@ -1597,6 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172a068adfddf814ab9ff77dc67a3c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   cameraViewPoint: {fileID: 3305785852537821137}
   player: {fileID: 4549382358596299043}
   sensivity: 5
@@ -1673,3 +1688,4 @@ MonoBehaviour:
   currentInitialPosition: {x: 0, y: 0, z: 0}
   newPosition: {x: 0, y: 0, z: 0}
   time: 0
+  gameManager: {fileID: 0}

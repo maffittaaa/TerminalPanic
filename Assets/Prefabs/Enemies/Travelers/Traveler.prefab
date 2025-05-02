@@ -267,14 +267,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ec7afa5d5c54fda8dfc6f044710563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <type>k__BackingField: 0
   moveSpeed: 3
   rotationSpeed: 5
   minChaseSpeed: 1.5
   maxChaseSpeed: 5
   slowDownDistance: 7
   wanderRadius: 10
+  <currentState>k__BackingField: 0
+  <type>k__BackingField: 0
   agent: {fileID: 303073248732645958}
+  <iHearPlayer>k__BackingField: 0
+  <iSeePlayer>k__BackingField: 0
+  <lostPlayer>k__BackingField: 0
+  whispers: {fileID: 8231283792136256395}
+  highbass: {fileID: 5358176653465875221}
+  weird: {fileID: 6533223780007620627}
+  audioManager: {fileID: 0}
 --- !u!114 &814557335534832805
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -68,12 +68,6 @@ public class TravelerSpawner : MonoBehaviour
         currentTravelers.Add(newTraveler);
         newTraveler.tag = "Enemy";
 
-/*        weapon.debug += newTraveler.layer + " Enemy " + i + "\n";
-        for(int j = 0; j < newTraveler.transform.childCount; j++)
-        {
-            weapon.debug += newTraveler.transform.GetChild(j).gameObject.layer + " Child " + j + "\n";
-        }*/
-
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
         enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
         VisualClothes visualClothes = newTraveler.AddComponent<VisualClothes>();
@@ -83,8 +77,6 @@ public class TravelerSpawner : MonoBehaviour
         TravelerType randomType = (TravelerType)Random.Range(0, Enum.GetValues(typeof(TravelerType)).Length);
 
         travelerAI.type = randomType;
-
-        travelerAI.InitWithSpawner(this);
 
         if (travelerAI != null)
         {

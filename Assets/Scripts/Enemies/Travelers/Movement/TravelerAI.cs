@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,8 +20,7 @@ public enum TravelerType
 
 public class TravelerAI : MonoBehaviour
 {
-    [SerializeField] public TravelerState currentState { get; set; }
-    [field:SerializeField] public TravelerType type { get; set; }
+
 
     [Header("Traveller Settings")]
     [SerializeField] private float moveSpeed = 5f;
@@ -30,49 +30,60 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float slowDownDistance = 7f;
     [SerializeField] private float wanderRadius = 5f;
 
-    [Header("Traveller Needs")]
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] public Vector3 spawnPoint { get; set; }
-    [SerializeField] public static PlayerMovement player { get; set; }
-    [SerializeField] public bool iHearPlayer { get; set; }
-    [SerializeField] public bool iSeePlayer { get; set; }
-    [SerializeField] public bool lostPlayer { get; set; }
+    [field: Header("Traveller State & Type")]
+    [field: SerializeField] public TravelerState currentState { get; set; }
+    [field: SerializeField] public TravelerType type { get; set; }
 
+    [field: Header("Traveller Needs")]
+    [SerializeField] private NavMeshAgent agent;
+    [field: SerializeField] public static PlayerMovement player { get; set; }
+    [field: SerializeField] public bool iHearPlayer { get; set; }
+    [field: SerializeField] public bool iSeePlayer { get; set; }
+    [field: SerializeField] public bool lostPlayer { get; set; }
+    public Vector3 spawnPoint { get; set; }
     private Vector3 lastKnownPlayerPosition;
-    [HideInInspector] public float lookAroundDuration { get; set; }
-    [HideInInspector] public float lookAroundTimer { get; set; }
+    public float lookAroundDuration { get; set; }
+    public float lookAroundTimer { get; set; }
     private float chaseMemoryTime = 5f;
     private float chaseMemoryTimer = 0f;
     private float maxChaseDistance = 15f;
-    private TravelerSpawner spawner;
     private Vector3 wanderTarget;
     private float wanderTimer = 3f;
     private float wanderCounter;
     private float stateChangeTimer = 6f;
     private float stateChangeCounter = 0f;
 
-    public void InitWithSpawner(TravelerSpawner spawner)
-    {
-        this.spawner = spawner;
-    }
+    [Header("Traveller Audio")]
+    [SerializeField] private AudioSource whispers;
+    [SerializeField] private AudioSource highbass;
+    [SerializeField] private AudioSource weird;
+
+    [Header("Managers")]
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private GameManager gameManager;
 
     void Start()
     {
-        if (player == null)
-        {
-            player = GameObject.FindFirstObjectByType<PlayerMovement>();
-        }
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        SetAudioSettings();
+        SetAgentSettings();
+    }
 
-        if (agent == null)
-        {
-            agent = GetComponent<NavMeshAgent>();
-        }
+    private void SetAudioSettings()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager.AddToAudioList(whispers);
+        audioManager.AddToAudioList(highbass);
+        audioManager.AddToAudioList(weird);
+    }
 
-        if (agent != null)
-        {
-            agent.speed = moveSpeed;
-            agent.angularSpeed = rotationSpeed * 100f;
-        }
+    private void SetAgentSettings()
+    {
+        player = FindFirstObjectByType<PlayerMovement>();
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
+        agent.angularSpeed = rotationSpeed * 100f;
 
         spawnPoint = transform.position;
 
@@ -84,29 +95,19 @@ public class TravelerAI : MonoBehaviour
 
         SetRandomNormalState();
         wanderCounter = wanderTimer;
-        /*SetNewWanderTarget();*/
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        if (agent == null || player == null)
-            return;
-
-/*        if (spawner.currentMode == AirportMode.Normal)
+        if(gameManager.state != IGameStates.Paused)
         {
-            UpdateStateOverTime();
-
-            if (currentState == TravelerState.Wandering)
+            if (!whispers.isPlaying || !highbass.isPlaying || !weird.isPlaying)
             {
-                Wander();
+                whispers.Play();
+                highbass.Play();
+                weird.Play();
             }
-            else if (currentState == TravelerState.Waiting)
-            {
-                agent.isStopped = true;
-            }
-
-            return;
-        }*/
+        }
     }
 
     public void Waiting()
@@ -150,7 +151,6 @@ public class TravelerAI : MonoBehaviour
     {
         agent.isStopped = false;
         agent.speed = maxChaseSpeed;
-
         agent.SetDestination(spawnPoint);
     }
 
@@ -211,12 +211,6 @@ public class TravelerAI : MonoBehaviour
         Vector3 randomDirection = Random.insideUnitSphere * wanderRadius;
         randomDirection.y = 0f;
         wanderTarget = spawnPoint + randomDirection;
-
-/*        NavMeshHit hit;
-        if (NavMesh.SamplePosition(wanderTarget, out hit, wanderRadius, NavMesh.AllAreas))
-        {
-            wanderTarget = hit.position;
-        }*/
     }
 
     public void SetRandomNormalState()

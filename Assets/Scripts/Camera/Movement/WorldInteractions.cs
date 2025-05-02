@@ -292,24 +292,26 @@ public class WorldInteractions : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(FLmMinFlickerTimeDist, FLmMaxFlickerTimeDist));
+            if(gameManager.state != IGameStates.Paused)
+            {
+                flashLight.gameObject.SetActive(false);
+                flashLightPhysic.gameObject.SetActive(false);
 
-            flashLight.gameObject.SetActive(false);
-            flashLightPhysic.gameObject.SetActive(false);
+                yield return new WaitForSeconds(flashLightTimeDelay * 2);
 
-            yield return new WaitForSeconds(flashLightTimeDelay * 2);
+                flashLight.gameObject.SetActive(true);
+                flashLightPhysic.gameObject.SetActive(true);
 
-            flashLight.gameObject.SetActive(true);
-            flashLightPhysic.gameObject.SetActive(true);
+                yield return new WaitForSeconds(flashLightTimeDelay);
 
-            yield return new WaitForSeconds(flashLightTimeDelay);
+                flashLight.gameObject.SetActive(false);
+                flashLightPhysic.gameObject.SetActive(false);
 
-            flashLight.gameObject.SetActive(false);
-            flashLightPhysic.gameObject.SetActive(false);
+                yield return new WaitForSeconds(flashLightTimeDelay * 2);
 
-            yield return new WaitForSeconds(flashLightTimeDelay * 2);
-
-            flashLight.gameObject.SetActive(true);
-            flashLightPhysic.gameObject.SetActive(true);
+                flashLight.gameObject.SetActive(true);
+                flashLightPhysic.gameObject.SetActive(true);
+            }
         }
     }
 }

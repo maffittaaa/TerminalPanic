@@ -6,6 +6,7 @@ public enum FlickerMode { On, Off}
 
 public class Flickering : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField] private int minFlickers = 1;
     [SerializeField] private int maxFlickers = 10;
     [SerializeField] private float minFlickerSpeed = 0.1f;
@@ -13,35 +14,66 @@ public class Flickering : MonoBehaviour
     [SerializeField] private float minTimeOff = 0.1f;
     [SerializeField] private float maxTimeOff = 1.0f;
 
+    [Header("Objects & Lights")]
     [SerializeField] private Light light1;
     [SerializeField] private Light light2;
     [SerializeField] private Light light3;
     [SerializeField] private GameObject lightEffect;
     [SerializeField] private GameObject lightMaterial;
     [SerializeField] private FlickerMode mode;
-    [field: SerializeField] public Color mainColor { get; set; }
-    [SerializeField] private GameManager gameManager;
-    [field: SerializeField] public Color currentColor { get; set; }
 
+    [field: Header("Colors")]
+    [field: SerializeField] public Color mainColor { get; set; }
+    [field: SerializeField] public Color currentColor { get; set; }
     private bool lightCheat = false;
-    
+
+    [Header("Managers")]
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private AudioManager audioManager;
+
     [Header("Audio")]
     [SerializeField] private AudioSource flicker;
     [SerializeField] private AudioSource noise;
 
-
     void Start()
     {
-        mainColor = light1.color; 
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        InitiateAudio();
+        InitiateLights();
+    }
+
+    private void InitiateAudio()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager.AddToAudioList(noise);
+        audioManager.AddToAudioList(flicker);
+        if (mode == FlickerMode.Off)
+        {
+            noise.Play();
+        }
+    }
+
+    private void InitiateLights()
+    {
+        mainColor = light1.color;
         currentColor = mainColor;
         if (mode == FlickerMode.On)
         {
             StartCoroutine(FlickerEffect());
         }
-        else
+    }
+
+    private void Update()
+    {
+        if (gameManager.state != IGameStates.Paused)
         {
-            noise.Play();
+            if (mode == FlickerMode.Off)
+            {
+                if (!noise.isPlaying)
+                {
+                    noise.Play();
+                }
+            }
         }
     }
 
