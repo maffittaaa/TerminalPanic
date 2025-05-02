@@ -30,21 +30,21 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private PostProcessVolume postProcess;
 
     //Depth
-    [SerializeField] private DepthOfField depth;
+    private DepthOfField depth;
     [SerializeField] private float newDepthValue;
     
     //Bloom
-    [SerializeField] private Bloom bloom;
-    [SerializeField] private float mainBloomValue;
+    private Bloom bloom;
+    private float mainBloomValue;
     [SerializeField] private float newBloomValue;
 
     //Chromatic Aberration
-    [SerializeField] private ChromaticAberration chromaticAberration;
-    [SerializeField] private float mainChromaticAberrationValue;
+    private ChromaticAberration chromaticAberration;
+    private float mainChromaticAberrationValue;
     [SerializeField] private float newChromaticAberrationValue;
 
     //Auto Exposure
-    [SerializeField] private AutoExposure autoExposure;
+    private AutoExposure autoExposure;
     [SerializeField] private float newAutoExposureValue;
 
     [Header("Game State")]
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         depth.focalLength.overrideState = false;
         mainBloomValue = bloom.intensity.value;
         mainChromaticAberrationValue = chromaticAberration.intensity.value;
+        PlayModeView();
     }
 
     public void PlayModeView()
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         NonHouveredColor();
         if (IUIType.Button == type)
         {
+            gameManager.RestorePostProcessEffects();
             gameManager.state = IGameStates.Running;
         }
         else if (IUIType.GameManager == type)
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         StopAllSounds();
         if (IUIType.Button == type)
         {
+            gameManager.ChangePostProcessEffects();
             gameManager.state = IGameStates.Paused;
         }
         else if(IUIType.GameManager == type)
@@ -155,6 +158,11 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
+    public void ChangeAutoExposure()
+    {
+        autoExposure.keyValue.value = brightnessSlider.value;
+    }
+
     private void ChangePostProcessEffects()
     {
         depth.focalLength.overrideState = true;
@@ -165,7 +173,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         chromaticAberration.intensity.value = newChromaticAberrationValue;
     }
 
-    private void RestorePostProcessEffects()
+    public void RestorePostProcessEffects()
     {
         depth.focalLength.overrideState = false;
 
