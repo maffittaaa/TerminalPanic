@@ -29,6 +29,7 @@ public class InteractableObject : MonoBehaviour
 
     private void OnDestroy()
     {
-        interactingText.enabled = false;
+        if(interactingText)
+            interactingText.enabled = false;
     }
 }

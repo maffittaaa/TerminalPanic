@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     [field:SerializeField] public BehaviorType behaviorType { get; private set; }
     [SerializeField] private AnxietyBar anxietyBar;
+    [SerializeField] private GameManager gameManager;
 
     private void Start()
     {
@@ -35,9 +36,22 @@ public class PlayerMovement : MonoBehaviour
         initialSpeed = speed;
         behaviorType = BehaviorType.Idleing;
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
+    {
+        if (!anxietyBar.interacted && gameManager.state != IGameStates.Paused)
+        {
+            Move();
+        }
+        else 
+        {
+            speed = 0;
+        }
+    }
+
+    private void Move()
     {
         Movement();
         Crouch();
@@ -55,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
                 audioManager.crouchPlayer.Play();
             }
         }
-        else if (Sprint()) 
+        else if (Sprint())
         {
             behaviorType = BehaviorType.Running;
 
@@ -123,7 +137,7 @@ public class PlayerMovement : MonoBehaviour
                     speed *= sprintMultiplier;
                 return true;
             }
-            else if (!anxietyBar.interacted)
+            else
                 speed = initialSpeed;
         }
         return false;

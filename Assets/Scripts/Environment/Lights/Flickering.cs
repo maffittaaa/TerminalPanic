@@ -20,6 +20,7 @@ public class Flickering : MonoBehaviour
     [SerializeField] private GameObject lightMaterial;
     [SerializeField] private FlickerMode mode;
     [field: SerializeField] public Color mainColor { get; set; }
+    [SerializeField] private GameManager gameManager;
     [field: SerializeField] public Color currentColor { get; set; }
 
     private bool lightCheat = false;
@@ -31,7 +32,8 @@ public class Flickering : MonoBehaviour
 
     void Start()
     {
-        mainColor = light1.color;
+        mainColor = light1.color; 
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         currentColor = mainColor;
         if (mode == FlickerMode.On)
         {
@@ -47,25 +49,32 @@ public class Flickering : MonoBehaviour
     {
         while (true)
         {
-            if (!lightCheat)
+            if (gameManager.state != IGameStates.Paused)
             {
-                noise.Stop();
-                flicker.Stop();
-                flicker.Play();
+                if (!lightCheat)
+                {
+                    noise.Stop();
+                    flicker.Stop();
+                    flicker.Play();
 
-                for (int i = 0; i < Random.Range(minFlickers, maxFlickers); i++)
+                    for (int i = 0; i < Random.Range(minFlickers, maxFlickers); i++)
+                    {
+                        ChangeLightsState(true);
+                        yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
+                        ChangeLightsState(false);
+                        yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
+                    }
+                    yield return new WaitForSeconds(Random.Range(minTimeOff, maxTimeOff));
+                }
+                else
                 {
                     ChangeLightsState(true);
-                    yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
-                    ChangeLightsState(false);
-                    yield return new WaitForSeconds(Random.Range(minFlickerSpeed, maxFlickerSpeed));
+                    yield return null;
                 }
-                yield return new WaitForSeconds(Random.Range(minTimeOff, maxTimeOff));
             }
             else
             {
-                ChangeLightsState(true);
-                yield return null;
+                yield return new WaitForSeconds(0.1f);
             }
         }   
     }

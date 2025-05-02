@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private Slider brightnessSlider;
 
     [Header("Game State")]
-    [SerializeField] private IGameStates state;
+    [SerializeField] private GameManager manager;
     [SerializeField] private IUIType type;
+    [field: SerializeField] public IGameStates state {  get; private set; }
 
     void Start()
     {
         state = IGameStates.Running;
+        manager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     public void PlayModeView()
@@ -39,6 +41,15 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         optionsView.SetActive(false);
         settingsView.SetActive(false);
         NonHouveredColor();
+
+        if(IUIType.Button == type)
+        {
+            manager.state = IGameStates.Running;
+        }
+        else
+        {
+            state = IGameStates.Running;
+        }
     }
 
     public void PauseMenuView()
@@ -47,6 +58,14 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         optionsView.SetActive(true);
         settingsView.SetActive(false);
         NonHouveredColor();
+        if (IUIType.Button == type)
+        {
+            manager.state = IGameStates.Paused;
+        }
+        else
+        {
+            state = IGameStates.Paused;
+        }
     }
 
     public void SettingsView()
@@ -69,7 +88,10 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void NonHouveredColor()
     {
-        gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+        if (type == IUIType.Button)
+        {
+            gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -97,14 +119,28 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
                 if (state == IGameStates.Running)
                 {
                     PauseMenuView();
-                    state = IGameStates.Paused;
                 }
                 else if (state == IGameStates.Paused)
                 {
                     PlayModeView();
-                    state = IGameStates.Running;
                 }
             }
+           
+            SetMouseSettings(state == IGameStates.Running);
+        }
+    }
+
+    private void SetMouseSettings(bool state)
+    {
+        if (state)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }

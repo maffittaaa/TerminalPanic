@@ -17,45 +17,51 @@ public class FlashLightBob : MonoBehaviour
     [SerializeField] private Vector3 currentInitialPosition;
     [SerializeField] private Vector3 newPosition;
     [SerializeField] private float time;
+    [SerializeField] private GameManager gameManager;
 
     private void Start()
     {
         newPosition = viewPoint.transform.position;
         initialDist = viewPoint.transform.position - transform.position;
         time = 0f;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void FixedUpdate()
     {
         currentInitialPosition = viewPoint.transform.position + initialDist;
-
-        if (!anxietyBar.interacted)
+        if (!anxietyBar.interacted && gameManager.state != IGameStates.Paused) 
         {
-            if (playerMovementScript.KeysRealeased())
+            BobEffect();
+        }
+    }
+
+    private void BobEffect()
+    {
+        if (playerMovementScript.KeysRealeased())
+        {
+            time = 0f;
+            newPosition.y = Mathf.Lerp(transform.position.y, currentInitialPosition.y, Time.fixedDeltaTime * speed);
+            transform.position = new Vector3(currentInitialPosition.x, newPosition.y, currentInitialPosition.z);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
+        }
+        else
+        {
+            if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
             {
-                time = 0f;
-                newPosition.y = Mathf.Lerp(transform.position.y, currentInitialPosition.y, Time.fixedDeltaTime * speed);
-                transform.position = new Vector3(currentInitialPosition.x, newPosition.y, currentInitialPosition.z);
-                transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, 0), Time.fixedDeltaTime * flashlightSpeed);
-            }
-            else
-            {
-                if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
+                if (playerMovementScript.CurrentType() == BehaviorType.Crouching && speed != crouchSpeed)
                 {
-                    if (playerMovementScript.CurrentType() == BehaviorType.Crouching && speed != crouchSpeed)
-                    {
-                        speed = crouchSpeed;
-                    }
-                    else if (playerMovementScript.CurrentType() == BehaviorType.Running && speed != runSpeed)
-                    {
-                        speed = runSpeed;
-                    }
-                    else if (playerMovementScript.CurrentType() == BehaviorType.Walking && speed != walkSpeed)
-                    {
-                        speed = walkSpeed;
-                    }
-                    DetorEffect();
+                    speed = crouchSpeed;
                 }
+                else if (playerMovementScript.CurrentType() == BehaviorType.Running && speed != runSpeed)
+                {
+                    speed = runSpeed;
+                }
+                else if (playerMovementScript.CurrentType() == BehaviorType.Walking && speed != walkSpeed)
+                {
+                    speed = walkSpeed;
+                }
+                DetorEffect();
             }
         }
     }

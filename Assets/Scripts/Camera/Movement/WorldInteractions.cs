@@ -25,6 +25,7 @@ public class WorldInteractions : MonoBehaviour
     private GameObject mirror;
     [SerializeField]  private float lookToMirrorSpeed;
     private InteractableObject interactable;
+    [SerializeField] private GameManager gameManager;
 
     [Header("Door")]
     [SerializeField] private float doorAngleOpen;
@@ -51,9 +52,10 @@ public class WorldInteractions : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         faint = FindFirstObjectByType<PlayerFainting>();
-/*        weapon.debug += layerMask.value + " LayerMask\n";
-        weapon.debug += layerMask.value.ToString() + " LayerMask\n";*/
+        /*        weapon.debug += layerMask.value + " LayerMask\n";
+                weapon.debug += layerMask.value.ToString() + " LayerMask\n";*/
     }
 
     private void Update()
@@ -132,56 +134,59 @@ public class WorldInteractions : MonoBehaviour
 
     private void Interact()
     {
-        if (anxietyBar.interacted)
+        if (gameManager.state != IGameStates.Paused)
         {
-            ChangeCameraView();
-            return;
-        }
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            switch (itemType)
+            if (anxietyBar.interacted)
             {
-                case ItemType.Ticket:
-                    gotTicket = true;
-                    Destroy(highLightObject.transform.parent.gameObject);
-                    break;
-                case ItemType.Weapon:
-                    Destroy(highLightObject);
-                    body.SetActive(true);
-                    weapon.AddBullets(10);
-                    break;
-                case ItemType.Bullets:
-                    Destroy(highLightObject.transform.parent.gameObject);
-                    weapon.AddBullets(5);
-                    break;
-                case ItemType.Mirror:
-                    if (anxietyBar.interacted == false && anxietyBar.currentAnxiety > 0f)
-                    {
-                        mirror = highLightObject.gameObject;
-                        anxietyBar.interacted = true;
-                        anxietyBar.realityMode = true;
-                        anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());
-                    }
-                    break;
-                case ItemType.KeyCardMachine:
-                    if (gotKeyCard && !doorOpeningClosing)
-                    {
-                        doorOpeningClosing = true;
-                        StartCoroutine(OpenDoor());
-                    }
-                    break;
-                case ItemType.KeyCard:
-                    gotKeyCard = true;
-                    Destroy(highLightObject.transform.parent.gameObject);
-                    break;
+                ChangeCameraView();
+                return;
             }
-        }
 
-        if (Input.GetMouseButtonDown(1) && body.activeSelf == true)
-        {
-            StartCoroutine(FlashLight());
-        }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                switch (itemType)
+                {
+                    case ItemType.Ticket:
+                        gotTicket = true;
+                        Destroy(highLightObject.transform.parent.gameObject);
+                        break;
+                    case ItemType.Weapon:
+                        Destroy(highLightObject);
+                        body.SetActive(true);
+                        weapon.AddBullets(10);
+                        break;
+                    case ItemType.Bullets:
+                        Destroy(highLightObject.transform.parent.gameObject);
+                        weapon.AddBullets(5);
+                        break;
+                    case ItemType.Mirror:
+                        if (anxietyBar.interacted == false && anxietyBar.currentAnxiety > 0f)
+                        {
+                            mirror = highLightObject.gameObject;
+                            anxietyBar.interacted = true;
+                            anxietyBar.realityMode = true;
+                            anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());
+                        }
+                        break;
+                    case ItemType.KeyCardMachine:
+                        if (gotKeyCard && !doorOpeningClosing)
+                        {
+                            doorOpeningClosing = true;
+                            StartCoroutine(OpenDoor());
+                        }
+                        break;
+                    case ItemType.KeyCard:
+                        gotKeyCard = true;
+                        Destroy(highLightObject.transform.parent.gameObject);
+                        break;
+                }
+            }
+
+            if (Input.GetMouseButtonDown(1) && body.activeSelf == true)
+            {
+                StartCoroutine(FlashLight());
+            }
+        }        
     }
 
     private void ChangeCameraView()

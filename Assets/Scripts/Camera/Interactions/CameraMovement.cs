@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject cameraViewPoint;
     [SerializeField] private GameObject player;
     [SerializeField] private float sensivity = 15f;
@@ -16,12 +17,13 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-       Cursor.lockState = CursorLockMode.None;
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
     {
-        if (!anxietyBar.interacted)
+        if (!anxietyBar.interacted && gameManager.state != IGameStates.Paused)
         {
             MouseMovement();
         }
@@ -29,7 +31,6 @@ public class CameraMovement : MonoBehaviour
 
     private void MouseMovement()
     {
-        //Cursor.visible = false;
         MoveAroundWithMouse();
     }
 

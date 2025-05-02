@@ -30,6 +30,7 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField] private LightManager flickeringLights;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     [SerializeField] private PostProcessVolume focusCamera;
+    [SerializeField] private GameManager gameManager;
     
     [field: Header("Post-Processing Settings")]
     public DepthOfField dOF;
@@ -48,7 +49,7 @@ public class AnxietyBar : MonoBehaviour
     {
         dOF = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
         cA = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>();
-        
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         normalizedAnxiety = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
         
@@ -84,46 +85,49 @@ public class AnxietyBar : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(timeSeconds);
-            if (interacted == false && realityMode == false)
-            { 
-                EffectsFromAnxiety(anxietyIncrease);
-            }
-            else if (interacted)
+            if (gameManager.state != IGameStates.Paused)
             {
-                EffectsFromAnxiety(-anxietyDecrease);
-                if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f))
+                if (interacted == false && realityMode == false)
                 {
-                    dOF.focusDistance.value += distanceDecrease;
-                    cA.intensity.value -= aberrationIncrease;
+                    EffectsFromAnxiety(anxietyIncrease);
                 }
-                
-                if (currentAnxiety <= 0f)
+                else if (interacted)
                 {
-                    interacted = false;
-                    coroutineRunning = false;
-                    if (audioManager.heartbeat.isPlaying)
-                        audioManager.heartbeat.Stop();
-                }
-            }
+                    EffectsFromAnxiety(-anxietyDecrease);
+                    if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f))
+                    {
+                        dOF.focusDistance.value += distanceDecrease;
+                        cA.intensity.value -= aberrationIncrease;
+                    }
 
-            if (currentAnxiety > maxAnxiety * 0.75f)
-            {
-                state.color = Color.red;
-                dOF.focusDistance.value -= distanceDecrease;
-                cA.intensity.value += aberrationIncrease;
-                if (!audioManager.heartbeat2.isPlaying)
-                {
-                    audioManager.heartbeat.Stop();
-                    audioManager.heartbeat2.Play();
+                    if (currentAnxiety <= 0f)
+                    {
+                        interacted = false;
+                        coroutineRunning = false;
+                        if (audioManager.heartbeat.isPlaying)
+                            audioManager.heartbeat.Stop();
+                    }
                 }
-            }
-            else if (coroutineRunning)
-            {
-                state.color = new Color(1, 1, 0, 0.8f);
-                if (!audioManager.heartbeat.isPlaying)
+
+                if (currentAnxiety > maxAnxiety * 0.75f)
                 {
-                    audioManager.heartbeat2.Stop();
-                    audioManager.heartbeat.Play();
+                    state.color = Color.red;
+                    dOF.focusDistance.value -= distanceDecrease;
+                    cA.intensity.value += aberrationIncrease;
+                    if (!audioManager.heartbeat2.isPlaying)
+                    {
+                        audioManager.heartbeat.Stop();
+                        audioManager.heartbeat2.Play();
+                    }
+                }
+                else if (coroutineRunning)
+                {
+                    state.color = new Color(1, 1, 0, 0.8f);
+                    if (!audioManager.heartbeat.isPlaying)
+                    {
+                        audioManager.heartbeat2.Stop();
+                        audioManager.heartbeat.Play();
+                    }
                 }
             }
         }

@@ -18,30 +18,35 @@ public class Weapon : MonoBehaviour
     private float currentShootingDelay = 0f;
     [SerializeField] private GameObject ticketPrefab;
     private string _saveFilePath;
+    [SerializeField] private GameManager gameManager;
     public string debug = "";
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
         print(_saveFilePath);
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && CanShoot())
+        if(gameManager.state != IGameStates.Paused)
         {
-            Shoot();
-        }
+            if (Input.GetMouseButtonDown(0) && CanShoot())
+            {
+                Shoot();
+            }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            bulletsShoot = 0;
-        }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                bulletsShoot = 0;
+            }
 
-        if (Input.GetKeyDown(KeyCode.LeftAlt))
-        {
-            /*File.WriteAllText(_saveFilePath, debug);*/
+            if (Input.GetKeyDown(KeyCode.LeftAlt))
+            {
+                /*File.WriteAllText(_saveFilePath, debug);*/
+            }
         }
     }
 

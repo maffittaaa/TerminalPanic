@@ -14,6 +14,7 @@ TagManager:
   - NewPositions
   - Thief
   - ProhibitedFloor
+  - GameManager
   layers:
   - Default
   - TransparentFX
