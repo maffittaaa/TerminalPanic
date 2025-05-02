@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+       Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
@@ -29,7 +29,7 @@ public class CameraMovement : MonoBehaviour
 
     private void MouseMovement()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         MoveAroundWithMouse();
     }
 
