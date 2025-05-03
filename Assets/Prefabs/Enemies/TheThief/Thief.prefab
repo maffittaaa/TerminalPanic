@@ -242,6 +242,8 @@ MonoBehaviour:
   iSeePlayer: 0
   randomPositionsToGo: []
   waypoints: []
+  hidingSpotPrefab: {fileID: 3963948621798536808, guid: 44168570cf870a843925259fcebc48bc, type: 3}
+  closestHidingSpot: {fileID: 0}
   player: {fileID: 0}
   thiefAStar: {fileID: 1136649301386955148}
 --- !u!54 &5448424393328647405
