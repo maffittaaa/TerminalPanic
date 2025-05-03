@@ -324,8 +324,8 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dOF: {fileID: 0}
   cA: {fileID: 0}
-  <distanceDecrease>k__BackingField: 0.01
-  <aberrationIncrease>k__BackingField: 0.001
+  <distanceDecrease>k__BackingField: 0.005
+  <aberrationIncrease>k__BackingField: 0.03
   audioManager: {fileID: 0}
   <state>k__BackingField: {fileID: 0}
   OnPlayerHealthChangedEvent:

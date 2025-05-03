@@ -31,6 +31,7 @@ public class TravelerAI : MonoBehaviour
     [field: Header("Traveller State & Type")]
     [field: SerializeField] public TravelerState currentState { get; set; }
     [field: SerializeField] public TravelerType type { get; set; }
+    [field: SerializeField] public IAirportMode currentMode { get; set; }
 
     [field: Header("Traveller Needs")]
     [SerializeField] private NavMeshAgent agent;
@@ -97,7 +98,7 @@ public class TravelerAI : MonoBehaviour
 
     private void Update()
     {
-        if(gameManager.state != IGameStates.Paused)
+        if(gameManager.state != IGameStates.Paused && currentMode != IAirportMode.Normal)
         {
             if (!whispers.isPlaying || !highbass.isPlaying || !weird.isPlaying)
             {
@@ -233,9 +234,12 @@ public class TravelerAI : MonoBehaviour
         }
     }
 
-    public void OnAirportModeChanged(AirportMode newMode)
+    public void OnAirportModeChanged(IAirportMode newMode)
     {
-        if (newMode == AirportMode.Panic)
+        StateMachine stateMachine = GetComponent<StateMachine>();
+        stateMachine.type = newMode;
+        currentMode = newMode;
+/*        if (newMode == IAirportMode.Panic)
         {
             if (type == TravelerType.Sitters)
             {
@@ -246,9 +250,9 @@ public class TravelerAI : MonoBehaviour
                 SetState(TravelerState.Wandering);
             }
         }
-        else if (newMode == AirportMode.Normal)
+        else if (newMode == IAirportMode.Normal)
         {
             SetRandomNormalState();
-        }
+        }*/
     }
 }

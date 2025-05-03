@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Timeline;
 
 public class AudioManager : MonoBehaviour
 {
@@ -32,7 +34,10 @@ public class AudioManager : MonoBehaviour
 
     private static AudioManager instance;
     public static AudioManager Instance { get { return instance; } }
-    
+
+    [field: Header("Audio Mixer")]
+    [SerializeField] private AudioMixer mainMixer;
+
     protected virtual void Awake()
     {
         if (instance != null && this.gameObject != null)
@@ -47,6 +52,8 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SetAllAudiosList();
+
+
     }
 
     private void SetAllAudiosList()
@@ -69,5 +76,20 @@ public class AudioManager : MonoBehaviour
     public void AddToAudioList(AudioSource audio)
     {
         allAudios.Add(audio);
+    }
+
+    public void SetMasterVolume(float sliderValue)
+    {
+        mainMixer.SetFloat("MasterVolume", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void SetSFXVolume(float sliderValue)
+    {
+        mainMixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void SetMusicVolume(float sliderValue)
+    {
+        mainMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
     }
 }

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public enum AirportMode
+public enum IAirportMode
 {
     Normal,
     Panic
@@ -23,7 +23,7 @@ public class TravelerSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
     [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
-    [SerializeField] public AirportMode currentMode { get; private set; }
+    [SerializeField] public IAirportMode currentMode { get; private set; }
 
     void Start()
     {
@@ -82,14 +82,14 @@ public class TravelerSpawner : MonoBehaviour
         {
             travelerAIs.Add(travelerAI); 
 
-            if (currentMode == AirportMode.Normal)
+            if (currentMode == IAirportMode.Normal)
             {
                 if (Random.value > 0.5f)
                     travelerAI.SetState(TravelerState.Wandering);
                 else
                     travelerAI.SetState(TravelerState.Waiting);
             }
-            else if (currentMode == AirportMode.Panic)
+            else if (currentMode == IAirportMode.Panic)
             {
                 travelerAI.SetState(TravelerState.Waiting);
             }
@@ -97,7 +97,7 @@ public class TravelerSpawner : MonoBehaviour
     }
 
 
-    public void SetAirportMode(AirportMode mode)
+    public void SetAirportMode(IAirportMode mode)
     {
         currentMode = mode;
         //Debug.Log("Airport mode set to: " + currentMode);
@@ -114,12 +114,12 @@ public class TravelerSpawner : MonoBehaviour
 
     public void SwitchToPanicMode()
     {
-        SetAirportMode(AirportMode.Panic);
+        SetAirportMode(IAirportMode.Panic);
     }
 
     public void SwitchToNormalMode()
     {
-        SetAirportMode(AirportMode.Normal);
+        SetAirportMode(IAirportMode.Normal);
     }
     
     private void SpawningClothes(int i)

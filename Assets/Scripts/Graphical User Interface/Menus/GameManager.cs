@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Profiling;
+using UnityEngine.Audio;
 
 public enum IGameStates { Running, Paused, MainMenu }
 public enum IUIType { Button, Slider, GameManager}
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [Header("Settings Sliders")]
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider soundEffectsSlider;
+    [SerializeField] private Slider SFXSlider;
     [SerializeField] private Slider brightnessSlider;
 
     [Header("Post Processing Effects")]
@@ -32,15 +33,16 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     //Depth
     private DepthOfField depth;
     [SerializeField] private float newDepthValue;
+    [SerializeField] private float currentDepthValue;
     
     //Bloom
     private Bloom bloom;
-    private float mainBloomValue;
+    private float currentBloomValue;
     [SerializeField] private float newBloomValue;
 
     //Chromatic Aberration
     private ChromaticAberration chromaticAberration;
-    private float mainChromaticAberrationValue;
+    private float currentChromaticAberrationValue;
     [SerializeField] private float newChromaticAberrationValue;
 
     //Auto Exposure
@@ -53,16 +55,26 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private IUIType type;
     [field: SerializeField] public IGameStates state {  get; private set; }
 
+
+
     void Start()
     {
         state = IGameStates.Running;
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 
         if (IUIType.GameManager == type)
         {
             SetPostProcessEffects();
+            InitializeAudio();
         }
+    }
+
+    private void InitializeAudio()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager.SetMasterVolume(masterSlider.value);
+        audioManager.SetMusicVolume(SFXSlider.value);
+        audioManager.SetSFXVolume(musicSlider.value);
     }
 
     private void SetPostProcessEffects()
@@ -74,8 +86,11 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         autoExposure = postProcess.profile.GetSetting<AutoExposure>();
 
         depth.focalLength.overrideState = false;
-        mainBloomValue = bloom.intensity.value;
-        mainChromaticAberrationValue = chromaticAberration.intensity.value;
+
+        currentBloomValue = bloom.intensity.value;
+        currentChromaticAberrationValue = chromaticAberration.intensity.value;
+        currentDepthValue = depth.focusDistance.value;
+
         PlayModeView();
     }
 
@@ -89,13 +104,11 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             gameManager.RestorePostProcessEffects();
             gameManager.state = IGameStates.Running;
-            /*Time.timeScale = 1;*/
         }
         else if (IUIType.GameManager == type)
         {
             RestorePostProcessEffects();
             state = IGameStates.Running;
-            /*Time.timeScale = 1;*/
         }
     }
 
@@ -105,19 +118,26 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         optionsView.SetActive(true);
         settingsView.SetActive(false);
         NonHouveredColor();
-        StopAllSounds();
         if (IUIType.Button == type)
         {
             gameManager.ChangePostProcessEffects();
             gameManager.state = IGameStates.Paused;
-            /*Time.timeScale = 0;*/
+            gameManager.StopAllSounds();
         }
         else if(IUIType.GameManager == type)
         {
             ChangePostProcessEffects();
             state = IGameStates.Paused;
-            /*Time.timeScale = 0;*/
+            StopAllSounds();
         }
+    }
+
+    public void BackButtonSettings()
+    {
+        pauseView.SetActive(true);
+        optionsView.SetActive(true);
+        settingsView.SetActive(false);
+        NonHouveredColor();
     }
 
     public void SettingsView()
@@ -170,11 +190,14 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void ChangePostProcessEffects()
     {
+        currentBloomValue = bloom.intensity.value;
+        currentChromaticAberrationValue = chromaticAberration.intensity.value;
+        currentDepthValue = depth.focusDistance.value;
+
         depth.focalLength.overrideState = true;
+        depth.focusDistance.value = 1;
         depth.focalLength.value = newDepthValue;
-
         bloom.intensity.value = newBloomValue;
-
         chromaticAberration.intensity.value = newChromaticAberrationValue;
     }
 
@@ -182,9 +205,9 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         depth.focalLength.overrideState = false;
 
-        bloom.intensity.value = mainBloomValue;
-
-        chromaticAberration.intensity.value = mainChromaticAberrationValue;
+        depth.focusDistance.value = currentDepthValue;
+        bloom.intensity.value = currentBloomValue;
+        chromaticAberration.intensity.value = currentChromaticAberrationValue;
     }
 
     private void Update()
@@ -221,7 +244,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
-    private void StopAllSounds()
+    public void StopAllSounds()
     {
         foreach(AudioSource audio in audioManager.allAudios)
         {

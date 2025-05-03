@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
-        print(_saveFilePath);
+        //print(_saveFilePath);
     }
 
     private void Update()
@@ -76,10 +76,10 @@ public class Weapon : MonoBehaviour
         currentShootingDelay = 0;
         currentBullets--;
 
-        debug += "Shoot\n";
+/*        debug += "Shoot\n";
         debug += worldInteractions.potencialEnemy.transform.parent.name + "\n";
         debug += worldInteractions.potencialEnemy.name + "\n";
-        debug += worldInteractions.potencialEnemy.tag + "\n";
+        debug += worldInteractions.potencialEnemy.tag + "\n";*/
 
         if (worldInteractions.potencialEnemy)
         {
@@ -87,14 +87,10 @@ public class Weapon : MonoBehaviour
             {
                 Destroy(worldInteractions.potencialEnemy);
             }
-            else if (worldInteractions.potencialEnemy.transform.parent.GetComponent<TravelerAI>())
-            {
-                Destroy(worldInteractions.potencialEnemy.transform.parent.gameObject);
-            }
             else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
             {
                 Instantiate(ticketPrefab, worldInteractions.potencialEnemy.transform.position, ticketPrefab.transform.rotation);
-                Destroy(worldInteractions.potencialEnemy.transform.parent);
+                Destroy(worldInteractions.potencialEnemy.transform.parent.gameObject);
             }
         }
     }

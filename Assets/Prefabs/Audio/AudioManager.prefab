@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 1123178237721642290}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 674b347b43b5e0545b9c8a92041e2db1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
@@ -970,7 +970,7 @@ AudioSource:
   m_GameObject: {fileID: 4446160080130679686}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1032ed9f8f5ef7a45aac6fd0f0262644, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1066,7 +1066,7 @@ AudioSource:
   m_GameObject: {fileID: 4446160080130679686}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 457224cedbf11e149858fb11c023cb77, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1253,7 +1253,7 @@ AudioSource:
   m_GameObject: {fileID: 4939518759666106144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 955f1de9441461243913257fcb31d910, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -1349,7 +1349,7 @@ AudioSource:
   m_GameObject: {fileID: 4939518759666106144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: d10010f710e73644faca6c4d6c971bb9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -1445,7 +1445,7 @@ AudioSource:
   m_GameObject: {fileID: 4939518759666106144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: fd8c87289859a3d44afb61c3bfc26639, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -1541,7 +1541,7 @@ AudioSource:
   m_GameObject: {fileID: 4939518759666106144}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 0bd172439e62ef8488113cd9dc25f4f3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.05
@@ -1928,7 +1928,7 @@ AudioSource:
   m_GameObject: {fileID: 5973062942862883817}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 82f12943987979b4f87415275a338694, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -2315,7 +2315,7 @@ AudioSource:
   m_GameObject: {fileID: 8544798516389386555}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3d725ef5e5059cf408e841092602c451, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -2411,7 +2411,7 @@ AudioSource:
   m_GameObject: {fileID: 8544798516389386555}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2018517720193365978, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}
   m_audioClip: {fileID: 8300000, guid: bc31a6159fae9734c95a38763210af00, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -2615,3 +2615,4 @@ MonoBehaviour:
   <flashLightOff>k__BackingField: {fileID: 8266286848415828700}
   <crowd>k__BackingField: {fileID: 6243281631776863388}
   <allAudios>k__BackingField: []
+  mainMixer: {fileID: 24100000, guid: 6a3b83d80352a994786987fe72bbf9e2, type: 2}

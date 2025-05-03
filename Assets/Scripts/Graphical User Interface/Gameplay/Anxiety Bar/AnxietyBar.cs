@@ -99,7 +99,7 @@ public class AnxietyBar : MonoBehaviour
                         dOF.focusDistance.value += distanceDecrease;
                         dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
                         cA.intensity.value -= aberrationIncrease;
-                        cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0, 0.2f);
+                        cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 1f);
                     }
 
                     if (currentAnxiety <= 0f)
@@ -118,7 +118,7 @@ public class AnxietyBar : MonoBehaviour
                     dOF.focusDistance.value -= distanceDecrease;
                     dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
                     cA.intensity.value += aberrationIncrease;
-                    cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0, 0.2f);
+                    cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 1f);
 
                     if (!audioManager.heartbeat2.isPlaying)
                     {

@@ -50,7 +50,7 @@ MonoBehaviour:
   houveColor: {r: 0.23529412, g: 0, b: 0, a: 0}
   masterSlider: {fileID: 0}
   musicSlider: {fileID: 0}
-  soundEffectsSlider: {fileID: 0}
+  SFXSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
   postProcess: {fileID: 0}
   newDepthValue: 48
