@@ -243,10 +243,13 @@ public class ThiefAStar : MonoBehaviour
                     GameObject tileBelowEnemy  = hit2.collider.gameObject;
                     if (tileBelowEnemy.CompareTag("Floor"))
                     {
-                        Debug.Log("Hello?");
                         tileBelowEnemy.tag = "ProhibitedFloor";
                         if (getCost(tileBelowEnemy) > 1)
+                        {
                             AStarPathFinding();
+                            tileBelowEnemy.tag = "Floor";
+                        }
+                        
                     }
                 }
             }
