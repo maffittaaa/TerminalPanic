@@ -48,6 +48,13 @@ public class PlayerMovement : MonoBehaviour
         else 
         {
             speed = 0;
+            rb.velocity = Vector3.zero;
+            if (audioManager.runPlayer.isPlaying || audioManager.walkPlayer.isPlaying || audioManager.crouchPlayer.isPlaying)
+            {
+                audioManager.runPlayer.Stop();
+                audioManager.crouchPlayer.Stop();
+                audioManager.walkPlayer.Stop();
+            }
         }
     }
 
@@ -96,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         {
             behaviorType = BehaviorType.Idleing;
 
-            if (audioManager.runPlayer.isPlaying || audioManager.walkPlayer.isPlaying)
+            if (audioManager.runPlayer.isPlaying || audioManager.walkPlayer.isPlaying || audioManager.crouchPlayer.isPlaying)
             {
                 audioManager.runPlayer.Stop();
                 audioManager.crouchPlayer.Stop();

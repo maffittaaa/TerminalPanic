@@ -31,8 +31,8 @@ public class RespawnAfterFaint : MonoBehaviour
             interactions.body.SetActive(false);
             anxietyBar.currentAnxiety = 0f;
             anxietyBar.state.fillAmount = 0f;
-            anxietyBar.dOF.focusDistance.value = 3.8f;
-            anxietyBar.cA.intensity.value = 0.3f;
+            anxietyBar.dOF.focusDistance.value = 1f;
+            anxietyBar.cA.intensity.value = 0.2f;
             fadeStarted = false;
         }
     }
