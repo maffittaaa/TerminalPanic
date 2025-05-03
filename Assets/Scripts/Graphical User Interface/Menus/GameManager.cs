@@ -131,6 +131,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void GoToMainMenu()
     {
         //load main menu scene when its created
+        Application.Quit();
     }
 
     public void HouveredColor()

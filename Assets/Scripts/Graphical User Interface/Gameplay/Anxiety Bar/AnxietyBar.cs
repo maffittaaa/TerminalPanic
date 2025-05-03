@@ -30,7 +30,7 @@ public class AnxietyBar : MonoBehaviour
     [SerializeField] private LightManager flickeringLights;
     [SerializeField] private GettingOutOfSafeSpace trigger;
     [SerializeField] private PostProcessVolume focusCamera;
-    [SerializeField] private GameManager gameManager;
+    [SerializeField] private GameManager gameManager; 
     
     [field: Header("Post-Processing Settings")]
     public DepthOfField dOF;
@@ -97,7 +97,9 @@ public class AnxietyBar : MonoBehaviour
                     if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f))
                     {
                         dOF.focusDistance.value += distanceDecrease;
+                        dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
                         cA.intensity.value -= aberrationIncrease;
+                        cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0, 0.2f);
                     }
 
                     if (currentAnxiety <= 0f)
@@ -112,8 +114,12 @@ public class AnxietyBar : MonoBehaviour
                 if (currentAnxiety > maxAnxiety * 0.75f)
                 {
                     state.color = Color.red;
+
                     dOF.focusDistance.value -= distanceDecrease;
+                    dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
                     cA.intensity.value += aberrationIncrease;
+                    cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0, 0.2f);
+
                     if (!audioManager.heartbeat2.isPlaying)
                     {
                         audioManager.heartbeat.Stop();
