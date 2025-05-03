@@ -72,6 +72,14 @@ public class StateMachine : MonoBehaviour
         if (gameManager.state != IGameStates.Paused)
         {
             currentState.OnStateFixedUpdate();
+
+            int newState = currentState.StateTransitionCondition();
+            if (IsValidNewStateIndex(newState))
+            {
+                currentState.OnStateEnd();
+                currentState = stateBehaviours[newState];
+                currentState.OnStateStart();
+            }
         }
     }
 
