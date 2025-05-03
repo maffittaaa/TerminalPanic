@@ -20,8 +20,6 @@ public enum TravelerType
 
 public class TravelerAI : MonoBehaviour
 {
-
-
     [Header("Traveller Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float rotationSpeed = 5f;
@@ -107,6 +105,10 @@ public class TravelerAI : MonoBehaviour
                 highbass.Play();
                 weird.Play();
             }
+        }
+        else
+        {
+            agent.speed = 0;
         }
     }
 

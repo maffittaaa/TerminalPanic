@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6960470124846524479}
   - component: {fileID: 793203199473032614}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -89,7 +89,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &193640797996067305
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,8 +331,15 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   soundEffectsSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
-  state: 0
+  postProcess: {fileID: 0}
+  newDepthValue: 0
+  newBloomValue: 0
+  newChromaticAberrationValue: 0
+  newAutoExposureValue: 0
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
   type: 0
+  <state>k__BackingField: 0
 --- !u!1 &445624066368138376
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +635,7 @@ GameObject:
   - component: {fileID: 518994154242131823}
   - component: {fileID: 3238287428444479414}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: SoundEffects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +713,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1467768000437405604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1325,7 @@ GameObject:
   - component: {fileID: 5552649639334275818}
   - component: {fileID: 6279783320844897749}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,7 +1403,19 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3615904828913463525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,8 +2002,15 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   soundEffectsSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
-  state: 0
+  postProcess: {fileID: 0}
+  newDepthValue: 0
+  newBloomValue: 0
+  newChromaticAberrationValue: 0
+  newAutoExposureValue: 0
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
   type: 0
+  <state>k__BackingField: 0
 --- !u!1 &5088911433136176044
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2192,7 @@ GameObject:
   - component: {fileID: 4222022961823366694}
   - component: {fileID: 1623132555746168369}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Brightness
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2214,13 +2264,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 9071224823521931593}
   m_HandleRect: {fileID: 7177432927878758885}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.5
+  m_MaxValue: 2
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ChangeAutoExposure
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5458880678124171068
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,8 +3111,15 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   soundEffectsSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
-  state: 0
+  postProcess: {fileID: 0}
+  newDepthValue: 0
+  newBloomValue: 0
+  newChromaticAberrationValue: 0
+  newAutoExposureValue: 0
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
   type: 0
+  <state>k__BackingField: 0
 --- !u!1 &6791449573106318178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,8 +3803,15 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   soundEffectsSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
-  state: 0
+  postProcess: {fileID: 0}
+  newDepthValue: 0
+  newBloomValue: 0
+  newChromaticAberrationValue: 0
+  newAutoExposureValue: 0
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
   type: 0
+  <state>k__BackingField: 0
 --- !u!1 &7652180564096338783
 GameObject:
   m_ObjectHideFlags: 0

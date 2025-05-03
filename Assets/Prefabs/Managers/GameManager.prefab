@@ -47,21 +47,15 @@ MonoBehaviour:
   pauseView: {fileID: 0}
   optionsView: {fileID: 0}
   settingsView: {fileID: 0}
-  houveColor: {r: 0, g: 0, b: 0, a: 0}
+  houveColor: {r: 0.23529412, g: 0, b: 0, a: 0}
   masterSlider: {fileID: 0}
   musicSlider: {fileID: 0}
   soundEffectsSlider: {fileID: 0}
   brightnessSlider: {fileID: 0}
   postProcess: {fileID: 0}
-  depth: {fileID: 0}
   newDepthValue: 48
-  bloom: {fileID: 0}
-  mainBloomValue: 0
   newBloomValue: 0
-  chromaticAberration: {fileID: 0}
-  mainChromaticAberrationValue: 0
   newChromaticAberrationValue: 0.1
-  autoExposure: {fileID: 0}
   newAutoExposureValue: 1
   gameManager: {fileID: 0}
   audioManager: {fileID: 0}

@@ -10,6 +10,9 @@ public class StateMachine : MonoBehaviour
 
     private AStateBehaviour currentState = null;
 
+    [Header("Managers")]
+    [SerializeField] private GameManager gameManager;
+
     bool InitializeStates()
     {
         for (int i = 0; i < stateBehaviours.Count; ++i)
@@ -30,6 +33,8 @@ public class StateMachine : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
         if (!InitializeStates())
         {
             this.enabled = false;
@@ -64,7 +69,10 @@ public class StateMachine : MonoBehaviour
 
     void FixedUpdate()
     {
-        currentState.OnStateFixedUpdate();
+        if (gameManager.state != IGameStates.Paused)
+        {
+            currentState.OnStateFixedUpdate();
+        }
     }
 
     public bool IsCurrentState(AStateBehaviour stateBehaviour)

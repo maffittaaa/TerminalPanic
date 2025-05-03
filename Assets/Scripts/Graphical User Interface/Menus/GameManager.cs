@@ -89,11 +89,13 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             gameManager.RestorePostProcessEffects();
             gameManager.state = IGameStates.Running;
+            /*Time.timeScale = 1;*/
         }
         else if (IUIType.GameManager == type)
         {
             RestorePostProcessEffects();
             state = IGameStates.Running;
+            /*Time.timeScale = 1;*/
         }
     }
 
@@ -108,11 +110,13 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             gameManager.ChangePostProcessEffects();
             gameManager.state = IGameStates.Paused;
+            /*Time.timeScale = 0;*/
         }
         else if(IUIType.GameManager == type)
         {
             ChangePostProcessEffects();
             state = IGameStates.Paused;
+            /*Time.timeScale = 0;*/
         }
     }
 
@@ -220,7 +224,10 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         foreach(AudioSource audio in audioManager.allAudios)
         {
-            audio.Stop();
+            if (audio)
+            {
+                audio.Stop();
+            }
         }
     }
 }
