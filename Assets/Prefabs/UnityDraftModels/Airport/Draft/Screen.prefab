@@ -277,6 +277,8 @@ MonoBehaviour:
   mode: 0
   <mainColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
   <currentColor>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  gameManager: {fileID: 0}
+  audioManager: {fileID: 0}
   flicker: {fileID: 8186984183987936084}
   noise: {fileID: 5650043523517161889}
 --- !u!82 &8186984183987936084
@@ -586,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2617932206293798876}
   - component: {fileID: 5564041318248418087}
+  - component: {fileID: 3519366471684680061}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -621,13 +624,13 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 2.02
-  m_Range: 23.41
+  m_Range: 7
   m_SpotAngle: 141
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
-    m_Resolution: -1
+    m_Resolution: 1
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.05
@@ -670,6 +673,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &3519366471684680061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5581160332602499256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4320cfce0b706db4db30e66fbb7824c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5978123010975302066
 GameObject:
   m_ObjectHideFlags: 0

@@ -131,11 +131,6 @@ public class Flickering : MonoBehaviour
         }
 
         lightMaterial.GetComponent<Renderer>().material.EnableKeyword("_EMISSION");
-
-        if (lightEffect != null)
-        {
-            lightEffect.SetActive(state);
-        }
     }
 
     public void TurnOnAndOff()
