@@ -116,8 +116,8 @@ public class ThiefAStar : MonoBehaviour
     {
         float heuristics = 0;
 
-        if (currentTile != null) 
-        heuristics = new Vector2(waypointTile.transform.position.x - currentTile.transform.position.x, waypointTile.transform.position.z - currentTile.transform.position.z).magnitude;
+        if (currentTile != null && waypointTile != null) 
+            heuristics = new Vector2(waypointTile.transform.position.x - currentTile.transform.position.x, waypointTile.transform.position.z - currentTile.transform.position.z).magnitude;
         return heuristics;
     }
 
