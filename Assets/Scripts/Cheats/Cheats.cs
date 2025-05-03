@@ -19,7 +19,12 @@ public class Cheats : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.N))
             travelerSpawner.SwitchToNormalMode();
         else if (Input.GetKeyDown(KeyCode.C))
+        {
             anxietyBar.currentAnxiety = 0f;
+            anxietyBar.dOF.focusDistance.value = 1f;
+            anxietyBar.cA.intensity.value = 0.2f;
+            
+        }
         else if (Input.GetKeyDown(KeyCode.M))
             anxietyBar.currentAnxiety = anxietyBar.maxAnxiety * 0.75f;
     }
