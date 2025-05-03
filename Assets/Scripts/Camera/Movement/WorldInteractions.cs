@@ -160,7 +160,7 @@ public class WorldInteractions : MonoBehaviour
                         weapon.AddBullets(5);
                         break;
                     case ItemType.Mirror:
-                        if (anxietyBar.interacted == false && anxietyBar.currentAnxiety > 0f)
+                        if (anxietyBar.interacted == false && anxietyBar.currentAnxiety > 0f && anxietyBar.currentAnxiety < anxietyBar.maxAnxiety)
                         {
                             mirror = highLightObject.gameObject;
                             anxietyBar.interacted = true;
