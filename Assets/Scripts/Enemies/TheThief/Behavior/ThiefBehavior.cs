@@ -7,7 +7,8 @@ public enum ThiefState
 {
     Idle,
     Fleeing,
-    Hiding
+    Hiding,
+    MovingToAnotherPosition
 }
 
 public class ThiefBehavior : MonoBehaviour
@@ -17,6 +18,7 @@ public class ThiefBehavior : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     public bool iHearPlayer;
     public bool iSeePlayer;
+    [SerializeField] private Rigidbody rb;
     
     [field: Header("Points To Go")]
     [SerializeField] private List<GameObject> randomPositionsToGo = new List<GameObject>();
@@ -30,6 +32,7 @@ public class ThiefBehavior : MonoBehaviour
     [field: Header("HidingSpots")]
     private List<GameObject> hidingSpots = new List<GameObject>();
     [SerializeField] private GameObject hidingSpotPrefab;
+    private GameObject currentHidingSpot;
     private Vector3 closestHidingSpotPosition;
     [SerializeField] private GameObject closestHidingSpot;
     private bool isHiding;
@@ -60,11 +63,13 @@ public class ThiefBehavior : MonoBehaviour
         switch (newState)
         {
             case ThiefState.Fleeing:
+                thiefAStar.speed = 5f;
                 PickFurThestWaypointsToGo();
                 break;
             case ThiefState.Hiding:
                 thiefAStar.speed = 0f;
-                StartCoroutine(BlendIn());
+                if (!isHiding)
+                    StartCoroutine(BlendIn());
                 break;
         }
         currentState = newState;
@@ -77,6 +82,10 @@ public class ThiefBehavior : MonoBehaviour
             thiefAStar.MoveAlongPath();
         if (ThiefState.Hiding == currentState && !iSeePlayer && !isHiding)
             thiefAStar.MoveAlongPath();
+        if (ThiefState.MovingToAnotherPosition == currentState && !isHiding)
+            thiefAStar.MoveAlongPath();
+        if (ThiefState.Fleeing == currentState && isHiding)
+            thiefAStar.MoveAlongPath(); 
     }
 
     private void UpdateState()
@@ -84,15 +93,18 @@ public class ThiefBehavior : MonoBehaviour
         switch (currentState)
         {
             case ThiefState.Idle:
+                thiefAStar.speed = 0f;
+                rb.velocity = Vector3.zero;
                 IdleState();
                 break;
             case ThiefState.Fleeing:
                 FleeingState();
-                if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) //if thief reaches waypoint, stays hidden
-                    StartState(ThiefState.Hiding);
                 break;
             case ThiefState.Hiding:
                 HidingState();
+                break;
+            case ThiefState.MovingToAnotherPosition:
+                MovingToAnotherPositionState();
                 break;
         }
     }
@@ -118,15 +130,22 @@ public class ThiefBehavior : MonoBehaviour
             threeFurthest.Add(sortedWaypoints[i]);
         int randomWaypointIndex = Random.Range(0, threeFurthest.Count);
         currentWaypoint = threeFurthest[randomWaypointIndex];
-        if (currentWaypoint == waypoints[1] || currentWaypoint == waypoints[2] || currentWaypoint == waypoints[3] ||
-            currentWaypoint == waypoints[4] || currentWaypoint == waypoints[5] || currentWaypoint == waypoints[6] ||
-            currentWaypoint == waypoints[7] || currentWaypoint == waypoints[8] || currentWaypoint == waypoints[16] ||
-            currentWaypoint == waypoints[17] || currentWaypoint == waypoints[18] || currentWaypoint == waypoints[19])
+        
+        foreach (GameObject wp in waypoints)
         {
-            isHiding = true;
-            Hide();
+            if (currentWaypoint == wp)
+            {
+                if (wp.name.Contains("Hangar"))
+                {
+                    isHiding = true;
+                    if (currentHidingSpot != null)
+                        Destroy(currentHidingSpot);
+                    currentHidingSpot = Instantiate(hidingSpotPrefab);
+                    break;
+                }
+            }
         }
-        else
+        if (!isHiding)
             thiefAStar.SetWhereToGo(currentWaypoint);
     }
 
@@ -146,33 +165,41 @@ public class ThiefBehavior : MonoBehaviour
         yield return new WaitForSeconds(3f);
         if (!iSeePlayer)
         {
-            thiefAStar.speed = 7f;
+            thiefAStar.speed = 5f;
             int nextPositionIndex = Random.Range(0, randomPositionsToGo.Count);
             nextPosition = randomPositionsToGo[nextPositionIndex];
             thiefAStar.SetWhereToGo(nextPosition);
+            StartState(ThiefState.MovingToAnotherPosition);
         }
         else
-            thiefAStar.speed = 7f;
+            thiefAStar.speed = 5f;
     }
 
     private void HidingState()
     {
         if (iSeePlayer) //if he sees the player while hiding
             StartState(ThiefState.Fleeing);
-        if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy) //if he reaches the next position after hiding, he resets to idle
+    }
+
+    private void MovingToAnotherPositionState()
+    {
+        if (Vector3.Distance(nextPosition.transform.position, transform.position) < thiefAStar.accuracy && !isHiding)//if he reaches the next position after hiding, he resets to idle
             StartState(ThiefState.Idle);
+    }
+
+    private void FleeingState()
+    {
         if (isHiding)
         {
+            Hide();
             if (iSeePlayer || iHearPlayer)
             {
                 isHiding = false;
                 StartState(ThiefState.Fleeing);
             }
         }
-    }
-
-    private void FleeingState()
-    {
+        if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) //if thief reaches waypoint, stays hidden
+            StartState(ThiefState.Hiding);
         if (!(Vector3.Distance(currentWaypoint.transform.position, transform.position) < thiefAStar.accuracy) && iSeePlayer) //while he is in fleeing mode to the waypoint and he sees the player, recalculate another waypoint to go
             StartState(ThiefState.Fleeing);
     }
@@ -189,13 +216,14 @@ public class ThiefBehavior : MonoBehaviour
             hidePosition = hs.transform.position + hideDistance.normalized * 5;
             if (Vector3.Distance(transform.position, hideDistance) < minimumDistance)
             {
-                closestHidingSpotPosition = hidePosition;
+                closestHidingSpotPosition.x = hidePosition.x;
+                closestHidingSpotPosition.z = hidePosition.z;
+                closestHidingSpotPosition.y = 19f;
                 minimumDistance = Vector3.Distance(transform.position, hideDistance);
             }
         }
-        Debug.Log("Instantiating closest hiding spot");
-        hidingSpotPrefab = Instantiate(hidingSpotPrefab, closestHidingSpotPosition, Quaternion.identity);
-        closestHidingSpot = hidingSpotPrefab;
+        currentHidingSpot.transform.position = closestHidingSpotPosition;
+        closestHidingSpot = currentHidingSpot;
         thiefAStar.SetWhereToGo(closestHidingSpot);
     }
 }

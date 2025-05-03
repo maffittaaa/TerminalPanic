@@ -240,6 +240,7 @@ MonoBehaviour:
   rotationSpeed: 10
   iHearPlayer: 0
   iSeePlayer: 0
+  rb: {fileID: 5448424393328647405}
   randomPositionsToGo: []
   waypoints: []
   hidingSpotPrefab: {fileID: 3963948621798536808, guid: 44168570cf870a843925259fcebc48bc, type: 3}
@@ -433,7 +434,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6864462475818495053}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 32ffe0f8a9c61aa449ce93d578c38348, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
