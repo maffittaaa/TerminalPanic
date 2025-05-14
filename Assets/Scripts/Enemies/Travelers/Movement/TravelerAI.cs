@@ -64,6 +64,7 @@ public class TravelerAI : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        currentMode = IAirportMode.Panic;
         SetAudioSettings();
         SetAgentSettings();
     }

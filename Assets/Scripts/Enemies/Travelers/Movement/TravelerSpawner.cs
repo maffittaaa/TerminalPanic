@@ -96,6 +96,15 @@ public class TravelerSpawner : MonoBehaviour
         }
     }
 
+    public void SwitchToPanicMode()
+    {
+        SetAirportMode(IAirportMode.Panic);
+    }
+
+    public void SwitchToNormalMode()
+    {
+        SetAirportMode(IAirportMode.Normal);
+    }
 
     public void SetAirportMode(IAirportMode mode)
     {
@@ -107,21 +116,14 @@ public class TravelerSpawner : MonoBehaviour
         {
             foreach (TravelerAI traveler in travelerAIs)
             {
-                traveler.OnAirportModeChanged(mode);
+                if (traveler)
+                {
+                    traveler.OnAirportModeChanged(mode);
+                }
             }
         }
     }
 
-    public void SwitchToPanicMode()
-    {
-        SetAirportMode(IAirportMode.Panic);
-    }
-
-    public void SwitchToNormalMode()
-    {
-        SetAirportMode(IAirportMode.Normal);
-    }
-    
     private void SpawningClothes(int i)
     {
         if (i <= travelerCount * 0.2)
