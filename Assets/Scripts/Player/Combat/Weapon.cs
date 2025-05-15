@@ -17,8 +17,11 @@ public class Weapon : MonoBehaviour
     [Header("Magazine")]
     [SerializeField] private int maxBulletsInPocket;
     [SerializeField] private int maxBulletsInMag;
-    [SerializeField] private int currentBullets;
+    [SerializeField] private int currentBulletsInPocket;
+    [SerializeField] private int currentBulletsInMag;
     [SerializeField] private int bulletsShoot;
+    [SerializeField] private float reloadTime;
+    [SerializeField] private bool reloading;
     
     [Header("Managers and Scripts")]
     [SerializeField] private WorldInteractions worldInteractions;
@@ -36,8 +39,8 @@ public class Weapon : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
-        //print(_saveFilePath);
         bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
+        //print(_saveFilePath);
     }
 
     private void Update()
@@ -51,8 +54,7 @@ public class Weapon : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                bulletsShoot = 0;
-                bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
+                StartCoroutine(ReloadGun());
             }
 
             if (Input.GetKeyDown(KeyCode.LeftAlt))
@@ -62,6 +64,24 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private IEnumerator ReloadGun()
+    {
+        reloading = true;
+
+        float reloadingBullet = reloadTime / 10;
+
+        bulletsShoot = 0;
+
+        while (reloading) 
+        {
+            yield return new WaitForSeconds(reloadingBullet);
+            currentBulletsInMag++;
+            currentBulletsInPocket--;
+        }
+
+        bulletCountUI.SetBulletCountText(currentBulletsInMag, maxBulletsInMag);
+    }
+
     void FixedUpdate()
     {
         currentShootingDelay += Time.fixedDeltaTime;
@@ -69,7 +89,7 @@ public class Weapon : MonoBehaviour
 
     private bool CanShoot()
     {
-        if(currentBullets <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBulletsInMag)
+        if(currentBulletsInMag <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBulletsInMag)
         {
             return false;
         }
@@ -86,7 +106,7 @@ public class Weapon : MonoBehaviour
         particleSystems.Play();
         audioManager.shoot.Play();
         currentShootingDelay = 0;
-        currentBullets--;
+        currentBulletsInMag--;
         bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
 
 /*        debug += "Shoot\n";
@@ -117,7 +137,7 @@ public class Weapon : MonoBehaviour
 
     public void AddBullets(int amount)
     {
-        currentBullets += amount;
+        currentBulletsInMag += amount;
     }
 
     public int CurrentBulletsInMag()
@@ -127,6 +147,6 @@ public class Weapon : MonoBehaviour
 
     public int TotalStoredBullets()
     {
-        return currentBullets - CurrentBulletsInMag();
+        return currentBulletsInMag - CurrentBulletsInMag();
     }
 }
