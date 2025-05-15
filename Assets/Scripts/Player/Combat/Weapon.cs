@@ -5,28 +5,39 @@ using System.IO;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private WorldInteractions worldInteractions;
+    [Header("Weapon Settings")]
+    [SerializeField] private ParticleSystem particleSystems;
     [SerializeField] private GameObject shootingPoint;
     [SerializeField] private GameObject shootingLight;
+    [SerializeField] private GameObject ticketPrefab;
     [SerializeField] private float lightLifeSec;
-    [SerializeField] private ParticleSystem particleSystems;
-    [SerializeField] private int maxBullets;
+    [SerializeField] private float shootingDelay;
+    private float currentShootingDelay = 0f;
+
+    [Header("Magazine")]
+    [SerializeField] private int maxBulletsInPocket;
+    [SerializeField] private int maxBulletsInMag;
     [SerializeField] private int currentBullets;
     [SerializeField] private int bulletsShoot;
-    [SerializeField] private float shootingDelay;
+    
+    [Header("Managers and Scripts")]
+    [SerializeField] private WorldInteractions worldInteractions;
+    [SerializeField] private BulletCountUI bulletCountUI;
     [SerializeField] private AudioManager audioManager;
-    private float currentShootingDelay = 0f;
-    [SerializeField] private GameObject ticketPrefab;
-    private string _saveFilePath;
     [SerializeField] private GameManager gameManager;
+
+    [Header("Build Debuging")]
+    private string _saveFilePath;
     public string debug = "";
 
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
         //print(_saveFilePath);
+        bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
     }
 
     private void Update()
@@ -41,6 +52,7 @@ public class Weapon : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R))
             {
                 bulletsShoot = 0;
+                bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
             }
 
             if (Input.GetKeyDown(KeyCode.LeftAlt))
@@ -57,7 +69,7 @@ public class Weapon : MonoBehaviour
 
     private bool CanShoot()
     {
-        if(currentBullets <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBullets)
+        if(currentBullets <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBulletsInMag)
         {
             return false;
         }
@@ -75,6 +87,7 @@ public class Weapon : MonoBehaviour
         audioManager.shoot.Play();
         currentShootingDelay = 0;
         currentBullets--;
+        bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
 
 /*        debug += "Shoot\n";
         debug += worldInteractions.potencialEnemy.transform.parent.name + "\n";
@@ -109,7 +122,7 @@ public class Weapon : MonoBehaviour
 
     public int CurrentBulletsInMag()
     {
-        return maxBullets - bulletsShoot;
+        return maxBulletsInMag - bulletsShoot;
     }
 
     public int TotalStoredBullets()
