@@ -39,7 +39,10 @@ public class Weapon : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
-        bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
+
+
+
+        bulletCountUI.SetBulletCountText(currentBulletsInMag, maxBulletsInMag);
         //print(_saveFilePath);
     }
 
@@ -75,8 +78,16 @@ public class Weapon : MonoBehaviour
         while (reloading) 
         {
             yield return new WaitForSeconds(reloadingBullet);
-            currentBulletsInMag++;
-            currentBulletsInPocket--;
+
+            if (currentBulletsInMag < maxBulletsInMag)
+            {
+                currentBulletsInMag++;
+                currentBulletsInPocket--;
+            }
+            else
+            {
+                reloading = false;
+            }
         }
 
         bulletCountUI.SetBulletCountText(currentBulletsInMag, maxBulletsInMag);
@@ -89,7 +100,7 @@ public class Weapon : MonoBehaviour
 
     private bool CanShoot()
     {
-        if(currentBulletsInMag <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBulletsInMag)
+        if(currentBulletsInMag <= 0 || currentShootingDelay < shootingDelay || bulletsShoot >= maxBulletsInMag || reloading)
         {
             return false;
         }
@@ -135,9 +146,14 @@ public class Weapon : MonoBehaviour
         shootingLight.SetActive(false);
     }
 
-    public void AddBullets(int amount)
+    public void AddMagBullets(int amount)
     {
-        currentBulletsInMag += amount;
+        currentBulletsInMag += Mathf.Clamp(amount, 0, maxBulletsInMag);
+    }
+
+    public void AddPocketBullets(int amount)
+    {
+        currentBulletsInPocket += Mathf.Clamp(amount, 0, maxBulletsInPocket);
     }
 
     public int CurrentBulletsInMag()

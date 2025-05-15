@@ -7,7 +7,7 @@ using TMPro;
 public class BulletCountUI : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField]    
+    [SerializeField]
 
     private TextMeshProUGUI bulletCountText;
     private bool state = false;

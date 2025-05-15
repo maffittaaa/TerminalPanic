@@ -153,11 +153,11 @@ public class WorldInteractions : MonoBehaviour
                     case ItemType.Weapon:
                         Destroy(highLightObject);
                         body.SetActive(true);
-                        weapon.AddBullets(10);
+                        weapon.AddMagBullets(10);
                         break;
                     case ItemType.Bullets:
                         Destroy(highLightObject.transform.parent.gameObject);
-                        weapon.AddBullets(5);
+                        weapon.AddPocketBullets(5);
                         break;
                     case ItemType.Mirror:
                         if (anxietyBar.interacted == false && anxietyBar.currentAnxiety > 0f && anxietyBar.currentAnxiety < anxietyBar.maxAnxiety)
