@@ -43,9 +43,9 @@ public class TravelerAI : MonoBehaviour
     private Vector3 lastKnownPlayerPosition;
     public float lookAroundDuration { get; set; }
     public float lookAroundTimer { get; set; }
-    private float chaseMemoryTime = 5f;
+    private float chaseMemoryTime = 3f;
     private float chaseMemoryTimer = 0f;
-    private float maxChaseDistance = 15f;
+    private float maxChaseDistance = 10f;
     private Vector3 wanderTarget;
     private float wanderTimer = 3f;
     private float wanderCounter;
@@ -134,21 +134,22 @@ public class TravelerAI : MonoBehaviour
         if (iSeePlayer || iHearPlayer)
         {
             chaseMemoryTimer = 0f;
+            agent.SetDestination(player.transform.position);
         }
         else
         {
             chaseMemoryTimer += Time.deltaTime;
 
-            if (distanceToPlayer < maxChaseDistance && chaseMemoryTimer < chaseMemoryTime)
+            if (chaseMemoryTimer < chaseMemoryTime)
             {
-                agent.SetDestination(player.transform.position);
+                agent.SetDestination(lastKnownPlayerPosition);
             }
             else
             {
-                lastKnownPlayerPosition = player.transform.position;
                 lostPlayer = true;
             }
         }
+
     }
 
     public void Returning()

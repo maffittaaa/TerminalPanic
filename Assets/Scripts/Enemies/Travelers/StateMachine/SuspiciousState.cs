@@ -25,7 +25,7 @@ public class Suspicious : AStateBehaviour
 
     public override void OnStateFixedUpdate()
     {
-        traveler.Chase();
+        traveler.Suspicious();
     }
 
     public override void OnStateEnd()
