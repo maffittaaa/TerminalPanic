@@ -8,92 +8,87 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: "Floor tile white 600\xD7600mm"
-    second: {fileID: 2100000, guid: 764ba056420e47741a45aa8e613e16a6, type: 2}
+    second: {fileID: 2100000, guid: dd065d611c08d5748a8159f74713f95b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 04a20b430dbb1094ca32604997f631f0, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.002
-    second: {fileID: 2100000, guid: 388d8b274d63400419257a3491ba89d9, type: 2}
+    second: {fileID: 2100000, guid: 06792addd45245b48bbc77d1f56cab82, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.003
-    second: {fileID: 2100000, guid: c8444d6cfecce0f438bcd1ae3ef6bb64, type: 2}
+    second: {fileID: 2100000, guid: ca7e9867c1d792d4b8c01ae59d9d8cc3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.004
-    second: {fileID: 2100000, guid: a7cb813c6853fcb498b475dfd82010ae, type: 2}
+    second: {fileID: 2100000, guid: a16eddcb5c89fd642b1a3c433a55d37c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.005
-    second: {fileID: 2100000, guid: 42065eeead587b44a8aad874877eecaa, type: 2}
+    second: {fileID: 2100000, guid: 9d604a573dee6814b8524f655200fb28, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Plastic Blue 17
-    second: {fileID: 2100000, guid: bc1c79183f6cf414ab8e849b6db2f2f4, type: 2}
+    second: {fileID: 2100000, guid: 99a4f7c28cacc6347803e86fa4d8209f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Simple tiles
-    second: {fileID: 2100000, guid: 436120f220aa21941a8fbb67803cc5d1, type: 2}
+    second: {fileID: 2100000, guid: 93a78e02b2301bc4f9de80c15e2803e3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Transparent plastic.002
-    second: {fileID: 2100000, guid: ef2a83dc74598a642810d3ea554a1cd6, type: 2}
+    second: {fileID: 2100000, guid: dc6b17187307d52449fd93d85634eae9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: White Porcelain.001
-    second: {fileID: 2100000, guid: 3a2d5f673325a514ca8922d0936d7286, type: 2}
+    second: {fileID: 2100000, guid: 9b2a11ba8929e7b4e84bdf0671e21f33, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: "Floor_Tile_600\xD7600mm_basecolor"
-    second: {fileID: 2800000, guid: 4b248b7d2f3e7b34cb972f0755011e51, type: 3}
+    second: {fileID: 2800000, guid: e6b8d9220dada2a47977b1e8347675ee, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: "Floor_Tile_600\xD7600mm_normal"
-    second: {fileID: 2800000, guid: 356e6db37b1c7e34487151219f26810e, type: 3}
+    second: {fileID: 2800000, guid: 3b8fd05047e21484eb2b029f8de8cac4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: "Floor_Tile_600\xD7600mm_roughness"
-    second: {fileID: 2800000, guid: 6319ed5e598e30146b9d1e33e7d3b490, type: 3}
+    second: {fileID: 2800000, guid: 312adffa8df4141479107b80d9fde4e6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: TILE_diffuse
-    second: {fileID: 2800000, guid: 8b339385770a8b34ebf16337a6e3bba2, type: 3}
+    second: {fileID: 2800000, guid: 4dd6ab1b50d8940488ca3e6924502598, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: TILE_normal
-    second: {fileID: 2800000, guid: 8f82d4ce92a8c3d409c7eca645829ef1, type: 3}
+    second: {fileID: 2800000, guid: 8b3cfb9cb0c71b440a82d17b7444dbc1, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic-texture-normal-2
-    second: {fileID: 2800000, guid: a4d5c1e101e7e584b86f21d2fddd3005, type: 3}
+    second: {fileID: 2800000, guid: 67c231adf0c4932499113895381159fe, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: porcelain_02_color
-    second: {fileID: 2800000, guid: 0767bb19f9d15fe46a6cbe2b5831b50c, type: 3}
+    second: {fileID: 2800000, guid: 3e903847cd0d38e4f8fbb2e3110081f3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: porcelain_02_roughness
-    second: {fileID: 2800000, guid: ce45f61aa3f0629429b6e1c255c16368, type: 3}
+    second: {fileID: 2800000, guid: a896595526bdae747a1da73c7e4dbda1, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
