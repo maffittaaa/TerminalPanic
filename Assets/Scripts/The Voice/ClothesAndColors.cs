@@ -1,42 +1,58 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EClothesAndAccessoriesTypes
+public enum ETopClothesType
 {
-    INVALID = -1,
-    Jeans,
-    Blouse,
-    Purse,
-    Hat,
-    Shoes,
-    Belt,
-    Necklace,
-    Bracelet,
-    Scarf
+    None,
+    LongSleeves,
+    TShirt,
+    Top
 }
 
-public enum EColorTypes
+public enum EBottomClothesType
 {
-    INVALID = -1,
-    Blue,
-    Black,
-    Green,
-    Red,
-    Yellow,
-    Pink,
-    Orange,
-    Purple
+    None,
+    Jeans,
+    Skirt,
+    Shorts
+}
+
+public enum EAccessoriesType
+{
+    None,
+    Hat,
+    Headphones
+}
+
+public enum EPursesType
+{
+    None,
+    PurseAndTrolley,
+    Backpack,
+    Trolley
 }
 
 public class ClothesAndColors : MonoBehaviour
 {
-    [field: SerializeField] public List<EClothesAndAccessoriesTypes> clothesAndAccessoriesTypes
+    [field: SerializeField] public List<ETopClothesType> topClothesTypes
     {
         get;
         set;
     }
-
-    [field: SerializeField] public List<EColorTypes> colorTypes
+    
+    [field: SerializeField] public List<EBottomClothesType> bottomClothesTypes
+    {
+        get;
+        set;
+    }
+    
+    [field: SerializeField] public List<EAccessoriesType> accessoriesTypes
+    {
+        get;
+        set;
+    }
+    
+    [field: SerializeField] public List<EPursesType> pursesTypes
     {
         get;
         set;

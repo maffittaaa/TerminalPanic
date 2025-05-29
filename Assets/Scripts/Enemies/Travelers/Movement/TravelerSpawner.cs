@@ -69,10 +69,9 @@ public class TravelerSpawner : MonoBehaviour
         newTraveler.tag = "Enemy";
 
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
-        enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
-        VisualClothes visualClothes = newTraveler.AddComponent<VisualClothes>();
-        SpawningClothes(i);
-        visualClothes.travelerSpawner = this;
+        //enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
+        //SpawningClothes(i);
+        //visualClothes.travelerSpawner = this;
 
         TravelerType randomType = (TravelerType)Random.Range(0, Enum.GetValues(typeof(TravelerType)).Length);
 
@@ -90,9 +89,7 @@ public class TravelerSpawner : MonoBehaviour
                     travelerAI.SetState(TravelerState.Waiting);
             }
             else if (currentMode == IAirportMode.Panic)
-            {
                 travelerAI.SetState(TravelerState.Waiting);
-            }
         }
     }
 
@@ -117,20 +114,18 @@ public class TravelerSpawner : MonoBehaviour
             foreach (TravelerAI traveler in travelerAIs)
             {
                 if (traveler)
-                {
                     traveler.OnAirportModeChanged(mode);
-                }
             }
         }
     }
 
-    private void SpawningClothes(int i)
-    {
-        if (i <= travelerCount * 0.2)
-            enemiesClothes.GivingClothesToEnemies();
-        else if (i > travelerCount * 0.2 && i <= travelerCount * 0.6)
-            enemiesClothes.MatchingWithOneCloth();
-        else
-            enemiesClothes.MatchingWithTwoClothes();
-    }
+    // private void SpawningClothes(int i)
+    // {
+    //     if (i <= travelerCount * 0.2)
+    //         enemiesClothes.GivingClothesToEnemies();
+    //     else if (i > travelerCount * 0.2 && i <= travelerCount * 0.6)
+    //         enemiesClothes.MatchingWithOneCloth();
+    //     else
+    //         enemiesClothes.MatchingWithTwoClothes();
+    // }
 }

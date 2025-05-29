@@ -11,7 +11,8 @@ public class Cheats : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            clueText.TextForClue();
+            //clueText.TextForClue();
+            Debug.Log("Yes change later");
         else if (Input.GetKeyDown(KeyCode.L))
             lightManager.TurnOnAndOffManager();
         else if (Input.GetKeyDown(KeyCode.P))

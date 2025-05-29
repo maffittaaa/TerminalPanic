@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class ClueText : MonoBehaviour
 {
-    private Dictionary<EClothesAndAccessoriesTypes, EColorTypes> usedClues = new Dictionary<EClothesAndAccessoriesTypes, EColorTypes>();
-    public List<EClothesAndAccessoriesTypes> clothesClues = new List<EClothesAndAccessoriesTypes>();
-    public List<EColorTypes> colorClues = new List<EColorTypes>();
+    private List<ClothesSlots> usedClues = new List<ClothesSlots>();
+    public List<ClothesSlots> clues = new List<ClothesSlots>();
     [SerializeField] private IdentifyingThief thief;
     private TextMeshProUGUI clueText;
     public int numberOfClues = -1;
@@ -18,26 +17,21 @@ public class ClueText : MonoBehaviour
         clueText.enabled = false;
 
         for (int i = 0; i < thief.thiefClothes.Count; i++)
-        {
-            clothesClues.Add(thief.thiefClothes[i]);
-            colorClues.Add(thief.thiefClothesColor[i]);
-        }
+            clues.Add(thief.thiefClothes[i]);
     }
 
     public string TextForClue()
     {
         numberOfClues++;
         if (numberOfClues >= thief.thiefClothes.Count)
-        {
             clueText.text = "Catch the Thief!";
-        }
         else
         {
-            if (!usedClues.ContainsKey(clothesClues[numberOfClues]))
-                usedClues.Add(clothesClues[numberOfClues], colorClues[numberOfClues]);
+            if (!usedClues.Contains(clues[numberOfClues]))
+                usedClues.Add(clues[numberOfClues]);
         
             clueText.enabled = true;
-            clueText.text = $"Clue {usedClues.Count}: Find the person who has {clothesClues[numberOfClues]} with a {colorClues[numberOfClues]} color";
+            clueText.text = $"Clue {usedClues.Count}: Find the person who has {clues[numberOfClues]}";
         }
         return clueText.text;
     }
