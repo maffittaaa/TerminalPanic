@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChoosingClothes : MonoBehaviour
 {
     [field: Header("Clothes")]
-    private ClothesSlots[] clothesSlots;
+    [SerializeField] private ClothesSlots[] clothesSlots;
     public ClothesSlots headPiece {get; set;}
     public ClothesSlots torsoPiece {get; set;}
     public ClothesSlots legsPiece {get; set;}
@@ -20,7 +20,7 @@ public class ChoosingClothes : MonoBehaviour
                 headItems.Add(pieces);
         }
 
-        if (headItems.Count > 0)
+        if (headItems.Count > 0  && Random.value > 0.3f)
         {
             int headRandomIndex = Random.Range(0, headItems.Count);
             headPiece = headItems[headRandomIndex];
@@ -68,11 +68,11 @@ public class ChoosingClothes : MonoBehaviour
                 accessoriesItems.Add(pieces);
         }
 
-        if (accessoriesItems.Count > 0)
+        if (accessoriesItems.Count > 0  && Random.value > 0.3f)
         {
             int firstAccessoryRandomIndex = Random.Range(0, accessoriesItems.Count);
             accessoriesPiece = accessoriesItems[firstAccessoryRandomIndex];
-            GameObject itemOfClothing = Instantiate(accessoriesPiece.model);
+            //GameObject itemOfClothing = Instantiate(accessoriesPiece.model);
 
             if (accessoriesPiece.name == "trolley" && Random.value > 0.5f) //has a 50% change of getting the backpack
             {

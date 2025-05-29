@@ -13,7 +13,7 @@ public class IdentifyingThief : MonoBehaviour
     
     [field: Header("Clues")]
     [SerializeField] private ClueText clue;
-    public ClothesSlots hintsForThief;
+    public ChoosingClothes hintsForThief;
     [SerializeField] private int peopleNeededToNextClue;
     private int currentPeopleToNextClue = 0;
     private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
@@ -28,7 +28,7 @@ public class IdentifyingThief : MonoBehaviour
     {
         thiefPosition = new Vector3(Random.Range(0, -109f), 19.10258f, Random.Range(-3f, 69f));
         thief = Instantiate(thief, thiefPosition, Quaternion.identity);
-        hintsForThief = thief.GetComponent<ClothesSlots>();
+        hintsForThief = FindObjectOfType<ChoosingClothes>();
         
         clothes.HeadSlot();
         clothes.TorsoSlot();
@@ -40,9 +40,9 @@ public class IdentifyingThief : MonoBehaviour
         thiefClothes.Add(clothes.legsPiece);
         thiefClothes.Add(clothes.accessoriesPiece);
         Debug.Log("head: " + thiefClothes[0]);
-        Debug.Log("head: " + thiefClothes[1]);
-        Debug.Log("head: " + thiefClothes[2]);
-        Debug.Log("head: " + thiefClothes[3]);
+        Debug.Log("torso: " + thiefClothes[1]);
+        Debug.Log("legs: " + thiefClothes[2]);
+        Debug.Log("accessories: " + thiefClothes[3]);
         
         foreach (ClothesSlots item in thiefClothes)
             Instantiate(item.model, thiefPosition, Quaternion.identity);

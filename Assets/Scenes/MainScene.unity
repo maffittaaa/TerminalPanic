@@ -4611,6 +4611,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 845850518}
+    - target: {fileID: 2809602760443036910, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
+      propertyPath: hintsForThief
+      value: 
+      objectReference: {fileID: 1616950543}
     - target: {fileID: 5399447244945353139, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7030,6 +7034,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: baab58a7e7c799a4a9b00b14a48beabb, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1673e6990479df94b8756b40315515f2, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: c6563a0b5fb2a2f4a904dada94b7b104, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d0b268512acd6f4aa89050516bb8a87, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b00126c1403349044a63ccdbb27787d5, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d0df56a1624c16439af85b596e0210f, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: c9ea92b03199f4942a66db6b79652fbc, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 97d4b9df276511543974b1b0d953d45c, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 170cc8fa570f81741800a0402f765baf, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bd1a3be432fe024881c7d33f5de0251, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b97a1f32981e9148a2a1c86b66a0409, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: c19dde1b3e314194da36d60fd4bc643f, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 688833529dad6554a8627e4825bb6af7, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: b985d65bbf1d88943ad48a078f724226, type: 2}
+    - target: {fileID: 7424597927947888653, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
+      propertyPath: clothesSlots.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a99935a99ad3ac41812507f01cdda1e, type: 2}
     - target: {fileID: 8818948496376287972, guid: 3cd1198a06488f34da3603e5b31861ca, type: 3}
       propertyPath: m_Name
       value: ClothesManager
