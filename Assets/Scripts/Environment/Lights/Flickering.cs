@@ -18,7 +18,7 @@ public class Flickering : MonoBehaviour
     [SerializeField] private Light light1;
     [SerializeField] private Light light2;
     [SerializeField] private Light light3;
-    [SerializeField] private GameObject lightEffect;
+    [SerializeField] private InterferenceScreen lightEffect;
     [SerializeField] private GameObject lightMaterial;
     [SerializeField] private FlickerMode mode;
 
@@ -116,6 +116,11 @@ public class Flickering : MonoBehaviour
         light1.enabled = state;
         light2.enabled = state;
         light3.enabled = state;
+
+        if(lightEffect != null)
+        {
+            lightEffect.ScreenState(state);
+        }
 
         light1.color = currentColor;
         light2.color = currentColor;

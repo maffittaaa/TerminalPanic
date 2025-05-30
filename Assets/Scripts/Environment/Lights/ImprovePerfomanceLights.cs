@@ -5,13 +5,12 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class ImprovePerfomanceLights : MonoBehaviour
 {
-    private int minDist;
+    [SerializeField] private int minDist = 80;
     private Light lightComponent;
     private GameObject player;
 
     private void Start()
     {
-        minDist = 100;
         lightComponent = GetComponent<Light>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
