@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: 0
   name: hat
-  model: {fileID: 0}
+  model: {fileID: 919132149155446097, guid: 2240a8d8d0afd6f40b0fbbb31a255450, type: 3}

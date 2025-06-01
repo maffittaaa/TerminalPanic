@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: 3
   name: backpack
-  model: {fileID: 0}
+  model: {fileID: 919132149155446097, guid: 6ed6d537edc84374c9a823a63afbeacc, type: 3}
