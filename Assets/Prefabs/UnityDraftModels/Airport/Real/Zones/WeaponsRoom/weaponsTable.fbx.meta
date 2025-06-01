@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d94cc06fa910e88469349833c42bafe7
+guid: dcbcc7a5bcb06b54eb7e3b10ad745f4b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Lightly soiled blue metal
-    second: {fileID: 2100000, guid: dbb1287d08e0eab4b8f008f4bed6d331, type: 2}
+    second: {fileID: 2100000, guid: 34b61e0bde832d34da667af1e76c8ebe, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal03_diffuse
-    second: {fileID: 2800000, guid: 8e5276e698f0ab24986ea7bc45a99c55, type: 3}
+    second: {fileID: 2800000, guid: cd7516089539f094b9ecd82b42cb6e04, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_metallic
-    second: {fileID: 2800000, guid: 1ac418fe96c4fd24b9b7b63dffb31acf, type: 3}
+    second: {fileID: 2800000, guid: 4ad74d9e3148b194185f4efd6a36699e, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_normal_opengl
-    second: {fileID: 2800000, guid: 1ba6cf7a35afde24092c8cb5cae9020f, type: 3}
+    second: {fileID: 2800000, guid: 8a3ab9b5f23ac364dac5cd8cd58566d3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: metal_specular
-    second: {fileID: 2800000, guid: d2ee043dec8cc62409dabf90a40dccd0, type: 3}
+    second: {fileID: 2800000, guid: 1a8ae5c8c6a658146825c4006b1663f9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
