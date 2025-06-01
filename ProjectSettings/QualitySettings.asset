@@ -54,7 +54,9 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Server
+    - Standalone
   - serializedVersion: 3
     name: Low
     pixelLightCount: 0
