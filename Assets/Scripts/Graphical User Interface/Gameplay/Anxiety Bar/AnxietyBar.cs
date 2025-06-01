@@ -108,10 +108,10 @@ public class AnxietyBar : MonoBehaviour
                         cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
                         
                         vignette.intensity.value -= vignetteDecrease;
-                        vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 1f );
+                        vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.7f );
                         
                         vignette.smoothness.value -= vignetteDecrease;
-                        vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,1f);
+                        vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,0.7f);
                         
                     }
 
@@ -133,12 +133,12 @@ public class AnxietyBar : MonoBehaviour
                 else if (currentAnxiety > maxAnxiety * 0.33f && currentAnxiety <= maxAnxiety * 0.66f) //second third of the anxiety
                 {
                     vignette.intensity.value += vignetteDecrease;
-                    vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 1f );
+                    vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.7f );
                     
                     vignette.smoothness.value += vignetteDecrease;
-                    vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,1f);
+                    vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,0.7f);
                 }
-                else if (currentAnxiety > maxAnxiety * 0.66f) //final part of the anxiety
+                else if (currentAnxiety > maxAnxiety * 0.66f) //final third of the anxiety
                 {
                     dOF.focusDistance.value -= distanceDecrease;
                     dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
