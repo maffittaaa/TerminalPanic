@@ -35,8 +35,10 @@ public class AnxietyBar : MonoBehaviour
     [field: Header("Post-Processing Settings")]
     public DepthOfField dOF;
     public ChromaticAberration cA;
+    public Vignette vignette;
     [field: SerializeField] public float distanceDecrease { get; set; }
     [field: SerializeField] public float aberrationIncrease { get; set; }
+    [field: SerializeField] public float vignetteDecrease;
     
     [Header("Audio")]
     [SerializeField] private AudioManager audioManager;
@@ -47,8 +49,11 @@ public class AnxietyBar : MonoBehaviour
     
     private void Start()
     {
+        //post-processing effects
         dOF = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<DepthOfField>();
         cA = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<ChromaticAberration>();
+        vignette = focusCamera.GetComponent<PostProcessVolume>().profile.GetSetting<Vignette>();
+        
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         normalizedAnxiety = currentAnxiety / maxAnxiety;
         OnPlayerHealthChangedEvent.Invoke(normalizedAnxiety);
@@ -94,12 +99,20 @@ public class AnxietyBar : MonoBehaviour
                 else if (interacted)
                 {
                     EffectsFromAnxiety(-anxietyDecrease);
-                    if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f))
+                    if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f) && !vignette.intensity.value.Equals(0f) && !vignette.smoothness.value.Equals(0.01f))
                     {
                         dOF.focusDistance.value += distanceDecrease;
                         dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
+                        
                         cA.intensity.value -= aberrationIncrease;
-                        cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 1f);
+                        cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
+                        
+                        vignette.intensity.value -= vignetteDecrease;
+                        vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 1f );
+                        
+                        vignette.smoothness.value -= vignetteDecrease;
+                        vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,1f);
+                        
                     }
 
                     if (currentAnxiety <= 0f)
@@ -111,24 +124,34 @@ public class AnxietyBar : MonoBehaviour
                     }
                 }
 
-                if (currentAnxiety > maxAnxiety * 0.75f)
+                if (currentAnxiety <= maxAnxiety * 0.33f) //first third of the anxiety
                 {
-                    state.color = Color.red;
-
+                    cA.intensity.value += aberrationIncrease;
+                    cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
+                }
+                
+                else if (currentAnxiety > maxAnxiety * 0.33f && currentAnxiety <= maxAnxiety * 0.66f) //second third of the anxiety
+                {
+                    vignette.intensity.value += vignetteDecrease;
+                    vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 1f );
+                    
+                    vignette.smoothness.value += vignetteDecrease;
+                    vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,1f);
+                }
+                else if (currentAnxiety > maxAnxiety * 0.66f) //final part of the anxiety
+                {
                     dOF.focusDistance.value -= distanceDecrease;
                     dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
-                    cA.intensity.value += aberrationIncrease;
-                    cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 1f);
-
+                    
                     if (!audioManager.heartbeat2.isPlaying)
                     {
                         audioManager.heartbeat.Stop();
                         audioManager.heartbeat2.Play();
                     }
                 }
+                
                 else if (coroutineRunning)
                 {
-                    state.color = new Color(1, 1, 0, 0.8f);
                     if (!audioManager.heartbeat.isPlaying)
                     {
                         audioManager.heartbeat2.Stop();
