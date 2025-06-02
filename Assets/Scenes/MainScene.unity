@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 643993435}
     - target: {fileID: 667348812606437904, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20228
+      value: 20258
       objectReference: {fileID: 0}
     - target: {fileID: 694390440902228412, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: clueText
@@ -487,10 +487,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3680809172762648568, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
     - target: {fileID: 4404333213086684335, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_Name
       value: Airport - RealSize
