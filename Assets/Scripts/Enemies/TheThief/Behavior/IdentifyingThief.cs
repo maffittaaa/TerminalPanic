@@ -46,16 +46,18 @@ public class IdentifyingThief : MonoBehaviour
         
         foreach (ClothesSlots item in thiefClothes)
         {
-            if (item.model != null)
-            {
-                Instantiate(item.model);
-                item.model.transform.position = thiefPosition; //this is wrong why???
-                Debug.Log("item position" + item.model.transform.position);
-                Debug.Log("thief position" + thiefPosition);
-                item.model.transform.rotation = thief.transform.rotation; //this is correct
-            }
-            else
-                Debug.Log("no item");
+                GameObject pieceOfClothing = Instantiate(item.model);
+                pieceOfClothing.transform.SetParent(thief.transform);
+                pieceOfClothing.transform.localPosition = Vector3.zero;
+                pieceOfClothing.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 270));
+                if (pieceOfClothing.gameObject.name.Contains("backpack"))
+                {
+                    pieceOfClothing.transform.localPosition = new Vector3(0, 0, -0.117f);
+                    pieceOfClothing.transform.localRotation = Quaternion.Euler(-90, 0, 90);
+                }
+                else if (pieceOfClothing.gameObject.name.Contains("headphones"))
+                    pieceOfClothing.transform.localPosition = new Vector3(0, 0, -0.096f);
+
         }
     }
     

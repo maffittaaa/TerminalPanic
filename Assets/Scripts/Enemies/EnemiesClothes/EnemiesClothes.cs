@@ -40,6 +40,15 @@ public class EnemiesClothes : MonoBehaviour
 
     private void GivingOneIdenticalPieceOfClothing()
     {
+        int maxAttempts = 100;
+        int attempts = 0;
+
+        while (attempts < maxAttempts)
+        {
+            travelersClothes.Clear();
+            
+        }
+
         
     }
 

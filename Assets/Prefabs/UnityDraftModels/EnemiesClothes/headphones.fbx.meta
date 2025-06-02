@@ -7,23 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Leather Fabric - Black 70.001
-    second: {fileID: 2100000, guid: 932ada80c72c03d43a6f8515aec14c7c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
       name: Procedural pearl black painted plastic
-    second: {fileID: 2100000, guid: 48314eaa2db2be9419352fb7cba4ccde, type: 2}
+    second: {fileID: 2100000, guid: eb70faaa95ddc154d94b4596fe7c79fa, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric-70-black_diffuse
-    second: {fileID: 2800000, guid: 73e13f1e79397b6419f096d4c5b24eb3, type: 3}
+    second: {fileID: 2800000, guid: f609014f4364bc444a95036982c4014d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric-70_roughness
-    second: {fileID: 2800000, guid: f7084d45ae996e54faad2304b7a305db, type: 3}
+    second: {fileID: 2800000, guid: d8cfbc22b59c29341a4224f3dec04d1e, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

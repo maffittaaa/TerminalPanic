@@ -8,82 +8,82 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Dark Woven Fabric with Embossed Pattern
-    second: {fileID: 2100000, guid: 1faa96b0ed5bd634e8049c5d9c5e5056, type: 2}
+    second: {fileID: 2100000, guid: df292f7ef93658140990cc97f90665d3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: PM-T1 Plastic Finish Red
-    second: {fileID: 2100000, guid: 5efa5fe13066d794e992c661174605d0, type: 2}
+    second: {fileID: 2100000, guid: 8b9c1c7314f78ec459d731ef7bae6ecb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Plastic Grey 22.001
-    second: {fileID: 2100000, guid: db5ddb6cdcf022c4ba326936f3db3a10, type: 2}
+    second: {fileID: 2100000, guid: b3c877a1403aebb4f9a73d3f765723c7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Plastic grey material.002
-    second: {fileID: 2100000, guid: 27af69ca17f58c744a21c1e6b1faaf27, type: 2}
+    second: {fileID: 2100000, guid: 9b79c39df6dc6a444ac28bfe69804ac8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: black
-    second: {fileID: 2100000, guid: 69d5745d33b679448b52c1f8cb93d155, type: 2}
+    second: {fileID: 2100000, guid: fcf48e889bf78b8428b6a63cd7eb303f, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Black_var_Fabric_Carpet_001_Base_Color
-    second: {fileID: 2800000, guid: aa03ad645f298c4478462449914384ec, type: 3}
+    second: {fileID: 2800000, guid: 5e46965c3d1194b4baa95b3dd358279c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Black_var_Fabric_Carpet_001_Roughness
-    second: {fileID: 2800000, guid: 25d9d6e1e98a33745bc23fd5be23e21d, type: 3}
+    second: {fileID: 2800000, guid: 015f731f8827c5c47914eb01e095bfd4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: PM-T1_Plastic_Finish_basecolor_Red
-    second: {fileID: 2800000, guid: cac0febc1354c804cafd59416dd0aecb, type: 3}
+    second: {fileID: 2800000, guid: d685903c23b81634dac89ce01004def2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: PM-T1_Plastic_Finish_normal
-    second: {fileID: 2800000, guid: 387b2539fdb073d46b2125b5eb090e85, type: 3}
+    second: {fileID: 2800000, guid: 3a4f77284e6f8f84ea5fe4c6dad4240c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_19_normal
-    second: {fileID: 2800000, guid: 8cdfbe6d4c868b44280cf068cd660a95, type: 3}
+    second: {fileID: 2800000, guid: a677aecb654e6144cb3e9fc02e6edeab, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic-texture-normal-2
-    second: {fileID: 2800000, guid: d8f07224b7b49d94fa0d4c2e87f7abcd, type: 3}
+    second: {fileID: 2800000, guid: 9e8e665f4f798ca48a887da2c3a8df99, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic-texture-normal-4
-    second: {fileID: 2800000, guid: 24d51e9d89a34dc4b91de835c4b38585, type: 3}
+    second: {fileID: 2800000, guid: a73c9913777bf69418738c4ade7f68b0, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic06_diffuse
-    second: {fileID: 2800000, guid: d9de4e5c6b89be84abd9fffe5a5b4bc7, type: 3}
+    second: {fileID: 2800000, guid: 319070021df286c40a580b692cacd2ff, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic_metallic
-    second: {fileID: 2800000, guid: 87cc898db495b8a4fa2af20ff50a343d, type: 3}
+    second: {fileID: 2800000, guid: a354fb83de4d16149937232160699412, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic_normal_opengl
-    second: {fileID: 2800000, guid: 734ef160ede41c646af68dbac27be769, type: 3}
+    second: {fileID: 2800000, guid: 12d86488849e12441a49fbe4d49cc356, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic_specular
-    second: {fileID: 2800000, guid: c95bbe274c04f8f40a9bbec9e72fea4c, type: 3}
+    second: {fileID: 2800000, guid: 4eda7542806a3a44484708d9001b7c68, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
