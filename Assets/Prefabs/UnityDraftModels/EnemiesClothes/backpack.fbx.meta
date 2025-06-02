@@ -8,22 +8,22 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Green fabric
-    second: {fileID: 2100000, guid: b10cce6edce09b9499532c00f19bacf5, type: 2}
+    second: {fileID: 2100000, guid: 98d9ca16741321f46a284f55d0cf62bd, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: green fabric_BaseColor
-    second: {fileID: 2800000, guid: 980601200856dbd428a93f9db723b41e, type: 3}
+    second: {fileID: 2800000, guid: bcada4c9592d3b84ba0d59674262990f, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: withe fabric_Normal
-    second: {fileID: 2800000, guid: 848d4290a3527bb4ea2551f678b1f20a, type: 3}
+    second: {fileID: 2800000, guid: e59ff5142a6292e4eb928f515ed904ad, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: withe fabric_Roughness
-    second: {fileID: 2800000, guid: 79704d59c4139674681ae9065a4b47cd, type: 3}
+    second: {fileID: 2800000, guid: cf479fa8d44ef184fa0122219de64b13, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fabric 125
-    second: {fileID: 2100000, guid: cacabffd316102343ae6defafa9318c4, type: 2}
+    second: {fileID: 2100000, guid: 8ae74157fa0f52944bc7ea08cf0dbad0, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_125_albedo-2K
-    second: {fileID: 2800000, guid: 398bd092f815f604caae2fc1b6cc941c, type: 3}
+    second: {fileID: 2800000, guid: c0c755eb5f7369c4badcd43dda662fac, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_125_roughness-2K
-    second: {fileID: 2800000, guid: eef38949363c4894087a2f0966fd913d, type: 3}
+    second: {fileID: 2800000, guid: 3e9821d4e5671c34397db28d8d69f0f4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

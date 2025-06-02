@@ -8,37 +8,37 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Brown Leather 1
-    second: {fileID: 2100000, guid: 8c419e9b7fc5e6e4d872ef077b63f3f7, type: 2}
+    second: {fileID: 2100000, guid: 27c062ef19326a741b917875ead5e579, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Denim Fabric 01
-    second: {fileID: 2100000, guid: 840f9f0e424ff57458b2a2f9da018f42, type: 2}
+    second: {fileID: 2100000, guid: 39012c11c5554784dadbd3343128cbe9, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Brown_Leather_01_Base
-    second: {fileID: 2800000, guid: 4b807731384567542bdb58f94eef7c74, type: 3}
+    second: {fileID: 2800000, guid: dfcd71270b92b05479c6e41bfd43aaee, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Brown_Leather_01_Base_Normal
-    second: {fileID: 2800000, guid: 19aebddef72d4d0419d986147e2a14b4, type: 3}
+    second: {fileID: 2800000, guid: 1b40b442ab8486e43adae2afafaa094a, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Brown_Leather_01_Roughness
-    second: {fileID: 2800000, guid: 83f675733b2c74e4ebe5ca77970f0a73, type: 3}
+    second: {fileID: 2800000, guid: 2b419af15d9bf5644adb2de15eccec0c, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_BaseColor
-    second: {fileID: 2800000, guid: 142b67aed478f0e4ebed99b2f486e598, type: 3}
+    second: {fileID: 2800000, guid: 23e2d354c6bb0d247aeb1dd89a0cf0b3, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_Roughness
-    second: {fileID: 2800000, guid: 460113bbb8c272947b39bb7a6aaa0d95, type: 3}
+    second: {fileID: 2800000, guid: 8e7214328f5fbf742836e4360fcb30ca, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

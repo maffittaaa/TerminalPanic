@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Red Fabric
-    second: {fileID: 2100000, guid: 71838816b570d4d4d93c83b8056f37dd, type: 2}
+    second: {fileID: 2100000, guid: 072f290ec0b373e498bdb050f2f688a2, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_191_Albedo
-    second: {fileID: 2800000, guid: fa8b1cfcaea706d44a54db0c9d516839, type: 3}
+    second: {fileID: 2800000, guid: 0d65edde721a30442b9d17785d7fede2, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_191_Roughness
-    second: {fileID: 2800000, guid: c9f1e9397a15f6144b42c6d8ba69ae1f, type: 3}
+    second: {fileID: 2800000, guid: 3b3f8b24647ff4d4984adf7acb2bbe15, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

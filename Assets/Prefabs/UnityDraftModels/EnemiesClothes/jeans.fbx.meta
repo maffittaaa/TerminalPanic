@@ -8,52 +8,52 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Brown Leather 1
-    second: {fileID: 2100000, guid: 9e031c1df9501c84ba4987d763a695ed, type: 2}
+    second: {fileID: 2100000, guid: 2d19a4176b938094fa17b39c96493ec8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Denim
-    second: {fileID: 2100000, guid: 4a12ad96fdf64cd4eb8e5a63f5d1498a, type: 2}
+    second: {fileID: 2100000, guid: 1f3c0d116e3daf447999acb7d0efe199, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Brown_Leather_01_Base
-    second: {fileID: 2800000, guid: 8f65535b24c7f7340b76428e222b4c68, type: 3}
+    second: {fileID: 2800000, guid: a467ed5be4bd5a746bfe5a8959b1f683, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Brown_Leather_01_Base_Normal
-    second: {fileID: 2800000, guid: 5379f8d66920254409e74ad048ee0f96, type: 3}
+    second: {fileID: 2800000, guid: a8a8354007f026a4fa57e7eb897cbe16, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Brown_Leather_01_Roughness
-    second: {fileID: 2800000, guid: 9708b2ccc756a9a4f885884085fb446a, type: 3}
+    second: {fileID: 2800000, guid: f36430bd41fbb66419b78b1b379007de, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_Alpha
-    second: {fileID: 2800000, guid: 971d27699826d2b42a98f54ce88b670e, type: 3}
+    second: {fileID: 2800000, guid: 0446ee23b7ca0884abe04f35bcb74ab7, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_BaseColor
-    second: {fileID: 2800000, guid: 166b62a77ce087d41a19f51566cde353, type: 3}
+    second: {fileID: 2800000, guid: 097c66006fdf48b4891a0913da9d21b6, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_Emissive
-    second: {fileID: 2800000, guid: 1900af906c7085c4d991cc5245301ddb, type: 3}
+    second: {fileID: 2800000, guid: de9024197a4f6bc43a46f351e009b8fc, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_Metallic
-    second: {fileID: 2800000, guid: 8177d8f31637f2b4d86bc5470e3e4e09, type: 3}
+    second: {fileID: 2800000, guid: 4f8f8da36d87a0e4e9abc33f94dfef70, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Denim_Roughness
-    second: {fileID: 2800000, guid: 19eefb5c8e41a8d4ea685bd4171f003a, type: 3}
+    second: {fileID: 2800000, guid: 5c8ddc52c0e60ab4d9a8c0395d5ca194, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
