@@ -333,6 +333,7 @@ MonoBehaviour:
   brightnessSlider: {fileID: 0}
   postProcess: {fileID: 0}
   newDepthValue: 0
+  currentDepthValue: 0
   newBloomValue: 0
   newChromaticAberrationValue: 0
   newAutoExposureValue: 0
@@ -948,8 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76033010100f93c48a10b788eff06cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clothesClues: 
-  colorClues: 
+  clues: []
   thief: {fileID: 0}
   numberOfClues: -1
 --- !u!1 &1727449780257557703
@@ -1972,7 +1972,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 440621644470239079}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: PauseMenuView
+        m_MethodName: BackButtonSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2004,6 +2004,7 @@ MonoBehaviour:
   brightnessSlider: {fileID: 0}
   postProcess: {fileID: 0}
   newDepthValue: 0
+  currentDepthValue: 0
   newBloomValue: 0
   newChromaticAberrationValue: 0
   newAutoExposureValue: 0
@@ -3113,6 +3114,7 @@ MonoBehaviour:
   brightnessSlider: {fileID: 0}
   postProcess: {fileID: 0}
   newDepthValue: 0
+  currentDepthValue: 0
   newBloomValue: 0
   newChromaticAberrationValue: 0
   newAutoExposureValue: 0
@@ -3805,6 +3807,7 @@ MonoBehaviour:
   brightnessSlider: {fileID: 0}
   postProcess: {fileID: 0}
   newDepthValue: 0
+  currentDepthValue: 0
   newBloomValue: 0
   newChromaticAberrationValue: 0
   newAutoExposureValue: 0
@@ -4322,6 +4325,10 @@ PrefabInstance:
     - target: {fileID: 5218473766061877938, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_Name
       value: AnxietyBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5218473766061877938, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6513843218772431540, guid: 2512513993e86fa479d176f072a7ba78, type: 3}
       propertyPath: m_Pivot.x
