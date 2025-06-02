@@ -25,6 +25,8 @@ public class ChoosingClothes : MonoBehaviour
             int headRandomIndex = Random.Range(0, headItems.Count);
             headPiece = headItems[headRandomIndex];
         }
+        else if (headPiece == null)
+            Debug.Log("No head item");
     }
 
     public void TorsoSlot()
@@ -72,7 +74,6 @@ public class ChoosingClothes : MonoBehaviour
         {
             int firstAccessoryRandomIndex = Random.Range(0, accessoriesItems.Count);
             accessoriesPiece = accessoriesItems[firstAccessoryRandomIndex];
-            //GameObject itemOfClothing = Instantiate(accessoriesPiece.model);
 
             if (accessoriesPiece.name == "trolley" && Random.value > 0.5f) //has a 50% change of getting the backpack
             {
@@ -91,5 +92,7 @@ public class ChoosingClothes : MonoBehaviour
                 }
             }
         }
+        else if (accessoriesPiece == null)
+            Debug.Log("No accessories");
     }
 }

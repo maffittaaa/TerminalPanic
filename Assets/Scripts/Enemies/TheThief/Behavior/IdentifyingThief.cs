@@ -45,7 +45,18 @@ public class IdentifyingThief : MonoBehaviour
         Debug.Log("accessories: " + thiefClothes[3]);
         
         foreach (ClothesSlots item in thiefClothes)
-            Instantiate(item.model, thiefPosition, Quaternion.identity);
+        {
+            if (item.model != null)
+            {
+                Instantiate(item.model);
+                item.model.transform.position = thiefPosition; //this is wrong why???
+                Debug.Log("item position" + item.model.transform.position);
+                Debug.Log("thief position" + thiefPosition);
+                item.model.transform.rotation = thief.transform.rotation; //this is correct
+            }
+            else
+                Debug.Log("no item");
+        }
     }
     
     public bool DoesTheThiefHasThis(List<ClothesSlots> clothesSlots)

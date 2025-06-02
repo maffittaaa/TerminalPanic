@@ -19,7 +19,7 @@ public class TravelerSpawner : MonoBehaviour
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
     public EnemiesClothes enemiesClothes;
-    public int travelerCount = 10;
+    public int travelerCount = 30;
 
     [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
     [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
@@ -70,7 +70,7 @@ public class TravelerSpawner : MonoBehaviour
 
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
         //enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
-        //SpawningClothes(i);
+        enemiesClothes.SpawningClothes(i);
         //visualClothes.travelerSpawner = this;
 
         TravelerType randomType = (TravelerType)Random.Range(0, Enum.GetValues(typeof(TravelerType)).Length);
@@ -118,14 +118,4 @@ public class TravelerSpawner : MonoBehaviour
             }
         }
     }
-
-    // private void SpawningClothes(int i)
-    // {
-    //     if (i <= travelerCount * 0.2)
-    //         enemiesClothes.GivingClothesToEnemies();
-    //     else if (i > travelerCount * 0.2 && i <= travelerCount * 0.6)
-    //         enemiesClothes.MatchingWithOneCloth();
-    //     else
-    //         enemiesClothes.MatchingWithTwoClothes();
-    // }
 }
