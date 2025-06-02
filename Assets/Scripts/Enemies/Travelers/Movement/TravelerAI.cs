@@ -43,9 +43,9 @@ public class TravelerAI : MonoBehaviour
     private Vector3 lastKnownPlayerPosition;
     public float lookAroundDuration { get; set; }
     public float lookAroundTimer { get; set; }
-    private float chaseMemoryTime = 3f;
+    private float chaseMemoryTime = 3f; //reduced
     private float chaseMemoryTimer = 0f;
-    private float maxChaseDistance = 10f;
+    private float maxChaseDistance = 10f; //reduced
     private Vector3 wanderTarget;
     private float wanderTimer = 3f;
     private float wanderCounter;
@@ -135,6 +135,7 @@ public class TravelerAI : MonoBehaviour
         {
             chaseMemoryTimer = 0f;
             agent.SetDestination(player.transform.position);
+            lastKnownPlayerPosition = player.transform.position;
         }
         else
         {
@@ -202,11 +203,13 @@ public class TravelerAI : MonoBehaviour
 
         if (newState == TravelerState.Suspicious)
         {
+            lostPlayer = false;
             lookAroundTimer = 0f;
         }
 
         if (newState == TravelerState.Chasing)
         {
+            lostPlayer = false;
             agent.isStopped = false; 
         }
     }

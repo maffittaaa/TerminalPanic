@@ -38,7 +38,10 @@ public class ReturningState : AStateBehaviour
         float distanceToSpawn = Vector3.Distance(traveler.transform.position, traveler.spawnPoint);
         if (distanceToSpawn < 0.5f)
         {
-            return (int)EEnemyState.Waiting;
+            if (traveler.type == TravelerType.Wanders)
+                return (int)EEnemyState.Wandering;
+            else
+                return (int)EEnemyState.Waiting;
         }
         return (int)EEnemyState.Invalid;
     }
