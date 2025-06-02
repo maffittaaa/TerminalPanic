@@ -8,57 +8,57 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Blue leather
-    second: {fileID: 2100000, guid: fd38b90bb097b7e468e8739c45987a16, type: 2}
+    second: {fileID: 2100000, guid: 62ec3d5a59e546e44bb4a25704302fd3, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Plastic grey material.002
-    second: {fileID: 2100000, guid: e6b187d21ca81a94483e355130e2dc81, type: 2}
+    second: {fileID: 2100000, guid: 8f29b35d02f1037409fa5592522c260c, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: leather07_diffuse
-    second: {fileID: 2800000, guid: 8e903b06fd7d97f48a6b81d29d876b37, type: 3}
+    second: {fileID: 2800000, guid: 64d329e52b849b84cba773327a478804, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: leather_metallic
-    second: {fileID: 2800000, guid: e9f870c79467a054391c23f3846eb40d, type: 3}
+    second: {fileID: 2800000, guid: d728563884da3c04795d266497124141, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: leather_normal_opengl
-    second: {fileID: 2800000, guid: c2d5145dcb3998740beee56bae23e4c0, type: 3}
+    second: {fileID: 2800000, guid: e1e628efaf7e0a349aaa929cba5befd5, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: leather_specular
-    second: {fileID: 2800000, guid: fff5992cb039e974183f267f2008c859, type: 3}
+    second: {fileID: 2800000, guid: dfab71d27a3c85644bd82c9a9f4fa6f9, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic-texture-normal-4
-    second: {fileID: 2800000, guid: 39027b8cb7058984faf2c2dbbd2e4601, type: 3}
+    second: {fileID: 2800000, guid: 355c247d0853392448ff61560a1302ed, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic06_diffuse
-    second: {fileID: 2800000, guid: f98bc6617c504874da2c4017d231cee7, type: 3}
+    second: {fileID: 2800000, guid: ae7328492efd15a43857b0d37640c413, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic_metallic
-    second: {fileID: 2800000, guid: 0f23684ca149ec342963fc5d8bf2d35b, type: 3}
+    second: {fileID: 2800000, guid: 28afa869a72db704db6e28abbd66491d, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic_normal_opengl
-    second: {fileID: 2800000, guid: 83487f58c5be79e47bcdca44a1dfd254, type: 3}
+    second: {fileID: 2800000, guid: 993a536cfd860964c889a7e4153c15d4, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: plastic_specular
-    second: {fileID: 2800000, guid: 68288ea4d08cb7c4cb2dd6941acb7f0b, type: 3}
+    second: {fileID: 2800000, guid: 62fdd90070e775e4fa66cdf9cc615ffc, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Dark Green Fabric.001
-    second: {fileID: 2100000, guid: 6c9e2f8eda7fef541a88b3cae88aaeea, type: 2}
+    second: {fileID: 2100000, guid: c7ca012d5e94c8343bd9a66380139350, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_173_basecolor
-    second: {fileID: 2800000, guid: 7b11fc21986e0d4438c432265d8b282a, type: 3}
+    second: {fileID: 2800000, guid: 0c3b7cbafdd9d914e88edc9e32130e88, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: fabric_173_roughness
-    second: {fileID: 2800000, guid: daccfc15ae77a324381f8b6c551e6917, type: 3}
+    second: {fileID: 2800000, guid: 9ec39fbc29f571b4bbaa430dcecd9406, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
