@@ -158,6 +158,28 @@ public class TravelerAI : MonoBehaviour
         agent.isStopped = false;
         agent.speed = maxChaseSpeed;
         agent.SetDestination(spawnPoint);
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        // Detect player on the way back
+        if (iSeePlayer || iHearPlayer)
+        {
+            lastKnownPlayerPosition = player.transform.position;
+            SetState(TravelerState.Chasing);
+            return;
+        }
+
+        if (Vector3.Distance(transform.position, spawnPoint) < 0.5f)
+        {
+            if (type == TravelerType.Wanders)
+            {
+                SetState(TravelerState.Wandering);
+            }
+            else
+            {
+                SetState(TravelerState.Waiting);
+            }
+        }
     }
 
     public void Suspicious()
