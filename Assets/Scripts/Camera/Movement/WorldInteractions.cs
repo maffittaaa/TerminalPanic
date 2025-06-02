@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-public enum ItemType { None, Mirror, Weapon, Bullets, KeyCardMachine, KeyCard, Ticket }
+public enum ItemType { None, Mirror, Weapon, Bullets, Door, KeyCardMachine, KeyCard, Ticket }
 
 public class WorldInteractions : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class WorldInteractions : MonoBehaviour
     [field: SerializeField] public GameObject body { get; set; }
     [SerializeField] private GameObject flashLight;
     [SerializeField] private GameObject flashLightPhysic;
-    [SerializeField] private GameObject testDoor;
+    [SerializeField] private GameObject[] doors;
     [SerializeField] private ItemType itemType;
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private bool gotKeyCard = false;
@@ -146,6 +146,9 @@ public class WorldInteractions : MonoBehaviour
             {
                 switch (itemType)
                 {
+                    case ItemType.Door:
+                        StartCoroutine(OpenDoor(interactable.GetItemId()));
+                        break;
                     case ItemType.Ticket:
                         gotTicket = true;
                         Destroy(highLightObject.transform.parent.gameObject);
@@ -172,7 +175,7 @@ public class WorldInteractions : MonoBehaviour
                         if (gotKeyCard && !doorOpeningClosing)
                         {
                             doorOpeningClosing = true;
-                            StartCoroutine(OpenDoor());
+                            StartCoroutine(OpenDoor(0));
                         }
                         break;
                     case ItemType.KeyCard:
@@ -199,25 +202,25 @@ public class WorldInteractions : MonoBehaviour
         transform.localRotation = Quaternion.identity;
     }
 
-    private IEnumerator OpenDoor()
+    private IEnumerator OpenDoor(int id)
     {
         time = 0;
-        while (testDoor.transform.localEulerAngles.y < doorAngleOpen)
+        while (doors[id].transform.localEulerAngles.y < doorAngleOpen)
         {
-            testDoor.transform.localEulerAngles = new Vector3(0, testDoor.transform.localEulerAngles.y + doorAngleOpen * Mathf.Sin(Mathf.Deg2Rad * (time * doorCloseAddAngle)), 0);
+            doors[id].transform.localEulerAngles = new Vector3(0, doors[id].transform.localEulerAngles.y + doorAngleOpen * Mathf.Sin(Mathf.Deg2Rad * (time * doorCloseAddAngle)), 0);
             yield return new WaitForSeconds(doorOpenSpeed);
         }
-        testDoor.transform.localEulerAngles = new Vector3(0, doorAngleOpen, 0);
+        doors[id].transform.localEulerAngles = new Vector3(0, doorAngleOpen, 0);
 
         yield return new WaitForSeconds(doorOpenTime);
 
         time = 0;
-        while (testDoor.transform.localEulerAngles.y > doorAngleClose && testDoor.transform.localEulerAngles.y <= doorAngleOpen)
+        while (doors[id].transform.localEulerAngles.y > doorAngleClose && doors[id].transform.localEulerAngles.y <= doorAngleOpen)
         {
-            testDoor.transform.localEulerAngles = new Vector3(0, testDoor.transform.localEulerAngles.y - doorAngleOpen * Mathf.Sin(Mathf.Deg2Rad * (time * doorCloseAddAngle)), 0);
+            doors[id].transform.localEulerAngles = new Vector3(0, doors[id].transform.localEulerAngles.y - doorAngleOpen * Mathf.Sin(Mathf.Deg2Rad * (time * doorCloseAddAngle)), 0);
             yield return new WaitForSeconds(doorCloseSpeed);
         }
-        testDoor.transform.localEulerAngles = new Vector3(0, doorAngleClose, 0);
+        doors[id].transform.localEulerAngles = new Vector3(0, doorAngleClose, 0);
         doorOpeningClosing = false;
     }
 

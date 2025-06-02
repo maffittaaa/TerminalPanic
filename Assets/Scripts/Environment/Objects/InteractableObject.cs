@@ -6,6 +6,7 @@ using UnityEngine;
 public class InteractableObject : MonoBehaviour
 {
     [SerializeField] private ItemType type;
+    [SerializeField] private int id;
 
     [SerializeField] private TextMeshPro interactingText;
     [SerializeField] private Outline outline;
@@ -13,6 +14,11 @@ public class InteractableObject : MonoBehaviour
     public ItemType GetItemType()
     {
         return type;
+    }
+
+    public int GetItemId()
+    {
+        return id;
     }
 
     private void Start()
