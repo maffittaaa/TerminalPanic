@@ -1,69 +1,143 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemiesClothes : MonoBehaviour
 {
     [SerializeField] private IdentifyingThief identifyingThief;
-    private ChoosingClothes clothes;
-    public List<ClothesSlots> travelersClothes = new List<ClothesSlots>();
-    private TravelerSpawner travelerSpawner;
+    [SerializeField] private ChoosingClothes clothes;
+    public ClothesSlots[] travelersClothes = new ClothesSlots[5];
+    [SerializeField] private TravelerSpawner travelerSpawner;
 
     private void GivingNonEqualClothes()
     {
-        int maxAttempts = 100;
-        int attempts = 0;
         bool validClothes = false;
 
-        while (attempts < maxAttempts && !validClothes)
+        if (!validClothes)
         {
-            travelersClothes.Clear();
-            clothes.HeadSlot();
-            clothes.TorsoSlot();
-            clothes.LegsSlot();
-            clothes.AccessoriesSlot();
-
+            clothes.ChooseRandomHeadItem();
+            clothes.ChooseRandomTorsoItem();
+            clothes.ChooseRandomLegsItem();
+            clothes.ChooseRandomAccessoriesItem();
+            
             validClothes = clothes.headPiece != identifyingThief.thiefClothes[0] &&
-                           clothes.torsoPiece != identifyingThief.thiefClothes[1]
-                           && clothes.legsPiece != identifyingThief.thiefClothes[2] &&
+                           clothes.torsoPiece != identifyingThief.thiefClothes[1] &&
+                           clothes.legsPiece != identifyingThief.thiefClothes[2] &&
                            clothes.accessoriesPiece != identifyingThief.thiefClothes[3];
-            attempts++;
         }
 
         if (validClothes)
         {
-            travelersClothes.Add(clothes.headPiece);
-            travelersClothes.Add(clothes.torsoPiece);
-            travelersClothes.Add(clothes.legsPiece);
-            travelersClothes.Add(clothes.accessoriesPiece);
-        }
-    }
-
-    private void GivingOneIdenticalPieceOfClothing()
-    {
-        int maxAttempts = 100;
-        int attempts = 0;
-
-        while (attempts < maxAttempts)
-        {
-            travelersClothes.Clear();
+            clothes.ChooseRandomHeadItem();
+            travelersClothes[0] = clothes.headPiece;
             
+            clothes.ChooseRandomTorsoItem();
+            travelersClothes[1] = clothes.torsoPiece;
+            
+            clothes.ChooseRandomLegsItem();
+            travelersClothes[2] = clothes.legsPiece;
+            
+            clothes.ChooseRandomAccessoriesItem();
+            travelersClothes[3] = clothes.accessoriesPiece;
         }
 
-        
+        foreach (ClothesSlots clothesItems in travelersClothes)
+            clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
     }
 
-    private void GivingTwoIdenticalPieceOfClothing()
+    private void GiveOneIdenticalPieceOfClothing()
     {
+        bool matchingWithThiefClothes = false;
         
+        if (!matchingWithThiefClothes)
+        {
+            int randomIndex = Random.Range(0, identifyingThief.thiefClothes.Length);
+            BodySlot selectedBodySlot = identifyingThief.thiefClothes[randomIndex].slot;
+
+            foreach (BodySlot bodySlot in Enum.GetValues(typeof(BodySlot)))
+            {
+                if (bodySlot != selectedBodySlot)
+                {
+                    ClothesSlots newPieceOfClothing = null;
+                    
+                    if (bodySlot == BodySlot.Head)
+                        newPieceOfClothing = clothes.ChooseRandomHeadItem();
+                    else if (bodySlot == BodySlot.Torso)
+                        newPieceOfClothing = clothes.ChooseRandomTorsoItem();
+                    else if (bodySlot == BodySlot.Legs)
+                        newPieceOfClothing = clothes.ChooseRandomLegsItem();
+                    else if (bodySlot == BodySlot.Accessories)
+                        newPieceOfClothing = clothes.ChooseRandomAccessoriesItem();
+                    
+                    if (newPieceOfClothing != null)
+                        travelersClothes[(int)bodySlot] = newPieceOfClothing;
+                }
+            }
+        }
+        
+        foreach (ClothesSlots clothesItems in travelersClothes)
+            clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
     }
 
-    public void SpawningClothes(int i)
+    private void GiveTwoIdenticalClothes()
     {
-        if (i <= travelerSpawner.travelerCount * 0.2)
+        bool matchingWithThiefClothes = false;
+        
+        if (!matchingWithThiefClothes)
+        {
+            List<BodySlot> selectedThiefClothes = new List<BodySlot>();
+            while (selectedThiefClothes.Count < 2 && selectedThiefClothes.Count < identifyingThief.thiefClothes.Length)
+            {
+                int randomIndex = Random.Range(0, identifyingThief.thiefClothes.Length);
+                BodySlot selectedSlot = identifyingThief.thiefClothes[randomIndex].slot;
+                if (!selectedThiefClothes.Contains(selectedSlot))
+                    selectedThiefClothes.Add(selectedSlot);
+            }
+
+            foreach (BodySlot bodySlot in Enum.GetValues(typeof(BodySlot)))
+            {
+                if (selectedThiefClothes.Contains(bodySlot))
+                    continue;
+                
+                ClothesSlots newPieceOfClothing = null;
+                
+                if (bodySlot == BodySlot.Head)
+                    newPieceOfClothing = clothes.ChooseRandomHeadItem();
+                else if (bodySlot == BodySlot.Torso)
+                    newPieceOfClothing = clothes.ChooseRandomTorsoItem();
+                else if (bodySlot == BodySlot.Legs)
+                    newPieceOfClothing = clothes.ChooseRandomLegsItem();
+                else if (bodySlot == BodySlot.Accessories)
+                    newPieceOfClothing = clothes.ChooseRandomAccessoriesItem();
+                
+                if (newPieceOfClothing != null)
+                    travelersClothes[(int)bodySlot] = newPieceOfClothing;
+            }
+        }
+        
+        foreach (ClothesSlots clothesItems in travelersClothes)
+            clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+    }
+
+    public void SpawnClothes(int i)
+    {
+        GivingNonEqualClothes();
+        /*if (i <= travelerSpawner.travelerCount * 0.2)
+        {
             GivingNonEqualClothes();
+            Debug.Log("FODASSE");
+        }
         else if (i > travelerSpawner.travelerCount * 0.2 && i <= travelerSpawner.travelerCount * 0.6)
-            GivingOneIdenticalPieceOfClothing();
+        {
+            GiveOneIdenticalPieceOfClothing();
+            Debug.Log("para esta");
+        }
         else
-            GivingTwoIdenticalPieceOfClothing();
+        {
+            GiveTwoIdenticalClothes();
+            Debug.Log("MeRdA");
+        }*/
     }
 }

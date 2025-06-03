@@ -11,7 +11,7 @@ public class ChoosingClothes : MonoBehaviour
     public ClothesSlots legsPiece {get; set;}
     public ClothesSlots accessoriesPiece {get; set;}
     
-    public void HeadSlot()
+    public ClothesSlots ChooseRandomHeadItem()
     {
         List<ClothesSlots> headItems = new List<ClothesSlots>();
         foreach (ClothesSlots pieces in clothesSlots)
@@ -27,9 +27,10 @@ public class ChoosingClothes : MonoBehaviour
         }
         else if (headPiece == null)
             Debug.Log("No head item");
+        return headPiece;
     }
 
-    public void TorsoSlot()
+    public ClothesSlots ChooseRandomTorsoItem()
     {
         List<ClothesSlots> torsoItems = new List<ClothesSlots>();
         foreach (ClothesSlots pieces in clothesSlots)
@@ -43,9 +44,10 @@ public class ChoosingClothes : MonoBehaviour
             int torsoRandomIndex = Random.Range(0, torsoItems.Count);
             torsoPiece = torsoItems[torsoRandomIndex];
         }
+        return torsoPiece;
     }
 
-    public void LegsSlot()
+    public ClothesSlots ChooseRandomLegsItem()
     {
         List<ClothesSlots> legItems = new List<ClothesSlots>();
         foreach (ClothesSlots pieces in clothesSlots)
@@ -59,9 +61,10 @@ public class ChoosingClothes : MonoBehaviour
             int legRandomIndex = Random.Range(0, legItems.Count);
             legsPiece = legItems[legRandomIndex];
         }
+        return legsPiece;
     }
 
-    public void AccessoriesSlot()
+    public ClothesSlots ChooseRandomAccessoriesItem()
     {
         List<ClothesSlots> accessoriesItems = new List<ClothesSlots>();
         foreach (ClothesSlots pieces in clothesSlots)
@@ -94,5 +97,22 @@ public class ChoosingClothes : MonoBehaviour
         }
         else if (accessoriesPiece == null)
             Debug.Log("No accessories");
+
+        return accessoriesPiece;
+    }
+
+    public void InstantiatePieceOfClothing(GameObject item, GameObject prefab)
+    {
+        GameObject pieceOfClothing = Instantiate(item);
+        pieceOfClothing.transform.SetParent(prefab.transform);
+        pieceOfClothing.transform.localPosition = Vector3.zero;
+        pieceOfClothing.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 270));
+        if (pieceOfClothing.gameObject.name.Contains("backpack"))
+        {
+            pieceOfClothing.transform.localPosition = new Vector3(0, 0, -0.117f);
+            pieceOfClothing.transform.localRotation = Quaternion.Euler(-90, 0, 90);
+        }
+        else if (pieceOfClothing.gameObject.name.Contains("headphones"))
+            pieceOfClothing.transform.localPosition = new Vector3(0, 0, -0.096f);
     }
 }

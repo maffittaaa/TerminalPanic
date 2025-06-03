@@ -9,7 +9,6 @@ public class IdentifyingThief : MonoBehaviour
     [SerializeField] public GameObject thief;
     private Vector3 thiefPosition;
     [SerializeField] private float distanceToEnemy;
-    public List<ClothesSlots> thiefClothes = new List<ClothesSlots>();
     
     [field: Header("Clues")]
     [SerializeField] private ClueText clue;
@@ -20,6 +19,7 @@ public class IdentifyingThief : MonoBehaviour
 
     [field: Header("Clothes")]
     [SerializeField] private ChoosingClothes clothes;
+    public ClothesSlots[] thiefClothes;
     
     [field: Header("Scripts")]
     [SerializeField] private Camera playerCamera;
@@ -30,34 +30,29 @@ public class IdentifyingThief : MonoBehaviour
         thief = Instantiate(thief, thiefPosition, Quaternion.identity);
         hintsForThief = FindObjectOfType<ChoosingClothes>();
         
-        clothes.HeadSlot();
-        clothes.TorsoSlot();
-        clothes.LegsSlot();
-        clothes.AccessoriesSlot();
+        clothes.ChooseRandomHeadItem();
+        thiefClothes[0] = clothes.headPiece;
+        if (clothes.headPiece == null)
+            clothes.ChooseRandomHeadItem();
+            
+        Debug.Log("0: " + thiefClothes[0]);
         
-        thiefClothes.Add(clothes.headPiece);
-        thiefClothes.Add(clothes.torsoPiece);
-        thiefClothes.Add(clothes.legsPiece);
-        thiefClothes.Add(clothes.accessoriesPiece);
-        Debug.Log("head: " + thiefClothes[0]);
-        Debug.Log("torso: " + thiefClothes[1]);
-        Debug.Log("legs: " + thiefClothes[2]);
-        Debug.Log("accessories: " + thiefClothes[3]);
+        clothes.ChooseRandomTorsoItem();
+        thiefClothes[1] = clothes.torsoPiece;
+        Debug.Log("1: " + thiefClothes[1]);
+        
+        clothes.ChooseRandomLegsItem();
+        thiefClothes[2] = clothes.legsPiece;
+        Debug.Log("2: " + thiefClothes[2]);
+        
+        clothes.ChooseRandomAccessoriesItem();
+        thiefClothes[3] = clothes.accessoriesPiece;
+        Debug.Log("3: " + thiefClothes[3]);
         
         foreach (ClothesSlots item in thiefClothes)
         {
-                GameObject pieceOfClothing = Instantiate(item.model);
-                pieceOfClothing.transform.SetParent(thief.transform);
-                pieceOfClothing.transform.localPosition = Vector3.zero;
-                pieceOfClothing.transform.localRotation = Quaternion.Euler(new Vector3(270, 0, 270));
-                if (pieceOfClothing.gameObject.name.Contains("backpack"))
-                {
-                    pieceOfClothing.transform.localPosition = new Vector3(0, 0, -0.117f);
-                    pieceOfClothing.transform.localRotation = Quaternion.Euler(-90, 0, 90);
-                }
-                else if (pieceOfClothing.gameObject.name.Contains("headphones"))
-                    pieceOfClothing.transform.localPosition = new Vector3(0, 0, -0.096f);
-
+            if (item != null)
+                clothes.InstantiatePieceOfClothing(item.model, thief);
         }
     }
     

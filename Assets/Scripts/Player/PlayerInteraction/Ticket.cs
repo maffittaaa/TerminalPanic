@@ -19,7 +19,6 @@ public class Ticket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(worldInteractions.gotTicket);
         if (other.gameObject.CompareTag("Player") && worldInteractions.gotTicket)
         {
             wonText.enabled = true;

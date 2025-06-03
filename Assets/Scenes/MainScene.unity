@@ -3442,6 +3442,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5003679286819012102, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: clothes
+      value: 
+      objectReference: {fileID: 1616950543}
+    - target: {fileID: 5003679286819012102, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: travelerSpawner
+      value: 
+      objectReference: {fileID: 649272684}
+    - target: {fileID: 5003679286819012102, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: identifyingThief
       value: 
       objectReference: {fileID: 818060979}
@@ -3449,6 +3457,14 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 152952829}
+    - target: {fileID: 5161974735598333974, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: clothes
+      value: 
+      objectReference: {fileID: 1616950543}
+    - target: {fileID: 5161974735598333974, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+      propertyPath: enemiesClothes
+      value: 
+      objectReference: {fileID: 2083947728}
     - target: {fileID: 6575367391748734816, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
       propertyPath: m_LocalPosition.x
       value: -69.63
@@ -7578,6 +7594,17 @@ MonoBehaviour:
   tileChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2083947728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5003679286819012102, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+  m_PrefabInstance: {fileID: 1315612432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856793aea44566e46bd46bf4a5007275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2085663574
 GameObject:
   m_ObjectHideFlags: 0

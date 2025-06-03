@@ -16,14 +16,14 @@ public class ClueText : MonoBehaviour
         clueText = GetComponent<TextMeshProUGUI>();
         clueText.enabled = false;
 
-        for (int i = 0; i < thief.thiefClothes.Count; i++)
+        for (int i = 0; i < thief.thiefClothes.Length; i++)
             clues.Add(thief.thiefClothes[i]);
     }
 
     public string TextForClue()
     {
         numberOfClues++;
-        if (numberOfClues >= thief.thiefClothes.Count)
+        if (numberOfClues >= thief.thiefClothes.Length)
             clueText.text = "Catch the Thief!";
         else
         {

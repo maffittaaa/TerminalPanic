@@ -14,12 +14,14 @@ public enum IAirportMode
 public class TravelerSpawner : MonoBehaviour
 {
     [SerializeField] private Weapon weapon;
-    [SerializeField] private GameObject travelerPrefab;
+    public GameObject travelerPrefab;
     [SerializeField] private GameObject travellersHolder;
     [SerializeField] private GameObject[] spawnPoints;
     [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
     public EnemiesClothes enemiesClothes;
     public int travelerCount = 30;
+    public ChoosingClothes clothes;
+    public GameObject newTraveler;
 
     [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
     [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
@@ -64,14 +66,12 @@ public class TravelerSpawner : MonoBehaviour
             Random.Range(randomSpawnPoint.z - spawnSize.z / 2, randomSpawnPoint.z + spawnSize.z / 2)
         );
 
-        GameObject newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity, travellersHolder.transform);
+        newTraveler = Instantiate(travelerPrefab, randomPosition, Quaternion.identity, travellersHolder.transform);
         currentTravelers.Add(newTraveler);
         newTraveler.tag = "Enemy";
 
         TravelerAI travelerAI = newTraveler.GetComponent<TravelerAI>();
-        //enemiesClothes.clothesAndColors = newTraveler.GetComponent<ClothesAndColors>();
-        enemiesClothes.SpawningClothes(i);
-        //visualClothes.travelerSpawner = this;
+        enemiesClothes.SpawnClothes(i);
 
         TravelerType randomType = (TravelerType)Random.Range(0, Enum.GetValues(typeof(TravelerType)).Length);
 
