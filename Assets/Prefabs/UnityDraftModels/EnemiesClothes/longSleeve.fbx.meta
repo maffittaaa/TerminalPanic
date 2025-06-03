@@ -3,27 +3,7 @@ guid: 38630fe4cef49654ea99b95eedb6061b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Single Knit Cotton Jersey Fabric
-    second: {fileID: 2100000, guid: c25a7a10b5b2af2498fa0d47ec5067db, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: jersey cotton fabric
-    second: {fileID: 2800000, guid: 49e8cbc4c854fc3439b07a9d23ee3a43, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: jersey cotton fabric_Normal
-    second: {fileID: 2800000, guid: f1640a2478bce2d45be0279d6de8d584, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: jersey cotton fabric_Roughness
-    second: {fileID: 2800000, guid: 22b8e06347e4d594ab896c36acd2be1d, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

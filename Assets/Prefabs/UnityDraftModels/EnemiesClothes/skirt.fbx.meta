@@ -3,77 +3,7 @@ guid: 6315fe4f51afa8544843e86e0a0b537a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Brown Leather 1.001
-    second: {fileID: 2100000, guid: bc85dda8db4bd0746bf9f73253a760a5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Denim Fabric 02
-    second: {fileID: 2100000, guid: 2fe7da3423d40634c8f0b689ac08f0d2, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Brown_Leather_01_Base
-    second: {fileID: 2800000, guid: 3b1c827087f36f043ba1fdaee92b30ad, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Brown_Leather_01_Base_Normal
-    second: {fileID: 2800000, guid: 39e91ea24b019924ba2450c9205180db, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Brown_Leather_01_Roughness
-    second: {fileID: 2800000, guid: 125847a7500120248a478b39324da0cd, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Denim_BaseColor
-    second: {fileID: 2800000, guid: 2dcd11a7ea24e5742bb11407d4555f57, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Denim_Roughness
-    second: {fileID: 2800000, guid: 6e4ff90e4a30f1e42b8a4dbb9375605f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Rubber_Tile_CircularDesign_basecolor
-    second: {fileID: 2800000, guid: b5b056e8e975a0f418b1f16a3fd81b51, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Rubber_Tile_CircularDesign_metallic
-    second: {fileID: 2800000, guid: 3cf82297fc8253c439ca8202df4d4f17, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Rubber_Tile_CircularDesign_normal
-    second: {fileID: 2800000, guid: 58eb97c8ee8063e4fba37d20113b34d6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Rubber_Tile_CircularDesign_roughness
-    second: {fileID: 2800000, guid: 2707c6f682fb67d4c8735df428d98ff2, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: denim02_BaseColor
-    second: {fileID: 2800000, guid: c99e9a9046b02dd4d8bcfea5510011b2, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: denim02_Roughness
-    second: {fileID: 2800000, guid: 82795c4f06daab44cbbe2598a6e5648a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: leder19-4096-01
-    second: {fileID: 2800000, guid: b94512a419c336f438325322d90683b8, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

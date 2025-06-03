@@ -3,22 +3,7 @@ guid: aad57235af454f24884c3ab33b2ee75d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Procedural pearl black painted plastic
-    second: {fileID: 2100000, guid: eb70faaa95ddc154d94b4596fe7c79fa, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fabric-70-black_diffuse
-    second: {fileID: 2800000, guid: f609014f4364bc444a95036982c4014d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fabric-70_roughness
-    second: {fileID: 2800000, guid: d8cfbc22b59c29341a4224f3dec04d1e, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

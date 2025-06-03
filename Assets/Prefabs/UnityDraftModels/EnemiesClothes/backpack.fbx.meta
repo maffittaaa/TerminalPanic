@@ -3,22 +3,7 @@ guid: 6ed6d537edc84374c9a823a63afbeacc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Red Fabric
-    second: {fileID: 2100000, guid: 1b417ab931357dc4cb7d20a70a224906, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fabric_191_Albedo
-    second: {fileID: 2800000, guid: f5fac550ebc11984bb8db034b3bc581b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fabric_191_Roughness
-    second: {fileID: 2800000, guid: 806bf55cb3049aa488a70e805f35d25c, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
