@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject viewPoint;
     [SerializeField] private float crouchView;
     [SerializeField] private float jumpForce;
+    [SerializeField] private Animator anim;
     [SerializeField] private AudioManager audioManager;
     public float initialSpeed { get; private set; }
 
