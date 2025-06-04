@@ -417,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 5760631584822870011}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.2, z: -22.16}
+  m_LocalPosition: {x: -0.01, y: 1.583, z: 0.1794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -502,7 +502,7 @@ MonoBehaviour:
   <body>k__BackingField: {fileID: 0}
   flashLight: {fileID: 0}
   flashLightPhysic: {fileID: 0}
-  testDoor: {fileID: 0}
+  doors: []
   itemType: 0
   anxietyBar: {fileID: 0}
   gotKeyCard: 0
@@ -510,9 +510,7 @@ MonoBehaviour:
   <potencialEnemy>k__BackingField: {fileID: 0}
   distanceToInteract: 5
   lookToMirrorSpeed: 0
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4096
+  gameManager: {fileID: 0}
   doorAngleOpen: 350
   doorAngleClose: 0
   doorOpenTime: 0
@@ -548,6 +546,7 @@ MonoBehaviour:
   anxietyBar: {fileID: 0}
   newPosition: {x: 0, y: 0, z: 0}
   time: 0
+  gameManager: {fileID: 0}
 --- !u!114 &1256509201228644111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +662,7 @@ MonoBehaviour:
   anxietyBar: {fileID: 0}
   newPosition: {x: 0, y: 0, z: 0}
   time: 0
+  gameManager: {fileID: 0}
 --- !u!1 &6559058334191983957
 GameObject:
   m_ObjectHideFlags: 0
