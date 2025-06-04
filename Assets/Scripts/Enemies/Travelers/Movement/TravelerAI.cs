@@ -61,6 +61,10 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameManager gameManager;
 
+    [Header("Animator")]
+    [SerializeField] private Animator anim;
+    public bool dead { get; private set; }
+
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
@@ -99,7 +103,7 @@ public class TravelerAI : MonoBehaviour
 
     private void Update()
     {
-        if(gameManager.state != IGameStates.Paused && currentMode != IAirportMode.Normal)
+        if(gameManager.state != IGameStates.Paused && currentMode != IAirportMode.Normal && !dead)
         {
             if (!whispers.isPlaying || !highbass.isPlaying || !weird.isPlaying)
             {
@@ -116,12 +120,26 @@ public class TravelerAI : MonoBehaviour
 
     public void Waiting()
     {
+        if (anim.GetBool("Idle") == false)
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", false);
+            anim.SetBool("Idle", true);
+        }
+        
         agent.isStopped = true;
         agent.speed = maxChaseSpeed;
     }
 
     public void Chase()
     {
+        if (anim.GetBool("Running") == false)
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Idle", false);
+            anim.SetBool("Running", true);
+        }
+
         agent.isStopped = false;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
@@ -155,6 +173,13 @@ public class TravelerAI : MonoBehaviour
 
     public void Returning()
     {
+        if (anim.GetBool("Walking") == false)
+        {
+            anim.SetBool("Idle", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", true);
+        }
+
         agent.isStopped = false;
         agent.speed = maxChaseSpeed;
         agent.SetDestination(spawnPoint);
@@ -203,6 +228,13 @@ public class TravelerAI : MonoBehaviour
 
     public void Wander()
     {
+        if (anim.GetBool("Walking") == false)
+        {
+            anim.SetBool("Idle", false);
+            anim.SetBool("Running", false);
+            anim.SetBool("Walking", true);
+        }
+
         wanderCounter -= Time.deltaTime;
 
         if (wanderCounter <= 0f)
@@ -217,6 +249,16 @@ public class TravelerAI : MonoBehaviour
             agent.speed = minChaseSpeed;
             agent.SetDestination(wanderTarget);
         }
+    }
+
+    public IEnumerator Die()
+    {
+        dead = true;
+        anim.SetTrigger("Dead");
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(gameObject);
     }
 
     public void SetState(TravelerState newState)

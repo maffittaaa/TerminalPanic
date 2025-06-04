@@ -122,6 +122,7 @@ public class Weapon : MonoBehaviour
 
     private void Shoot()
     {
+        anim.SetTrigger("shoot");
         StartCoroutine(ShootingLight());
         bulletsShoot++;
         particleSystems.Play();
@@ -130,16 +131,19 @@ public class Weapon : MonoBehaviour
         currentBulletsInMag--;
         bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
 
-/*        debug += "Shoot\n";
-        debug += worldInteractions.potencialEnemy.transform.parent.name + "\n";
-        debug += worldInteractions.potencialEnemy.name + "\n";
-        debug += worldInteractions.potencialEnemy.tag + "\n";*/
+        /*        debug += "Shoot\n";
+                debug += worldInteractions.potencialEnemy.transform.parent.name + "\n";
+                debug += worldInteractions.potencialEnemy.name + "\n";
+                debug += worldInteractions.potencialEnemy.tag + "\n";*/
+
 
         if (worldInteractions.potencialEnemy)
         {
-            if (worldInteractions.potencialEnemy.GetComponent<TravelerAI>())
+            TravelerAI enemy = worldInteractions.potencialEnemy.GetComponent<TravelerAI>();
+    
+            if (enemy)
             {
-                Destroy(worldInteractions.potencialEnemy);
+                StartCoroutine(enemy.Die());
             }
             else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
             {

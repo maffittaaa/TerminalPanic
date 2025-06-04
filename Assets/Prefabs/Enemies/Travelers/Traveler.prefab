@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8432378720558122041}
   - component: {fileID: 8790361807859859862}
   m_Layer: 2
-  m_Name: sightZOne
+  m_Name: sightZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 401d94363990d4c2994de6ffd1c95368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <traveler>k__BackingField: {fileID: 0}
+  <traveler>k__BackingField: {fileID: 7554116773039418701}
 --- !u!1 &1257275686505387887
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 6850974588436820341}
   - component: {fileID: 31364574508398474}
   m_Layer: 2
-  m_Name: HearingZone_playerRange
+  m_Name: hearingZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171c8b4eb636549cc90fac7aeb8f813c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <traveler>k__BackingField: {fileID: 0}
+  <traveler>k__BackingField: {fileID: 7554116773039418701}
 --- !u!1 &7193216844300829422
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +231,7 @@ MonoBehaviour:
   weird: {fileID: 6533223780007620627}
   audioManager: {fileID: 0}
   gameManager: {fileID: 0}
+  anim: {fileID: 5405774355780016103}
 --- !u!114 &3548670115813031163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +312,7 @@ MonoBehaviour:
   - {fileID: 657721310090105936}
   defaultState: 1
   gameManager: {fileID: 0}
+  traveller: {fileID: 7554116773039418701}
 --- !u!114 &6943753352770482785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,7 +361,7 @@ GameObject:
   - component: {fileID: 5358176653465875221}
   - component: {fileID: 6533223780007620627}
   m_Layer: 0
-  m_Name: Sound
+  m_Name: sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,6 +1313,11 @@ Transform:
 --- !u!1 &5319204443025769870 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3433611733900488995, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}
+  m_PrefabInstance: {fileID: 7383440397981938861}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5405774355780016103 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3274702756359988042, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}
   m_PrefabInstance: {fileID: 7383440397981938861}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7015839670359980928 stripped

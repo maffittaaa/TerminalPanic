@@ -13,6 +13,7 @@ public class StateMachine : MonoBehaviour
 
     [Header("Managers")]
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private TravelerAI traveller;
 
 
     void Start()
@@ -71,7 +72,7 @@ public class StateMachine : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameManager.state != IGameStates.Paused && type != IAirportMode.Normal)
+        if (gameManager.state != IGameStates.Paused && type != IAirportMode.Normal && !traveller.dead)
         {
             currentState.OnStateFixedUpdate();
 
