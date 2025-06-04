@@ -130,7 +130,7 @@ public class AnxietyBar : MonoBehaviour
                     cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
                 }
                 
-                else if (currentAnxiety > maxAnxiety * 0.33f && currentAnxiety <= maxAnxiety * 0.66f) //second third of the anxiety
+                else if (currentAnxiety > maxAnxiety * 0.33f && currentAnxiety <= maxAnxiety) //starts after the chromatic aberration and ends at the max anxiety
                 {
                     vignette.intensity.value += vignetteDecrease;
                     vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.7f );

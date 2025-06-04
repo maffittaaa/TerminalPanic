@@ -33,6 +33,8 @@ public class RespawnAfterFaint : MonoBehaviour
             anxietyBar.state.fillAmount = 0f;
             anxietyBar.dOF.focusDistance.value = 1f;
             anxietyBar.cA.intensity.value = 0.2f;
+            anxietyBar.vignette.intensity.value = 0f;
+            anxietyBar.vignette.smoothness.value = 0.01f;
             fadeStarted = false;
         }
     }
