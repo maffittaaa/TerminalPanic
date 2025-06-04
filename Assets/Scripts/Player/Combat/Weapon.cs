@@ -24,6 +24,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private bool reloading;
     
     [Header("Managers and Scripts")]
+    [SerializeField] private Animator anim;
     [SerializeField] private WorldInteractions worldInteractions;
     [SerializeField] private BulletCountUI bulletCountUI;
     [SerializeField] private AudioManager audioManager;
@@ -39,8 +40,6 @@ public class Weapon : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
-
-
 
         bulletCountUI.SetBulletCountText(currentBulletsInMag, maxBulletsInMag);
         //print(_saveFilePath);
@@ -60,6 +59,16 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(ReloadGun());
             }
 
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                anim.SetTrigger("inspectingT");
+                anim.SetBool("inspecting", true);
+            }
+            if (Input.GetKeyUp(KeyCode.G))
+            {
+                anim.SetBool("inspecting", false);
+            }
+
             if (Input.GetKeyDown(KeyCode.LeftAlt))
             {
                 /*File.WriteAllText(_saveFilePath, debug);*/
@@ -69,6 +78,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator ReloadGun()
     {
+        anim.SetTrigger("reload");
         reloading = true;
 
         float reloadingBullet = reloadTime / 10;

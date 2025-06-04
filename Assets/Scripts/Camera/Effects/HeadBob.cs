@@ -32,7 +32,7 @@ public class HeadBob : MonoBehaviour
     }
     private void BobEffect() 
     {
-        if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
+        if (playerMovementScript.CurrentType() != BehaviorType.Idleing)
         {
             if (playerMovementScript.CurrentType() == BehaviorType.Crouching && speed != crouchSpeed)
             {

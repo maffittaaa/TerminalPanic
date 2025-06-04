@@ -47,7 +47,7 @@ public class FlashLightBob : MonoBehaviour
         }
         else
         {
-            if (playerMovementScript.CurrentType() != BehaviorType.Jumping && playerMovementScript.CurrentType() != BehaviorType.Idleing)
+            if (playerMovementScript.CurrentType() != BehaviorType.Idleing)
             {
                 if (playerMovementScript.CurrentType() == BehaviorType.Crouching && speed != crouchSpeed)
                 {

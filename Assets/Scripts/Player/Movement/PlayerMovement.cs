@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-public enum BehaviorType { Idleing, Walking, Running, Jumping, Crouching }
+public enum BehaviorType { Idleing, Walking, Running, Crouching }
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         initialSpeed = speed;
         behaviorType = BehaviorType.Idleing;
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -48,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else 
         {
+            anim.SetTrigger("idle");
             speed = 0;
             rb.velocity = Vector3.zero;
             if (audioManager.runPlayer.isPlaying || audioManager.walkPlayer.isPlaying || audioManager.crouchPlayer.isPlaying)
@@ -63,11 +63,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Movement();
         Crouch();
-        if (Jump())
-        {
-            behaviorType = BehaviorType.Jumping;
-        }
-        else if (crouched)
+        
+        if (crouched)
         {
             behaviorType = BehaviorType.Crouching;
             if (!audioManager.crouchPlayer.isPlaying)
@@ -76,6 +73,13 @@ public class PlayerMovement : MonoBehaviour
                 audioManager.runPlayer.Stop();
                 audioManager.crouchPlayer.Play();
             }
+
+            if (horizontalAxis != 0 || verticalAxis != 0)
+            {
+                anim.SetBool("running", false);
+                anim.SetBool("idle", false);
+                anim.SetBool("walking", true);
+            }
         }
         else if (Sprint())
         {
@@ -83,6 +87,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (!audioManager.runPlayer.isPlaying)
             {
+                anim.SetBool("walking", false);
+                anim.SetBool("idle", false);
+                anim.SetBool("running", true);
                 audioManager.crouchPlayer.Stop();
                 audioManager.walkPlayer.Stop();
                 audioManager.runPlayer.Play();
@@ -94,6 +101,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (!audioManager.walkPlayer.isPlaying)
             {
+                anim.SetBool("running", false);
+                anim.SetBool("idle", false);
+                anim.SetBool("walking", true);
                 audioManager.runPlayer.Stop();
                 audioManager.crouchPlayer.Stop();
                 audioManager.walkPlayer.Play();
@@ -106,6 +116,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (audioManager.runPlayer.isPlaying || audioManager.walkPlayer.isPlaying || audioManager.crouchPlayer.isPlaying)
             {
+                anim.SetBool("running", false);
+                anim.SetBool("walking", false);
+                anim.SetBool("idle", true);
                 audioManager.runPlayer.Stop();
                 audioManager.crouchPlayer.Stop();
                 audioManager.walkPlayer.Stop();
@@ -151,39 +164,18 @@ public class PlayerMovement : MonoBehaviour
         return false;
     }
 
-    private bool Jump()
-    {
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.TransformDirection(0, -1, 0), out hit, playerHeigth + jumpTolerance))
-        {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            return true;
-        }
-    }
-
     private void Crouch()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
+            anim.SetBool("crouching", true);
             crouched = true;
             speed = initialSpeed * crouchMultiplier;
             viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, viewPoint.transform.position.y - crouchView, viewPoint.transform.position.z);
         }
         else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
+            anim.SetBool("crouching", false);
             crouched = false;
             speed = initialSpeed;
             viewPoint.transform.position = new Vector3(viewPoint.transform.position.x, viewPoint.transform.position.y + crouchView, viewPoint.transform.position.z);

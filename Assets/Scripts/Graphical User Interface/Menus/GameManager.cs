@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             gameManager.state = IGameStates.Paused;
             gameManager.StopAllSounds();
         }
-        else if(IUIType.GameManager == type)
+        else if (IUIType.GameManager == type)
         {
             ChangePostProcessEffects();
             state = IGameStates.Paused;

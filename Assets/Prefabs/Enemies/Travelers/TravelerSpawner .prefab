@@ -409,12 +409,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc10ee7c141bb437fa523e6375e5ed9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
   travelerPrefab: {fileID: 7193216844300829422, guid: fd83029ceb231455ea99fb968046a575, type: 3}
   travellersHolder: {fileID: 7408943774916012876}
   spawnPoints: []
   spawnSize: {x: 10, y: 0, z: 10}
-  enemiesClothes: {fileID: 0}
+  enemiesClothes: {fileID: 5003679286819012102}
   travelerCount: 30
+  clothes: {fileID: 0}
+  newTraveler: {fileID: 0}
   currentTravelers: []
   travelerAIs: []
 --- !u!114 &5003679286819012102
@@ -429,11 +432,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856793aea44566e46bd46bf4a5007275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clothesForEnemies: 
-  colorForClothes: 
   identifyingThief: {fileID: 0}
-  clothesAndColors: {fileID: 0}
-  clothesNumber: 0
+  clothes: {fileID: 0}
+  travelersClothes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  travelerSpawner: {fileID: 5161974735598333974}
 --- !u!1 &4111900024444467846
 GameObject:
   m_ObjectHideFlags: 0
