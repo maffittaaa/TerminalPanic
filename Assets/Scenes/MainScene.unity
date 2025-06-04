@@ -414,7 +414,7 @@ PrefabInstance:
       objectReference: {fileID: 1463029100}
     - target: {fileID: 585665505294386906, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 20926
+      value: 21124
       objectReference: {fileID: 0}
     - target: {fileID: 1406560988686199089, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar

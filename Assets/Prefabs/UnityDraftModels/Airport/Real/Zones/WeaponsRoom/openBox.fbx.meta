@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BLACK
+    second: {fileID: 2100000, guid: 03f9b9abc5e15ac4896b1f39728fa4d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Cardboard
-    second: {fileID: 2100000, guid: 557494e8fee8f2a4c8d898f910fb7f80, type: 2}
+    second: {fileID: 2100000, guid: 6ff7e0f196df84c41897feb039cad47c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
