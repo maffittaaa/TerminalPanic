@@ -28,8 +28,6 @@ public class EnemiesClothes : MonoBehaviour
             clothes.ChooseRandomTorsoItem();
             clothes.ChooseRandomLegsItem();
             clothes.ChooseRandomAccessoriesItem();
-
-            Debug.Log("nope: " + thief.thiefClothes[0]);
             
             validClothes = clothes.headPiece != thief.thiefClothes[0] &&
                            clothes.torsoPiece != thief.thiefClothes[1] &&
