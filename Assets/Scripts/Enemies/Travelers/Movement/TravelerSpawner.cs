@@ -23,7 +23,7 @@ public class TravelerSpawner : MonoBehaviour
     public ChoosingClothes clothes;
     public GameObject newTraveler;
 
-    [SerializeField] private List<GameObject> currentTravelers = new List<GameObject>();
+    public List<GameObject> currentTravelers = new List<GameObject>();
     [SerializeField] private List<TravelerAI> travelerAIs = new List<TravelerAI>();
     [SerializeField] public IAirportMode currentMode { get; private set; }
 

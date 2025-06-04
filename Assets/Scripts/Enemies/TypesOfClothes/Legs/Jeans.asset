@@ -15,3 +15,4 @@ MonoBehaviour:
   slot: 2
   name: jeans
   model: {fileID: 919132149155446097, guid: 14c092ec0f314ea4885eead1586591c1, type: 3}
+  id: 5

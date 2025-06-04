@@ -15,3 +15,4 @@ MonoBehaviour:
   slot: 1
   name: longSleeves
   model: {fileID: 919132149155446097, guid: 38630fe4cef49654ea99b95eedb6061b, type: 3}
+  id: 2

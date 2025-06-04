@@ -17,6 +17,7 @@ TagManager:
   - GameManager
   - PostProcessEffects
   - HidingSpot
+  - ClothesManager
   layers:
   - Default
   - TransparentFX

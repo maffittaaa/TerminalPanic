@@ -15,3 +15,4 @@ MonoBehaviour:
   slot: 1
   name: t-shirt
   model: {fileID: 919132149155446097, guid: 5208e96fbe4e8f54ba951510ab0e45ff, type: 3}
+  id: 4

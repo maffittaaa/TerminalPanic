@@ -432,15 +432,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856793aea44566e46bd46bf4a5007275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  identifyingThief: {fileID: 0}
+  thief: {fileID: 0}
   clothes: {fileID: 0}
-  travelersClothes:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  travellerClothes: []
   travelerSpawner: {fileID: 5161974735598333974}
+  clothesModels:
+  - {fileID: 0}
 --- !u!1 &4111900024444467846
 GameObject:
   m_ObjectHideFlags: 0

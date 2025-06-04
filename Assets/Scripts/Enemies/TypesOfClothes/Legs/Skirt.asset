@@ -15,3 +15,4 @@ MonoBehaviour:
   slot: 2
   name: skirt
   model: {fileID: 919132149155446097, guid: 6315fe4f51afa8544843e86e0a0b537a, type: 3}
+  id: 7

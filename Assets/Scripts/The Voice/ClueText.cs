@@ -7,12 +7,13 @@ public class ClueText : MonoBehaviour
 {
     private List<ClothesSlots> usedClues = new List<ClothesSlots>();
     public List<ClothesSlots> clues = new List<ClothesSlots>();
-    [SerializeField] private IdentifyingThief thief;
+    private ThiefClothes thief;
     private TextMeshProUGUI clueText;
     public int numberOfClues = -1;
     
     private void Start()
     {
+        thief = (ThiefClothes)FindObjectOfType(typeof(ThiefClothes));
         clueText = GetComponent<TextMeshProUGUI>();
         clueText.enabled = false;
 

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7424597927947888653}
   m_Layer: 0
   m_Name: ClothesManager
-  m_TagString: Untagged
+  m_TagString: ClothesManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,3 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2715d93c78d3fd442ab85d6cac51ecf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clothesSlots:
+  - {fileID: 11400000, guid: baab58a7e7c799a4a9b00b14a48beabb, type: 2}
+  - {fileID: 11400000, guid: 1673e6990479df94b8756b40315515f2, type: 2}
+  - {fileID: 11400000, guid: c6563a0b5fb2a2f4a904dada94b7b104, type: 2}
+  - {fileID: 11400000, guid: 1d0b268512acd6f4aa89050516bb8a87, type: 2}
+  - {fileID: 11400000, guid: b00126c1403349044a63ccdbb27787d5, type: 2}
+  - {fileID: 11400000, guid: 4d0df56a1624c16439af85b596e0210f, type: 2}
+  - {fileID: 11400000, guid: c9ea92b03199f4942a66db6b79652fbc, type: 2}
+  - {fileID: 11400000, guid: 97d4b9df276511543974b1b0d953d45c, type: 2}
+  - {fileID: 11400000, guid: 170cc8fa570f81741800a0402f765baf, type: 2}
+  - {fileID: 11400000, guid: 4bd1a3be432fe024881c7d33f5de0251, type: 2}
+  - {fileID: 11400000, guid: 6b97a1f32981e9148a2a1c86b66a0409, type: 2}

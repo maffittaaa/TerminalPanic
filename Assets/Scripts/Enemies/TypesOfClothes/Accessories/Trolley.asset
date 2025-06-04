@@ -15,3 +15,4 @@ MonoBehaviour:
   slot: 3
   name: trolley
   model: {fileID: 919132149155446097, guid: fa917a51642916241a851bd25a4e9a7c, type: 3}
+  id: 10

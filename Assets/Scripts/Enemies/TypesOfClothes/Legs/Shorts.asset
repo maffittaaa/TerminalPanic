@@ -15,3 +15,4 @@ MonoBehaviour:
   slot: 2
   name: shorts
   model: {fileID: 919132149155446097, guid: 90b8c73fb5771034f9582922af0183d3, type: 3}
+  id: 6

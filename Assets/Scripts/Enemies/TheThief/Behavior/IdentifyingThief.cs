@@ -16,38 +16,16 @@ public class IdentifyingThief : MonoBehaviour
     [SerializeField] private int peopleNeededToNextClue;
     private int currentPeopleToNextClue = 0;
     private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
-
-    [field: Header("Clothes")]
-    [SerializeField] private ChoosingClothes clothes;
-    public ClothesSlots[] thiefClothes ;
     
     [field: Header("Scripts")]
     [SerializeField] private Camera playerCamera;
     
     private void Awake()
     {
-        thiefClothes = new ClothesSlots[Enum.GetValues(typeof(BodySlot)).Length];
         thiefPosition = new Vector3(Random.Range(0, -109f), 19.10258f, Random.Range(-3f, 69f));
         thief = Instantiate(thief, thiefPosition, Quaternion.identity);
+        
         hintsForThief = FindObjectOfType<ChoosingClothes>();
-        
-        clothes.ChooseRandomHeadItem();
-        thiefClothes[0] = clothes.headPiece;
-        
-        clothes.ChooseRandomTorsoItem();
-        thiefClothes[1] = clothes.torsoPiece;
-        
-        clothes.ChooseRandomLegsItem();
-        thiefClothes[2] = clothes.legsPiece;
-        
-        clothes.ChooseRandomAccessoriesItem();
-        thiefClothes[3] = clothes.accessoriesPiece;
-        
-        foreach (ClothesSlots item in thiefClothes)
-        {
-            if (item != null)
-                clothes.InstantiatePieceOfClothing(item.model, thief);
-        }
     }
     
     public bool DoesTheThiefHasThis(List<ClothesSlots> clothesSlots)
