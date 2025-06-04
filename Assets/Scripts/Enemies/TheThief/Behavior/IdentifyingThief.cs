@@ -19,35 +19,29 @@ public class IdentifyingThief : MonoBehaviour
 
     [field: Header("Clothes")]
     [SerializeField] private ChoosingClothes clothes;
-    public ClothesSlots[] thiefClothes;
+    public ClothesSlots[] thiefClothes ;
     
     [field: Header("Scripts")]
     [SerializeField] private Camera playerCamera;
     
     private void Awake()
     {
+        thiefClothes = new ClothesSlots[Enum.GetValues(typeof(BodySlot)).Length];
         thiefPosition = new Vector3(Random.Range(0, -109f), 19.10258f, Random.Range(-3f, 69f));
         thief = Instantiate(thief, thiefPosition, Quaternion.identity);
         hintsForThief = FindObjectOfType<ChoosingClothes>();
         
         clothes.ChooseRandomHeadItem();
         thiefClothes[0] = clothes.headPiece;
-        if (clothes.headPiece == null)
-            clothes.ChooseRandomHeadItem();
-            
-        Debug.Log("0: " + thiefClothes[0]);
         
         clothes.ChooseRandomTorsoItem();
         thiefClothes[1] = clothes.torsoPiece;
-        Debug.Log("1: " + thiefClothes[1]);
         
         clothes.ChooseRandomLegsItem();
         thiefClothes[2] = clothes.legsPiece;
-        Debug.Log("2: " + thiefClothes[2]);
         
         clothes.ChooseRandomAccessoriesItem();
         thiefClothes[3] = clothes.accessoriesPiece;
-        Debug.Log("3: " + thiefClothes[3]);
         
         foreach (ClothesSlots item in thiefClothes)
         {
@@ -74,7 +68,7 @@ public class IdentifyingThief : MonoBehaviour
         return false;
     }
     
-    public void SeeingThief()
+    /*public void SeeingThief()
     {
         RaycastHit hit;
 
@@ -97,10 +91,10 @@ public class IdentifyingThief : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
     
-    private void FixedUpdate()
-    {
-        SeeingThief();
-    }
+    // private void FixedUpdate()
+    // {
+    //     SeeingThief();
+    // }
 }

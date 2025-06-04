@@ -8,14 +8,15 @@ public class EnemiesClothes : MonoBehaviour
 {
     [SerializeField] private IdentifyingThief identifyingThief;
     [SerializeField] private ChoosingClothes clothes;
-    public ClothesSlots[] travelersClothes = new ClothesSlots[5];
+    public ClothesSlots[] travellerClothes;
     [SerializeField] private TravelerSpawner travelerSpawner;
 
     private void GivingNonEqualClothes()
     {
         bool validClothes = false;
-
-        if (!validClothes)
+        travellerClothes = new ClothesSlots[5];
+        
+        while (!validClothes)
         {
             clothes.ChooseRandomHeadItem();
             clothes.ChooseRandomTorsoItem();
@@ -30,114 +31,144 @@ public class EnemiesClothes : MonoBehaviour
 
         if (validClothes)
         {
-            clothes.ChooseRandomHeadItem();
-            travelersClothes[0] = clothes.headPiece;
-            
-            clothes.ChooseRandomTorsoItem();
-            travelersClothes[1] = clothes.torsoPiece;
-            
-            clothes.ChooseRandomLegsItem();
-            travelersClothes[2] = clothes.legsPiece;
-            
-            clothes.ChooseRandomAccessoriesItem();
-            travelersClothes[3] = clothes.accessoriesPiece;
+            travellerClothes[0] = clothes.headPiece;
+            travellerClothes[1] = clothes.torsoPiece;
+            travellerClothes[2] = clothes.legsPiece;
+            travellerClothes[3] = clothes.accessoriesPiece;
         }
 
-        foreach (ClothesSlots clothesItems in travelersClothes)
-            clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+        foreach (ClothesSlots clothesItems in travellerClothes)
+        {
+            if (clothesItems != null)
+                clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+        }
     }
 
     private void GiveOneIdenticalPieceOfClothing()
     {
-        bool matchingWithThiefClothes = false;
-        
-        if (!matchingWithThiefClothes)
-        {
-            int randomIndex = Random.Range(0, identifyingThief.thiefClothes.Length);
-            BodySlot selectedBodySlot = identifyingThief.thiefClothes[randomIndex].slot;
+        travellerClothes = new ClothesSlots[Enum.GetValues(typeof(BodySlot)).Length];
+        BodySlot? selectedBodySlot;
+        ClothesSlots? selectedPieceOfClothing = null;
 
-            foreach (BodySlot bodySlot in Enum.GetValues(typeof(BodySlot)))
+        while (selectedPieceOfClothing == null)
+        { 
+            int randomIndex = Random.Range(0, identifyingThief.thiefClothes.Length);
+            selectedPieceOfClothing = identifyingThief.thiefClothes[randomIndex];
+
+        }
+        
+        selectedBodySlot = selectedPieceOfClothing.slot;
+        travellerClothes[(int)selectedBodySlot] = selectedPieceOfClothing;
+
+        foreach (BodySlot bodySlot in Enum.GetValues(typeof(BodySlot)))
+        {
+            ClothesSlots newPieceOfClothing = null;
+            if (bodySlot != selectedBodySlot)
             {
-                if (bodySlot != selectedBodySlot)
+                if (bodySlot == BodySlot.Head)
                 {
-                    ClothesSlots newPieceOfClothing = null;
-                    
-                    if (bodySlot == BodySlot.Head)
-                        newPieceOfClothing = clothes.ChooseRandomHeadItem();
-                    else if (bodySlot == BodySlot.Torso)
-                        newPieceOfClothing = clothes.ChooseRandomTorsoItem();
-                    else if (bodySlot == BodySlot.Legs)
-                        newPieceOfClothing = clothes.ChooseRandomLegsItem();
-                    else if (bodySlot == BodySlot.Accessories)
-                        newPieceOfClothing = clothes.ChooseRandomAccessoriesItem();
-                    
-                    if (newPieceOfClothing != null)
-                        travelersClothes[(int)bodySlot] = newPieceOfClothing;
+                    do {newPieceOfClothing = clothes.ChooseRandomHeadItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[0]);
                 }
+                else if (bodySlot == BodySlot.Torso)
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomTorsoItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[1]);
+                }
+                else if (bodySlot == BodySlot.Legs)
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomLegsItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[2]);
+                }
+                else if (bodySlot == BodySlot.Accessories)
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomAccessoriesItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[3]);
+                }
+                
+                if (newPieceOfClothing != null)
+                    travellerClothes[(int)bodySlot] = newPieceOfClothing;
             }
         }
         
-        foreach (ClothesSlots clothesItems in travelersClothes)
-            clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+        foreach (ClothesSlots clothesItems in travellerClothes)
+        {
+            if (clothesItems != null)
+                clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+        }
     }
 
     private void GiveTwoIdenticalClothes()
     {
-        bool matchingWithThiefClothes = false;
+        travellerClothes = new ClothesSlots[Enum.GetValues(typeof(BodySlot)).Length];
+        ClothesSlots selectedPieceOfClothing = null;
         
-        if (!matchingWithThiefClothes)
+        List<ClothesSlots> selectedPieces = new List<ClothesSlots>();
+        List<BodySlot> selectedBodySlots = new List<BodySlot>();
+
+        while (selectedPieces.Count < 2)
         {
-            List<BodySlot> selectedThiefClothes = new List<BodySlot>();
-            while (selectedThiefClothes.Count < 2 && selectedThiefClothes.Count < identifyingThief.thiefClothes.Length)
+            while (selectedPieceOfClothing == null)
             {
                 int randomIndex = Random.Range(0, identifyingThief.thiefClothes.Length);
-                BodySlot selectedSlot = identifyingThief.thiefClothes[randomIndex].slot;
-                if (!selectedThiefClothes.Contains(selectedSlot))
-                    selectedThiefClothes.Add(selectedSlot);
+                selectedPieceOfClothing = identifyingThief.thiefClothes[randomIndex];
             }
+            if (!selectedPieces.Contains(selectedPieceOfClothing))
+                selectedPieces.Add(selectedPieceOfClothing);
+            selectedPieceOfClothing = null;
+        }
 
-            foreach (BodySlot bodySlot in Enum.GetValues(typeof(BodySlot)))
+        foreach (ClothesSlots selectedPiece in selectedPieces)
+        {
+            travellerClothes[(int)selectedPiece.slot] = selectedPiece;
+            selectedBodySlots.Add(selectedPiece.slot);
+        }
+        
+        foreach (BodySlot bodySlot in Enum.GetValues(typeof(BodySlot)))
+        {
+            ClothesSlots newPieceOfClothing = null;
+            if (!selectedBodySlots.Contains(bodySlot))
             {
-                if (selectedThiefClothes.Contains(bodySlot))
-                    continue;
-                
-                ClothesSlots newPieceOfClothing = null;
-                
                 if (bodySlot == BodySlot.Head)
-                    newPieceOfClothing = clothes.ChooseRandomHeadItem();
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomHeadItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[0]);
+                }
                 else if (bodySlot == BodySlot.Torso)
-                    newPieceOfClothing = clothes.ChooseRandomTorsoItem();
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomTorsoItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[1]);
+                }
                 else if (bodySlot == BodySlot.Legs)
-                    newPieceOfClothing = clothes.ChooseRandomLegsItem();
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomLegsItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[2]);
+                }
                 else if (bodySlot == BodySlot.Accessories)
-                    newPieceOfClothing = clothes.ChooseRandomAccessoriesItem();
+                {
+                    do {newPieceOfClothing = clothes.ChooseRandomAccessoriesItem();}
+                    while (newPieceOfClothing == identifyingThief.thiefClothes[3]);
+                }
                 
                 if (newPieceOfClothing != null)
-                    travelersClothes[(int)bodySlot] = newPieceOfClothing;
+                    travellerClothes[(int)bodySlot] = newPieceOfClothing;
             }
         }
         
-        foreach (ClothesSlots clothesItems in travelersClothes)
-            clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+        foreach (ClothesSlots clothesItems in travellerClothes)
+        {
+            if (clothesItems != null)
+                clothes.InstantiatePieceOfClothing(clothesItems.model, travelerSpawner.newTraveler);
+        }
     }
 
     public void SpawnClothes(int i)
     {
-        GivingNonEqualClothes();
-        /*if (i <= travelerSpawner.travelerCount * 0.2)
-        {
+        if (i <= travelerSpawner.travelerCount * 0.3)
             GivingNonEqualClothes();
-            Debug.Log("FODASSE");
-        }
-        else if (i > travelerSpawner.travelerCount * 0.2 && i <= travelerSpawner.travelerCount * 0.6)
-        {
+        else if (i > travelerSpawner.travelerCount * 0.3 && i <= travelerSpawner.travelerCount * 0.6)
             GiveOneIdenticalPieceOfClothing();
-            Debug.Log("para esta");
-        }
         else
-        {
             GiveTwoIdenticalClothes();
-            Debug.Log("MeRdA");
-        }*/
     }
 }

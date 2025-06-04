@@ -22,11 +22,12 @@ public class ChoosingClothes : MonoBehaviour
 
         if (headItems.Count > 0  && Random.value > 0.3f)
         {
-            int headRandomIndex = Random.Range(0, headItems.Count);
-            headPiece = headItems[headRandomIndex];
+            int headRandomIndex = Random.Range(0, headItems.Count + 1);
+            if (headRandomIndex == headItems.Count)
+                headPiece = null;
+            else
+                headPiece = headItems[headRandomIndex];
         }
-        else if (headPiece == null)
-            Debug.Log("No head item");
         return headPiece;
     }
 
@@ -73,30 +74,34 @@ public class ChoosingClothes : MonoBehaviour
                 accessoriesItems.Add(pieces);
         }
 
-        if (accessoriesItems.Count > 0  && Random.value > 0.3f)
+        if (accessoriesItems.Count > 0 && Random.value > 0.3f)
         {
-            int firstAccessoryRandomIndex = Random.Range(0, accessoriesItems.Count);
-            accessoriesPiece = accessoriesItems[firstAccessoryRandomIndex];
+            int firstAccessoryRandomIndex = Random.Range(0, accessoriesItems.Count + 1);
+            if (firstAccessoryRandomIndex == accessoriesItems.Count)
+                accessoriesPiece = null;
+            else
+                accessoriesPiece = accessoriesItems[firstAccessoryRandomIndex];
+        }
 
-            if (accessoriesPiece.name == "trolley" && Random.value > 0.5f) //has a 50% change of getting the backpack
+        /*if (accessoriesPiece.name == "trolley" && Random.value > 0.5f) //has a 50% change of getting the backpack
+        {
+            ClothesSlots backpack = accessoriesItems.Find(x => x.name == "backpack");
+            if (backpack != null)
             {
-                ClothesSlots backpack = accessoriesItems.Find(x => x.name == "backpack");
-                if (backpack != null)
-                {
-                    GameObject backpackItem = Instantiate(backpack.model);
-                }
-            }
-            else if (accessoriesPiece.name == "backpack" && Random.value > 0.5f) //has a 50% change of getting the trolley
-            {
-                ClothesSlots trolley = accessoriesItems.Find(x => x.name == "trolley");
-                if (trolley != null)
-                {
-                    GameObject trolleyItem = Instantiate(trolley.model);
-                }
+                GameObject backpackItem = Instantiate(backpack.model);
             }
         }
-        else if (accessoriesPiece == null)
-            Debug.Log("No accessories");
+        else if (accessoriesPiece.name == "backpack" && Random.value > 0.5f) //has a 50% change of getting the trolley
+        {
+            ClothesSlots trolley = accessoriesItems.Find(x => x.name == "trolley");
+            if (trolley != null)
+            {
+                GameObject trolleyItem = Instantiate(trolley.model);
+            }
+        }
+    }
+    else if (accessoriesPiece == null)
+        Debug.Log("No accessories");*/
 
         return accessoriesPiece;
     }
