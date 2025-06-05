@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75393a10432bca04388645e691d4eeea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <travelerClothes>k__BackingField:
+  <travelerPossibleClothes>k__BackingField:
   - {fileID: 3955422944879716760}
   - {fileID: 8750494786124261792}
   - {fileID: 4132181098513589807}
@@ -1305,6 +1305,7 @@ MonoBehaviour:
   - {fileID: 2345623875648202672}
   - {fileID: 0}
   - {fileID: 0}
+  <travelerClothes>k__BackingField: []
 --- !u!4 &4929464752083714533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2458901621199418696, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}

@@ -28,15 +28,15 @@ public class IdentifyingThief : MonoBehaviour
         hintsForThief = FindObjectOfType<ChoosingClothes>();
     }
     
-    public bool DoesTheThiefHasThis(List<ClothesSlots> clothesSlots)
+    public bool DoesTheThiefHasThis(ClothesSlots[] thiefClothes)
     {
         int matchingOutfits = 0;
         
-        for (int i = 0; i < clothesSlots.Count; i++)
+        for (int i = 0; i < thiefClothes.Length; i++)
         {
             for (int j = 0; j < clue.numberOfClues + 1; j++)
             {
-                if (clothesSlots[i] == clue.clues[j])
+                if (thiefClothes[i] == clue.clues[j])
                     matchingOutfits++;
             }
         }
@@ -46,7 +46,7 @@ public class IdentifyingThief : MonoBehaviour
         return false;
     }
     
-    /*public void SeeingThief()
+    public void SeeingThief()
     {
         RaycastHit hit;
 
@@ -54,7 +54,7 @@ public class IdentifyingThief : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("Enemy") && !peopleSeen.ContainsKey(hit.collider.gameObject))
             {
-                List<ClothesSlots> tempListClothes = hit.collider.gameObject.GetComponent<List<ClothesSlots>>();
+                ClothesSlots[] tempListClothes = hit.collider.gameObject.GetComponentInChildren<EnemyClothes>().travelerClothes;
 
                 if (DoesTheThiefHasThis(tempListClothes))
                 {
@@ -69,10 +69,10 @@ public class IdentifyingThief : MonoBehaviour
                 }
             }
         }
-    }*/
+    }
     
-    // private void FixedUpdate()
-    // {
-    //     SeeingThief();
-    // }
+    private void FixedUpdate()
+    {
+        SeeingThief();
+    }
 }
