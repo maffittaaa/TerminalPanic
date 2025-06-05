@@ -15,9 +15,9 @@ public class TravelerSpawner : MonoBehaviour
 {
     [SerializeField] private Weapon weapon;
     public GameObject travelerPrefab;
-    [SerializeField] private GameObject travellersHolder;
-    [SerializeField] private GameObject[] spawnPoints;
-    [SerializeField] private Vector3 spawnSize = new Vector3(10f, 0f, 10f);
+    public GameObject travellersHolder;
+    public GameObject[] spawnPoints { get; set; }
+    public Vector3 spawnSize = new Vector3(10f, 0f, 10f);
     public EnemiesClothes enemiesClothes;
     public int travelerCount = 30;
     public ChoosingClothes clothes;

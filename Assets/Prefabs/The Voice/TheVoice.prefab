@@ -44,11 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53285daf1152b8c45b4c5bdc1051a580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
   thief: {fileID: 2184176344453078842, guid: 3c4c9bb0c53b18244a5512515285ea34, type: 3}
-  clue: {fileID: 0}
-  thiefClothes: 
-  thiefClothesColor: 
-  hintsForThief: {fileID: 0}
-  peopleNeededToNextClue: 2
+  thiefClothes: {fileID: 0}
   distanceToEnemy: 10.2
+  clue: {fileID: 0}
+  hintsForThief: {fileID: 0}
+  peopleNeededToNextClue: 5
+  enemiesClothes: {fileID: 0}
+  travelerPrefab: {fileID: 7193216844300829422, guid: fd83029ceb231455ea99fb968046a575, type: 3}
+  travelerSpawner: {fileID: 0}
+  playerCamera: {fileID: 0}

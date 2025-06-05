@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class KillPlayerScript : MonoBehaviour
 {
+    public bool canDie { get; set; }
+
+    private void Start()
+    {
+        canDie = true;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (canDie)
         {
-            WorldInteractions player = FindFirstObjectByType<WorldInteractions>();
-            KillPlayer(player);
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                WorldInteractions player = FindFirstObjectByType<WorldInteractions>();
+                KillPlayer(player);
+            }
         }
     }
 

@@ -16,6 +16,8 @@ public class ThiefBehavior : MonoBehaviour
     [field: Header("Thief")]
     [SerializeField] private ThiefState currentState;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private Animator anim;
+    [SerializeField] private bool dead = false;
     public bool iHearPlayer;
     public bool iSeePlayer;
     [SerializeField] private Rigidbody rb;
@@ -77,15 +79,18 @@ public class ThiefBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateState();
-        if (ThiefState.Fleeing == currentState)
-            thiefAStar.MoveAlongPath();
-        if (ThiefState.Hiding == currentState && !iSeePlayer && !isHiding)
-            thiefAStar.MoveAlongPath();
-        if (ThiefState.MovingToAnotherPosition == currentState && !isHiding)
-            thiefAStar.MoveAlongPath();
-        if (ThiefState.Fleeing == currentState && isHiding)
-            thiefAStar.MoveAlongPath(); 
+        if (!dead)
+        {
+            UpdateState();
+            if (ThiefState.Fleeing == currentState)
+                thiefAStar.MoveAlongPath();
+            if (ThiefState.Hiding == currentState && !iSeePlayer && !isHiding)
+                thiefAStar.MoveAlongPath();
+            if (ThiefState.MovingToAnotherPosition == currentState && !isHiding)
+                thiefAStar.MoveAlongPath();
+            if (ThiefState.Fleeing == currentState && isHiding)
+                thiefAStar.MoveAlongPath();
+        }
     }
 
     private void UpdateState()
@@ -93,20 +98,58 @@ public class ThiefBehavior : MonoBehaviour
         switch (currentState)
         {
             case ThiefState.Idle:
+                if(anim.GetBool("Idle") == false)
+                {
+                    anim.SetBool("Hiding", false);
+                    anim.SetBool("Walking", false);
+                    anim.SetBool("Running", false);
+                    anim.SetBool("Idle", true);
+                }
                 thiefAStar.speed = 0f;
                 rb.velocity = Vector3.zero;
                 IdleState();
                 break;
             case ThiefState.Fleeing:
+                if (anim.GetBool("Running") == false)
+                {
+                    anim.SetBool("Walking", false);
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Hiding", false);
+                    anim.SetBool("Running", true);
+                }
                 FleeingState();
                 break;
             case ThiefState.Hiding:
+                if (anim.GetBool("Hiding") == false)
+                {
+                    anim.SetBool("Walking", false);
+                    anim.SetBool("Running", false);
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Hiding", true);
+                }
                 HidingState();
                 break;
             case ThiefState.MovingToAnotherPosition:
+                if (anim.GetBool("Walking") == false)
+                {
+                    anim.SetBool("Running", false);
+                    anim.SetBool("Idle", false);
+                    anim.SetBool("Hiding", false);
+                    anim.SetBool("Walking", true);
+                }
                 MovingToAnotherPositionState();
                 break;
         }
+    }
+
+    public IEnumerator Die()
+    {
+        dead = true;
+        anim.SetTrigger("Dead");
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(gameObject);
     }
 
     private float Magnitude(Vector3 vector)
