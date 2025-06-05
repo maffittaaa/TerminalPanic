@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,10 +16,11 @@ public class IdentifyingThief : MonoBehaviour
     [SerializeField] private ClueText clue;
     public ChoosingClothes hintsForThief;
     public int peopleNeededToNextClue;
-    private int peeopleCountToNextClue = 0;
+    private int peopleCountToNextClue = 0;
     private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
     [SerializeField] private EnemiesClothes enemiesClothes;
     [SerializeField] private GameObject travelerPrefab;
+    [SerializeField] private float timeUntilRepeatingClue;
 
     [SerializeField] private TravelerSpawner travelerSpawner;
     
@@ -32,24 +34,6 @@ public class IdentifyingThief : MonoBehaviour
         
         hintsForThief = FindObjectOfType<ChoosingClothes>();
     }
-
-    public bool CluesMatchThiefsClothes(ClothesSlots[] thiefClothes)
-    {
-        int matchingOutfits = 0;
-        
-        for (int i = 0; i < thiefClothes.Length; i++)
-        {
-            for (int j = 0; j < clue.numberOfClues + 1; j++)
-            {
-                if (thiefClothes[i] == clue.clues[j])
-                    matchingOutfits++;
-            }
-        }
-
-        if (matchingOutfits >= clue.numberOfClues)
-            return true;
-        return false;
-    }
     
     public void AreTheseClothesEqualToTheThiefsClothes(TravelerAI travelerAI)
     {
@@ -59,10 +43,10 @@ public class IdentifyingThief : MonoBehaviour
 
         for (int i = 0; i < enemiesClothes.travelerClothes.Length; i++)
         {
-            if (enemiesClothes.travelerClothes[i] == clue.clues[clue.numberOfClues] && peeopleCountToNextClue < peopleNeededToNextClue)
+            if (enemiesClothes.travelerClothes[i] == clue.clues[clue.numberOfClues] && peopleCountToNextClue < peopleNeededToNextClue)
             {
                 matchingClothes = true;
-                peeopleCountToNextClue++;
+                peopleCountToNextClue++;
             }
         }
         
@@ -80,6 +64,25 @@ public class IdentifyingThief : MonoBehaviour
                 
             GameObject traveler = Instantiate(travelerPrefab, randomPosition , Quaternion.identity, travelerSpawner.travellersHolder.transform);
             traveler.GetComponentInChildren<EnemyClothes>().travelerClothes = enemiesClothes.travelerClothes;
+        }
+    }
+
+    public IEnumerator GoingThroughTheClues()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            while (peopleCountToNextClue < peopleNeededToNextClue)
+            {
+                yield return new WaitForSeconds(timeUntilRepeatingClue);
+                clue.TextForClue();
+            }
+
+            if (peopleCountToNextClue == peopleNeededToNextClue)
+            {
+                clue.numberOfClues++;
+                peopleCountToNextClue = 0;
+            }
         }
     }
 }

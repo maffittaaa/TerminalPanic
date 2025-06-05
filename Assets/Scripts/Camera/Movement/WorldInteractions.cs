@@ -47,7 +47,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private Animator anim;
     
     [Header("Die")]
-    private bool dead = false;
+    public bool dead = false;
     private PlayerFainting faint;
 
     private void Start()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,9 @@ public class Cheats : MonoBehaviour
     [SerializeField] private LightManager lightManager;
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private TravelerSpawner travelerSpawner;
-    [SerializeField] private KillPlayerScript killPlayer;
+    [SerializeField] private WorldInteractions killPlayer;
+    private bool invulnerable = false;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -26,11 +29,14 @@ public class Cheats : MonoBehaviour
             anxietyBar.cA.intensity.value = 0.2f;
             anxietyBar.vignette.intensity.value = 0f;
             anxietyBar.vignette.smoothness.value = 0.1f;
-
         }
         else if (Input.GetKeyDown(KeyCode.M))
             anxietyBar.currentAnxiety = anxietyBar.maxAnxiety * 0.75f;
         else if (Input.GetKeyDown(KeyCode.I))
-            killPlayer.canDie = !killPlayer.canDie;
+        {
+            invulnerable = !invulnerable;
+            if (!invulnerable)
+                killPlayer.KillPlayer();
+        }
     }
 }

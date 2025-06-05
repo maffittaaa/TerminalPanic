@@ -7,6 +7,7 @@ public class CluesTrigger : MonoBehaviour
 {
     [SerializeField] private ClueText clueText;
     [SerializeField] private WorldInteractions interactions;
+    [SerializeField] private IdentifyingThief identifyingThief;
     [field: SerializeField] public Collider trigger { get; set; }
 
     private void Start()
@@ -18,7 +19,7 @@ public class CluesTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && interactions.body.activeSelf)
         {
-            clueText.TextForClue();
+            StartCoroutine(identifyingThief.GoingThroughTheClues());
             Destroy(trigger);
         }
     }
