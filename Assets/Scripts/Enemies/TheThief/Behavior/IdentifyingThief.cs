@@ -7,15 +7,20 @@ public class IdentifyingThief : MonoBehaviour
 {
     [field: Header("Thief")]
     [SerializeField] public GameObject thief;
+    [SerializeField] private ThiefClothes thiefClothes;
     private Vector3 thiefPosition;
     [SerializeField] private float distanceToEnemy;
     
     [field: Header("Clues")]
     [SerializeField] private ClueText clue;
     public ChoosingClothes hintsForThief;
-    [SerializeField] private int peopleNeededToNextClue;
-    private int currentPeopleToNextClue = 0;
+    public int peopleNeededToNextClue;
+    private int peeopleCountToNextClue = 0;
     private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
+    [SerializeField] private EnemiesClothes enemiesClothes;
+    [SerializeField] private GameObject travelerPrefab;
+
+    [SerializeField] private TravelerSpawner travelerSpawner;
     
     [field: Header("Scripts")]
     [SerializeField] private Camera playerCamera;
@@ -27,8 +32,8 @@ public class IdentifyingThief : MonoBehaviour
         
         hintsForThief = FindObjectOfType<ChoosingClothes>();
     }
-    
-    public bool DoesTheThiefHasThis(ClothesSlots[] thiefClothes)
+
+    public bool CluesMatchThiefsClothes(ClothesSlots[] thiefClothes)
     {
         int matchingOutfits = 0;
         
@@ -46,33 +51,35 @@ public class IdentifyingThief : MonoBehaviour
         return false;
     }
     
-    public void SeeingThief()
+    public void AreTheseClothesEqualToTheThiefsClothes(TravelerAI travelerAI)
     {
-        RaycastHit hit;
+        enemiesClothes.travelerClothes = travelerAI.GetComponentInChildren<EnemyClothes>().travelerClothes;
+        thiefClothes = (ThiefClothes)FindObjectOfType(typeof(ThiefClothes));
+        bool matchingClothes = false;
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.TransformDirection(Vector3.forward), out hit, distanceToEnemy))
+        for (int i = 0; i < enemiesClothes.travelerClothes.Length; i++)
         {
-            if (hit.collider.gameObject.CompareTag("Enemy") && !peopleSeen.ContainsKey(hit.collider.gameObject))
+            if (enemiesClothes.travelerClothes[i] == clue.clues[clue.numberOfClues] && peeopleCountToNextClue < peopleNeededToNextClue)
             {
-                ClothesSlots[] tempListClothes = hit.collider.gameObject.GetComponentInChildren<EnemyClothes>().travelerClothes;
-
-                if (DoesTheThiefHasThis(tempListClothes))
-                {
-                    currentPeopleToNextClue++;
-                    peopleSeen.Add(hit.collider.gameObject, hit.collider.gameObject);
-                    if (currentPeopleToNextClue >= peopleNeededToNextClue)
-                    {
-                        clue.TextForClue();
-                        currentPeopleToNextClue = 0;
-                        peopleSeen.Clear();
-                    }
-                }
+                matchingClothes = true;
+                peeopleCountToNextClue++;
             }
         }
-    }
-    
-    private void FixedUpdate()
-    {
-        SeeingThief();
+        
+        if (!matchingClothes)
+        {
+            int randomNum = Random.Range(0, transform.childCount);
+
+            Vector3 randomSpawnPoint = travelerSpawner.spawnPoints[randomNum].transform.position;
+                
+            Vector3 randomPosition = new Vector3(
+                Random.Range(randomSpawnPoint.x - travelerSpawner.spawnSize.x / 2, randomSpawnPoint.x + travelerSpawner.spawnSize.x / 2),
+                randomSpawnPoint.y,
+                Random.Range(randomSpawnPoint.z - travelerSpawner.spawnSize.z / 2, randomSpawnPoint.z + travelerSpawner.spawnSize.z / 2)
+            );
+                
+            GameObject traveler = Instantiate(travelerPrefab, randomPosition , Quaternion.identity, travelerSpawner.travellersHolder.transform);
+            traveler.GetComponentInChildren<EnemyClothes>().travelerClothes = enemiesClothes.travelerClothes;
+        }
     }
 }

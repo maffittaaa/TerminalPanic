@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class ClueText : MonoBehaviour
 {
-    private List<ClothesSlots> usedClues = new List<ClothesSlots>();
+    public List<ClothesSlots> usedClues = new List<ClothesSlots>();
     public List<ClothesSlots> clues = new List<ClothesSlots>();
     private ThiefClothes thief;
     private TextMeshProUGUI clueText;
     public int numberOfClues = -1;
+    [SerializeField] private IdentifyingThief identifyingThief;
     
     private void Start()
     {
@@ -30,9 +31,14 @@ public class ClueText : MonoBehaviour
         {
             if (!usedClues.Contains(clues[numberOfClues]))
                 usedClues.Add(clues[numberOfClues]);
-        
-            clueText.enabled = true;
-            clueText.text = $"Clue {usedClues.Count}: Find the person who has {clues[numberOfClues]}";
+
+            if (clues[numberOfClues] == null)
+                numberOfClues++;
+            else
+            {
+                clueText.enabled = true;
+                clueText.text = $"Clue {usedClues.Count}: Find the person who has {clues[numberOfClues].name}! ({identifyingThief.peopleNeededToNextClue} left)";
+            }
         }
         return clueText.text;
     }

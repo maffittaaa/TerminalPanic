@@ -258,7 +258,6 @@ public class TravelerAI : MonoBehaviour
         anim.SetTrigger("Dead");
 
         yield return new WaitForSeconds(3);
-
         Destroy(gameObject);
     }
 

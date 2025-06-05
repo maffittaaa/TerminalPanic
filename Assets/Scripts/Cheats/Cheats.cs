@@ -12,8 +12,7 @@ public class Cheats : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
-            //clueText.TextForClue();
-            Debug.Log("Yes change later");
+            clueText.TextForClue();
         else if (Input.GetKeyDown(KeyCode.L))
             lightManager.TurnOnAndOffManager();
         else if (Input.GetKeyDown(KeyCode.P))
@@ -25,7 +24,9 @@ public class Cheats : MonoBehaviour
             anxietyBar.currentAnxiety = 0f;
             anxietyBar.dOF.focusDistance.value = 1f;
             anxietyBar.cA.intensity.value = 0.2f;
-            
+            anxietyBar.vignette.intensity.value = 0f;
+            anxietyBar.vignette.smoothness.value = 0.1f;
+
         }
         else if (Input.GetKeyDown(KeyCode.M))
             anxietyBar.currentAnxiety = anxietyBar.maxAnxiety * 0.75f;

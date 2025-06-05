@@ -7784,6 +7784,7 @@ MonoBehaviour:
   bulletCountUI: {fileID: 3786737708141551950}
   audioManager: {fileID: 0}
   gameManager: {fileID: 0}
+  voiceClues: {fileID: 0}
   debug: 
 --- !u!1001 &7657335664344858018
 PrefabInstance:
@@ -8685,6 +8686,10 @@ PrefabInstance:
       propertyPath: playerMovementScript
       value: 
       objectReference: {fileID: 2760616104000520053}
+    - target: {fileID: 8927570696330065085, guid: 492f9e516791092438d86616e22c66b0, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 3480172756223146923}
     - target: {fileID: 8927570696330065085, guid: 492f9e516791092438d86616e22c66b0, type: 3}
       propertyPath: body
       value: 

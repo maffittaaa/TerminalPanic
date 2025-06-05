@@ -17,8 +17,17 @@ public class EnemiesClothes : MonoBehaviour
         thief = (ThiefClothes)FindObjectOfType(typeof(ThiefClothes));
     }
 
+    private void Update()
+    {
+        if (thief == null)
+            thief = (ThiefClothes)FindObjectOfType(typeof(ThiefClothes));
+    }
+
     private void GivingNonEqualClothes(int k)
     {
+        if (thief == null)
+            thief = (ThiefClothes)FindObjectOfType(typeof(ThiefClothes));
+        
         bool validClothes = false;
         travelerClothes = new ClothesSlots[Enum.GetValues(typeof(BodySlot)).Length];
         
@@ -202,4 +211,5 @@ public class EnemiesClothes : MonoBehaviour
         else
             GiveTwoIdenticalClothes(i);
     }
+    
 }

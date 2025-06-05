@@ -30,6 +30,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private BulletCountUI bulletCountUI;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private IdentifyingThief voiceClues;
 
     [Header("Build Debuging")]
     private string _saveFilePath;
@@ -161,7 +162,9 @@ public class Weapon : MonoBehaviour
     
             if (enemy)
             {
+                voiceClues.AreTheseClothesEqualToTheThiefsClothes(enemy);
                 StartCoroutine(enemy.Die());
+                
             }
             else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
             {
