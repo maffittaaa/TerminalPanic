@@ -80,6 +80,7 @@ GameObject:
   - component: {fileID: 5448424393328647405}
   - component: {fileID: 1743862309133134027}
   - component: {fileID: 6027714949292734317}
+  - component: {fileID: 487193017070323299}
   m_Layer: 12
   m_Name: Thief
   m_TagString: Untagged
@@ -127,7 +128,7 @@ MonoBehaviour:
   hidingSpotPrefab: {fileID: 3963948621798536808, guid: 44168570cf870a843925259fcebc48bc, type: 3}
   closestHidingSpot: {fileID: 0}
   player: {fileID: 0}
-  thiefAStar: {fileID: 6271904993881987185}
+  thiefAStar: {fileID: 487193017070323299}
 --- !u!54 &5448424393328647405
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -203,6 +204,30 @@ MonoBehaviour:
   - {fileID: 1124487998145176486}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &487193017070323299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184176344453078842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afef5b574ae0eba448e72b3d43a6d477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  accuracy: 2
+  rb: {fileID: 5448424393328647405}
+  tileSize: 4
+  waypointToGo: {fileID: 0}
+  currentTile: {fileID: 0}
+  enemyTile: {fileID: 0}
+  enemy: {fileID: 0}
+  waypointTile: {fileID: 0}
+  path: []
+  distanceInFront: 3.9
+  distanceToGround: 1
 --- !u!1 &3163700768933636131
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,10 +390,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2753351693503869130, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6271904993881987185}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}
 --- !u!1 &134127966718399583 stripped
 GameObject:
@@ -420,32 +442,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2458901621199418696, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}
   m_PrefabInstance: {fileID: 5287384777051533499}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8022404862940692593 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2753351693503869130, guid: afda41e85c0942f478a4ba0ad805b4b6, type: 3}
-  m_PrefabInstance: {fileID: 5287384777051533499}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6271904993881987185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8022404862940692593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afef5b574ae0eba448e72b3d43a6d477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  accuracy: 3
-  rb: {fileID: 5448424393328647405}
-  tileSize: 4
-  waypointToGo: {fileID: 0}
-  currentTile: {fileID: 0}
-  enemyTile: {fileID: 0}
-  enemy: {fileID: 0}
-  waypointTile: {fileID: 0}
-  path: []
-  distanceInFront: 5
-  distanceToGround: 1

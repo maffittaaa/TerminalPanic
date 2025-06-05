@@ -40,6 +40,7 @@ public class AITileMapGenerator : MonoBehaviour
                     if (Physics.Raycast(newTile.transform.position, new Vector3(0, 1, 0), out hit, 10, obstaclesMask))
                     {
                         newTile.tag = "Obstacle";
+                        Destroy(newTile);
                     }
                 }
             }

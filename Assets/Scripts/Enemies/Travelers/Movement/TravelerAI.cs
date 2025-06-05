@@ -28,14 +28,14 @@ public class TravelerAI : MonoBehaviour
     [SerializeField] private float slowDownDistance = 7f;
     [SerializeField] private float wanderRadius = 5f;
 
-    [field: Header("Traveller State & Type")]
+    [field: Header("Traveler State & Type")]
     [field: SerializeField] public TravelerState currentState { get; set; }
     [field: SerializeField] public TravelerType type { get; set; }
     [field: SerializeField] public IAirportMode currentMode { get; set; }
 
-    [field: Header("Traveller Needs")]
+    [field: Header("Traveler Needs")]
     [SerializeField] private NavMeshAgent agent;
-    [field: SerializeField] public static PlayerMovement player { get; set; }
+    [field: SerializeField] public PlayerMovement player { get; set; }
     [field: SerializeField] public bool iHearPlayer { get; set; }
     [field: SerializeField] public bool iSeePlayer { get; set; }
     [field: SerializeField] public bool lostPlayer { get; set; }
@@ -68,6 +68,7 @@ public class TravelerAI : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         currentMode = IAirportMode.Panic;
         SetAudioSettings();
         SetAgentSettings();
