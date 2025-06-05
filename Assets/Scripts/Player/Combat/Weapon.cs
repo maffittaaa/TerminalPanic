@@ -14,14 +14,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float shootingDelay;
     private float currentShootingDelay = 0f;
 
-    [Header("Magazine")]
-    [SerializeField] private int maxBulletsInPocket;
+    [field: Header("Magazine")]
+    [field: SerializeField] public int maxBulletsInPocket { get; private set; }
     [SerializeField] private int maxBulletsInMag;
     [SerializeField] private int currentBulletsInPocket;
     [SerializeField] private int currentBulletsInMag;
     [SerializeField] private int bulletsShoot;
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading;
+    [SerializeField] private GameObject magModel;
     
     [Header("Managers and Scripts")]
     [SerializeField] private Animator anim;
@@ -42,6 +43,7 @@ public class Weapon : MonoBehaviour
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
 
         bulletCountUI.SetBulletCountText(currentBulletsInMag, maxBulletsInMag);
+        bulletCountUI.SetPocketCountText(currentBulletsInPocket, maxBulletsInPocket);
         //print(_saveFilePath);
     }
 
@@ -54,18 +56,20 @@ public class Weapon : MonoBehaviour
                 Shoot();
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && CanReload())
             {
                 StartCoroutine(ReloadGun());
             }
 
             if (Input.GetKeyDown(KeyCode.G))
             {
+                magModel.SetActive(true);
                 anim.SetTrigger("inspectingT");
                 anim.SetBool("inspecting", true);
             }
             if (Input.GetKeyUp(KeyCode.G))
             {
+                magModel.SetActive(false);
                 anim.SetBool("inspecting", false);
             }
 
@@ -89,7 +93,7 @@ public class Weapon : MonoBehaviour
         {
             yield return new WaitForSeconds(reloadingBullet);
 
-            if (currentBulletsInMag < maxBulletsInMag)
+            if (currentBulletsInMag < maxBulletsInMag && 0 < currentBulletsInPocket)
             {
                 currentBulletsInMag++;
                 currentBulletsInPocket--;
@@ -101,6 +105,7 @@ public class Weapon : MonoBehaviour
         }
 
         bulletCountUI.SetBulletCountText(currentBulletsInMag, maxBulletsInMag);
+        bulletCountUI.SetPocketCountText(currentBulletsInPocket, maxBulletsInPocket);
     }
 
     void FixedUpdate()
@@ -120,6 +125,18 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private bool CanReload()
+    {
+        if (currentBulletsInPocket <= 0 || maxBulletsInMag <= currentBulletsInMag || reloading)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void Shoot()
     {
         anim.SetTrigger("shoot");
@@ -130,6 +147,7 @@ public class Weapon : MonoBehaviour
         currentShootingDelay = 0;
         currentBulletsInMag--;
         bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
+        bulletCountUI.SetPocketCountText(currentBulletsInPocket, maxBulletsInPocket);
 
         /*        debug += "Shoot\n";
                 debug += worldInteractions.potencialEnemy.transform.parent.name + "\n";
@@ -162,21 +180,26 @@ public class Weapon : MonoBehaviour
 
     public void AddMagBullets(int amount)
     {
-        currentBulletsInMag += Mathf.Clamp(amount, 0, maxBulletsInMag);
+        currentBulletsInMag = Mathf.Clamp(currentBulletsInMag + amount, 0, maxBulletsInMag);
     }
 
     public void AddPocketBullets(int amount)
     {
-        currentBulletsInPocket += Mathf.Clamp(amount, 0, maxBulletsInPocket);
+        currentBulletsInPocket = Mathf.Clamp(currentBulletsInPocket + amount, 0, maxBulletsInPocket);
     }
 
     public int CurrentBulletsInMag()
     {
-        return maxBulletsInMag - bulletsShoot;
+        return currentBulletsInMag;
+    }
+
+    public int CurrentBulletsInPocket()
+    {
+        return currentBulletsInPocket;
     }
 
     public int TotalStoredBullets()
     {
-        return currentBulletsInMag - CurrentBulletsInMag();
+        return currentBulletsInMag + currentBulletsInPocket;
     }
 }

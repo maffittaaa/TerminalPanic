@@ -52,8 +52,6 @@ public class AudioManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         SetAllAudiosList();
-
-
     }
 
     private void SetAllAudiosList()

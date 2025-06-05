@@ -147,25 +147,35 @@ public class WorldInteractions : MonoBehaviour
                 switch (itemType)
                 {
                     case ItemType.Door:
-                        StartCoroutine(OpenDoor(interactable.GetItemId()));
+                        if (!doorOpeningClosing)
+                        {
+                            doorOpeningClosing = true;
+                            StartCoroutine(OpenDoor(interactable.GetItemId()));
+                        }
                         break;
                     case ItemType.Ticket:
                         gotTicket = true;
                         Destroy(highLightObject.transform.parent.gameObject);
                         break;
                     case ItemType.Weapon:
-                        Destroy(highLightObject);
-                        body.SetActive(true);
-                        weapon.AddMagBullets(10);
+                        if (!body.activeSelf)
+                        {
+                            Destroy(highLightObject);
+                            body.SetActive(true);
+                            weapon.AddMagBullets(10);
+                        }
                         break;
                     case ItemType.Bullets:
-                        Destroy(highLightObject.transform.parent.gameObject);
-                        weapon.AddPocketBullets(5);
+                        if(weapon.CurrentBulletsInPocket() < weapon.maxBulletsInPocket)
+                        {
+                            Destroy(highLightObject);
+                            weapon.AddPocketBullets(5);
+                        }
                         break;
                     case ItemType.Mirror:
                         if (anxietyBar.interacted == false && anxietyBar.currentAnxiety > 0f && anxietyBar.currentAnxiety < anxietyBar.maxAnxiety)
                         {
-                            mirror = highLightObject.gameObject;
+                            mirror = highLightObject;
                             anxietyBar.interacted = true;
                             anxietyBar.realityMode = true;
                             anxietyBar.StartCoroutine(anxietyBar.FreezeMovementWhileCalming());

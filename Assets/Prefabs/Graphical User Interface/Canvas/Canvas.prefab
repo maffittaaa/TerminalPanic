@@ -950,7 +950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clues: []
-  thief: {fileID: 0}
   numberOfClues: -1
 --- !u!1 &1727449780257557703
 GameObject:

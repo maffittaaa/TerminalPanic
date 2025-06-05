@@ -511,7 +511,7 @@ MonoBehaviour:
   distanceToInteract: 5
   lookToMirrorSpeed: 0
   gameManager: {fileID: 0}
-  doorAngleOpen: 350
+  doorAngleOpen: 75
   doorAngleClose: 0
   doorOpenTime: 0
   doorOpenAddAngle: 0

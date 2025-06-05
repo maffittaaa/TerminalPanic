@@ -414,28 +414,12 @@ PrefabInstance:
       objectReference: {fileID: 1463029100}
     - target: {fileID: 585665505294386906, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 21166
+      value: 21676
       objectReference: {fileID: 0}
     - target: {fileID: 1406560988686199089, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 7978150}
-    - target: {fileID: 1545998241946575582, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1545998241946575582, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1545998241946575582, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1694862751732008064, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.9853
-      objectReference: {fileID: 0}
     - target: {fileID: 1964422211811927045, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
@@ -480,17 +464,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3551618881405501300, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6.701
-      objectReference: {fileID: 0}
     - target: {fileID: 4404333213086684335, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_Name
       value: Airport - RealSize
-      objectReference: {fileID: 0}
-    - target: {fileID: 6829175224057952051, guid: c20ac5416622c3046815951012508b5d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 13.825
       objectReference: {fileID: 0}
     - target: {fileID: 7100720765397303673, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
@@ -5917,10 +5893,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 178832424}
-    - target: {fileID: 1772575245601319492, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
-      propertyPath: thief
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2216424785482961033, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

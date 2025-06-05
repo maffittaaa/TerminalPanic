@@ -6,16 +6,22 @@ using TMPro;
 public class BulletCountUI : MonoBehaviour
 {
     [Header("Settings")]
+    [SerializeField] private TextMeshPro pocketCountText;
     private TextMeshPro bulletCountText;
-    private bool state = false;
 
     private void Start()
     {
         bulletCountText = GetComponent<TextMeshPro>();
+        bulletCountText.transform.parent.parent.gameObject.SetActive(false);
     }
 
     public void SetBulletCountText(float num, float maxBullets)
     {
         bulletCountText.text = num + "/" + maxBullets;
+    }
+
+    public void SetPocketCountText(float num, float maxBullets)
+    {
+        pocketCountText.text = num.ToString();
     }
 }
