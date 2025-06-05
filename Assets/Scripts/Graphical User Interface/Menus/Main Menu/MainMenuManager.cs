@@ -23,6 +23,8 @@ public class MainMenuManager : MonoBehaviour
     public Button yesButton;
     public Button noButton;
 
+    public GameObject dimmerPanel;
+
     private List<Button> mainButtons;
     private bool keyboardControlsActive = false;
 
@@ -61,10 +63,11 @@ public class MainMenuManager : MonoBehaviour
             if (cg == null)
                 cg = btn.gameObject.AddComponent<CanvasGroup>();
 
-            cg.alpha = (btn == active) ? 1f : 0.4f;
+            cg.alpha = (active == null || btn == active) ? 1f : 0.4f;
             cg.interactable = true;
         }
     }
+
 
     void HighlightButton(Selectable active, List<Selectable> options)
     {
@@ -91,10 +94,14 @@ public class MainMenuManager : MonoBehaviour
 
         if (!isActive)
         {
+            dimmerPanel.SetActive(true);
             HighlightButton(null, settingsOptions); 
         }
         else
         {
+            settingsPanel.SetActive(false);
+            dimmerPanel.SetActive(false);
+            HighlightMainButton(null, mainButtons);
             if (keyboardControlsActive)
             {
                 keyboardControlsImage.gameObject.SetActive(false);
@@ -144,6 +151,7 @@ public class MainMenuManager : MonoBehaviour
     public void QuitGame()
     {
         quitConfirmationPanel.SetActive(true);
+        dimmerPanel.SetActive(true);
 
         foreach (var btn in mainButtons)
         {
@@ -164,6 +172,7 @@ public class MainMenuManager : MonoBehaviour
     void CloseSettings()
     {
         settingsPanel.SetActive(false);
+        dimmerPanel.SetActive(false);
 
         if (keyboardControlsActive)
         {
@@ -204,6 +213,7 @@ public class MainMenuManager : MonoBehaviour
     void CancelQuit()
     {
         quitConfirmationPanel.SetActive(false);
+        dimmerPanel.SetActive(false);
 
         foreach (var btn in mainButtons)
         {
@@ -215,4 +225,20 @@ public class MainMenuManager : MonoBehaviour
             cg.interactable = true;
         }
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (settingsPanel.activeSelf)
+            {
+                CloseSettings();
+            }
+            else if (quitConfirmationPanel.activeSelf)
+            {
+                CancelQuit();
+            }
+        }
+    }
+
 }
