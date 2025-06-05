@@ -29,7 +29,7 @@ public class ClueText : MonoBehaviour
             clueText.text = "Catch the Thief!";
         else
         {
-            if (!usedClues.Contains(clues[numberOfClues]))
+            if (!usedClues.Contains(clues[numberOfClues]) && clues[numberOfClues] != null)
                 usedClues.Add(clues[numberOfClues]);
 
             if (clues[numberOfClues] == null)
