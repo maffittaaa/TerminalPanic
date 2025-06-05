@@ -9,7 +9,7 @@ public class Cheats : MonoBehaviour
     [SerializeField] private LightManager lightManager;
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private TravelerSpawner travelerSpawner;
-    [SerializeField] private WorldInteractions killPlayer;
+    [SerializeField] private WorldInteractions interactions;
     private bool invulnerable = false;
 
     private void Update()
@@ -35,7 +35,11 @@ public class Cheats : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I))
         {
             invulnerable = !invulnerable;
-            killPlayer.Invulnrabilyty(invulnerable);
+            interactions.Invulnerability(invulnerable);
         }
+        else if (Input.GetKeyDown(KeyCode.K))
+            interactions.gotKeyCard = true;
+        else if (Input.GetKeyDown(KeyCode.Q))
+            interactions.gotTicket = true;
     }
 }

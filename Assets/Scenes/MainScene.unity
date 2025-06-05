@@ -944,12 +944,36 @@ PrefabInstance:
       objectReference: {fileID: 1463029100}
     - target: {fileID: 585665505294386906, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 21742
+      value: 21745
       objectReference: {fileID: 0}
     - target: {fileID: 1406560988686199089, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 7978150}
+    - target: {fileID: 1588225691489539667, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Size.x
+      value: 4.6996536
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588225691489539667, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Size.y
+      value: 3.1941376
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588225691489539667, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Size.z
+      value: 2.104599
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588225691489539667, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Center.x
+      value: -0.4843712
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588225691489539667, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Center.y
+      value: 1.498455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588225691489539667, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Center.z
+      value: 2.5947113
+      objectReference: {fileID: 0}
     - target: {fileID: 1964422211811927045, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
       value: 
@@ -1014,6 +1038,10 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1100902146}
+    - target: {fileID: 3713920357429936843, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -146.65
+      objectReference: {fileID: 0}
     - target: {fileID: 4404333213086684335, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_Name
       value: Airport - RealSize
@@ -8581,6 +8609,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 851075669}
     - target: {fileID: 5298147487467055970, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: interactions
+      value: 
+      objectReference: {fileID: 2017331058}
+    - target: {fileID: 5298147487467055970, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: lightManager
       value: 
       objectReference: {fileID: 896461701}
@@ -8590,7 +8622,7 @@ PrefabInstance:
       objectReference: {fileID: 649272684}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -120.5
+      value: -94
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8598,7 +8630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -144.1
+      value: 65.9
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.w

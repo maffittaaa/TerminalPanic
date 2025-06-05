@@ -64,6 +64,18 @@ public class IdentifyingThief : MonoBehaviour
                 
             GameObject traveler = Instantiate(travelerPrefab, randomPosition , Quaternion.identity, travelerSpawner.travellersHolder.transform);
             traveler.GetComponentInChildren<EnemyClothes>().travelerClothes = enemiesClothes.travelerClothes;
+            
+            for (int i = 0; i < enemiesClothes.travelerClothes.Length; i++)
+            {
+                for (int j = 0; j < enemiesClothes.clothesModels.Length; j++)
+                {
+                    if (enemiesClothes.travelerClothes[i] != null && enemiesClothes.clothesModels[j] != null && enemiesClothes.travelerClothes[i].id == j)
+                    {
+                        enemiesClothes.clothesModels[j].SetActive(true);
+                        enemiesClothes.travelerClothes[i].model = enemiesClothes.clothesModels[j];
+                    }
+                }
+            }
         }
     }
 

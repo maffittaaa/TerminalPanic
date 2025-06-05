@@ -10,7 +10,7 @@ public class EnemiesClothes : MonoBehaviour
     [SerializeField] private ChoosingClothes clothes;
     public ClothesSlots[] travelerClothes;
     [SerializeField] private TravelerSpawner travelerSpawner;
-    [SerializeField] private GameObject[] clothesModels;
+    public GameObject[] clothesModels;
 
     private void Start()
     {

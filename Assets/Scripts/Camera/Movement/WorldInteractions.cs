@@ -14,8 +14,8 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private GameObject flashLightPhysic;
     [SerializeField] private GameObject[] doors;
     [SerializeField] private ItemType itemType;
-    [SerializeField] private AnxietyBar anxietyBar;
-    [SerializeField] private bool gotKeyCard = false;
+    [SerializeField] private AnxietyBar anxietyBar; 
+    public bool gotKeyCard = false;
     [SerializeField] public bool gotTicket = false;
     [field: SerializeField] public GameObject potencialEnemy { get; private set; }
 
@@ -47,7 +47,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private Animator anim;
     
     [Header("Die")]
-    public bool invulnrability = false;
+    public bool invulnerability = false;
     public bool dead = false;
     private PlayerFainting faint;
 
@@ -73,16 +73,16 @@ public class WorldInteractions : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (!dead && !invulnrability)
+        if (!dead && !invulnerability)
         {
             dead = true;
             StartCoroutine(faint.KillPlayerOpacity());
         }
     }
 
-    public void Invulnrabilyty(bool state)
+    public void Invulnerability(bool state)
     {
-        invulnrability = state;
+        invulnerability = state;
     }
 
     private void RayCast()

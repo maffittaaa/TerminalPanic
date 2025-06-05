@@ -147,7 +147,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3a749b448281d4e4ea2cc6e0a25fc356, type: 2}
+  - {fileID: 2100000, guid: 391bd41260e09de4a9f4d0be82b48b69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 4
+  id: 0
   interactingText: {fileID: 0}
   outline: {fileID: 0}
 --- !u!1 &2188827696868701462

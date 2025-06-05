@@ -8,7 +8,7 @@ public class ThiefClothes : MonoBehaviour
     [field: Header("Clothes")]
     private ChoosingClothes clothes;
     public ClothesSlots[] thiefClothes;
-    [SerializeField] private GameObject[] clothesModels;
+    public GameObject[] clothesModels;
     
     private void Awake()
     {
