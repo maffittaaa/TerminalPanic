@@ -39,7 +39,6 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         _saveFilePath = Application.persistentDataPath + "/debug.txt";
 
@@ -83,6 +82,7 @@ public class Weapon : MonoBehaviour
 
     private IEnumerator ReloadGun()
     {
+        audioManager.reload.Play();
         anim.SetTrigger("reload");
         reloading = true;
 

@@ -944,7 +944,7 @@ PrefabInstance:
       objectReference: {fileID: 1463029100}
     - target: {fileID: 585665505294386906, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_VersionIndex
-      value: 21724
+      value: 21742
       objectReference: {fileID: 0}
     - target: {fileID: 1406560988686199089, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: anxietyBar
@@ -954,6 +954,22 @@ PrefabInstance:
       propertyPath: anxietyBar
       value: 
       objectReference: {fileID: 7978150}
+    - target: {fileID: 2402482434905882829, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689321832090559309, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: clueText
+      value: 
+      objectReference: {fileID: 851075669}
+    - target: {fileID: 2689321832090559309, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: interactions
+      value: 
+      objectReference: {fileID: 2017331058}
+    - target: {fileID: 2689321832090559309, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: identifyingThief
+      value: 
+      objectReference: {fileID: 1411499135}
     - target: {fileID: 3141612778960723187, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.08
@@ -994,6 +1010,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3582683454069624956, guid: c20ac5416622c3046815951012508b5d, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 1100902146}
     - target: {fileID: 4404333213086684335, guid: c20ac5416622c3046815951012508b5d, type: 3}
       propertyPath: m_Name
       value: Airport - RealSize
@@ -6902,6 +6922,17 @@ MonoBehaviour:
   tileChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1411499135 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2809602760443036910, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
+  m_PrefabInstance: {fileID: 1531547077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53285daf1152b8c45b4c5bdc1051a580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1416809866
 GameObject:
   m_ObjectHideFlags: 0
@@ -8023,6 +8054,14 @@ PrefabInstance:
       propertyPath: hintsForThief
       value: 
       objectReference: {fileID: 1616950543}
+    - target: {fileID: 2809602760443036910, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
+      propertyPath: enemiesClothes
+      value: 
+      objectReference: {fileID: 2021575694}
+    - target: {fileID: 2809602760443036910, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
+      propertyPath: travelerSpawner
+      value: 
+      objectReference: {fileID: 649272684}
     - target: {fileID: 5399447244945353139, guid: b1f34a561c4a573408399f8d58f56cd4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8551,7 +8590,7 @@ PrefabInstance:
       objectReference: {fileID: 649272684}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -168.1
+      value: -120.5
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8559,7 +8598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -126
+      value: -144.1
       objectReference: {fileID: 0}
     - target: {fileID: 5988235992907883676, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8605,6 +8644,10 @@ PrefabInstance:
       propertyPath: safeSpaces.Array.data[2]
       value: 
       objectReference: {fileID: 156532697}
+    - target: {fileID: 8819307890008631613, guid: a21002e82dd006f48b221c05b9cbd4e1, type: 3}
+      propertyPath: voiceClues
+      value: 
+      objectReference: {fileID: 1411499135}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9983,6 +10026,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 178832424}
+    - target: {fileID: 1772575245601319492, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
+      propertyPath: identifyingThief
+      value: 
+      objectReference: {fileID: 1411499135}
     - target: {fileID: 2216424785482961033, guid: 4880b5d78ec96d2459adecae662dae9b, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -10699,6 +10746,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99b02797ac4712749beb22785d7ebe33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2021575694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5003679286819012102, guid: 3b8c74d77d7a580489f3a9ab4dc55068, type: 3}
+  m_PrefabInstance: {fileID: 1315612432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856793aea44566e46bd46bf4a5007275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2044258020

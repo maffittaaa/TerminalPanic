@@ -9,7 +9,7 @@ public class ClueText : MonoBehaviour
     public List<ClothesSlots> clues = new List<ClothesSlots>();
     private ThiefClothes thief;
     private TextMeshProUGUI clueText;
-    public int numberOfClues = -1;
+    public int numberOfClues = 0;
     [SerializeField] private IdentifyingThief identifyingThief;
     
     private void Start()
@@ -17,14 +17,13 @@ public class ClueText : MonoBehaviour
         thief = (ThiefClothes)FindObjectOfType(typeof(ThiefClothes));
         clueText = GetComponent<TextMeshProUGUI>();
         clueText.enabled = false;
-
+        numberOfClues = 0;
         for (int i = 0; i < thief.thiefClothes.Length; i++)
             clues.Add(thief.thiefClothes[i]);
     }
 
     public string TextForClue()
     {
-        numberOfClues++;
         if (numberOfClues >= thief.thiefClothes.Length)
             clueText.text = "Catch the Thief!";
         else
@@ -33,7 +32,10 @@ public class ClueText : MonoBehaviour
                 usedClues.Add(clues[numberOfClues]);
 
             if (clues[numberOfClues] == null)
+            {
                 numberOfClues++;
+                TextForClue();
+            }
             else
             {
                 clueText.enabled = true;

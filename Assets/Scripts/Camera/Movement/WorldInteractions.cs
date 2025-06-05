@@ -47,6 +47,7 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private Animator anim;
     
     [Header("Die")]
+    public bool invulnrability = false;
     public bool dead = false;
     private PlayerFainting faint;
 
@@ -72,11 +73,16 @@ public class WorldInteractions : MonoBehaviour
 
     public void KillPlayer()
     {
-        if (!dead)
+        if (!dead && !invulnrability)
         {
             dead = true;
             StartCoroutine(faint.KillPlayerOpacity());
         }
+    }
+
+    public void Invulnrabilyty(bool state)
+    {
+        invulnrability = state;
     }
 
     private void RayCast()
@@ -210,7 +216,7 @@ public class WorldInteractions : MonoBehaviour
     {
         anim.SetTrigger("pickUpGun");
         yield return new WaitForSeconds(2);
-        anim.SetBool("Idle", true);
+        anim.SetBool("idle", true);
     }
 
     private void ChangeCameraView()

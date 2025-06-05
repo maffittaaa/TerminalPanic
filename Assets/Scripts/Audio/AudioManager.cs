@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
 
     [field: Header("   Weapon")]
     [field: SerializeField] public AudioSource shoot { get; set; }
+    [field: SerializeField] public AudioSource reload { get; set; }
 
     [field: Header("   Movement")]
     [field: SerializeField] public AudioSource walkPlayer { get; set; }
@@ -62,6 +63,7 @@ public class AudioManager : MonoBehaviour
         allAudios.Add(heartbeat);
         allAudios.Add(heartbeat2);
         allAudios.Add(shoot);
+        allAudios.Add(reload);
         allAudios.Add(walkPlayer);
         allAudios.Add(runPlayer);
         allAudios.Add(crouchPlayer);

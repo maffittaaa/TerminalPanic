@@ -35,8 +35,7 @@ public class Cheats : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I))
         {
             invulnerable = !invulnerable;
-            if (!invulnerable)
-                killPlayer.KillPlayer();
+            killPlayer.Invulnrabilyty(invulnerable);
         }
     }
 }
