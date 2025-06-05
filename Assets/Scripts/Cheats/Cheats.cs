@@ -8,6 +8,7 @@ public class Cheats : MonoBehaviour
     [SerializeField] private LightManager lightManager;
     [SerializeField] private AnxietyBar anxietyBar;
     [SerializeField] private TravelerSpawner travelerSpawner;
+    [SerializeField] private KillPlayerScript killPlayer;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -28,5 +29,7 @@ public class Cheats : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.M))
             anxietyBar.currentAnxiety = anxietyBar.maxAnxiety * 0.75f;
+        else if (Input.GetKeyDown(KeyCode.I))
+            killPlayer.canDie = !killPlayer.canDie;
     }
 }

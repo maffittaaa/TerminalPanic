@@ -44,7 +44,8 @@ public class WorldInteractions : MonoBehaviour
     [SerializeField] private float FLmMaxFlickerTimeDist = 10f;
     [SerializeField] private float FLmMinFlickerTimeDist = 20f;
     private AudioManager audioManager;
-
+    [SerializeField] private Animator anim;
+    
     [Header("Die")]
     private bool dead = false;
     private PlayerFainting faint;
@@ -154,12 +155,14 @@ public class WorldInteractions : MonoBehaviour
                         }
                         break;
                     case ItemType.Ticket:
+                        anim.SetTrigger("pickUpTicket");
                         gotTicket = true;
                         Destroy(highLightObject.transform.parent.gameObject);
                         break;
                     case ItemType.Weapon:
                         if (!body.activeSelf)
                         {
+                            anim.SetTrigger("pickUpGun");
                             Destroy(highLightObject);
                             body.SetActive(true);
                             weapon.AddMagBullets(10);
@@ -168,6 +171,7 @@ public class WorldInteractions : MonoBehaviour
                     case ItemType.Bullets:
                         if(weapon.CurrentBulletsInPocket() < weapon.maxBulletsInPocket)
                         {
+                            StartCoroutine(PickUpGun());
                             Destroy(highLightObject);
                             weapon.AddPocketBullets(5);
                         }
@@ -200,6 +204,13 @@ public class WorldInteractions : MonoBehaviour
                 StartCoroutine(FlashLight());
             }
         }        
+    }
+
+    private IEnumerator PickUpGun()
+    {
+        anim.SetTrigger("pickUpGun");
+        yield return new WaitForSeconds(2);
+        anim.SetBool("Idle", true);
     }
 
     private void ChangeCameraView()

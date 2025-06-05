@@ -165,8 +165,11 @@ public class Weapon : MonoBehaviour
             }
             else if (worldInteractions.potencialEnemy.CompareTag("Thief"))
             {
+                ThiefBehavior thief = worldInteractions.potencialEnemy.GetComponent<ThiefBehavior>();
+
                 Instantiate(ticketPrefab, worldInteractions.potencialEnemy.transform.position, ticketPrefab.transform.rotation);
-                Destroy(worldInteractions.potencialEnemy.transform.parent.gameObject);
+
+                StartCoroutine(thief.Die());
             }
         }
     }
@@ -181,11 +184,15 @@ public class Weapon : MonoBehaviour
     public void AddMagBullets(int amount)
     {
         currentBulletsInMag = Mathf.Clamp(currentBulletsInMag + amount, 0, maxBulletsInMag);
+        bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
+        bulletCountUI.SetPocketCountText(currentBulletsInPocket, maxBulletsInPocket);
     }
 
     public void AddPocketBullets(int amount)
     {
         currentBulletsInPocket = Mathf.Clamp(currentBulletsInPocket + amount, 0, maxBulletsInPocket);
+        bulletCountUI.SetBulletCountText(CurrentBulletsInMag(), maxBulletsInMag);
+        bulletCountUI.SetPocketCountText(currentBulletsInPocket, maxBulletsInPocket);
     }
 
     public int CurrentBulletsInMag()
