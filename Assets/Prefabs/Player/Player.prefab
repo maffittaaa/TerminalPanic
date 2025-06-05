@@ -446,9 +446,12 @@ MonoBehaviour:
   dOF: {fileID: 0}
   cA: {fileID: 0}
   vignette: {fileID: 0}
-  <distanceDecrease>k__BackingField: 0.005
+  <distanceIncrease>k__BackingField: 0.03
+  <distanceDecrease>k__BackingField: 0.0003
   <aberrationIncrease>k__BackingField: 0.0045
-  vignetteDecrease: 0.004
+  <aberrationDecrease>k__BackingField: 0.012
+  <vignetteIncrease>k__BackingField: 0.005
+  <vignetteDecrease>k__BackingField: 0.009
   audioManager: {fileID: 0}
   <state>k__BackingField: {fileID: 0}
   OnPlayerHealthChangedEvent:

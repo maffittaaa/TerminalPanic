@@ -36,9 +36,15 @@ public class AnxietyBar : MonoBehaviour
     public DepthOfField dOF;
     public ChromaticAberration cA;
     public Vignette vignette;
+    
+    [field: SerializeField] public float distanceIncrease { get; set; }
     [field: SerializeField] public float distanceDecrease { get; set; }
     [field: SerializeField] public float aberrationIncrease { get; set; }
-    [field: SerializeField] public float vignetteDecrease;
+    [field: SerializeField] public float aberrationDecrease { get; set; }
+    
+    [field: SerializeField] public float vignetteIncrease { get; set; }
+    [field: SerializeField] public float vignetteDecrease { get; set; }
+    
     
     [Header("Audio")]
     [SerializeField] private AudioManager audioManager;
@@ -95,24 +101,58 @@ public class AnxietyBar : MonoBehaviour
                 if (interacted == false && realityMode == false)
                 {
                     EffectsFromAnxiety(anxietyIncrease);
+                    if (currentAnxiety <= maxAnxiety * 0.33f) //first third of the anxiety
+                    {
+                        cA.intensity.value += aberrationIncrease;
+                        cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
+                    }
+                
+                    if (currentAnxiety > maxAnxiety * 0.33f && currentAnxiety <= maxAnxiety) //starts after the chromatic aberration and ends at the max anxiety
+                    {
+                        vignette.intensity.value += vignetteIncrease;
+                        vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.8f );
+                    
+                        vignette.smoothness.value += vignetteIncrease;
+                        vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,1f);
+                    }
+                
+                    if (currentAnxiety > maxAnxiety * 0.66f) //final third of the anxiety
+                    {
+                        dOF.focusDistance.value -= distanceDecrease;
+                        dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
+                    
+                        if (!audioManager.heartbeat2.isPlaying)
+                        {
+                            audioManager.heartbeat.Stop();
+                            audioManager.heartbeat2.Play();
+                        }
+                    }
+                
+                    else if (coroutineRunning)
+                    {
+                        if (!audioManager.heartbeat.isPlaying)
+                        {
+                            audioManager.heartbeat2.Stop();
+                            audioManager.heartbeat.Play();
+                        }
+                    }
                 }
                 else if (interacted)
                 {
                     EffectsFromAnxiety(-anxietyDecrease);
-                    if (!dOF.focusDistance.value.Equals(1f) && !cA.intensity.value.Equals(1f) && !vignette.intensity.value.Equals(0f) && !vignette.smoothness.value.Equals(0.01f))
+                    if (!cA.intensity.value.Equals(0.2f))
                     {
-                        dOF.focusDistance.value += distanceDecrease;
+                        dOF.focusDistance.value += distanceIncrease;
                         dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
                         
-                        cA.intensity.value -= aberrationIncrease;
+                        cA.intensity.value -= aberrationDecrease;
                         cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
                         
                         vignette.intensity.value -= vignetteDecrease;
-                        vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.7f );
+                        vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.8f );
                         
                         vignette.smoothness.value -= vignetteDecrease;
-                        vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,0.7f);
-                        
+                        vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,1f);
                     }
 
                     if (currentAnxiety <= 0f)
@@ -121,41 +161,6 @@ public class AnxietyBar : MonoBehaviour
                         coroutineRunning = false;
                         if (audioManager.heartbeat.isPlaying)
                             audioManager.heartbeat.Stop();
-                    }
-                }
-
-                if (currentAnxiety <= maxAnxiety * 0.33f) //first third of the anxiety
-                {
-                    cA.intensity.value += aberrationIncrease;
-                    cA.intensity.value = Mathf.Clamp(cA.intensity.value, 0.2f, 0.8f);
-                }
-                
-                else if (currentAnxiety > maxAnxiety * 0.33f && currentAnxiety <= maxAnxiety) //starts after the chromatic aberration and ends at the max anxiety
-                {
-                    vignette.intensity.value += vignetteDecrease;
-                    vignette.intensity.value = Mathf.Clamp(vignette.intensity.value,0f, 0.7f );
-                    
-                    vignette.smoothness.value += vignetteDecrease;
-                    vignette.smoothness.value = Mathf.Clamp(vignette.smoothness.value,0.01f,0.7f);
-                }
-                else if (currentAnxiety > maxAnxiety * 0.66f) //final third of the anxiety
-                {
-                    dOF.focusDistance.value -= distanceDecrease;
-                    dOF.focusDistance.value = Mathf.Clamp01(dOF.focusDistance.value);
-                    
-                    if (!audioManager.heartbeat2.isPlaying)
-                    {
-                        audioManager.heartbeat.Stop();
-                        audioManager.heartbeat2.Play();
-                    }
-                }
-                
-                else if (coroutineRunning)
-                {
-                    if (!audioManager.heartbeat.isPlaying)
-                    {
-                        audioManager.heartbeat2.Stop();
-                        audioManager.heartbeat.Play();
                     }
                 }
             }
