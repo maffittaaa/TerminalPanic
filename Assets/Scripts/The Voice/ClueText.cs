@@ -8,6 +8,7 @@ public class ClueText : MonoBehaviour
     public List<ClothesSlots> usedClues = new List<ClothesSlots>();
     public List<ClothesSlots> clues = new List<ClothesSlots>();
     private ThiefClothes thief;
+    [SerializeField] private TheVoiceAudio voice;
     private TextMeshProUGUI clueText;
     public int numberOfClues = 0;
     [SerializeField] private IdentifyingThief identifyingThief;
@@ -40,6 +41,7 @@ public class ClueText : MonoBehaviour
             {
                 clueText.enabled = true;
                 clueText.text = $"Clue {usedClues.Count}: Find the person who has {clues[numberOfClues].name}! ({identifyingThief.peopleNeededToNextClue} left)";
+                voice.PlayAudio(thief.thiefClothes[numberOfClues].id);
             }
         }
         return clueText.text;

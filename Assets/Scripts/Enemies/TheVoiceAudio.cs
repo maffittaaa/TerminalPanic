@@ -35,7 +35,7 @@ public class TheVoiceAudio : MonoBehaviour
 
     private void PlayAudio(AudioClip audio)
     {
-        for(int i = 0; i < anouncementsMicrofones.Length; i++)
+        for (int i = 0; i < anouncementsMicrofones.Length; i++)
         {
             anouncementsMicrofones[i].clip = audio;
             anouncementsMicrofones[i].Play();

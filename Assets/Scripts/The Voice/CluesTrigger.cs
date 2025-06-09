@@ -20,7 +20,7 @@ public class CluesTrigger : MonoBehaviour
         if (other.CompareTag("Player") && interactions.body.activeSelf)
         {
             StartCoroutine(identifyingThief.GoingThroughTheClues());
-            Destroy(trigger);
+            trigger.enabled = false;
         }
     }
 }
