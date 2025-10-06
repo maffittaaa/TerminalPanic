@@ -40,7 +40,7 @@ public class ClueText : MonoBehaviour
             else
             {
                 clueText.enabled = true;
-                clueText.text = $"Clue {usedClues.Count}: Find the person who has {clues[numberOfClues].name}! ({identifyingThief.peopleNeededToNextClue} left)";
+                clueText.text = $"Clue {usedClues.Count}: Find the person who has {clues[numberOfClues].name}! ({identifyingThief.peopleCountToNextClue} / {identifyingThief.peopleNeededToNextClue} left)";
                 voice.PlayAudio(thief.thiefClothes[numberOfClues].id);
             }
         }

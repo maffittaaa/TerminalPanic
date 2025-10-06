@@ -16,7 +16,7 @@ public class IdentifyingThief : MonoBehaviour
     [SerializeField] private ClueText clue;
     public ChoosingClothes hintsForThief;
     public int peopleNeededToNextClue;
-    private int peopleCountToNextClue = 0;
+    public int peopleCountToNextClue = 0;
     private Dictionary<GameObject, GameObject> peopleSeen = new Dictionary<GameObject, GameObject>();
     [SerializeField] private EnemiesClothes enemiesClothes;
     [SerializeField] private GameObject travelerPrefab;
@@ -63,7 +63,6 @@ public class IdentifyingThief : MonoBehaviour
             );
                 
             GameObject traveler = Instantiate(travelerPrefab, randomPosition , Quaternion.identity, travelerSpawner.travellersHolder.transform);
-            traveler.GetComponentInChildren<EnemyClothes>().travelerClothes = enemiesClothes.travelerClothes;
             
             for (int i = 0; i < enemiesClothes.travelerClothes.Length; i++)
             {
@@ -76,6 +75,7 @@ public class IdentifyingThief : MonoBehaviour
                     }
                 }
             }
+            traveler.GetComponentInChildren<EnemyClothes>().travelerClothes = enemiesClothes.travelerClothes;
         }
     }
 
